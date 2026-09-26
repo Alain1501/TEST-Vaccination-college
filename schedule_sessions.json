@@ -1,0 +1,450 @@
+{
+  "meta": {
+    "school_year": "2025-2026",
+    "timezone": "Europe/Paris",
+    "last_update": "2026-05-21"
+  },
+  "search_index": {
+    "fields": [
+      "city",
+      "postal_code",
+      "college_name"
+    ]
+  },
+  "calendar_message": {
+    "title": {
+      "fr": "Vaccination au collège – rappel",
+      "en": "School vaccination – reminder",
+      "ar": "تذكير بالتلقيح في المدرسة",
+      "tr": "Okul aşılaması – hatırlatma",
+      "ps": "د ښوونځي واکسین – یادونه",
+      "ku": "یادکردنەوەی ڤاکسینی قوتابخانە",
+      "ro": "Vaccinare la școală – reamintire",
+      "ka": "სკოლის ვაქცინაცია – შეხსენება",
+      "sq": "Vaksinimi në kolegj – kujtesë",
+      "am": "ትምህርት ቤት ክትባት – ማስታወሻ",
+      "zh": "学校疫苗接种 – 提醒",
+      "prs": "واکسیناسیون مکتب – یادآوری",
+      "es": "Vacunación en el colegio – recordatorio",
+      "pt": "Vacinação na escola – lembrete",
+      "ru": "Вакцинация в школе – напоминание",
+      "uk": "Вакцинація в школі – нагадування",
+      "mo": "Vaccinare la școală – reamintire"
+    },
+    "description": {
+      "fr": "Séance de vaccination demain au collège de votre enfant par l'équipe de vaccination de Sud Seine-et-Marne.\nMerci de mettre le carnet de santé ou de vaccination dans le sac à dos de votre enfant.\nSi ce n'est pas encore fait, l'autorisation parentale (disponible sur le site) est à imprimer, compléter et joindre au carnet.\nVaccination gratuite, sécurisée et conforme aux recommandations sanitaires.",
+      "en": "Vaccination session tomorrow at your child's school by the Southern Seine-et-Marne vaccination team.\nPlease place your child's health or vaccination record in their school bag.\nIf not already done, print, complete and include the parental consent form available on the website.\nFree, safe vaccination in line with health authority recommendations.",
+      "ar": "ستُجرى غدًا جلسة التلقيح في مدرسة طفلكم من قبل فريق التلقيح لجنوب سين-إي-مارن.\nيرجى وضع دفتر الصحة أو التلقيح في حقيبة طفلكم.\nإذا لم يتم ذلك بعد، يرجى طباعة استمارة الموافقة الأبوية (المتوفرة على الموقع) وتعبئتها وإرفاقها مع الدفتر.\nتلقيح مجاني وآمن ومتوافق مع التوصيات الصحية.",
+      "tr": "Çocuğunuzun okulunda yarın Güney Seine-et-Marne aşı ekibi tarafından aşı uygulaması yapılacaktır.\nLütfen sağlık/aşı karnesini çocuğunuzun çantasına koyun.\nHenüz yapılmadıysa, sitede bulunan veli onay formunu yazdırıp doldurarak karnenin yanına ekleyin.\nAşılar ücretsiz, güvenli ve sağlık otoritelerinin önerilerine uygundur.",
+      "ps": "سبا به د سویلي سین-اې-مارن د واکسین ټیم له خوا ستاسو د ماشوم په ښوونځي کې واکسین ترسره شي.\nمهرباني وکړئ د واکسین یا روغتیا کارت د ماشوم په بکس کې کېږدئ.\nکه لا نه وي شوی، د والدینو د رضايت فورمه (په وېبپاڼه کې شته) چاپ، ډکه او له کارت سره یوځای کړئ.\nواکسین وړیا، خوندي او د روغتیايي سپارښتنو سره سم دی.",
+      "ku": "سبەی لە قوتابخانەی منداڵەکەتان، تیمی ڤاکسینی باشووری Seine-et-Marne ڤاکسین ئەنجام دەدات.\nتکایە کارتی تەندروستی یان ڤاکسین بخەنە ناو جانتای قوتابی.\nئەگەر هێشتا نەکراوە، فۆرمی ڕەزامەندی دایک و باوک (لە ماڵپەڕەکەدا هەیە) چاپ بکەن، پڕ بکەن و لەگەڵ کارتەکە دابنێن.\nڤاکسین بەخۆرایی، ئاسایشدار و لەگەڵ پێشنیارەکانی دەسەڵاتدارانی تەندروستییە.",
+      "ro": "Mâine va avea loc sesiunea de vaccinare la școala copilului dumneavoastră, realizată de echipa de vaccinare din Sud Seine-et-Marne.\nVă rugăm să puneți carnetul de sănătate sau de vaccinare în ghiozdanul copilului.\nDacă nu a fost încă făcut, tipăriți, completați și atașați formularul de consimțământ parental disponibil pe site.\nVaccinare gratuită, sigură și conformă recomandărilor sanitare.",
+      "ka": "ხვალ თქვენს ბავშვის სკოლაში ჩატარდება ვაქცინაციის სესია სამხრეთ სენ-ე-მარნის ვაქცინაციის გუნდის მიერ.\nგთხოვთ, ბავშვის ჩანთაში ჩადოთ ჯანმრთელობის ან ვაქცინაციის ბარათი.\nთუ ჯერ არ გაგიკეთებიათ, დაბეჭდეთ, შეავსეთ და დაურთეთ მშობლის თანხმობის ფორმა, რომელიც ხელმისაწვდომია საიტზე.\nვაქცინაცია არის უფასო, უსაფრთხო და შეესაბამება ჯანდაცვის რეკომენდაციებს.",
+      "sq": "Nesër do të zhvillohet seanca e vaksinimit në kolegjin e fëmijës suaj nga ekipi i vaksinimit të Seine-et-Marne Jugore.\nJu lutemi vendosni librezën shëndetësore ose të vaksinimit në çantën e fëmijës suaj.\nNëse nuk e keni bërë ende, printoni, plotësoni dhe bashkëngjitni librezës formularin e autorizimit prindëror (i disponueshëm në sit).\nVaksinim falas, i sigurt dhe në përputhje me rekomandimet shëndetësore.",
+      "am": "ነገ በልጅዎ ትምህርት ቤት የደቡብ ሴን-ኤ-ማርን የክትባት ቡድን የክትባት ክፍለ ጊዜ ያካሂዳል።\nእባክዎ የጤና ወይም የክትባት ካርድ በልጅዎ ቦርሳ ውስጥ ያስቀምጡ።\nገና ካልተደረገ፣ በድህረ ገጹ ላይ የሚገኘውን የወላጅ ፈቃድ ቅጽ አትመው፣ ሞልተው ከካርዱ ጋር ያያይዙት።\nክትባቱ ነፃ፣ ደህንነቱ የተጠበቀ እና ከጤና ምክሮች ጋር የሚስማማ ነው።",
+      "zh": "明天，南塞纳-马恩省疫苗接种团队将在您孩子的学校进行疫苗接种。\n请将健康手册或疫苗接种手册放入孩子的书包。\n如果尚未完成，请打印、填写网站上提供的家长同意书，并附在手册中。\n疫苗接种免费、安全，并符合卫生建议。",
+      "prs": "فردا در مکتب فرزند شما، تیم واکسیناسیون جنوب سین-ای-مارن جلسه واکسیناسیون برگزار می‌کند.\nلطفاً کارت صحی یا واکسیناسیون فرزند خود را در بکس مکتب او بگذارید.\nاگر تاکنون انجام نداده‌اید، فورم اجازه والدین (موجود در ویب‌سایت) را چاپ، خانه‌پری و به کارت ضمیمه کنید.\nواکسیناسیون رایگان، مصون و مطابق با توصیه‌های صحی است.",
+      "es": "Sesión de vacunación mañana en el colegio de su hijo/a, a cargo del equipo de vacunación del Sur de Seine-et-Marne.\nPor favor, coloque la cartilla de salud o de vacunación en la mochila de su hijo/a.\nSi aún no lo ha hecho, imprima, complete y adjunte a la cartilla el formulario de autorización parental (disponible en el sitio web).\nVacunación gratuita, segura y conforme a las recomendaciones sanitarias.",
+      "pt": "Sessão de vacinação amanhã na escola do seu filho/a, realizada pela equipa de vacinação do Sul de Seine-et-Marne.\nPor favor, coloque o boletim de saúde ou de vacinação na mochila do seu filho/a.\nSe ainda não o fez, imprima, preencha e junte ao boletim o formulário de autorização parental (disponível no site).\nVacinação gratuita, segura e em conformidade com as recomendações sanitárias.",
+      "ru": "Завтра в школе вашего ребёнка пройдёт сеанс вакцинации силами бригады вакцинации Южного Сена-и-Марна.\nПожалуйста, положите медицинскую или прививочную карту ребёнка в школьный рюкзак.\nЕсли вы ещё не сделали этого, распечатайте, заполните и приложите к карте бланк согласия родителей (доступен на сайте).\nВакцинация бесплатная, безопасная и соответствует рекомендациям органов здравоохранения.",
+      "uk": "Завтра у школі вашої дитини відбудеться сеанс вакцинації командою вакцинації Південного Сена-і-Марна.\nБудь ласка, покладіть медичну або щеплювальну картку дитини в шкільний рюкзак.\nЯкщо ви ще цього не зробили, роздрукуйте, заповніть і додайте до картки форму згоди батьків (доступна на сайті).\nВакцинація безкоштовна, безпечна та відповідає рекомендаціям охорони здоров'я.",
+      "mo": "Mâine va avea loc sesiunea de vaccinare la școala copilului dumneavoastră, realizată de echipa de vaccinare din Sud Seine-et-Marne.\nVă rugăm să puneți carnetul de sănătate sau de vaccinare în ghiozdanul copilului.\nDacă nu a fost încă făcut, tipăriți, completați și atașați formularul de consimțământ parental disponibil pe site.\nVaccinare gratuită, sigură și conformă recomandărilor sanitare."
+    },
+    "reminder": {
+      "offset": "P1D",
+      "time": "18:00"
+    }
+  },
+  "sessions": [
+    {
+      "city": "Dammarie-lès-Lys",
+      "postal_code": "77190",
+      "college_name": "Georges Politzer",
+      "date": "2026-01-20"
+    },
+    {
+      "city": "Le Châtelet-en-Brie",
+      "postal_code": "77820",
+      "college_name": "Rosa Bonheur",
+      "date": "2026-01-21"
+    },
+    {
+      "city": "Dammarie-lès-Lys",
+      "postal_code": "77190",
+      "college_name": "Robert Doisneau",
+      "date": "2026-01-22"
+    },
+    {
+      "city": "Moissy-Cramayel",
+      "postal_code": "77550",
+      "college_name": "Les Maillettes",
+      "date": "2026-01-22"
+    },
+    {
+      "city": "Moissy-Cramayel",
+      "postal_code": "77550",
+      "college_name": "La Boétie",
+      "date": "2026-01-22"
+    },
+    {
+      "city": "Montereau-Fault-Yonne",
+      "postal_code": "77130",
+      "college_name": "Pierre de Montereau",
+      "date": "2026-01-23"
+    },
+    {
+      "city": "Montereau-Fault-Yonne",
+      "postal_code": "77130",
+      "college_name": "André Malraux",
+      "date": "2026-01-23"
+    },
+    {
+      "city": "Montereau-Fault-Yonne",
+      "postal_code": "77130",
+      "college_name": "Paul Éluard",
+      "date": "2026-01-23"
+    },
+    {
+      "city": "Melun",
+      "postal_code": "77000",
+      "college_name": "Les Capucins",
+      "date": "2026-01-27"
+    },
+    {
+      "city": "Melun",
+      "postal_code": "77000",
+      "college_name": "Jacques Amyot",
+      "date": "2026-01-27"
+    },
+    {
+      "city": "Vert-Saint-Denis",
+      "postal_code": "77240",
+      "college_name": "Jean Vilar",
+      "date": "2026-01-29"
+    },
+    {
+      "city": "Perthes",
+      "postal_code": "77930",
+      "college_name": "Christine de Pisan",
+      "date": "2026-01-29"
+    },
+    {
+      "city": "Brie-Comte-Robert",
+      "postal_code": "77170",
+      "college_name": "Arthur Chaussy",
+      "date": "2026-01-30"
+    },
+    {
+      "city": "Saint-Fargeau-Ponthierry",
+      "postal_code": "77310",
+      "college_name": "François Villon",
+      "date": "2026-01-30"
+    },
+    {
+      "city": "Fontenay-Trésigny",
+      "postal_code": "77610",
+      "college_name": "Stéphane Mallarmé",
+      "date": "2026-02-03"
+    },
+    {
+      "city": "Melun",
+      "postal_code": "77000",
+      "college_name": "Institution Jeanne d'Arc",
+      "date": "2026-02-04"
+    },
+    {
+      "city": "Champagne-sur-Seine",
+      "postal_code": "77430",
+      "college_name": "Fernand Gregh",
+      "date": "2026-02-05"
+    },
+    {
+      "city": "Varennes-sur-Seine",
+      "postal_code": "77130",
+      "college_name": "Elsa Triolet",
+      "date": "2026-02-05"
+    },
+    {
+      "city": "La Chapelle-la-Reine",
+      "postal_code": "77760",
+      "college_name": "Blanche de Castille",
+      "date": "2026-02-06"
+    },
+    {
+      "city": "Lorrez-le-Bocage-Préaux",
+      "postal_code": "77710",
+      "college_name": "Jacques Prévert",
+      "date": "2026-02-10"
+    },
+    {
+      "city": "Melun",
+      "postal_code": "77000",
+      "college_name": "Frédéric Chopin",
+      "date": "2026-02-10"
+    },
+    {
+      "city": "Cesson",
+      "postal_code": "77240",
+      "college_name": "Le Grand Parc",
+      "date": "2026-02-11"
+    },
+    {
+      "city": "Château-Landon",
+      "postal_code": "77570",
+      "college_name": "Pierre Roux",
+      "date": "2026-02-12"
+    },
+    {
+      "city": "Souppes-sur-Loing",
+      "postal_code": "77460",
+      "college_name": "Émile Chevallier",
+      "date": "2026-02-12"
+    },
+    {
+      "city": "Moret-Loing-et-Orvanne",
+      "postal_code": "77250",
+      "college_name": "Alfred Sisley",
+      "date": "2026-02-13"
+    },
+    {
+      "city": "Vulaines-sur-Seine",
+      "postal_code": "77870",
+      "college_name": "Colonel Arnaud Beltrame",
+      "date": "2026-02-13"
+    },
+    {
+      "city": "Bois-le-Roi",
+      "postal_code": "77590",
+      "college_name": "Denecourt",
+      "date": "2026-02-17"
+    },
+    {
+      "city": "Verneuil-l'Étang",
+      "postal_code": "77390",
+      "college_name": "Charles Péguy",
+      "date": "2026-02-18"
+    },
+    {
+      "city": "Lésigny",
+      "postal_code": "77150",
+      "college_name": "Les Hyverneaux",
+      "date": "2026-02-19"
+    },
+    {
+      "city": "Nandy",
+      "postal_code": "77176",
+      "college_name": "Robert Buron",
+      "date": "2026-02-19"
+    },
+    {
+      "city": "Combs-la-Ville",
+      "postal_code": "77380",
+      "college_name": "Cités Unies",
+      "date": "2026-02-20"
+    },
+    {
+      "city": "Combs-la-Ville",
+      "postal_code": "77380",
+      "college_name": "Les Aulnes",
+      "date": "2026-02-20"
+    },
+    {
+      "city": "Provins",
+      "postal_code": "77160",
+      "college_name": "Sainte-Croix",
+      "date": "2026-03-11"
+    },
+    {
+      "city": "Avon",
+      "postal_code": "77210",
+      "college_name": "De la Vallée",
+      "date": "2026-03-12"
+    },
+    {
+      "city": "Sourdun",
+      "postal_code": "77171",
+      "college_name": "Internat d'Excellence",
+      "date": "2026-03-12"
+    },
+    {
+      "city": "Mormant",
+      "postal_code": "77720",
+      "college_name": "Nicolas Fouquet",
+      "date": "2026-03-13"
+    },
+    {
+      "city": "Savigny-le-Temple",
+      "postal_code": "77176",
+      "college_name": "Louis Armand",
+      "date": "2026-03-17"
+    },
+    {
+      "city": "Coubert",
+      "postal_code": "77170",
+      "college_name": "Marie-Amélie Le Fur",
+      "date": "2026-03-17"
+    },
+    {
+      "city": "Villiers-Saint-Georges",
+      "postal_code": "77560",
+      "college_name": "Les Tournelles",
+      "date": "2026-03-18"
+    },
+    {
+      "city": "Melun",
+      "postal_code": "77000",
+      "college_name": "Sainte-Marie",
+      "date": "2026-03-19"
+    },
+    {
+      "city": "Voisenon",
+      "postal_code": "77950",
+      "college_name": "Nazareth",
+      "date": "2026-03-24"
+    },
+    {
+      "city": "Brie-Comte-Robert",
+      "postal_code": "77170",
+      "college_name": "Sainte-Colombe",
+      "date": "2026-03-25"
+    },
+    {
+      "city": "Lieusaint",
+      "postal_code": "77127",
+      "college_name": "Saint-Louis",
+      "date": "2026-03-25"
+    },
+    {
+      "city": "Nemours",
+      "postal_code": "77140",
+      "college_name": "Arthur Rimbaud",
+      "date": "2026-03-26"
+    },
+    {
+      "city": "Nemours",
+      "postal_code": "77140",
+      "college_name": "Honoré de Balzac",
+      "date": "2026-03-26"
+    },
+    {
+      "city": "Saint-Pierre-lès-Nemours",
+      "postal_code": "77140",
+      "college_name": "Vasco de Gama",
+      "date": "2026-03-26"
+    },
+    {
+      "city": "Saint-Pierre-lès-Nemours",
+      "postal_code": "77140",
+      "college_name": "Sainte-Marie",
+      "date": "2026-03-26"
+    },
+    {
+      "city": "Provins",
+      "postal_code": "77160",
+      "college_name": "Jules Verne",
+      "date": "2026-03-27"
+    },
+    {
+      "city": "Nangis",
+      "postal_code": "77370",
+      "college_name": "René Barthélémy",
+      "date": "2026-03-27"
+    },
+    {
+      "city": "Le Mée-sur-Seine",
+      "postal_code": "77350",
+      "college_name": "Elsa Triolet",
+      "date": "2026-03-31"
+    },
+    {
+      "city": "Le Mée-sur-Seine",
+      "postal_code": "77350",
+      "college_name": "Jean de La Fontaine",
+      "date": "2026-03-31"
+    },
+    {
+      "city": "Savigny-le-Temple",
+      "postal_code": "77176",
+      "college_name": "Henri Wallon",
+      "date": "2026-04-02"
+    },
+    {
+      "city": "Savigny-le-Temple",
+      "postal_code": "77176",
+      "college_name": "La Grange du Bois",
+      "date": "2026-04-02"
+    },
+    {
+      "city": "Fontainebleau",
+      "postal_code": "77300",
+      "college_name": "Lucien Cézard",
+      "date": "2026-04-03"
+    },
+    {
+      "city": "Fontainebleau",
+      "postal_code": "77300",
+      "college_name": "International",
+      "date": "2026-04-03"
+    },
+    {
+      "city": "Donnemarie-Dontilly",
+      "postal_code": "77520",
+      "college_name": "Du Montois",
+      "date": "2026-04-07"
+    },
+    {
+      "city": "Bray-sur-Seine",
+      "postal_code": "77480",
+      "college_name": "Jean Rostand",
+      "date": "2026-04-07"
+    },
+    {
+      "city": "Melun",
+      "postal_code": "77000",
+      "college_name": "Pierre Brossolette",
+      "date": "2026-04-08"
+    },
+    {
+      "city": "Brie-Comte-Robert",
+      "postal_code": "77170",
+      "college_name": "Georges Brassens",
+      "date": "2026-04-09"
+    },
+    {
+      "city": "Lieusaint",
+      "postal_code": "77127",
+      "college_name": "De la Pyramide",
+      "date": "2026-04-09"
+    },
+    {
+      "city": "Provins",
+      "postal_code": "77160",
+      "college_name": "Marie Curie",
+      "date": "2026-04-10"
+    },
+    {
+      "city": "Provins",
+      "postal_code": "77160",
+      "college_name": "Lelorgne de Savigny",
+      "date": "2026-04-10"
+    },
+    {
+      "city": "Vaux-le-Pénil",
+      "postal_code": "77000",
+      "college_name": "La Mare aux Champs",
+      "date": "2026-04-14"
+    },
+    {
+      "city": "Rozay-en-Brie",
+      "postal_code": "77540",
+      "college_name": "Les Remparts",
+      "date": "2026-04-16"
+    },
+    {
+      "city": "Jouy-le-Châtel",
+      "postal_code": "77970",
+      "college_name": "Jean-Jacques Barbaud",
+      "date": "2026-06-12"
+    }
+  ]
+}
