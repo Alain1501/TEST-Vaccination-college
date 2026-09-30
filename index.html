@@ -377,6 +377,22 @@ html, body { overflow-x: hidden; max-width: 100%; }
 
 /* ----- Accordéon FAQ : structure et mécanisme repris du site USP ----- */
 #faqCard { max-width: 720px; margin-left: auto; margin-right: auto; }
+
+/* ===== Barre de recherche de date (classe + recherche reunies) ===== */
+.scheduleBar { display: flex; align-items: stretch; border: 1px solid var(--border); border-radius: 14px; overflow: hidden; background: var(--card); }
+.scheduleGradeWrap { display: flex; flex-direction: column; justify-content: center; gap: 2px; padding: 8px 16px; border-right: 1px solid var(--border); min-width: 180px; background: var(--primary-soft); }
+.scheduleGradeWrap label { font-size: 11px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .03em; }
+.scheduleGradeWrap select { border: none; background: transparent; color: var(--text); font-size: 14px; font-weight: 700; padding: 2px 0; outline: none; cursor: pointer; }
+.scheduleSearchWrap { flex: 1; display: flex; align-items: center; gap: 10px; padding: 0 16px; min-width: 200px; }
+.scheduleSearchWrap input { border: none; outline: none; width: 100%; font-size: 14px; background: transparent; color: var(--text); padding: 14px 0; }
+@media (max-width: 640px) {
+  .scheduleBar { flex-direction: column; }
+  .scheduleGradeWrap { border-right: none; border-bottom: 1px solid var(--border); min-width: 0; }
+}
+
+/* ===== Alignement du selecteur de langue ===== */
+.langButtons { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.langHint { justify-content: center; }
 .acc { width: 100%; border-radius: 20px 20px 20px 6px; background: var(--primary-soft); border: 1px solid transparent; margin: 0 0 10px; overflow: hidden; transition: background-color .3s ease, box-shadow .3s ease; }
 .acc.ouverte { background: var(--card); box-shadow: 0 0 0 2px var(--primary) inset, 0 16px 36px -24px rgba(37,99,235,.45); }
 [data-theme="dark"] .acc.ouverte { box-shadow: 0 0 0 2px var(--primary) inset, 0 16px 36px -24px rgba(56,189,248,.5); }
@@ -601,39 +617,28 @@ a:focus-visible, button:focus-visible, input:focus-visible, .btn:focus-visible,
                 </div>
 <!-- ===== RECHERCHE DATE DE VACCINATION COLLÈGE ===== -->
 <section class="container" id="scheduleSearchSection" style="margin-bottom:24px;">
-  <div class="card" style="padding:20px;">
-    <div style="display:flex;gap:20px;align-items:center;flex-wrap:wrap;">
-
-      <!-- Consigne multilingue -->
-      <div id="scheduleHint"
-           style="flex:1;min-width:240px;color:var(--muted);font-size:14px;line-height:1.5;">
-        <!-- Texte injecté via JS selon la langue -->
-      </div>
-
-      <!-- Classe de l'enfant (obligatoire avant la recherche) -->
-      <div style="display:flex;flex-direction:column;gap:4px;min-width:200px;">
-        <label id="scheduleGradeLabel" for="scheduleGradeSelect" style="font-size:13px;font-weight:700;color:var(--text);"></label>
-        <select id="scheduleGradeSelect" style="padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:var(--card);color:var(--text);font-size:14px;">
-          <option id="scheduleGradeOptEmpty" value=""></option>
-          <option id="scheduleGradeOpt4e" value="4e"></option>
-          <option id="scheduleGradeOpt5e" value="5e"></option>
-        </select>
-      </div>
-
-      <!-- Barre de recherche -->
-      <div class="search" style="flex:1;min-width:260px;">
-        🔎
-        <input
-          type="search"
-          id="scheduleSearchInput"
-          autocomplete="off"
-        />
-      </div>
-
+  <div class="card">
+    <div class="sectionHead">
+      <div class="sectionTitle" id="scheduleTitle"></div>
+      <div class="sectionDesc" id="scheduleHint"><!-- Texte injecté via JS selon la langue --></div>
     </div>
-
-    <!-- Résultats -->
-    <div id="scheduleResults" style="margin-top:16px;display:none;"></div>
+    <div class="sectionBody">
+      <div class="scheduleBar">
+        <div class="scheduleGradeWrap">
+          <label id="scheduleGradeLabel" for="scheduleGradeSelect"></label>
+          <select id="scheduleGradeSelect">
+            <option id="scheduleGradeOptEmpty" value=""></option>
+            <option id="scheduleGradeOpt4e" value="4e"></option>
+            <option id="scheduleGradeOpt5e" value="5e"></option>
+          </select>
+        </div>
+        <div class="scheduleSearchWrap">
+          🔎
+          <input type="search" id="scheduleSearchInput" autocomplete="off"/>
+        </div>
+      </div>
+      <div id="scheduleResults" style="margin-top:16px;display:none;"></div>
+    </div>
   </div>
 </section>
 <!-- ===== FIN RECHERCHE ===== -->
@@ -2109,6 +2114,25 @@ const normSchedule = s =>
 const tSchedule = obj => obj?.[lang] || obj?.fr || '';
 
 const SCHEDULE_TEXT = {
+  title: {
+    fr: "Trouver la date de vaccination de mon collège",
+    en: "Find my school's vaccination date",
+    ar: "البحث عن موعد التلقيح في مدرستي",
+    tr: "Okulumun aşı tarihini bul",
+    ps: "زما د ښوونځي د واکسین نېټه ومومئ",
+    ku: "دۆزینەوەی ڕێکەوتی ڤاکسینی قوتابخانەکەم",
+    ro: "Găsiți data vaccinării colegiului meu",
+    ka: "ჩემი კოლეჯის ვაქცინაციის თარიღის პოვნა",
+    sq: "Gjeni datën e vaksinimit në kolegjin tim",
+    am: "የኮሌጄን የክትባት ቀን ያግኙ",
+    zh: "查找我所在初中的疫苗接种日期",
+    prs: "یافتن تاریخ واکسیناسیون مکتب من",
+    es: "Encontrar la fecha de vacunación de mi colegio",
+    pt: "Encontrar a data de vacinação do meu colégio",
+    ru: "Узнать дату вакцинации в моём коллеже",
+    uk: "Дізнатися дату вакцинації в моєму коледжі",
+    mo: "Găsiți data vaccinării colegiului meu"
+  },
   hint: {
     fr: "Trouvez rapidement la date de vaccination de votre collège.\nIndiquez d'abord la classe de votre enfant, puis le nom de votre commune, votre code postal ou le nom du collège.",
     en: "Find your school's vaccination date.\nFirst select your child's grade, then enter your city, postal code or school name.",
@@ -2361,6 +2385,8 @@ results.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 
 function applyScheduleTexts() {
+  const title = document.getElementById('scheduleTitle');
+  if (title) title.textContent = tSchedule(SCHEDULE_TEXT.title);
   const hint = document.getElementById('scheduleHint');
   const input = document.getElementById('scheduleSearchInput');
   const gradeLabel = document.getElementById('scheduleGradeLabel');
