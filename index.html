@@ -374,28 +374,33 @@ html, body { overflow-x: hidden; max-width: 100%; }
 #heroTitle.heroAnimate { animation: heroTitleReveal .9s cubic-bezier(.22,1,.36,1) both; }
 #heroSubtitle.heroAnimate { animation: heroFadeUp .7s ease .2s both; }
 
-/* ----- Éventail décoratif au-dessus du titre (mécanisme repris du site USP) ----- */
-.eventail { display: block; width: 120px; max-width: 120px; height: auto; margin: 0 auto 6px; overflow: visible; }
-.eventail .p { transform-box: view-box; transform-origin: 210px 300px; opacity: 0; }
-.eventail.ouvert .p { animation: eventailOuvre .9s cubic-bezier(.22,1,.36,1) both; }
-.eventail.ouvert .p1 { animation-delay: .15s; }
-.eventail.ouvert .p2 { animation-delay: .27s; }
-.eventail.ouvert .p3 { animation-delay: .39s; }
-.eventail.ouvert .p4 { animation-delay: .51s; }
-.eventail.ouvert .p5 { animation-delay: .63s; }
-.eventail .tout { transform-box: view-box; transform-origin: 210px 300px; }
-.eventail.ouvert .tout { animation: eventailRespire 7s ease-in-out 1.8s infinite; }
-@keyframes eventailOuvre {
-  from { opacity: 0; transform: rotate(-70deg) scale(.4); }
+/* ----- Accordéon FAQ : structure et mécanisme repris du site USP ----- */
+.acc { border-radius: 20px 20px 20px 6px; background: var(--card); border: 1px solid var(--border); margin: 0 0 10px; overflow: hidden; transition: background-color .3s ease, box-shadow .3s ease; }
+.acc h3 { margin: 0; font-size: 1rem; }
+.acc button { all: unset; box-sizing: border-box; display: flex; width: 100%; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 16px; cursor: pointer; font-weight: 800; line-height: 1.35; color: var(--text); }
+.acc button:focus-visible { outline: 3px solid var(--primary); outline-offset: 2px; }
+.acc .signe { flex: none; width: 28px; height: 28px; border-radius: 50%; background: var(--primary-soft); color: var(--primary); display: grid; place-items: center; transition: transform .45s cubic-bezier(.22,1,.36,1), background-color .3s ease, color .3s ease; }
+.acc .signe svg { width: 15px; height: 15px; }
+.acc.ouverte .signe { transform: rotate(45deg); background: var(--primary); color: #fff; }
+.acc .corps { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .45s cubic-bezier(.22,1,.36,1); }
+.acc.ouverte .corps { grid-template-rows: 1fr; }
+.acc .corps > div { overflow: hidden; }
+.acc .corps .ans { margin: 0 16px 16px; color: var(--text); font-size: 14px; line-height: 1.6; white-space: pre-wrap; }
+.acc.searchHit { box-shadow: 0 0 0 2px var(--primary); }
+@media (prefers-reduced-motion: reduce) {
+  .acc .corps, .acc .signe { transition: none; }
+}
+
+/* ----- Effet d'ouverture du titre : chaque partie du texte "s'ouvre" comme les pétales
+   d'un éventail (rotation + zoom + fondu), en cascade, au lieu d'une forme graphique ----- */
+.titleChunk { display: inline-block; opacity: 0; transform-origin: 50% 100%; }
+.titleChunk.chunkOuvert { animation: titleChunkOuvre .8s cubic-bezier(.22,1,.36,1) both; }
+@keyframes titleChunkOuvre {
+  from { opacity: 0; transform: rotate(-18deg) scale(.6) translateY(10px); }
   to   { opacity: 1; transform: none; }
 }
-@keyframes eventailRespire {
-  0%, 100% { transform: rotate(0); }
-  50%      { transform: rotate(2.5deg); }
-}
 @media (prefers-reduced-motion: reduce) {
-  .eventail .p { opacity: 1; transform: none; animation: none; }
-  .eventail.ouvert .tout { animation: none; }
+  .titleChunk { opacity: 1; transform: none; animation: none; }
 }
 
 /* ----- Effet d'ouverture du site : le titre glisse depuis la gauche, une seule fois ----- */
@@ -545,17 +550,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, .btn:focus-visible,
                 <div class="container">
                     <section class="hero">
                         <div class="card heroText reveal">
-                            <svg class="eventail" id="heroEventail" viewBox="0 0 420 350" aria-hidden="true">
-                              <g class="tout">
-                                <g transform="translate(210 300)">
-                                  <path class="p p1" d="M0 0 C-150 -40 -170 -170 -95 -210 C-40 -170 -20 -80 0 0Z" fill="var(--primary)"/>
-                                  <path class="p p2" d="M0 0 C-80 -90 -70 -240 0 -270 C60 -220 40 -90 0 0Z" fill="var(--accent)"/>
-                                  <path class="p p3" d="M0 0 C-10 -120 60 -250 140 -240 C160 -170 90 -70 0 0Z" fill="#ffd800"/>
-                                  <path class="p p4" d="M0 0 C50 -90 170 -160 225 -110 C215 -40 110 -10 0 0Z" fill="#f1861b"/>
-                                  <path class="p p5" d="M0 -20 C80 -60 190 -50 200 10 C160 50 70 30 0 -20Z" fill="#be163a"/>
-                                </g>
-                              </g>
-                            </svg>
                             <h1 id="heroTitle">Vaccination <span class="accent">collège</span><br/>Île-de-France</h1>
                             <p class="subtitle" id="heroSubtitle">
               Accédez aux informations essentielles, aux documents et à la FAQ. L’inscription se fait en quelques clics. </p>
@@ -982,6 +976,32 @@ introTitle: {
   };
 
   let heroFirstLoadDone = false;
+
+  // Découpe le titre en morceaux (chaque nœud de texte + le <span class="accent">
+  // déjà présent) et fait apparaître chacun en cascade, comme les pétales d'un
+  // éventail qui s'ouvrent, mais appliqué au texte du titre lui-même.
+  function wrapTitleChunksAndOpen(titleEl){
+    const nodes = Array.from(titleEl.childNodes);
+    const chunks = [];
+    nodes.forEach(node => {
+      if(node.nodeType === Node.TEXT_NODE){
+        const text = node.textContent;
+        if(text.trim() === ''){ return; }
+        const span = document.createElement('span');
+        span.className = 'titleChunk';
+        span.textContent = text;
+        node.replaceWith(span);
+        chunks.push(span);
+      } else if(node.nodeType === Node.ELEMENT_NODE && node.tagName !== 'BR'){
+        node.classList.add('titleChunk');
+        chunks.push(node);
+      }
+    });
+    chunks.forEach((chunk, i) => {
+      chunk.style.animationDelay = (i * 0.16) + 's';
+      chunk.classList.add('chunkOuvert');
+    });
+  }
   const applyStaticTexts = () => {
     if(els.heroKicker) els.heroKicker.textContent = t(UI_TEXT.heroKicker, els.heroKicker.textContent || '');
     if(els.heroTitle)  els.heroTitle.innerHTML   = t(UI_TEXT.heroTitleHtml, els.heroTitle.innerHTML || '');
@@ -990,10 +1010,11 @@ introTitle: {
       els.heroTitle.classList.remove('heroAnimate', 'heroFirstReveal');
       void els.heroTitle.offsetWidth; // force reflow pour pouvoir rejouer l'animation
       if(!heroFirstLoadDone){
-        // Effet d'ouverture du site : le titre glisse depuis la gauche, une seule fois
+        // Effet d'ouverture du site : chaque morceau du titre "s'ouvre" en cascade,
+        // comme les pétales d'un éventail, appliqué au texte lui-même plutôt qu'à
+        // une forme graphique séparée.
         els.heroTitle.classList.add('heroFirstReveal');
-        const eventail = document.getElementById('heroEventail');
-        if(eventail) eventail.classList.add('ouvert');
+        wrapTitleChunksAndOpen(els.heroTitle);
         heroFirstLoadDone = true;
       } else {
         els.heroTitle.classList.add('heroAnimate');
@@ -1683,49 +1704,64 @@ div.addEventListener('click', (e) => {
     els.faqCount.textContent = `${items.length} / ${total}`;
 
     els.faqList.innerHTML = '';
-    items.forEach(it => {
-      const d = document.createElement('details');
-      if(q) d.classList.add('searchHit');
+    items.forEach((it, idx) => {
+      // Structure et mécanisme repris du site USP : grille CSS 0fr -> 1fr
+      // (pas de calcul JS de hauteur), icône circulaire qui pivote à l'ouverture.
+      const qId = `faqQ${idx}`, rId = `faqR${idx}`;
 
-      const s = document.createElement('summary');
+      const acc = document.createElement('div');
+      acc.className = 'acc';
+      if(q) acc.classList.add('searchHit');
+
+      const h3 = document.createElement('h3');
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.setAttribute('aria-expanded', 'false');
+      btn.setAttribute('aria-controls', rId);
+      btn.id = qId;
+
       const label = document.createElement('span');
       label.textContent = t(it.q, 'Question');
-      s.appendChild(label);
+      btn.appendChild(label);
 
       const right = document.createElement('span');
       right.className = 'chip';
       const sec = (faqData?.sections || []).find(x => (x.key || x.id) === it.section);
       right.textContent = sec ? t(sec.title, it.section) : it.section;
-      s.appendChild(right);
+      btn.appendChild(right);
 
-      const chev = document.createElement('span');
-      chev.className = 'chev';
-      chev.textContent = '▾';
-      chev.setAttribute('aria-hidden', 'true');
-      s.appendChild(chev);
+      const signe = document.createElement('span');
+      signe.className = 'signe';
+      signe.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>';
+      btn.appendChild(signe);
 
-      const a = document.createElement('div');
-      a.className = 'ans';
-      a.textContent = t(it.a, '');
+      h3.appendChild(btn);
 
-      s.addEventListener('click', (e) => {
-        e.preventDefault();
-        const isOpen = d.hasAttribute('open');
+      const corps = document.createElement('div');
+      corps.className = 'corps';
+      corps.id = rId;
+      corps.setAttribute('role', 'region');
+      corps.setAttribute('aria-labelledby', qId);
+      const corpsInner = document.createElement('div');
+      corpsInner.className = 'ans';
+      corpsInner.textContent = t(it.a, '');
+      corps.appendChild(corpsInner);
+
+      btn.addEventListener('click', () => {
+        const isOpen = acc.classList.contains('ouverte');
         if(isOpen){
-          a.style.maxHeight = '0px';
-          a.classList.remove('open');
-          setTimeout(() => { d.removeAttribute('open'); }, 350);
+          acc.classList.remove('ouverte');
+          btn.setAttribute('aria-expanded', 'false');
         } else {
-          d.setAttribute('open', '');
-          a.classList.add('open');
-          a.style.maxHeight = a.scrollHeight + 'px';
+          acc.classList.add('ouverte');
+          btn.setAttribute('aria-expanded', 'true');
         }
       });
 
-      d.appendChild(s);
-      d.appendChild(a);
+      acc.appendChild(h3);
+      acc.appendChild(corps);
 
-      els.faqList.appendChild(d);
+      els.faqList.appendChild(acc);
     });
   }
 
