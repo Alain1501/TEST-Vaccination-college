@@ -440,6 +440,38 @@ a:focus-visible, button:focus-visible, input:focus-visible, .btn:focus-visible,
   .fadeWord { color: var(--text) !important; }
 }
 
+/* ===== ROTATION ICONE + FLECHE AU SURVOL DES ETAPES ===== */
+.stepIllustration { transition: transform .25s ease; }
+.stepItem:hover .stepIllustration { transform: rotate(6deg) scale(1.08); }
+.stepArrow { width: 20px; height: 20px; margin-left: auto; align-self: center; color: var(--muted); opacity: .45; flex-shrink: 0; transition: transform .25s ease, opacity .25s ease, color .25s ease; }
+.stepItem:hover .stepArrow { transform: translateX(5px); opacity: 1; color: var(--primary); }
+
+/* ===== LOGOS INSTITUTIONNELS EN NIVEAUX DE GRIS, COULEUR AU SURVOL ===== */
+.institutional-logos img { filter: grayscale(1); opacity: .7; transition: filter .25s ease, opacity .25s ease; }
+.institutional-logos a:hover img { filter: grayscale(0); opacity: 1; }
+
+/* ===== FLECHE AU SURVOL DES LIENS DE CONTACT ===== */
+.contactItem { justify-content: space-between; }
+.contactArrow { width: 16px; height: 16px; margin-left: 8px; opacity: 0; transform: translateX(-4px); transition: opacity .2s ease, transform .2s ease; flex-shrink: 0; }
+.contactItem:hover .contactArrow { opacity: .8; transform: translateX(0); }
+
+/* ===== EN-TETE FIXE QUI SE RESSERRE AU DEFILEMENT ===== */
+.topbar { position: sticky; top: 0; z-index: 500; background: var(--bg); padding: 14px 0; transition: padding .25s ease, box-shadow .25s ease; }
+.topbar.scrolled { padding: 7px 0; box-shadow: 0 2px 14px rgba(0,0,0,.1); }
+.topbar.scrolled .langBtn { padding: 6px 8px; font-size: 12px; }
+.topbar.scrolled #themeToggle { padding: 6px 9px; }
+.topbar.scrolled .search { padding: 7px 10px; min-width: 200px; }
+[data-theme="dark"] .topbar.scrolled { box-shadow: 0 2px 14px rgba(0,0,0,.4); }
+
+/* ===== FENETRE MODALE VIDEO (lecture en un clic) ===== */
+.videoModalOverlay { position: fixed; inset: 0; background: rgba(10,14,25,.82); display: flex; align-items: center; justify-content: center; z-index: 10000; padding: 24px; opacity: 0; pointer-events: none; transition: opacity .2s ease; }
+.videoModalOverlay.open { opacity: 1; pointer-events: auto; }
+.videoModalBox { background: var(--card); border-radius: 16px; max-width: 860px; width: 100%; padding: 16px; position: relative; box-shadow: 0 20px 60px rgba(0,0,0,.4); }
+.videoModalTitle { font-weight: 800; font-size: 14px; margin: 0 40px 10px 4px; color: var(--text); }
+.videoModalFrame { position: relative; width: 100%; padding-top: 56.25%; border-radius: 12px; overflow: hidden; background: #000; }
+.videoModalFrame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.videoModalClose { position: absolute; top: 10px; right: 10px; width: 32px; height: 32px; border-radius: 50%; border: none; background: var(--bg); color: var(--text); font-size: 15px; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 2; }
+.videoModalClose:hover { background: var(--primary-soft); }
 </style>
         <link href="../../Documents/Pinegrow%20Projects/Tailwind-CSS-20260203-211032/tailwind_theme/tailwind.css" rel="stylesheet" type="text/css">
     </head>
@@ -579,13 +611,13 @@ a:focus-visible, button:focus-visible, input:focus-visible, .btn:focus-visible,
                                 <!-- Adresse -->
                                 <a class="contactItem" href="https://maps.app.goo.gl/zGLgVufgVPTTqRAg8" target="_blank" rel="noopener" title="Ouvrir dans Google Maps"> <span class="contactIcon">📍</span> <span class="contactText">
         8 Rue de Vaux<br/>
-        77000 Melun </span> </a>
+        77000 Melun </span> <svg class="contactArrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg> </a>
                                 <!-- Téléphone 1 -->
-                                <a class="contactItem" href="tel:0181742850"> <span class="contactIcon">☎️</span> <span class="contactText">01 81 74 28 50</span> </a>
+                                <a class="contactItem" href="tel:0181742850"> <span class="contactIcon">☎️</span> <span class="contactText">01 81 74 28 50</span> <svg class="contactArrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg> </a>
                                 <!-- Téléphone 2 -->
-                                <a class="contactItem" href="tel:0181743247"> <span class="contactIcon">☎️</span> <span class="contactText">01 81 74 32 47</span> </a>
+                                <a class="contactItem" href="tel:0181743247"> <span class="contactIcon">☎️</span> <span class="contactText">01 81 74 32 47</span> <svg class="contactArrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg> </a>
                                 <!-- Email -->
-                                <a class="contactItem" href="mailto:vaccin-hpv@ghsif.fr"> <span class="contactIcon">✉️</span> <span class="contactText">vaccin-hpv@ghsif.fr</span> </a>
+                                <a class="contactItem" href="mailto:vaccin-hpv@ghsif.fr"> <span class="contactIcon">✉️</span> <span class="contactText">vaccin-hpv@ghsif.fr</span> <svg class="contactArrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg> </a>
                             </div>
                         </div>
                     </section>
@@ -637,6 +669,55 @@ a:focus-visible, button:focus-visible, input:focus-visible, .btn:focus-visible,
     if(!obj) return fallback;
     return obj[lang] || obj.fr || obj.en || Object.values(obj)[0] || fallback;
   };
+
+  // ===== Lecture vidéo en un clic (fenêtre modale avec lecture automatique) =====
+  function extractYoutubeEmbed(url){
+    if(typeof url !== 'string') return null;
+    let id = null, start = null;
+    let m = url.match(/[?&]v=([\w-]{6,})/);
+    if(m) id = m[1];
+    if(!id){ m = url.match(/youtu\.be\/([\w-]{6,})/); if(m) id = m[1]; }
+    if(!id){ m = url.match(/\/shorts\/([\w-]{6,})/); if(m) id = m[1]; }
+    if(!id) return null;
+    const ts = url.match(/[?&]t=(\d+)/);
+    if(ts) start = ts[1];
+    let embed = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`;
+    if(start) embed += `&start=${start}`;
+    return embed;
+  }
+
+  let videoModal = null;
+  function openVideoModal(url, title){
+    const embed = extractYoutubeEmbed(url);
+    if(!embed){ window.open(url, '_blank', 'noopener'); return; }
+    if(!videoModal){
+      videoModal = document.createElement('div');
+      videoModal.className = 'videoModalOverlay';
+      videoModal.innerHTML = `
+        <div class="videoModalBox">
+          <button type="button" class="videoModalClose" aria-label="Fermer">✕</button>
+          <div class="videoModalTitle"></div>
+          <div class="videoModalFrame"><iframe allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>
+        </div>`;
+      document.body.appendChild(videoModal);
+      videoModal.addEventListener('click', (e) => {
+        if(e.target === videoModal || e.target.closest('.videoModalClose')) closeVideoModal();
+      });
+      document.addEventListener('keydown', (e) => {
+        if(e.key === 'Escape') closeVideoModal();
+      });
+    }
+    videoModal.querySelector('.videoModalTitle').textContent = title || '';
+    videoModal.querySelector('iframe').src = embed;
+    videoModal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeVideoModal(){
+    if(!videoModal) return;
+    videoModal.classList.remove('open');
+    videoModal.querySelector('iframe').src = '';
+    document.body.style.overflow = '';
+  }
 
   // Static UI texts that are not stored in JSON
   const UI_TEXT = {
@@ -1179,14 +1260,19 @@ else {
 
     // Existing videos
 (introData?.resources?.videos || []).forEach(v => {
-  group.appendChild(
-    makeBtn(
-      t(v.title) || t(v.label),
-      v.url,
-      'btn',
-      'video_info'
-    )
-  );
+  const label = t(v.title) || t(v.label);
+  const embed = extractYoutubeEmbed(v.url);
+  if(embed){
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'btn';
+    btn.dataset.key = 'video_info';
+    btn.textContent = '▶ ' + label;
+    btn.addEventListener('click', () => openVideoModal(v.url, label));
+    group.appendChild(btn);
+  } else {
+    group.appendChild(makeBtn(label, v.url, 'btn', 'video_info'));
+  }
 });
 
     // Existing email
@@ -1317,10 +1403,11 @@ div.innerHTML = `
     aria-hidden="true"
   />
   <div class="stepNumber">${step.number}</div>
-  <div>
+  <div style="flex:1">
     <div class="stepTitle">${t(step.title, '')}</div>
     <div class="stepText">${t(step.text, '')}</div>
   </div>
+  <svg class="stepArrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
 `;
 
   const actions = document.createElement('div');
@@ -1475,6 +1562,18 @@ div.addEventListener('click', (e) => {
     el.style.width = pct + '%';
   }
   window.addEventListener('scroll', updateScrollProgress, { passive: true });
+
+  // ===== En-tete qui se resserre au defilement =====
+  (function(){
+    const topbar = document.querySelector('.topbar');
+    if(!topbar) return;
+    function updateTopbarShrink(){
+      const scrolled = (window.scrollY || document.documentElement.scrollTop || 0) > 40;
+      topbar.classList.toggle('scrolled', scrolled);
+    }
+    window.addEventListener('scroll', updateTopbarShrink, { passive: true });
+    updateTopbarShrink();
+  })();
   window.addEventListener('resize', updateScrollProgress);
 
   // ===== OBSERVATEURS D'ANIMATIONS AU DÉFILEMENT =====
