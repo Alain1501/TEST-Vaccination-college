@@ -582,16 +582,16 @@
         "file": "pdf/fiche_memo_meningite.pdf"
       },
       {
-        "id": "calendrier_vaccinal_2025_simplifie",
+        "id": "calendrier_vaccinal_2026_simplifie",
         "label": {
-          "fr": "Calendrier simplifié des vaccinations – 2025",
-          "en": "Simplified vaccination schedule – 2025",
-          "ar": "الجدول المبسط للتطعيمات – 2025",
-          "tr": "Basitleştirilmiş aşı takvimi – 2025",
-          "ps": "د واکسین ساده مهالوېش – 2025",
-          "ku": "ڕۆژژمێری سادەی ڤاکسین – 2025",
-          "ro": "Calendar simplificat al vaccinărilor – 2025",
-          "ka": "ვაქცინაციის გამარტივებული კალენდარი – 2025",
+          "fr": "Calendrier simplifié des vaccinations – 2026",
+          "en": "Simplified vaccination schedule – 2026",
+          "ar": "الجدول المبسط للتطعيمات – 2026",
+          "tr": "Basitleştirilmiş aşı takvimi – 2026",
+          "ps": "د واکسین ساده مهالوېش – 2026",
+          "ku": "ڕۆژژمێری سادەی ڤاکسین – 2026",
+          "ro": "Calendar simplificat al vaccinărilor – 2026",
+          "ka": "ვაქცინაციის გამარტივებული კალენდარი – 2026",
           "sq": "Kalendari i thjeshtuar i vaksinimeve – 2026",
           "am": "ቀላል የክትባት ቀን መቁጠሪያ – 2026",
           "zh": "简化疫苗接种日程表 – 2026年",
@@ -600,21 +600,21 @@
           "pt": "Calendário simplificado de vacinação – 2026",
           "ru": "Упрощённый календарь прививок – 2026",
           "uk": "Спрощений календар щеплень – 2026",
-          "mo": "Calendar simplificat al vaccinărilor – 2025"
+          "mo": "Calendar simplificat al vaccinărilor – 2026"
         },
         "file": "pdf/calendrier_vaccinal_2025_simplifie.pdf"
       },
       {
-        "id": "calendrier_vaccinal_2025_complet",
+        "id": "calendrier_vaccinal_2026_complet",
         "label": {
-          "fr": "Les vaccins à tous les âges – Calendrier vaccinal 2025 (complet)",
-          "en": "Vaccines at all ages – Vaccination schedule 2025 (full)",
-          "ar": "اللقاحات في جميع الأعمار – الجدول الزمني للتطعيمات 2025 (كامل)",
-          "tr": "Her yaş için aşılar – Aşı takvimi 2025 (tam)",
-          "ps": "په هر عمر کې واکسینونه – د واکسین مهالوېش 2025 (بشپړ)",
-          "ku": "ڤاکسین بۆ هەموو تەمەنەکان – ڕۆژژمێری ڤاکسین 2025 (تەواو)",
-          "ro": "Vaccinuri la toate vârstele – Calendarul de vaccinare 2025 (complet)",
-          "ka": "ვაქცინები ყველა ასაკისთვის – ვაქცინაციის კალენდარი 2025 (სრული)",
+          "fr": "Les vaccins à tous les âges – Calendrier vaccinal 2026 (complet)",
+          "en": "Vaccines at all ages – Vaccination schedule 2026 (full)",
+          "ar": "اللقاحات في جميع الأعمار – الجدول الزمني للتطعيمات 2026 (كامل)",
+          "tr": "Her yaş için aşılar – Aşı takvimi 2026 (tam)",
+          "ps": "په هر عمر کې واکسینونه – د واکسین مهالوېش 2026 (بشپړ)",
+          "ku": "ڤاکسین بۆ هەموو تەمەنەکان – ڕۆژژمێری ڤاکسین 2026 (تەواو)",
+          "ro": "Vaccinuri la toate vârstele – Calendarul de vaccinare 2026 (complet)",
+          "ka": "ვაქცინები ყველა ასაკისთვის – ვაქცინაციის კალენდარი 2026 (სრული)",
           "sq": "Vaksinat në çdo moshë – Kalendari i vaksinimit 2026 (i plotë)",
           "am": "ክትባቶች በሁሉም ዕድሜዎች – የ2026 ክትባት ቀን መቁጠሪያ (ሙሉ)",
           "zh": "各年龄段疫苗接种 – 2026年完整疫苗接种日程表",
@@ -623,7 +623,7 @@
           "pt": "As vacinas em todas as idades – Calendário vacinal 2026 (completo)",
           "ru": "Прививки в любом возрасте – Полный календарь прививок 2026",
           "uk": "Щеплення в будь-якому віці – Повний календар щеплень 2026",
-          "mo": "Vaccinuri la toate vârstele – Calendarul de vaccinare 2025 (complet)"
+          "mo": "Vaccinuri la toate vârstele – Calendarul de vaccinare 2026 (complet)"
         },
         "file": "pdf/calendrier_vaccinal_2025_complet.pdf"
       }

@@ -1342,28 +1342,21 @@ else {
 
     const addBtn = (label, href) => group.appendChild(makeBtn(label, href, 'btn'));
 
-    // Formulaire d'autorisation en ligne (remplace les 2 anciens PDF à remplir à la main) — en premier
-    // La langue en cours du site est transmise au formulaire via ?lang=...
-    group.appendChild(
-      makeBtn(
-        t(UI_TEXT.formOnlineLabel, "Remplir le formulaire d'autorisation en ligne"),
-        `autorisation-vaccination.html?lang=${encodeURIComponent(lang)}`,
-        'btn btn-cta-animated',
-        'form_online'
-      )
-    );
-
-    // Registration button (HPV + Méningite ACWY uniquement)
-    const regUrl = introData?.registration?.url || introData?.registration?.online?.url;
-    const regLabel = t(introData?.registration?.label || introData?.registration?.online?.label, 'Inscription en ligne (HPV + Méningite ACWY uniquement)');
-    if(regUrl) {
-  group.appendChild(
-    makeBtn(regLabel, regUrl, 'btn', 'registration_hpv')
-  );
-}
-
-    // Les 2 anciens boutons PDF (form_hpv / form_other) ont été retirés :
-    // remplacés par le bouton "form_online" ci-dessus.
+    // Les deux formulaires, boutons de style identique côte à côte :
+    // 1) HPV / Méningite ACWY -> site de la campagne régionale (ARS)
+    // 2) Autres vaccins -> notre propre formulaire HTML d'autorisation
+    (introData?.resources?.forms || []).forEach(f => {
+      group.appendChild(
+        makeBtn(
+          t(f.label, 'Formulaire'),
+          f.id === 'form_other_vaccines'
+            ? `autorisation-vaccination.html?lang=${encodeURIComponent(lang)}`
+            : f.url,
+          'btn',
+          f.id === 'form_hpv_acwy' ? 'form_hpv_acwy' : 'form_other'
+        )
+      );
+    });
 
     // Existing videos
 (introData?.resources?.videos || []).forEach(v => {
@@ -1527,20 +1520,19 @@ div.addEventListener('click', (e) => {
     const key = btn.dataset.key;
     const clone = btn.cloneNode(true);
 
-    // ÉTAPE 1 — S’informer
-    if (step.number === 1 && ['video_info','flyer_officiel','hpv_resources'].includes(key)) {
+    // ÉTAPE 1 — S’informer (les vidéos ne sont plus dupliquées ici, elles ont
+    // leur propre section dédiée plus bas sur la page)
+    if (step.number === 1 && ['flyer_officiel','hpv_resources'].includes(key)) {
       group.appendChild(clone);
     }
 
-    // ÉTAPE 2 — Consentement
-    // registration_hpv (lien ARS) volontairement retiré de cette liste : il n'est plus cloné
-    // dans l'étape 2, mais le bouton d'origine existe toujours (masqué) dans #introBody.
-    if (step.number === 2 && ['form_online'].includes(key)) {
+    // ÉTAPE 2 — Consentement : les deux formulaires, style identique
+    if (step.number === 2 && ['form_hpv_acwy','form_other'].includes(key)) {
       group.appendChild(clone);
     }
 
-    // ÉTAPE 3 — Vaccination
-    if (step.number === 3 && ['contact_email','meningite_doc'].includes(key)) {
+    // ÉTAPE 3 — Vaccination (bouton email retiré)
+    if (step.number === 3 && ['meningite_doc'].includes(key)) {
       group.appendChild(clone);
     }
   });
