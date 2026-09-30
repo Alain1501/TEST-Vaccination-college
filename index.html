@@ -375,7 +375,7 @@ html, body { overflow-x: hidden; max-width: 100%; }
 #heroSubtitle.heroAnimate { animation: heroFadeUp .7s ease .2s both; }
 
 /* ----- Accordéon FAQ : structure et mécanisme repris du site USP ----- */
-.acc { border-radius: 20px 20px 20px 6px; background: var(--card); border: 1px solid var(--border); margin: 0 0 10px; overflow: hidden; transition: background-color .3s ease, box-shadow .3s ease; }
+.acc { width: 100%; border-radius: 20px 20px 20px 6px; background: var(--card); border: 1px solid var(--border); margin: 0 0 10px; overflow: hidden; transition: background-color .3s ease, box-shadow .3s ease; }
 .acc h3 { margin: 0; font-size: 1rem; }
 .acc button { all: unset; box-sizing: border-box; display: flex; width: 100%; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 16px; cursor: pointer; font-weight: 800; line-height: 1.35; color: var(--text); }
 .acc button:focus-visible { outline: 3px solid var(--primary); outline-offset: 2px; }
@@ -385,10 +385,34 @@ html, body { overflow-x: hidden; max-width: 100%; }
 .acc .corps { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .45s cubic-bezier(.22,1,.36,1); }
 .acc.ouverte .corps { grid-template-rows: 1fr; }
 .acc .corps > div { overflow: hidden; }
-.acc .corps .ans { margin: 0 16px 16px; color: var(--text); font-size: 14px; line-height: 1.6; white-space: pre-wrap; }
+.acc .corps .faqAns { max-height: none; opacity: 1; overflow: visible; margin: 0 16px 16px; color: var(--text); font-size: 14px; line-height: 1.6; white-space: pre-wrap; }
 .acc.searchHit { box-shadow: 0 0 0 2px var(--primary); }
 @media (prefers-reduced-motion: reduce) {
   .acc .corps, .acc .signe { transition: none; }
+}
+
+/* ----- Éventail décoratif au-dessus du titre (mécanisme repris du site USP) ----- */
+.eventail { display: block; width: 120px; max-width: 120px; height: auto; margin: 0 auto 6px; overflow: visible; }
+.eventail .p { transform-box: view-box; transform-origin: 210px 300px; opacity: 0; }
+.eventail.ouvert .p { animation: eventailOuvre .9s cubic-bezier(.22,1,.36,1) both; }
+.eventail.ouvert .p1 { animation-delay: .15s; }
+.eventail.ouvert .p2 { animation-delay: .27s; }
+.eventail.ouvert .p3 { animation-delay: .39s; }
+.eventail.ouvert .p4 { animation-delay: .51s; }
+.eventail.ouvert .p5 { animation-delay: .63s; }
+.eventail .tout { transform-box: view-box; transform-origin: 210px 300px; }
+.eventail.ouvert .tout { animation: eventailRespire 7s ease-in-out 1.8s infinite; }
+@keyframes eventailOuvre {
+  from { opacity: 0; transform: rotate(-70deg) scale(.4); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes eventailRespire {
+  0%, 100% { transform: rotate(0); }
+  50%      { transform: rotate(2.5deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .eventail .p { opacity: 1; transform: none; animation: none; }
+  .eventail.ouvert .tout { animation: none; }
 }
 
 /* ----- Effet d'ouverture du titre : chaque partie du texte "s'ouvre" comme les pétales
@@ -550,6 +574,17 @@ a:focus-visible, button:focus-visible, input:focus-visible, .btn:focus-visible,
                 <div class="container">
                     <section class="hero">
                         <div class="card heroText reveal">
+                            <svg class="eventail" id="heroEventail" viewBox="0 0 420 350" aria-hidden="true">
+                              <g class="tout">
+                                <g transform="translate(210 300)">
+                                  <path class="p p1" d="M0 0 C-150 -40 -170 -170 -95 -210 C-40 -170 -20 -80 0 0Z" fill="var(--primary)"/>
+                                  <path class="p p2" d="M0 0 C-80 -90 -70 -240 0 -270 C60 -220 40 -90 0 0Z" fill="var(--accent)"/>
+                                  <path class="p p3" d="M0 0 C-10 -120 60 -250 140 -240 C160 -170 90 -70 0 0Z" fill="#ffd800"/>
+                                  <path class="p p4" d="M0 0 C50 -90 170 -160 225 -110 C215 -40 110 -10 0 0Z" fill="#f1861b"/>
+                                  <path class="p p5" d="M0 -20 C80 -60 190 -50 200 10 C160 50 70 30 0 -20Z" fill="#be163a"/>
+                                </g>
+                              </g>
+                            </svg>
                             <h1 id="heroTitle">Vaccination <span class="accent">collège</span><br/>Île-de-France</h1>
                             <p class="subtitle" id="heroSubtitle">
               Accédez aux informations essentielles, aux documents et à la FAQ. L’inscription se fait en quelques clics. </p>
@@ -1015,6 +1050,8 @@ introTitle: {
         // une forme graphique séparée.
         els.heroTitle.classList.add('heroFirstReveal');
         wrapTitleChunksAndOpen(els.heroTitle);
+        const eventail = document.getElementById('heroEventail');
+        if(eventail) eventail.classList.add('ouvert');
         heroFirstLoadDone = true;
       } else {
         els.heroTitle.classList.add('heroAnimate');
@@ -1743,7 +1780,7 @@ div.addEventListener('click', (e) => {
       corps.setAttribute('role', 'region');
       corps.setAttribute('aria-labelledby', qId);
       const corpsInner = document.createElement('div');
-      corpsInner.className = 'ans';
+      corpsInner.className = 'faqAns';
       corpsInner.textContent = t(it.a, '');
       corps.appendChild(corpsInner);
 
