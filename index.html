@@ -375,6 +375,7 @@ html, body { overflow-x: hidden; max-width: 100%; }
 #heroSubtitle.heroAnimate { animation: heroFadeUp .7s ease .2s both; }
 
 /* ----- Accordéon FAQ : structure et mécanisme repris du site USP ----- */
+#faqCard { max-width: 720px; margin-left: auto; margin-right: auto; }
 .acc { width: 100%; border-radius: 20px 20px 20px 6px; background: var(--primary-soft); border: 1px solid transparent; margin: 0 0 10px; overflow: hidden; transition: background-color .3s ease, box-shadow .3s ease; }
 .acc.ouverte { background: var(--card); box-shadow: 0 0 0 2px var(--primary) inset, 0 16px 36px -24px rgba(37,99,235,.45); }
 [data-theme="dark"] .acc.ouverte { box-shadow: 0 0 0 2px var(--primary) inset, 0 16px 36px -24px rgba(56,189,248,.5); }
@@ -655,8 +656,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, .btn:focus-visible,
                         <div class="sectionHead">
                             <div class="faqMeta">
                                 <div>
-                                    <div class="faqTitle" id="faqTitle">FAQ</div>
-                                    <div class="faqCount" id="faqCount"></div>
+                                    <div class="faqTitle" id="faqTitle">Questions fréquentes</div>
                                 </div>
                                 <div class="tagRow" id="activeFilters"></div>
                             </div>
@@ -715,7 +715,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, .btn:focus-visible,
     heroBtns: document.getElementById('heroBtns'),
     introBody: document.getElementById('introBody'),
     faqTitle: document.getElementById('faqTitle'),
-    faqCount: document.getElementById('faqCount'),
     faqList: document.getElementById('faqList'),
     activeFilters: document.getElementById('activeFilters'),
     heroKicker: document.getElementById('heroKicker'),
@@ -1740,9 +1739,7 @@ div.addEventListener('click', (e) => {
       return hay.includes(q);
     });
 
-    els.faqTitle.textContent = t(faqData?.meta?.title, 'FAQ');
-    const total = (faqData?.items || []).filter(it => activeSection==='all' ? true : it.section===activeSection).length;
-    els.faqCount.textContent = `${items.length} / ${total}`;
+    els.faqTitle.textContent = t(faqData?.meta?.title, 'Questions fréquentes');
 
     els.faqList.innerHTML = '';
     items.forEach((it, idx) => {
