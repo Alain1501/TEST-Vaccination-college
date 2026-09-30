@@ -1,8 +1,8 @@
 {
   "meta": {
-    "school_year": "2025-2026",
+    "school_year": "2026-2027",
     "timezone": "Europe/Paris",
-    "last_update": "2026-05-21"
+    "last_update": "2026-09-30"
   },
   "search_index": {
     "fields": [
@@ -57,394 +57,365 @@
   },
   "sessions": [
     {
-      "city": "Dammarie-lès-Lys",
-      "postal_code": "77190",
-      "college_name": "Georges Politzer",
-      "date": "2026-01-20"
+      "city": "Avon",
+      "postal_code": "77210",
+      "college_name": "de la Vallée"
     },
     {
-      "city": "Le Châtelet-en-Brie",
-      "postal_code": "77820",
-      "college_name": "Rosa Bonheur",
-      "date": "2026-01-21"
+      "city": "Bois le Roi",
+      "postal_code": "77590",
+      "college_name": "Denecourt",
+      "date": "2026-10-13",
+      "grade": "4e"
     },
     {
-      "city": "Dammarie-lès-Lys",
-      "postal_code": "77190",
-      "college_name": "Robert Doisneau",
-      "date": "2026-01-22"
-    },
-    {
-      "city": "Moissy-Cramayel",
-      "postal_code": "77550",
-      "college_name": "Les Maillettes",
-      "date": "2026-01-22"
-    },
-    {
-      "city": "Moissy-Cramayel",
-      "postal_code": "77550",
-      "college_name": "La Boétie",
-      "date": "2026-01-22"
-    },
-    {
-      "city": "Montereau-Fault-Yonne",
-      "postal_code": "77130",
-      "college_name": "Pierre de Montereau",
-      "date": "2026-01-23"
-    },
-    {
-      "city": "Montereau-Fault-Yonne",
-      "postal_code": "77130",
-      "college_name": "André Malraux",
-      "date": "2026-01-23"
-    },
-    {
-      "city": "Montereau-Fault-Yonne",
-      "postal_code": "77130",
-      "college_name": "Paul Éluard",
-      "date": "2026-01-23"
-    },
-    {
-      "city": "Melun",
-      "postal_code": "77000",
-      "college_name": "Les Capucins",
-      "date": "2026-01-27"
-    },
-    {
-      "city": "Melun",
-      "postal_code": "77000",
-      "college_name": "Jacques Amyot",
-      "date": "2026-01-27"
-    },
-    {
-      "city": "Vert-Saint-Denis",
-      "postal_code": "77240",
-      "college_name": "Jean Vilar",
-      "date": "2026-01-29"
-    },
-    {
-      "city": "Perthes",
-      "postal_code": "77930",
-      "college_name": "Christine de Pisan",
-      "date": "2026-01-29"
+      "city": "Bray-sur-Seine",
+      "postal_code": "77480",
+      "college_name": "Jean Rostand"
     },
     {
       "city": "Brie-Comte-Robert",
       "postal_code": "77170",
-      "college_name": "Arthur Chaussy",
-      "date": "2026-01-30"
+      "college_name": "Arthur Chaussy"
     },
     {
-      "city": "Saint-Fargeau-Ponthierry",
-      "postal_code": "77310",
-      "college_name": "François Villon",
-      "date": "2026-01-30"
+      "city": "Brie-Comte-Robert",
+      "postal_code": "77170",
+      "college_name": "Georges Brassens"
     },
     {
-      "city": "Fontenay-Trésigny",
-      "postal_code": "77610",
-      "college_name": "Stéphane Mallarmé",
-      "date": "2026-02-03"
+      "city": "Brie-Comte-Robert",
+      "postal_code": "77170",
+      "college_name": "Sainte-Colombe"
     },
     {
-      "city": "Melun",
-      "postal_code": "77000",
-      "college_name": "Institution Jeanne d'Arc",
-      "date": "2026-02-04"
+      "city": "Cesson",
+      "postal_code": "77240",
+      "college_name": "Le Grand Parc"
     },
     {
       "city": "Champagne-sur-Seine",
       "postal_code": "77430",
       "college_name": "Fernand Gregh",
-      "date": "2026-02-05"
-    },
-    {
-      "city": "Varennes-sur-Seine",
-      "postal_code": "77130",
-      "college_name": "Elsa Triolet",
-      "date": "2026-02-05"
-    },
-    {
-      "city": "La Chapelle-la-Reine",
-      "postal_code": "77760",
-      "college_name": "Blanche de Castille",
-      "date": "2026-02-06"
-    },
-    {
-      "city": "Lorrez-le-Bocage-Préaux",
-      "postal_code": "77710",
-      "college_name": "Jacques Prévert",
-      "date": "2026-02-10"
-    },
-    {
-      "city": "Melun",
-      "postal_code": "77000",
-      "college_name": "Frédéric Chopin",
-      "date": "2026-02-10"
-    },
-    {
-      "city": "Cesson",
-      "postal_code": "77240",
-      "college_name": "Le Grand Parc",
-      "date": "2026-02-11"
+      "date": "2026-10-09",
+      "grade": "4e"
     },
     {
       "city": "Château-Landon",
       "postal_code": "77570",
-      "college_name": "Pierre Roux",
-      "date": "2026-02-12"
-    },
-    {
-      "city": "Souppes-sur-Loing",
-      "postal_code": "77460",
-      "college_name": "Émile Chevallier",
-      "date": "2026-02-12"
-    },
-    {
-      "city": "Moret-Loing-et-Orvanne",
-      "postal_code": "77250",
-      "college_name": "Alfred Sisley",
-      "date": "2026-02-13"
-    },
-    {
-      "city": "Vulaines-sur-Seine",
-      "postal_code": "77870",
-      "college_name": "Colonel Arnaud Beltrame",
-      "date": "2026-02-13"
-    },
-    {
-      "city": "Bois-le-Roi",
-      "postal_code": "77590",
-      "college_name": "Denecourt",
-      "date": "2026-02-17"
-    },
-    {
-      "city": "Verneuil-l'Étang",
-      "postal_code": "77390",
-      "college_name": "Charles Péguy",
-      "date": "2026-02-18"
-    },
-    {
-      "city": "Lésigny",
-      "postal_code": "77150",
-      "college_name": "Les Hyverneaux",
-      "date": "2026-02-19"
-    },
-    {
-      "city": "Nandy",
-      "postal_code": "77176",
-      "college_name": "Robert Buron",
-      "date": "2026-02-19"
+      "college_name": "Pierre Roux"
     },
     {
       "city": "Combs-la-Ville",
       "postal_code": "77380",
-      "college_name": "Cités Unies",
-      "date": "2026-02-20"
+      "college_name": "Cités Unies"
     },
     {
       "city": "Combs-la-Ville",
       "postal_code": "77380",
-      "college_name": "Les Aulnes",
-      "date": "2026-02-20"
-    },
-    {
-      "city": "Provins",
-      "postal_code": "77160",
-      "college_name": "Sainte-Croix",
-      "date": "2026-03-11"
-    },
-    {
-      "city": "Avon",
-      "postal_code": "77210",
-      "college_name": "De la Vallée",
-      "date": "2026-03-12"
-    },
-    {
-      "city": "Sourdun",
-      "postal_code": "77171",
-      "college_name": "Internat d'Excellence",
-      "date": "2026-03-12"
-    },
-    {
-      "city": "Mormant",
-      "postal_code": "77720",
-      "college_name": "Nicolas Fouquet",
-      "date": "2026-03-13"
-    },
-    {
-      "city": "Savigny-le-Temple",
-      "postal_code": "77176",
-      "college_name": "Louis Armand",
-      "date": "2026-03-17"
+      "college_name": "Les Aulnes"
     },
     {
       "city": "Coubert",
       "postal_code": "77170",
-      "college_name": "Marie-Amélie Le Fur",
-      "date": "2026-03-17"
+      "college_name": "Marie Amélie Le Fur"
     },
     {
-      "city": "Villiers-Saint-Georges",
-      "postal_code": "77560",
-      "college_name": "Les Tournelles",
-      "date": "2026-03-18"
+      "city": "Dammarie-lès-Lys",
+      "postal_code": "77190",
+      "college_name": "Georges Politzer"
     },
     {
-      "city": "Melun",
-      "postal_code": "77000",
-      "college_name": "Sainte-Marie",
-      "date": "2026-03-19"
+      "city": "Dammarie-lès-Lys",
+      "postal_code": "77190",
+      "college_name": "Robert Doisneau"
     },
     {
-      "city": "Voisenon",
-      "postal_code": "77950",
-      "college_name": "Nazareth",
-      "date": "2026-03-24"
-    },
-    {
-      "city": "Brie-Comte-Robert",
-      "postal_code": "77170",
-      "college_name": "Sainte-Colombe",
-      "date": "2026-03-25"
-    },
-    {
-      "city": "Lieusaint",
-      "postal_code": "77127",
-      "college_name": "Saint-Louis",
-      "date": "2026-03-25"
-    },
-    {
-      "city": "Nemours",
-      "postal_code": "77140",
-      "college_name": "Arthur Rimbaud",
-      "date": "2026-03-26"
-    },
-    {
-      "city": "Nemours",
-      "postal_code": "77140",
-      "college_name": "Honoré de Balzac",
-      "date": "2026-03-26"
-    },
-    {
-      "city": "Saint-Pierre-lès-Nemours",
-      "postal_code": "77140",
-      "college_name": "Vasco de Gama",
-      "date": "2026-03-26"
-    },
-    {
-      "city": "Saint-Pierre-lès-Nemours",
-      "postal_code": "77140",
-      "college_name": "Sainte-Marie",
-      "date": "2026-03-26"
-    },
-    {
-      "city": "Provins",
-      "postal_code": "77160",
-      "college_name": "Jules Verne",
-      "date": "2026-03-27"
-    },
-    {
-      "city": "Nangis",
-      "postal_code": "77370",
-      "college_name": "René Barthélémy",
-      "date": "2026-03-27"
-    },
-    {
-      "city": "Le Mée-sur-Seine",
-      "postal_code": "77350",
-      "college_name": "Elsa Triolet",
-      "date": "2026-03-31"
-    },
-    {
-      "city": "Le Mée-sur-Seine",
-      "postal_code": "77350",
-      "college_name": "Jean de La Fontaine",
-      "date": "2026-03-31"
-    },
-    {
-      "city": "Savigny-le-Temple",
-      "postal_code": "77176",
-      "college_name": "Henri Wallon",
-      "date": "2026-04-02"
-    },
-    {
-      "city": "Savigny-le-Temple",
-      "postal_code": "77176",
-      "college_name": "La Grange du Bois",
-      "date": "2026-04-02"
-    },
-    {
-      "city": "Fontainebleau",
-      "postal_code": "77300",
-      "college_name": "Lucien Cézard",
-      "date": "2026-04-03"
+      "city": "Donnemarie-Dontilly",
+      "postal_code": "77520",
+      "college_name": "Du Montois"
     },
     {
       "city": "Fontainebleau",
       "postal_code": "77300",
       "college_name": "International",
-      "date": "2026-04-03"
+      "date": "2026-10-06",
+      "grade": "4e"
     },
     {
-      "city": "Donnemarie-Dontilly",
-      "postal_code": "77520",
-      "college_name": "Du Montois",
-      "date": "2026-04-07"
+      "city": "Fontainebleau",
+      "postal_code": "77300",
+      "college_name": "Jeanne d'Arc St Aspais"
     },
     {
-      "city": "Bray-sur-Seine",
-      "postal_code": "77480",
-      "college_name": "Jean Rostand",
-      "date": "2026-04-07"
+      "city": "Fontainebleau",
+      "postal_code": "77300",
+      "college_name": "Lucien Cézard"
+    },
+    {
+      "city": "Fontenay-Trésigny",
+      "postal_code": "77610",
+      "college_name": "Stéphane Mallarmé"
+    },
+    {
+      "city": "Jouy-le-Châtel",
+      "postal_code": "77970",
+      "college_name": "Jean-Jacques Barbaux"
+    },
+    {
+      "city": "La Chapelle-la-Reine",
+      "postal_code": "77760",
+      "college_name": "Blanche de Castille"
+    },
+    {
+      "city": "Le Châtelet-en-Brie",
+      "postal_code": "77820",
+      "college_name": "Rosa Bonheur",
+      "date": "2026-10-07",
+      "grade": "4e"
+    },
+    {
+      "city": "Le Mée-sur-Seine",
+      "postal_code": "77350",
+      "college_name": "Elsa Triolet"
+    },
+    {
+      "city": "Le Mée-sur-Seine",
+      "postal_code": "77350",
+      "college_name": "Jean de la Fontaine"
+    },
+    {
+      "city": "Lésigny",
+      "postal_code": "77150",
+      "college_name": "Les Hyverneaux",
+      "date": "2026-10-14",
+      "grade": "4e"
+    },
+    {
+      "city": "Lieusaint",
+      "postal_code": "77127",
+      "college_name": "De la Pyramide"
+    },
+    {
+      "city": "Lieusaint",
+      "postal_code": "77127",
+      "college_name": "Saint Louis"
+    },
+    {
+      "city": "Lorrez-le-Bocage-Préaux",
+      "postal_code": "77710",
+      "college_name": "Jacques Prévert"
+    },
+    {
+      "city": "Melun",
+      "postal_code": "77000",
+      "college_name": "Institution Jeanne d'Arc",
+      "date": "2026-10-08",
+      "grade": "4e"
+    },
+    {
+      "city": "Melun",
+      "postal_code": "77000",
+      "college_name": "Frédéric Chopin",
+      "date": "2026-11-09",
+      "grade": "4e"
+    },
+    {
+      "city": "Melun",
+      "postal_code": "77000",
+      "college_name": "Jacques Amyot"
+    },
+    {
+      "city": "Melun",
+      "postal_code": "77000",
+      "college_name": "Les Capucins"
     },
     {
       "city": "Melun",
       "postal_code": "77000",
       "college_name": "Pierre Brossolette",
-      "date": "2026-04-08"
+      "date": "2026-11-13",
+      "grade": "4e"
     },
     {
-      "city": "Brie-Comte-Robert",
-      "postal_code": "77170",
-      "college_name": "Georges Brassens",
-      "date": "2026-04-09"
+      "city": "Melun",
+      "postal_code": "77000",
+      "college_name": "Sainte Marie"
     },
     {
-      "city": "Lieusaint",
-      "postal_code": "77127",
-      "college_name": "De la Pyramide",
-      "date": "2026-04-09"
+      "city": "Moissy-Cramayel",
+      "postal_code": "77550",
+      "college_name": "La Boëtie"
+    },
+    {
+      "city": "Moissy-Cramayel",
+      "postal_code": "77550",
+      "college_name": "Les Maillettes"
+    },
+    {
+      "city": "Montereau-Fault-Yonne",
+      "postal_code": "77130",
+      "college_name": "André Malraux"
+    },
+    {
+      "city": "Montereau-Fault-Yonne",
+      "postal_code": "77130",
+      "college_name": "Paul Eluard"
+    },
+    {
+      "city": "Montereau-Fault-Yonne",
+      "postal_code": "77130",
+      "college_name": "Pierre de Montereau"
+    },
+    {
+      "city": "Moret-Loing-et-Orvanne",
+      "postal_code": "77250",
+      "college_name": "Alfred Sisley"
+    },
+    {
+      "city": "Mormant",
+      "postal_code": "77720",
+      "college_name": "Nicolas Fouquet",
+      "date": "2026-11-17",
+      "grade": "4e"
+    },
+    {
+      "city": "Nandy",
+      "postal_code": "77176",
+      "college_name": "Robert Buron"
+    },
+    {
+      "city": "Nangis",
+      "postal_code": "77370",
+      "college_name": "René Barthélémy"
+    },
+    {
+      "city": "Nemours",
+      "postal_code": "77140",
+      "college_name": "Arthur Rimbaud"
+    },
+    {
+      "city": "Nemours",
+      "postal_code": "77140",
+      "college_name": "Honoré de Balzac"
+    },
+    {
+      "city": "Perthes",
+      "postal_code": "77930",
+      "college_name": "Christine de Pisan"
     },
     {
       "city": "Provins",
       "postal_code": "77160",
-      "college_name": "Marie Curie",
-      "date": "2026-04-10"
+      "college_name": "Jules Verne"
     },
     {
       "city": "Provins",
       "postal_code": "77160",
-      "college_name": "Lelorgne de Savigny",
-      "date": "2026-04-10"
+      "college_name": "Lelorgne de Savigny"
+    },
+    {
+      "city": "Provins",
+      "postal_code": "77160",
+      "college_name": "Marie Curie"
+    },
+    {
+      "city": "Provins",
+      "postal_code": "77160",
+      "college_name": "Sainte Croix"
+    },
+    {
+      "city": "Rozay-en-Brie",
+      "postal_code": "77540",
+      "college_name": "Les Remparts"
+    },
+    {
+      "city": "Savigny-le-Temple",
+      "postal_code": "77176",
+      "college_name": "Henri Wallon"
+    },
+    {
+      "city": "Savigny-le-Temple",
+      "postal_code": "77176",
+      "college_name": "La Grange du Bois"
+    },
+    {
+      "city": "Savigny-le-Temple",
+      "postal_code": "77176",
+      "college_name": "Louis Armand"
+    },
+    {
+      "city": "Souppes-sur-Loing",
+      "postal_code": "77460",
+      "college_name": "Emile Chevallier"
+    },
+    {
+      "city": "Sourdun",
+      "postal_code": "77171",
+      "college_name": "Internat d'Excellence"
+    },
+    {
+      "city": "Saint-Fargeau-Ponthierry",
+      "postal_code": "77310",
+      "college_name": "François Villon"
+    },
+    {
+      "city": "Saint-Fargeau-Ponthierry",
+      "postal_code": "77310",
+      "college_name": "Madeleine Brès"
+    },
+    {
+      "city": "Saint-Pierre-lès-Nemours",
+      "postal_code": "77140",
+      "college_name": "Sainte Marie"
+    },
+    {
+      "city": "Saint-Pierre-lès-Nemours",
+      "postal_code": "77140",
+      "college_name": "Vasco de Gama"
+    },
+    {
+      "city": "Varennes-sur-Seine",
+      "postal_code": "77130",
+      "college_name": "Elsa Triolet"
     },
     {
       "city": "Vaux-le-Pénil",
       "postal_code": "77000",
       "college_name": "La Mare aux Champs",
-      "date": "2026-04-14"
+      "date": "2026-10-13",
+      "grade": "4e"
     },
     {
-      "city": "Rozay-en-Brie",
-      "postal_code": "77540",
-      "college_name": "Les Remparts",
-      "date": "2026-04-16"
+      "city": "Verneuil-l'Étang",
+      "postal_code": "77390",
+      "college_name": "Charles Péguy"
     },
     {
-      "city": "Jouy-le-Châtel",
-      "postal_code": "77970",
-      "college_name": "Jean-Jacques Barbaud",
-      "date": "2026-06-12"
+      "city": "Vert-Saint-Denis",
+      "postal_code": "77240",
+      "college_name": "Jean Vilar",
+      "date": "2026-11-12",
+      "grade": "4e"
+    },
+    {
+      "city": "Villiers-Saint-Georges",
+      "postal_code": "77560",
+      "college_name": "Les Tournelles"
+    },
+    {
+      "city": "Voisenon",
+      "postal_code": "77950",
+      "college_name": "Nazareth",
+      "date": "2026-11-17",
+      "grade": "4e"
+    },
+    {
+      "city": "Vulaines-sur-Seine",
+      "postal_code": "77870",
+      "college_name": "Colonel Arnaud Beltrame",
+      "date": "2026-10-09",
+      "grade": "4e"
     }
   ]
 }

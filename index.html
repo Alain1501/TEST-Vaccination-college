@@ -392,6 +392,7 @@ html, body { overflow-x: hidden; max-width: 100%; }
 .acc.ouverte .corps { grid-template-rows: 1fr; }
 .acc .corps > div { overflow: hidden; }
 .acc .corps .faqAns { max-height: none; opacity: 1; margin: 0 16px 16px; color: var(--text); font-size: 14px; line-height: 1.6; white-space: pre-wrap; }
+.faqInlineLink { font-weight: 800; color: var(--primary); text-decoration: underline; cursor: pointer; }
 .acc.searchHit { box-shadow: 0 0 0 2px var(--primary); }
 @media (prefers-reduced-motion: reduce) {
   .acc .corps, .acc .signe { transition: none; }
@@ -599,7 +600,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, .btn:focus-visible,
                     </section>
                 </div>
 <!-- ===== RECHERCHE DATE DE VACCINATION COLLÈGE ===== -->
-<section class="container" id="scheduleSearchSection" style="margin-bottom:24px; display:none;">
+<section class="container" id="scheduleSearchSection" style="margin-bottom:24px;">
   <div class="card" style="padding:20px;">
     <div style="display:flex;gap:20px;align-items:center;flex-wrap:wrap;">
 
@@ -607,6 +608,16 @@ a:focus-visible, button:focus-visible, input:focus-visible, .btn:focus-visible,
       <div id="scheduleHint"
            style="flex:1;min-width:240px;color:var(--muted);font-size:14px;line-height:1.5;">
         <!-- Texte injecté via JS selon la langue -->
+      </div>
+
+      <!-- Classe de l'enfant (obligatoire avant la recherche) -->
+      <div style="display:flex;flex-direction:column;gap:4px;min-width:200px;">
+        <label id="scheduleGradeLabel" for="scheduleGradeSelect" style="font-size:13px;font-weight:700;color:var(--text);"></label>
+        <select id="scheduleGradeSelect" style="padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:var(--card);color:var(--text);font-size:14px;">
+          <option id="scheduleGradeOptEmpty" value=""></option>
+          <option id="scheduleGradeOpt4e" value="4e"></option>
+          <option id="scheduleGradeOpt5e" value="5e"></option>
+        </select>
       </div>
 
       <!-- Barre de recherche -->
@@ -1760,6 +1771,53 @@ div.addEventListener('click', (e) => {
 
 }
 
+  // Sujet/corps pre-remplis pour le lien "poser vos questions" dans le FAQ
+  const FAQ_MAIL_TEXT = {
+    fr: { subject: "Question sur la vaccination HPV / Méningocoque", body: "Bonjour,\n\nJ'ai une question concernant la vaccination de mon enfant au collège.\n\n[Votre question ici]\n\nCordialement," },
+    en: { subject: "Question about HPV / Meningococcal vaccination", body: "Hello,\n\nI have a question about my child's vaccination at school.\n\n[Your question here]\n\nKind regards," },
+    ar: { subject: "سؤال حول التلقيح ضد HPV / المكورات السحائية", body: "مرحبًا،\n\nلدي سؤال بخصوص تلقيح طفلي في المدرسة.\n\n[سؤالكم هنا]\n\nمع التحية،" },
+    tr: { subject: "HPV / Meningokok aşısı hakkında soru", body: "Merhaba,\n\nÇocuğumun okuldaki aşısıyla ilgili bir sorum var.\n\n[Sorunuzu buraya yazın]\n\nSaygılarımla," },
+    ps: { subject: "د HPV / مننژیت واکسین په اړه پوښتنه", body: "سلام،\n\nزما د ماشوم د ښوونځي واکسین په اړه یوه پوښتنه لرم.\n\n[خپله پوښتنه دلته ولیکئ]\n\nمنندوی،" },
+    ku: { subject: "پرسیار دەربارەی ڤاکسینی HPV / مننجیت", body: "سڵاو،\n\nپرسیارێکم هەیە دەربارەی ڤاکسینی منداڵەکەم لە قوتابخانە.\n\n[پرسیارەکەت لێرە بنووسە]\n\nڕێزدار،" },
+    ro: { subject: "Întrebare despre vaccinarea HPV / Meningococică", body: "Bună ziua,\n\nAm o întrebare despre vaccinarea copilului meu la școală.\n\n[Întrebarea dumneavoastră aici]\n\nCu stimă," },
+    ka: { subject: "შეკითხვა HPV / მენინგოკოკის ვაქცინაციის შესახებ", body: "გამარჯობა,\n\nმაქვს შეკითხვა ჩემი შვილის სკოლაში ვაქცინაციასთან დაკავშირებით.\n\n[თქვენი შეკითხვა აქ]\n\nპატივისცემით," },
+    sq: { subject: "Pyetje mbi vaksinimin HPV / Meningokok", body: "Përshëndetje,\n\nKam një pyetje lidhur me vaksinimin e fëmijës tim në kolegj.\n\n[Pyetja juaj këtu]\n\nMe respekt," },
+    am: { subject: "ስለ HPV / ማጅራት ገትር ክትባት ጥያቄ", body: "ሰላም፣\n\nበኮሌጅ ስለ ልጄ ክትባት ጥያቄ አለኝ።\n\n[ጥያቄዎን እዚህ ይጻፉ]\n\nከሰላምታ ጋር፣" },
+    zh: { subject: "关于HPV/脑膜炎疫苗接种的问题", body: "您好，\n\n我对孩子在学校的疫苗接种有一个问题。\n\n[请在此处写下您的问题]\n\n此致，" },
+    prs: { subject: "سوال در مورد واکسیناسیون HPV / مننژیت", body: "سلام،\n\nیک سوال در مورد واکسیناسیون فرزندم در مکتب دارم.\n\n[سوال خود را اینجا بنویسید]\n\nبا احترام،" },
+    es: { subject: "Pregunta sobre la vacunación VPH / Meningococo", body: "Hola,\n\nTengo una pregunta sobre la vacunación de mi hijo/a en el colegio.\n\n[Su pregunta aquí]\n\nAtentamente," },
+    pt: { subject: "Pergunta sobre a vacinação HPV / Meningococo", body: "Olá,\n\nTenho uma pergunta sobre a vacinação do meu filho/a no colégio.\n\n[A sua pergunta aqui]\n\nCom os melhores cumprimentos," },
+    ru: { subject: "Вопрос о вакцинации против ВПЧ / менингококка", body: "Здравствуйте,\n\nУ меня есть вопрос о вакцинации моего ребёнка в школе.\n\n[Ваш вопрос здесь]\n\nС уважением," },
+    uk: { subject: "Питання щодо вакцинації проти ВПЛ / менінгокока", body: "Доброго дня,\n\nУ мене є питання щодо вакцинації моєї дитини в школі.\n\n[Ваше питання тут]\n\nЗ повагою," },
+    mo: { subject: "Întrebare despre vaccinarea HPV / Meningococică", body: "Bună ziua,\n\nAm o întrebare despre vaccinarea copilului meu la școală.\n\n[Întrebarea dumneavoastră aici]\n\nCu stimă," },
+  };
+
+  function escapeHtml(s){
+    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  // Interprete la syntaxe [[texte|action]] dans une reponse FAQ :
+  // action "videos" -> defile vers la section videos
+  // action "email"  -> ouvre un email pre-rempli vers notre adresse HPV
+  // action "form"   -> lien vers notre formulaire d'autorisation
+  function renderFaqAnswerHTML(raw){
+    const escaped = escapeHtml(raw || '');
+    return escaped.replace(/\[\[([^\]|]+)\|([a-z]+)\]\]/g, (m, label, action) => {
+      if(action === 'videos'){
+        return `<a href="#videosCard" class="faqInlineLink">${label}</a>`;
+      }
+      if(action === 'email'){
+        const mail = FAQ_MAIL_TEXT[lang] || FAQ_MAIL_TEXT.fr;
+        const href = `mailto:vaccin-hpv@ghsif.fr?subject=${encodeURIComponent(mail.subject)}&body=${encodeURIComponent(mail.body)}`;
+        return `<a href="${href}" class="faqInlineLink">${label}</a>`;
+      }
+      if(action === 'form'){
+        return `<a href="autorisation-vaccination.html?lang=${encodeURIComponent(lang)}" class="faqInlineLink">${label}</a>`;
+      }
+      return label;
+    });
+  }
+
   function renderFAQ(){
     const q = (els.searchInput.value || '').trim().toLowerCase();
     const items = (faqData?.items || []).filter(it => {
@@ -1808,7 +1866,7 @@ div.addEventListener('click', (e) => {
       corps.setAttribute('aria-labelledby', qId);
       const corpsInner = document.createElement('div');
       corpsInner.className = 'faqAns';
-      corpsInner.textContent = t(it.a, '');
+      corpsInner.innerHTML = renderFaqAnswerHTML(t(it.a, ''));
       corps.appendChild(corpsInner);
 
       btn.addEventListener('click', () => {
@@ -2052,14 +2110,23 @@ const tSchedule = obj => obj?.[lang] || obj?.fr || '';
 
 const SCHEDULE_TEXT = {
   hint: {
-    fr: "Trouvez rapidement la date de vaccination de votre collège.\nIndiquez le nom de votre commune, votre code postal ou le nom du collège.",
-    en: "Find your school’s vaccination date.\nEnter your city, postal code or school name.",
-    ar: "اعثر بسرعة على موعد التلقيح في مدرسة طفلك.\nأدخل اسم المدينة أو الرمز البريدي أو اسم المدرسة لمعرفة موعد زيارة فريق التلقيح.",
-    tr: "Okulunuzun aşı tarihini bulun.\nŞehir adı, posta kodu veya okul adını girerek aşılama tarihini öğrenin.",
-    ps: "د خپل ښوونځي د واکسین نېټه ومومئ.\nد ښار نوم، پوسټ کوډ یا د ښوونځي نوم ولیکئ.",
-    ku: "ڕێکەوتی ڤاکسینی قوتابخانەکەت بدۆزەوە.\nناوی شار، کۆدی پۆستەیی یان ناوی قوتابخانە بنووسە.",
-    ro: "Găsiți data vaccinării școlii.\nIntroduceți localitatea, codul poștal sau numele școlii.",
-    ka: "იპოვეთ თქვენი სკოლის ვაქცინაციის თარიღი.\nშეიყვანეთ ქალაქი, საფოსტო კოდი ან სკოლის სახელი."
+    fr: "Trouvez rapidement la date de vaccination de votre collège.\nIndiquez d'abord la classe de votre enfant, puis le nom de votre commune, votre code postal ou le nom du collège.",
+    en: "Find your school's vaccination date.\nFirst select your child's grade, then enter your city, postal code or school name.",
+    ar: "اعثر بسرعة على موعد التلقيح في مدرسة طفلك.\nحدد أولاً صف طفلك، ثم أدخل اسم المدينة أو الرمز البريدي أو اسم المدرسة.",
+    tr: "Okulunuzun aşı tarihini bulun.\nÖnce çocuğunuzun sınıfını seçin, ardından şehir adı, posta kodu veya okul adını girin.",
+    ps: "د خپل ښوونځي د واکسین نېټه ومومئ.\nلومړی د خپل ماشوم ټولګی وټاکئ، بیا د ښار نوم، پوسټ کوډ یا د ښوونځي نوم ولیکئ.",
+    ku: "ڕێکەوتی ڤاکسینی قوتابخانەکەت بدۆزەوە.\nسەرەتا پۆلی منداڵەکەت هەڵبژێرە، پاشان ناوی شار، کۆدی پۆستەیی یان ناوی قوتابخانە بنووسە.",
+    ro: "Găsiți data vaccinării școlii.\nSelectați mai întâi clasa copilului dumneavoastră, apoi introduceți localitatea, codul poștal sau numele școlii.",
+    ka: "იპოვეთ თქვენი სკოლის ვაქცინაციის თარიღი.\nჯერ აირჩიეთ თქვენი შვილის კლასი, შემდეგ შეიყვანეთ ქალაქი, საფოსტო კოდი ან სკოლის სახელი.",
+    sq: "Gjeni shpejt datën e vaksinimit në kolegjin tuaj.\nZgjidhni fillimisht klasën e fëmijës suaj, pastaj shkruani qytetin, kodin postar ose emrin e kolegjit.",
+    am: "የልጅዎን ትምህርት ቤት ክትባት ቀን በፍጥነት ያግኙ።\nመጀመሪያ የልጅዎን ክፍል ይምረጡ፣ ከዚያ የከተማ ስም፣ የፖስታ ኮድ ወይም የትምህርት ቤት ስም ያስገቡ።",
+    zh: "快速查找您孩子学校的疫苗接种日期。\n请先选择孩子的年级，然后输入城市、邮政编码或学校名称。",
+    prs: "تاریخ واکسیناسیون مکتب فرزند خود را به سرعت پیدا کنید.\nنخست صنف فرزند خود را انتخاب کنید، سپس نام شهر، کد پستی یا نام مکتب را وارد نمایید.",
+    es: "Encuentre rápidamente la fecha de vacunación de su colegio.\nSeleccione primero el curso de su hijo/a, luego indique el municipio, el código postal o el nombre del colegio.",
+    pt: "Encontre rapidamente a data de vacinação do seu colégio.\nSelecione primeiro o ano do seu filho/a, depois indique o município, o código postal ou o nome do colégio.",
+    ru: "Быстро узнайте дату вакцинации в вашем коллеже.\nСначала выберите класс вашего ребёнка, затем укажите город, почтовый индекс или название коллежа.",
+    uk: "Швидко дізнайтеся дату вакцинації у вашому коледжі.\nСпочатку оберіть клас вашої дитини, потім вкажіть місто, поштовий індекс або назву коледжу.",
+    mo: "Găsiți data vaccinării școlii.\nSelectați mai întâi clasa copilului dumneavoastră, apoi introduceți localitatea, codul poștal sau numele școlii."
   },
   placeholder: {
     fr: "Ville, code postal ou nom du collège…",
@@ -2069,7 +2136,16 @@ const SCHEDULE_TEXT = {
     ps: "ښار، پوسټ کوډ یا د ښوونځي نوم…",
     ku: "شار، کۆدی پۆستەیی یان ناوی قوتابخانە…",
     ro: "Localitate, cod poștal sau numele școlii…",
-    ka: "ქალაქი, საფოსტო კოდი ან სკოლის სახელი…"
+    ka: "ქალაქი, საფოსტო კოდი ან სკოლის სახელი…",
+    sq: "Qyteti, kodi postar ose emri i kolegjit…",
+    am: "ከተማ፣ የፖስታ ኮድ ወይም የትምህርት ቤት ስም…",
+    zh: "城市、邮政编码或学校名称…",
+    prs: "شهر، کد پستی یا نام مکتب…",
+    es: "Ciudad, código postal o nombre del colegio…",
+    pt: "Cidade, código postal ou nome do colégio…",
+    ru: "Город, почтовый индекс или название коллежа…",
+    uk: "Місто, поштовий індекс або назва коледжу…",
+    mo: "Localitate, cod poștal sau numele școlii…"
   },
   addCalendar: {
     fr: "Ajouter au calendrier",
@@ -2079,7 +2155,123 @@ const SCHEDULE_TEXT = {
     ps: "کالېنډر ته اضافه کړئ",
     ku: "زیادکردن بۆ ڕۆژژمێر",
     ro: "Adaugă în calendar",
-    ka: "კალენდარში დამატება"
+    ka: "კალენდარში დამატება",
+    sq: "Shtoni në kalendar",
+    am: "ወደ ቀን መቁጠሪያ ይጨምሩ",
+    zh: "添加到日历",
+    prs: "به تقویم اضافه کنید",
+    es: "Añadir al calendario",
+    pt: "Adicionar ao calendário",
+    ru: "Добавить в календарь",
+    uk: "Додати до календаря",
+    mo: "Adaugă în calendar"
+  },
+  noResults: {
+    fr: "Aucun résultat trouvé.",
+    en: "No result found.",
+    ar: "لا توجد نتائج.",
+    tr: "Sonuç bulunamadı.",
+    ps: "هیڅ پایله ونه موندل شوه.",
+    ku: "هیچ ئەنجامێک نەدۆزرایەوە.",
+    ro: "Niciun rezultat găsit.",
+    ka: "შედეგი ვერ მოიძებნა.",
+    sq: "Nuk u gjet asnjë rezultat.",
+    am: "ምንም ውጤት አልተገኘም።",
+    zh: "未找到结果。",
+    prs: "هیچ نتیجه‌ای یافت نشد.",
+    es: "No se encontró ningún resultado.",
+    pt: "Nenhum resultado encontrado.",
+    ru: "Результатов не найдено.",
+    uk: "Результатів не знайдено.",
+    mo: "Niciun rezultat găsit."
+  },
+  gradeLabel: {
+    fr: "Votre enfant est scolarisé en",
+    en: "Your child is enrolled in",
+    ar: "طفلك مسجل في الصف",
+    tr: "Çocuğunuz şu sınıfta okuyor",
+    ps: "ستاسو ماشوم په دې ټولګي کې زده کړه کوي",
+    ku: "منداڵەکەت لەم پۆلە خوێندکارە",
+    ro: "Copilul dumneavoastră este școlarizat în clasa",
+    ka: "თქვენი შვილი სწავლობს კლასში",
+    sq: "Fëmija juaj është i regjistruar në klasën",
+    am: "ልጅዎ የሚማረው ክፍል",
+    zh: "您的孩子就读年级",
+    prs: "فرزند شما در این صنف درس می‌خواند",
+    es: "Su hijo/a está escolarizado/a en",
+    pt: "O seu filho/a está matriculado/a em",
+    ru: "Ваш ребёнок учится в классе",
+    uk: "Ваша дитина навчається в класі",
+    mo: "Copilul dumneavoastră este școlarizat în clasa"
+  },
+  gradeSelectOption: {
+    fr: "Sélectionner…",
+    en: "Select…",
+    ar: "اختر…",
+    tr: "Seçiniz…",
+    ps: "وټاکئ…",
+    ku: "هەڵبژێرە…",
+    ro: "Selectați…",
+    ka: "აირჩიეთ…",
+    sq: "Zgjidhni…",
+    am: "ይምረጡ…",
+    zh: "请选择…",
+    prs: "انتخاب کنید…",
+    es: "Seleccionar…",
+    pt: "Selecionar…",
+    ru: "Выбрать…",
+    uk: "Обрати…",
+    mo: "Selectați…"
+  },
+  grade4e: {
+    fr: "4e", en: "4th grade (4e)", ar: "الرابعة إعدادي", tr: "4. sınıf", ps: "۴م ټولګی",
+    ku: "پۆلی 4", ro: "clasa a IV-a", ka: "IV კლასი", sq: "klasa e 4-t", am: "4ኛ ክፍል",
+    zh: "四年级（4e）", prs: "صنف چهارم", es: "4º", pt: "4.º ano", ru: "4-й класс (4e)",
+    uk: "4-й клас (4e)", mo: "clasa a IV-a"
+  },
+  grade5e: {
+    fr: "5e", en: "5th grade (5e)", ar: "الخامسة إعدادي", tr: "5. sınıf", ps: "۵م ټولګی",
+    ku: "پۆلی 5", ro: "clasa a V-a", ka: "V კლასი", sq: "klasa e 5-të", am: "5ኛ ክፍል",
+    zh: "五年级（5e）", prs: "صنف پنجم", es: "5º", pt: "5.º ano", ru: "5-й класс (5e)",
+    uk: "5-й клас (5e)", mo: "clasa a V-a"
+  },
+  dateUpcoming: {
+    fr: "Date à venir pour la classe de votre enfant",
+    en: "Date to be announced for your child's grade",
+    ar: "الموعد سيُحدَّد لاحقًا لصف طفلك",
+    tr: "Çocuğunuzun sınıfı için tarih henüz belirlenmedi",
+    ps: "ستاسو د ماشوم ټولګي لپاره نېټه ژر اعلانېږي",
+    ku: "بۆ پۆلی منداڵەکەت ڕێکەوت بە زووی ڕادەگەیەنرێت",
+    ro: "Data va fi anunțată pentru clasa copilului dumneavoastră",
+    ka: "თარიღი მალე გამოცხადდება თქვენი შვილის კლასისთვის",
+    sq: "Data do të njoftohet së shpejti për klasën e fëmijës suaj",
+    am: "ለልጅዎ ክፍል ቀኑ በቅርቡ ይገለጻል",
+    zh: "您孩子所在年级的日期即将公布",
+    prs: "تاریخ برای صنف فرزند شما به زودی اعلام می‌شود",
+    es: "Fecha por confirmar para el curso de su hijo/a",
+    pt: "Data a anunciar para o ano do seu filho/a",
+    ru: "Дата для класса вашего ребёнка будет объявлена позже",
+    uk: "Дата для класу вашої дитини буде оголошена пізніше",
+    mo: "Data va fi anunțată pentru clasa copilului dumneavoastră"
+  },
+  gradeRequired: {
+    fr: "Merci de sélectionner d'abord la classe de votre enfant.",
+    en: "Please select your child's grade first.",
+    ar: "يرجى تحديد صف طفلك أولاً.",
+    tr: "Lütfen önce çocuğunuzun sınıfını seçin.",
+    ps: "مهرباني وکړئ لومړی د خپل ماشوم ټولګی وټاکئ.",
+    ku: "تکایە سەرەتا پۆلی منداڵەکەت هەڵبژێرە.",
+    ro: "Vă rugăm să selectați mai întâi clasa copilului dumneavoastră.",
+    ka: "გთხოვთ, ჯერ აირჩიოთ თქვენი შვილის კლასი.",
+    sq: "Ju lutemi zgjidhni fillimisht klasën e fëmijës suaj.",
+    am: "እባክዎ መጀመሪያ የልጅዎን ክፍል ይምረጡ።",
+    zh: "请先选择您孩子的年级。",
+    prs: "لطفاً نخست صنف فرزند خود را انتخاب کنید.",
+    es: "Seleccione primero el curso de su hijo/a.",
+    pt: "Selecione primeiro o ano do seu filho/a.",
+    ru: "Сначала выберите класс вашего ребёнка.",
+    uk: "Спочатку оберіть клас вашої дитини.",
+    mo: "Vă rugăm să selectați mai întâi clasa copilului dumneavoastră."
   }
 };
 
@@ -2087,8 +2279,9 @@ async function initScheduleSearch() {
   const hint = document.getElementById('scheduleHint');
   const input = document.getElementById('scheduleSearchInput');
   const results = document.getElementById('scheduleResults');
+  const gradeSelect = document.getElementById('scheduleGradeSelect');
 
-  if (!hint || !input || !results) return;
+  if (!hint || !input || !results || !gradeSelect) return;
 
   const res = await fetch(SCHEDULE_URL, { cache: 'no-store' });
   scheduleData = await res.json();
@@ -2096,11 +2289,12 @@ calendarConfig = scheduleData.calendar_message;
 
   applyScheduleTexts();
 
-  input.addEventListener('input', () => {
+  function runScheduleSearch() {
   const q = normSchedule(input.value);
+  const grade = gradeSelect.value;
   results.innerHTML = '';
   results.style.display = 'none';
-  if (q.length < 2) return;
+  if (!grade || q.length < 2) return;
 
   const matches = scheduleData.sessions.filter(s =>
     normSchedule(s.city).includes(q) ||
@@ -2112,14 +2306,7 @@ calendarConfig = scheduleData.calendar_message;
     results.style.display = 'block';
     results.innerHTML = `
       <div class="card" style="padding:12px;color:var(--muted);">
-        ${lang === 'fr' ? 'Aucun résultat trouvé.' :
-          lang === 'en' ? 'No result found.' :
-          lang === 'ar' ? 'لا توجد نتائج.' :
-          lang === 'tr' ? 'Sonuç bulunamadı.' :
-          lang === 'ps' ? 'هیڅ پایله ونه موندل شوه.' :
-          lang === 'ku' ? 'هیچ ئەنجامێک نەدۆزرایەوە.' :
-          lang === 'ro' ? 'Niciun rezultat găsit.' :
-          'შედეგი ვერ მოიძებნა'}
+        ${tSchedule(SCHEDULE_TEXT.noResults)}
       </div>`;
     return;
   }
@@ -2132,38 +2319,60 @@ results.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     div.className = 'card';
     div.style.padding = '14px';
     div.style.marginBottom = '8px';
-    div.style.cursor = 'pointer';
 
-    const dateStr = new Date(s.date).toLocaleDateString(
-      lang === 'en' ? 'en-GB' : 'fr-FR',
-      { weekday:'long', day:'numeric', month:'long', year:'numeric' }
-    );
+    // Une date n'est montrée que si elle existe ET correspond a la classe choisie.
+    const hasDateForGrade = s.date && s.grade === grade;
 
-    div.innerHTML = `
-      <strong>${s.college_name}</strong><br>
-      <span style="color:var(--muted)">${s.city} (${s.postal_code})</span><br>
-      <span>📅 ${dateStr}</span><br>
-      <button class="btn primary" style="margin-top:8px">
-        ${tSchedule(SCHEDULE_TEXT.addCalendar)}
-      </button>
-    `;
-
-    div.querySelector('button').addEventListener('click', (e) => {
-      e.stopPropagation();
-      downloadICS(s);
-    });
+    if (hasDateForGrade) {
+      const dateStr = new Date(s.date).toLocaleDateString(
+        lang === 'en' ? 'en-GB' : 'fr-FR',
+        { weekday:'long', day:'numeric', month:'long', year:'numeric' }
+      );
+      div.style.cursor = 'pointer';
+      div.innerHTML = `
+        <strong>${s.college_name}</strong><br>
+        <span style="color:var(--muted)">${s.city} (${s.postal_code})</span><br>
+        <span>📅 ${dateStr}</span><br>
+        <button class="btn primary" style="margin-top:8px">
+          ${tSchedule(SCHEDULE_TEXT.addCalendar)}
+        </button>
+      `;
+      div.querySelector('button').addEventListener('click', (e) => {
+        e.stopPropagation();
+        downloadICS(s);
+      });
+    } else {
+      div.innerHTML = `
+        <div style="color:#dc2626;font-weight:700;margin-bottom:4px;">
+          ${tSchedule(SCHEDULE_TEXT.dateUpcoming)}
+        </div>
+        <strong>${s.college_name}</strong><br>
+        <span style="color:var(--muted)">${s.city} (${s.postal_code})</span>
+      `;
+    }
 
     results.appendChild(div);
   });
-});
+  }
+
+  input.addEventListener('input', runScheduleSearch);
+  gradeSelect.addEventListener('change', runScheduleSearch);
 
 }
 
 function applyScheduleTexts() {
   const hint = document.getElementById('scheduleHint');
   const input = document.getElementById('scheduleSearchInput');
+  const gradeLabel = document.getElementById('scheduleGradeLabel');
+  const optEmpty = document.getElementById('scheduleGradeOptEmpty');
+  const opt4e = document.getElementById('scheduleGradeOpt4e');
+  const opt5e = document.getElementById('scheduleGradeOpt5e');
   if (hint) hint.textContent = tSchedule(SCHEDULE_TEXT.hint);
   if (input) input.placeholder = tSchedule(SCHEDULE_TEXT.placeholder);
+  if (gradeLabel) gradeLabel.textContent = tSchedule(SCHEDULE_TEXT.gradeLabel);
+  if (optEmpty) optEmpty.textContent = tSchedule(SCHEDULE_TEXT.gradeSelectOption);
+  if (opt4e) opt4e.textContent = tSchedule(SCHEDULE_TEXT.grade4e);
+  if (opt5e) opt5e.textContent = tSchedule(SCHEDULE_TEXT.grade5e);
 }
 
 /* Hook langue EXISTANT */
@@ -2214,15 +2423,11 @@ END:VALARM
 END:VEVENT
 END:VCALENDAR`.trim();
 
-  const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
-  const url = URL.createObjectURL(blob);
-
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = `vaccination-${session.college_name}.ics`;
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
+  // Pas d'attribut "download" : on laisse le navigateur reconnaître le type de
+  // contenu calendrier et proposer l'ajout natif directement (plutôt que de
+  // forcer l'enregistrement d'un fichier dans les Téléchargements).
+  const dataUri = 'data:text/calendar;charset=utf-8,' + encodeURIComponent(ics);
+  window.location.href = dataUri;
   URL.revokeObjectURL(url);
 }
 
