@@ -426,6 +426,7 @@
 
   /* ---- Gabarit d'impression : reproduction fidèle du document original ---- */
 #pageSubtitle{color:#dc2626;font-weight:600;}
+.subtitleEmail{color:inherit;font-weight:800;text-decoration:underline;white-space:nowrap;}
 </style>
 
 <style>
@@ -575,7 +576,7 @@
   </div>
   <header class="page-head">
     <h1 data-i18n="pageTitle"></h1>
-    <p id="pageSubtitle" data-i18n="pageSubtitle"></p>
+    <p id="pageSubtitle"></p>
   </header>
 
   <div class="stepper" id="stepper"></div>
@@ -910,6 +911,21 @@ function applyLanguage(){
     const val = tr(key);
     if(val) el.textContent = val;
   });
+
+  // Cas particulier : l'adresse email dans pageSubtitle est mise en évidence
+  // (lien cliquable, en évidence, jamais coupée au milieu par un retour à la ligne)
+  const subtitleEl = document.getElementById('pageSubtitle');
+  if(subtitleEl){
+    const subtitleText = tr('pageSubtitle');
+    const emailAddr = 'vaccin-hpv@ghsif.fr';
+    if(subtitleText && subtitleText.includes(emailAddr)){
+      subtitleEl.innerHTML = subtitleText.split(emailAddr).join(
+        `<a href="mailto:${emailAddr}" class="subtitleEmail">${emailAddr}</a>`
+      );
+    } else if(subtitleText){
+      subtitleEl.textContent = subtitleText;
+    }
+  }
   document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{
     const key = el.getAttribute('data-i18n-placeholder');
     const val = tr(key);

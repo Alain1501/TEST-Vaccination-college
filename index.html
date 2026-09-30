@@ -246,8 +246,7 @@
 
 /* ===== VIDÉOS INTÉGRÉES (lecture directe, hébergées sur YouTube) ===== */
 .videoGrid { display: flex; flex-wrap: wrap; gap: 18px; justify-content: center; }
-.videoCard { width: 220px; text-align: center; }
-.videoCard.wide { width: 320px; }
+.videoCard { width: 260px; text-align: center; }
 .videoFrame {
   position: relative;
   width: 100%;
@@ -256,8 +255,7 @@
   background: #000;
   box-shadow: 0 4px 14px rgba(0,0,0,.14);
 }
-.videoFrame.vertical { aspect-ratio: 9 / 16; }
-.videoFrame.horizontal { aspect-ratio: 16 / 9; }
+.videoFrame { aspect-ratio: 16 / 9; }
 .videoFrame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 .videoThumb {
   position: absolute;
@@ -306,9 +304,11 @@
 .videoRole { font-size: 11px; font-weight: 500; color: var(--muted); margin-top: 1px; }
 .videoLink { display: inline-block; margin-top: 4px; font-size: 12px; color: var(--primary); text-decoration: none; font-weight: 700; }
 @media (max-width: 768px) {
-  .videoCard { width: 46%; }
-  .videoCard.wide { width: 100%; }
+  .videoCard { width: 100%; }
+  .resourceGroup { flex-direction: column; align-items: stretch; }
+  .resourceGroup .btn { width: 100%; box-sizing: border-box; text-align: center; }
 }
+html { scroll-behavior: smooth; }
 
 /* ===== BOUTON FLOTTANT (mobile/tablette pendant le défilement) ===== */
 #floatingCta {
@@ -821,6 +821,25 @@ contactEmailLabel: {
   ro: "Email", ka: "ელფოსტა", sq: "Email", am: "ኢሜይል", zh: "电子邮件", prs: "ایمیل",
   es: "Correo electrónico", pt: "Email", ru: "Эл. почта", uk: "Ел. пошта", mo: "Email",
 },
+faqLinkLabel: {
+  fr: "Voir les questions les plus posées",
+  en: "See the most common questions",
+  ar: "عرض الأسئلة الأكثر شيوعًا",
+  tr: "En sık sorulan soruları görün",
+  ps: "ډیرې پوښتل شوې پوښتنې وګورئ",
+  ku: "زۆرترین پرسیارە باوەکان ببینە",
+  ro: "Vedeți cele mai frecvente întrebări",
+  ka: "იხილეთ ყველაზე ხშირად დასმული კითხვები",
+  sq: "Shikoni pyetjet më të shpeshta",
+  am: "በተደጋጋሚ የሚጠየቁ ጥያቄዎችን ይመልከቱ",
+  zh: "查看最常见的问题",
+  prs: "پرسش‌های پرتکرار را ببینید",
+  es: "Ver las preguntas más frecuentes",
+  pt: "Ver as perguntas mais frequentes",
+  ru: "Посмотреть самые частые вопросы",
+  uk: "Переглянути найчастіші запитання",
+  mo: "Vedeți cele mai frecvente întrebări",
+},
 introTitle: {
   fr: "Équipe Mobile de Vaccination – Sud Seine-et-Marne",
   en: "Mobile Vaccination Team – Southern Seine-et-Marne",
@@ -1101,10 +1120,14 @@ introTitle: {
     && !/^https?:\/\//i.test(href);
 
   const isMail = typeof href === 'string' && href.startsWith('mailto:');
+  const isAnchor = typeof href === 'string' && href.startsWith('#');
 
 if (isMail) {
   a.target = '_self';          // ✅ indispensable
-} 
+}
+else if (isAnchor) {
+  a.target = '_self';          // reste sur la page, défile jusqu'à la section
+}
 else if (isLocalPdf) {
   a.target = '_blank';
   a.rel = 'noopener';
@@ -1295,14 +1318,13 @@ else {
     vids.forEach(v => {
       const id = getYouTubeId(v.url);
       if(!id) return;
-      const isShort = /shorts\//.test(v.url || '');
       const title = t(v.title, '') || t(v.label, 'Vidéo');
 
       const card = document.createElement('div');
-      card.className = 'videoCard' + (isShort ? '' : ' wide');
+      card.className = 'videoCard';
 
       const frame = document.createElement('div');
-      frame.className = 'videoFrame ' + (isShort ? 'vertical' : 'horizontal');
+      frame.className = 'videoFrame';
 
       // Vignette cliquable (miniature YouTube réelle) avec bouton "verre dépoli",
       // plutôt que l'iframe directe dont le bouton par défaut de YouTube
@@ -1585,6 +1607,15 @@ if (introData?.hpv_flyer_multilang?.url) {
     )
   );
 }
+    // Lien vers la section des questions courantes (pas intitulé "FAQ")
+    group.appendChild(
+      makeBtn(
+        t(UI_TEXT.faqLinkLabel, 'Voir les questions les plus posées'),
+        '#faqCard',
+        'btn',
+        'faq_link'
+      )
+    );
 
 
     // Meningite documents
@@ -1699,7 +1730,7 @@ div.addEventListener('click', (e) => {
 
     // ÉTAPE 1 — S’informer (les vidéos ne sont plus dupliquées ici, elles ont
     // leur propre section dédiée plus bas sur la page)
-    if (step.number === 1 && ['flyer_officiel','hpv_resources'].includes(key)) {
+    if (step.number === 1 && ['flyer_officiel','hpv_resources','faq_link'].includes(key)) {
       group.appendChild(clone);
     }
 
