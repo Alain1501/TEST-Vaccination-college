@@ -198,8 +198,6 @@
 .institutional-logos a:nth-child(3) img { animation-delay: .25s; }
 .institutional-logos a:nth-child(4) img { animation-delay: .35s; }
 .institutional-logos a { display: inline-flex; transition: opacity .15s ease; }
-.institutional-logos img { filter: grayscale(1); transition: filter .25s ease; }
-.institutional-logos a:hover img, .institutional-logos a:focus-visible img { filter: grayscale(0); }
 @keyframes logoFadeIn { to { opacity: 1; transform: none; } }
 @media (max-width: 768px) {
   .institutional-logos {
@@ -493,7 +491,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, .btn:focus-visible,
                 </div>
                 <div class="container">
                     <section class="hero">
-                        <div class="card heroText reveal">
+                        <div class="card heroText">
                             <h1 id="heroTitle">Vaccination <span class="accent">collège</span><br/>Île-de-France</h1>
                             <span class="titleFlourish" aria-hidden="true"></span>
                             <p class="subtitle" id="heroSubtitle">
@@ -653,7 +651,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, .btn:focus-visible,
       ka: "ინფორმაცია და რეგისტრაცია"
     },
     heroTitleHtml: {
-      fr: "Vaccination au <span class=\"accent\">collège</span> en Île-de-France",
+      fr: "Vaccination au <span class=\"accent\">collège</span><br/>Île-de-France",
       en: "School <span class=\"accent\">vaccination</span><br/>Île-de-France",
       ar: "التلقيح <span class=\"accent\">في الإعدادية</span><br/>Île-de-France",
       tr: "Okul <span class=\"accent\">aşılaması</span><br/>Île-de-France",
@@ -908,6 +906,13 @@ else {
 
   function renderHero(){
     els.heroBtns.innerHTML = '';
+
+    // Inscription en ligne (dupliquée ici, et toujours présente à l'étape 2)
+    const regUrl = introData?.registration?.url || introData?.registration?.online?.url;
+    const regLabel = t(introData?.registration?.label || introData?.registration?.online?.label, 'Inscription en ligne (HPV + Méningite ACWY uniquement)');
+    if(regUrl){
+      els.heroBtns.appendChild(makeBtn(regLabel, regUrl, 'btn primary'));
+    }
 
     // Keep: official IDF website
     const idfUrl = introData?.official_idf?.site?.url;
