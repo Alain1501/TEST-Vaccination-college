@@ -13,25 +13,28 @@
         <meta name="audience" content="Families, Educational institutions, Health professionals"/>
         <style>:root { --bg: #f5f7fb; --card: #ffffff; --text: #111827; --muted: #6b7280; --border: #e5e7eb; --primary: #2563eb; --primary-soft: #e0e7ff; --accent: #16a34a; --accent-soft: #dcfce7; --btn: #ffffff; --font-body: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; --font-display: "Helvetica Neue", Arial, var(--font-body); --font: var(--font-body); } [data-theme="dark"] { --bg: #141c2f;  /* fond général un peu plus clair */ --card: #1a2238;  /* cartes légèrement relevées */ --text: #e5e7eb; --muted: #9ca3af; --border: #1f2937; --primary: #38bdf8; --primary-soft: #0c4a6e; --accent: #22c55e; --accent-soft: #052e1b; --btn: #020617; } body { background: var(--bg); color: var(--text); } .card, details, .search, .select { background: var(--card); color: var(--text); border-color: var(--border); } summary { color: var(--text); } .ans { color: #d1d5db; } .chip, .tag { background: #020617; border-color: var(--border); color: #cbd5f5; } .langBtn { background: #020617; color: var(--text); border-color: var(--border); } .langBtn.active { background: var(--primary-soft); color: #e0f2fe; } .navItem:hover { background: #020617; border-color: rgba(56,189,248,.25); } .navItem.active { background: var(--primary-soft); border-color: rgba(56,189,248,.35); } .btn.primary { background: var(--primary); border-color: rgba(56,189,248,.45); } .btn.soft { background: var(--accent-soft); border-color: rgba(34,197,94,.35); color: #bbf7d0; } * { box-sizing: border-box; } body { margin: 0; font-family: var(--font); color: var(--text); background: var(--bg); } a { color: inherit; } .layout { display: flex; min-height: 100vh; } /* Sidebar */.sidebar { width: var(--sidebar); padding: 18px 14px; position: sticky; top: 0; height: 100vh; overflow: auto; border-right: 1px solid var(--border); background: linear-gradient(180deg, #ffffff 0%, #fbfcff 100%); } .brand { display: flex; align-items: center; gap: 10px; padding: 10px 10px 14px 10px; } .brandMark { width: 36px; height: 36px; border-radius: 12px; background: var(--primary-soft); display: grid; place-items: center; color: var(--primary); font-weight: 800; border: 1px solid rgba(47,91,255,.18); } .brandName { font-weight: 800; letter-spacing: .2px; } .navTitle { margin: 8px 10px 8px; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); } .navList { display: flex; flex-direction: column; gap: 6px; padding: 0 6px 16px; } .navItem { border: 1px solid transparent; padding: 10px 10px; border-radius: 12px; cursor: pointer; color: #1f2937; display: flex; align-items: center; justify-content: space-between; gap: 10px; } .navItem:hover { background: #f4f7ff; border-color: rgba(47,91,255,.14); } .navItem.active { background: var(--primary-soft); border-color: rgba(47,91,255,.22); } .chip { font-size: 12px; padding: 2px 8px; border-radius: 999px; background: #f3f4f6; color: #374151; border: 1px solid var(--border); white-space: nowrap; } .footNote { padding: 12px 10px; color: var(--muted); font-size: 12px; border-top: 1px solid var(--border); margin-top: 10px; } /* Main */.main { flex: 1; padding: 18px; } .topbar { max-width: var(--max); margin: 0 auto 14px; display: flex; align-items: center; justify-content: space-between; gap: 12px; } .rightBar { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: center; } /* ===== FIX CENTRAGE LANGUES DANS TOPBAR ===== */.topbar { justify-content: center !important; } .burger { position: absolute; left: 18px; } .rightBar { justify-content: center; } .search { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border: 1px solid var(--border); border-radius: 12px; background: #fff; min-width: 260px; } .search input { border: none; outline: none; width: 100%; font-size: 14px; } .container { max-width: var(--max); margin: 0 auto; } .hero { display: block; margin-bottom: 16px; } .card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); } .heroText { padding: 22px; } .kicker { display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 999px; background: var(--primary-soft); color: var(--primary); font-weight: 800; border: 1px solid rgba(47,91,255,.18); font-size: 12px; letter-spacing: .02em; } h1 { margin: 12px 0 10px; font-size: 46px; line-height: 1.08; letter-spacing: -.02em; } h1 .accent { color: var(--accent); } .subtitle { margin: 0; color: var(--muted); font-size: 16px; line-height: 1.55; max-width: 62ch; } .btnRow { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; } .btn { display: inline-flex; align-items: center; justify-content: center; padding: 10px 14px; border-radius: 999px; border: 1px solid var(--border); background: #fff; text-decoration: none; font-weight: 800; font-size: 13px; cursor: pointer; transition: transform .05s ease; } .btn:hover { transform: translateY(-1px); } .btn.primary { background: var(--primary); border-color: rgba(47,91,255,.45); color: #fff; } .btn.soft { background: var(--accent-soft); border-color: rgba(255,138,0,.22); color: #7a3a00; } .heroArt { padding: 18px; position: relative; overflow: hidden; } .artBox { height: 100%; border-radius: 16px; background: radial-gradient(circle at 20% 20%, rgba(47,91,255,.15), transparent 45%),
                   radial-gradient(circle at 70% 30%, rgba(255,138,0,.18), transparent 55%),
-                  linear-gradient(180deg, #ffffff 0%, #f6f8ff 100%); border: 1px solid rgba(17,24,39,.06); display: flex; align-items: center; justify-content: center; position: relative; min-height: 240px; } .artLabel { position: absolute; bottom: 14px; left: 14px; right: 14px; padding: 10px 12px; border-radius: 14px; background: rgba(255,255,255,.85); border: 1px solid rgba(17,24,39,.08); color: var(--muted); font-size: 12px; } .logoImg { height: 38px; max-width: 220px; object-fit: contain; filter: drop-shadow(0 2px 6px rgba(0,0,0,.12)); margin-bottom: 10px; } /* Sections */.grid { display: grid; grid-template-columns: 1fr; gap: 16px; } .sectionHead { padding: 18px 20px 0; } .sectionTitle { margin: 0; font-size: 16px; font-weight: 900; letter-spacing: .2px; } .sectionDesc { margin: 6px 0 0; color: var(--muted); font-size: 13px; line-height: 1.5; } .sectionBody { padding: 14px 20px 20px; } .resourceGroup { display: flex; flex-wrap: wrap; gap: 10px; } .note { margin-top: 10px; color: var(--muted); font-size: 12px; line-height: 1.55; white-space: pre-wrap; } /* FAQ */.faqMeta { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; flex-wrap: wrap; } .faqTitle { margin: 0; font-size: 18px; font-weight: 900; } .faqCount { color: var(--muted); font-size: 12px; margin-top: 6px; } .accordion { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; } details { background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 12px 14px; } summary { cursor: pointer; list-style: none; font-weight: 850; display: flex; align-items: center; justify-content: space-between; gap: 10px; } summary::-webkit-details-marker { display: none; } .ans { color: #374151; font-size: 14px; line-height: 1.6; margin-top: 10px; white-space: pre-wrap; } .tagRow { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; } .tag { font-size: 12px; padding: 2px 8px; border-radius: 999px; background: #f3f4f6; border: 1px solid var(--border); color: #374151; } /* Mobile */.burger { display: none; padding: 10px 12px; border: 1px solid var(--border); border-radius: 12px; background: #fff; font-weight: 800; cursor: pointer; } @media (max-width: 980px){ .hero {  grid-template-columns: 1fr; }  h1 {  font-size: 38px; }  .sidebar {  position: fixed;  left: -320px;  top: 0;  bottom: 0;  z-index: 50;  transition: left .2s ease; }  .sidebar.open {  left: 0; }  .burger {  display: inline-flex; }  .search {  min-width: 200px; } } /* ===== UI adjustments (no sidebar, no search) ===== */.sidebar { display: none !important; } .burger { display: none !important; } .search { display: none !important; } .layout { grid-template-columns: 1fr !important; } .main { padding-left: 0 !important; } .select { padding: 12px 16px !important; border-radius: 14px !important; font-size: 15px !important; min-width: 180px; } /* ===== RTL languages support (Arabic, Pashto, Kurdish) ===== */.rtl { direction: rtl; text-align: right; } .rtl .hero, .rtl .card, .rtl .sectionBody, .rtl .sectionTitle, .rtl .sectionDesc, .rtl p, .rtl li, .rtl .faqQ, .rtl .faqA { text-align: right; } /* Language buttons */.langButtons { position: sticky; top: 0; z-index: 60; display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 8px 0 10px; background: var(--bg); box-shadow: 0 4px 14px rgba(0,0,0,.10); direction: ltr; } .langHint { font-size: 12px; font-weight: 600; color: var(--muted); display: flex; align-items: center; gap: 4px; } .langHint .arrow { animation: langArrowBounce 1.4s ease-in-out infinite; font-size: 13px; } @keyframes langArrowBounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(3px); } } .langPanelWrap { position: relative; } .langSwitcherBtn { background: var(--card); border: 1px solid var(--border); border-radius: 999px; color: var(--primary); font-weight: 700; font-size: 15px; cursor: pointer; padding: 8px 16px; display: flex; align-items: center; gap: 8px; box-shadow: 0 2px 8px rgba(0,0,0,.08); } .langSwitcherBtn .chevron { font-size: 11px; opacity: .7; } .langSwitcherFlag, #langSwitcherText { transition: opacity .3s ease; opacity: 1; } .langSwitcherFlag { display: inline-flex; width: 20px; height: 14px; border-radius: 2px; overflow: hidden; box-shadow: 0 0 0 1px rgba(0,0,0,.12); flex-shrink: 0; } .langSwitcherFlag svg { display: block; width: 100%; height: 100%; } .langOptionFlag { display: inline-flex; width: 18px; height: 12px; border-radius: 2px; overflow: hidden; box-shadow: 0 0 0 1px rgba(0,0,0,.12); flex-shrink: 0; } .langOptionFlag svg { display: block; width: 100%; height: 100%; } .langPanel { position: absolute; top: 100%; left: 50%; transform: translateX(-50%); margin-top: 6px; background: var(--card); border: 1px solid var(--border); border-radius: 14px; box-shadow: 0 10px 30px rgba(0,0,0,.18); padding: 10px; display: grid; grid-template-columns: repeat(2,minmax(140px,1fr)); gap: 4px; max-height: 65vh; overflow-y: auto; width: max-content; max-width: 92vw; } .langPanel[hidden] { display: none; } .langOption { display: flex; align-items: center; gap: 8px; padding: 8px 10px; border-radius: 10px; border: 1px solid transparent; background: none; color: var(--text); cursor: pointer; font-size: 13px; font-weight: 600; text-align: left; white-space: nowrap; } .langOption:hover { background: var(--primary-soft); } .langOption.active { border-color: var(--primary); background: var(--primary-soft); } .langBtn { border: 1px solid rgba(0,0,0,.12); background: #fff; color: var(--text); padding: 8px 10px; border-radius: 999px; cursor: pointer; font-size: 13px; font-weight: 700; line-height: 1; display: flex; gap: 6px; align-items: center; } .langBtn:hover { box-shadow: 0 2px 10px rgba(0,0,0,.08); } .langBtn.active { background: var(--primary-light); border-color: rgba(0,95,115,.35); } /* ===============================
+                  linear-gradient(180deg, #ffffff 0%, #f6f8ff 100%); border: 1px solid rgba(17,24,39,.06); display: flex; align-items: center; justify-content: center; position: relative; min-height: 240px; } .artLabel { position: absolute; bottom: 14px; left: 14px; right: 14px; padding: 10px 12px; border-radius: 14px; background: rgba(255,255,255,.85); border: 1px solid rgba(17,24,39,.08); color: var(--muted); font-size: 12px; } .logoImg { height: 38px; max-width: 220px; object-fit: contain; filter: drop-shadow(0 2px 6px rgba(0,0,0,.12)); margin-bottom: 10px; } /* Sections */.grid { display: grid; grid-template-columns: 1fr; gap: 16px; } .sectionHead { padding: 18px 20px 0; } .sectionTitle { margin: 0; font-size: 16px; font-weight: 900; letter-spacing: .2px; } .sectionDesc { margin: 6px 0 0; color: var(--muted); font-size: 13px; line-height: 1.5; } .sectionBody { padding: 14px 20px 20px; } .resourceGroup { display: flex; flex-wrap: wrap; gap: 10px; } .note { margin-top: 10px; color: var(--muted); font-size: 12px; line-height: 1.55; white-space: pre-wrap; } /* FAQ */.faqMeta { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; flex-wrap: wrap; } .faqTitle { margin: 0; font-size: 18px; font-weight: 900; } .faqCount { color: var(--muted); font-size: 12px; margin-top: 6px; } .accordion { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; } details { background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 12px 14px; } summary { cursor: pointer; list-style: none; font-weight: 850; display: flex; align-items: center; justify-content: space-between; gap: 10px; } summary::-webkit-details-marker { display: none; } .ans { color: #374151; font-size: 14px; line-height: 1.6; margin-top: 10px; white-space: pre-wrap; } .tagRow { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; } .tag { font-size: 12px; padding: 2px 8px; border-radius: 999px; background: #f3f4f6; border: 1px solid var(--border); color: #374151; } /* Mobile */.burger { display: none; padding: 10px 12px; border: 1px solid var(--border); border-radius: 12px; background: #fff; font-weight: 800; cursor: pointer; } @media (max-width: 980px){ .hero {  grid-template-columns: 1fr; }  h1 {  font-size: 38px; }  .sidebar {  position: fixed;  left: -320px;  top: 0;  bottom: 0;  z-index: 50;  transition: left .2s ease; }  .sidebar.open {  left: 0; }  .burger {  display: inline-flex; }  .search {  min-width: 200px; } } /* ===== UI adjustments (no sidebar, no search) ===== */.sidebar { display: none !important; } .burger { display: none !important; } .search { display: none !important; } .layout { grid-template-columns: 1fr !important; } .main { padding-left: 0 !important; } .select { padding: 12px 16px !important; border-radius: 14px !important; font-size: 15px !important; min-width: 180px; } /* ===== RTL languages support (Arabic, Pashto, Kurdish) ===== */.rtl { direction: rtl; text-align: right; } .rtl .hero, .rtl .card, .rtl .sectionBody, .rtl .sectionTitle, .rtl .sectionDesc, .rtl p, .rtl li, .rtl .faqQ, .rtl .faqA { text-align: right; } /* Language buttons */.langButtons { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; align-items: center; } .langBtn { border: 1px solid rgba(0,0,0,.12); background: #fff; color: var(--text); padding: 8px 10px; border-radius: 999px; cursor: pointer; font-size: 13px; font-weight: 700; line-height: 1; display: flex; gap: 6px; align-items: center; } .langBtn:hover { box-shadow: 0 2px 10px rgba(0,0,0,.08); } .langBtn.active { background: var(--primary-light); border-color: rgba(0,95,115,.35); } /* ===============================
    THEME FIX – A COLLER ICI
    =============================== */body { background: var(--bg); color: var(--text); } .card, details, .search, .select { background: var(--card) !important; color: var(--text) !important; border: 1px solid var(--border) !important; } summary { color: var(--text) !important; } .ans { color: var(--text) !important; } .btn { background: var(--btn) !important; color: var(--text) !important; border-color: var(--border) !important; } .btn.primary { background: var(--primary) !important; color: #ffffff !important; } .btn.soft { background: var(--accent-soft) !important; color: var(--accent) !important; } .chip, .tag { background: var(--primary-soft) !important; color: var(--text) !important; border-color: var(--border) !important; } details[open] { border-color: var(--primary) !important; } .artBox { background: linear-gradient(
     180deg,
     var(--card) 0%,
     var(--bg) 100%
-  ) !important; } /* ===== BANDE LOGOS INSTITUTIONNELS ===== */.institutional-logos { display: flex; justify-content: center; align-items: center; gap: 32px; height: 90px;  /* ≈ 5–6 cm */ padding: 10px 20px; background: var(--bg); border-bottom: 1px solid var(--border); } .institutional-logos img { max-height: 70px; width: auto; object-fit: contain; } /* ===== RESPONSIVE LOGOS – MOBILE ===== */@media (max-width: 768px) { .institutional-logos {  flex-wrap: wrap;   /* autorise le retour à la ligne */  height: auto;   /* supprime la contrainte fixe */  gap: 16px;  padding: 12px 10px; }  .institutional-logos img {  max-height: 48px;   /* logos plus petits sur mobile */  max-width: 45%; } } /* ===== FIX LANG BUTTONS – DARK MODE ===== */[data-theme="dark"] .langBtn { background: var(--card) !important; color: var(--text) !important; border-color: var(--border) !important; } [data-theme="dark"] .langBtn.active { background: var(--primary) !important; color: #ffffff !important; } [data-theme="dark"] .langPanel { background: var(--card) !important; border-color: var(--border) !important; } [data-theme="dark"] .langOption { color: var(--text) !important; } /* ===== CONTACT SECTION WIDE ===== */.contactWide { padding-top: 20px; } .contactGrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; } .contactItem { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-radius: 16px; background: var(--card); border: 1px solid var(--border); color: var(--text); text-decoration: none; font-weight: 700; transition: background .15s ease, transform .05s ease; } .contactItem:hover { background: var(--primary-soft); transform: translateY(-1px); } .contactIcon { font-size: 20px; } .contactText { line-height: 1.35; } /* ===== SCHÉMA : Vaccination en 3 étapes ===== */.stepsContainer { display: flex; flex-direction: column; gap: 14px; } .stepItem { display: flex; align-items: flex-start; gap: 14px; padding: 16px; border-radius: 16px; background: var(--card); border: 1px solid var(--border); } /* ===== VISIBILITÉ FORCÉE DES ÉTAPES ===== */.stepItem { background: var(--card) !important; opacity: 1 !important; } .stepItem:hover { background: var(--primary-soft); cursor: pointer; } .stepNumber { width: 36px; height: 36px; border-radius: 999px; background: var(--primary); color: #fff; font-weight: 900; display: flex; align-items: center; justify-content: center; flex-shrink: 0; } .stepTitle { font-weight: 900; font-size: 15px; margin-bottom: 4px; } .stepText { font-size: 13px; line-height: 1.5; color: var(--muted); } /* ===== AFFICHAGE DES BOUTONS PAR ÉTAPE ===== */.stepActions {
-  max-height: 0;
-  overflow: hidden;
+  ) !important; } /* ===== BANDE LOGOS INSTITUTIONNELS ===== */.institutional-logos { display: flex; justify-content: center; align-items: center; gap: 32px; height: 90px;  /* ≈ 5–6 cm */ padding: 10px 20px; background: var(--bg); border-bottom: 1px solid var(--border); } .institutional-logos img { max-height: 70px; width: auto; object-fit: contain; } /* ===== RESPONSIVE LOGOS – MOBILE ===== */@media (max-width: 768px) { .institutional-logos {  flex-wrap: wrap;   /* autorise le retour à la ligne */  height: auto;   /* supprime la contrainte fixe */  gap: 16px;  padding: 12px 10px; }  .institutional-logos img {  max-height: 48px;   /* logos plus petits sur mobile */  max-width: 45%; } } /* ===== FIX LANG BUTTONS – DARK MODE ===== */[data-theme="dark"] .langBtn { background: var(--card) !important; color: var(--text) !important; border-color: var(--border) !important; } [data-theme="dark"] .langBtn.active { background: var(--primary) !important; color: #ffffff !important; } /* ===== CONTACT SECTION WIDE ===== */.contactWide { padding-top: 20px; } .contactGrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; } .contactItem { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-radius: 16px; background: var(--card); border: 1px solid var(--border); color: var(--text); text-decoration: none; font-weight: 700; transition: background .15s ease, transform .05s ease; } .contactItem:hover { background: var(--primary-soft); transform: translateY(-1px); } .contactIcon { font-size: 20px; } .contactText { line-height: 1.35; } /* ===== SCHÉMA : Vaccination en 3 étapes ===== */.stepsContainer { display: flex; flex-direction: column; gap: 14px; } .stepItem { display: flex; align-items: flex-start; gap: 14px; padding: 16px; border-radius: 16px; background: var(--card); border: 1px solid var(--border); } /* ===== VISIBILITÉ FORCÉE DES ÉTAPES ===== */.stepItem { background: var(--card) !important; opacity: 1 !important; } .stepItem:hover { background: var(--primary-soft); cursor: pointer; } .stepNumber { width: 36px; height: 36px; border-radius: 999px; background: var(--primary); color: #fff; font-weight: 900; display: flex; align-items: center; justify-content: center; flex-shrink: 0; } .stepTitle { font-weight: 900; font-size: 15px; margin-bottom: 4px; } .stepText { font-size: 13px; line-height: 1.5; color: var(--muted); } /* ===== AFFICHAGE DES BOUTONS PAR ÉTAPE ===== */.stepActions {
+  display: grid;
+  grid-template-rows: 0fr;
   opacity: 0;
-  margin-top: 12px;
+  margin-top: 0;
+  transition: grid-template-rows .4s ease, opacity .3s ease, margin-top .4s ease;
+}
+.stepActions.active { grid-template-rows: 1fr; opacity: 1; margin-top: 12px; }
+.stepActionsInner {
+  overflow: hidden;
   padding: 14px;
   border-radius: 14px;
   background: var(--card);
   border: 1px solid var(--border);
-  transition: max-height .35s ease, opacity .3s ease;
 }
-.stepActions.active { opacity: 1; }
-.stepActions .resourceGroup { display: flex; flex-wrap: wrap; gap: 10px; } /* ===== HERO CENTRÉ (titre, texte, boutons) ===== */.heroText { text-align: center; } .heroText .btnRow { justify-content: center; } #heroBtns { flex-direction: column; align-items: center; } .heroText .kicker { margin-left: auto; margin-right: auto; } /* ===== HERO : centrage du sous-titre ===== */#heroSubtitle { text-align: center; margin-left: auto; margin-right: auto; max-width: 70ch; } /* ===== MASQUAGE DES BOUTONS DANS INTRO ===== */#introBody .resourceGroup, #introBody .btn { display: none !important; } /* ===== MASQUAGE TITRE MÉNINGITE DANS INTRO ===== */#introBody > div[style*="font-weight"] { display: none !important; } /* ===== PULSE VISUEL DES ÉTAPES (INCITATION AU CLIC) ===== */.stepItem { position: relative; transition: box-shadow 0.3s ease, transform 0.3s ease; } .stepItem.pulse { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.6); animation: stepPulse 1.2s ease-out; } @keyframes stepPulse { 0% {  box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.6);  transform: scale(1); }  60% {  box-shadow: 0 0 0 10px rgba(56, 189, 248, 0);  transform: scale(1.015); }  100% {  box-shadow: 0 0 0 0 rgba(56, 189, 248, 0);  transform: scale(1); } } /* ===== AJUSTEMENT MOBILE ===== */@media (max-width: 768px) { .stepItem.pulse {  animation-duration: 1.4s; } } /* ===== FIX TAILLE + POSITION ICONES ÉTAPES ===== */.stepItem { display: flex; align-items: flex-start; gap: 14px; } .stepIllustration { width: 56px; height: 56px; min-width: 56px; max-width: 56px; object-fit: contain; flex-shrink: 0; }
+.stepActions .resourceGroup { display: flex; flex-wrap: wrap; gap: 10px; } /* ===== HERO CENTRÉ (titre, texte, boutons) ===== */.heroText { text-align: center; } .heroText .btnRow { justify-content: center; } .heroText .kicker { margin-left: auto; margin-right: auto; } /* ===== HERO : centrage du sous-titre ===== */#heroSubtitle { text-align: center; margin-left: auto; margin-right: auto; max-width: 70ch; } /* ===== MASQUAGE DES BOUTONS DANS INTRO ===== */#introBody .resourceGroup, #introBody .btn { display: none !important; } /* ===== MASQUAGE TITRE MÉNINGITE DANS INTRO ===== */#introBody > div[style*="font-weight"] { display: none !important; } /* ===== PULSE VISUEL DES ÉTAPES (INCITATION AU CLIC) ===== */.stepItem { position: relative; transition: box-shadow 0.3s ease, transform 0.3s ease; } .stepItem.pulse { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.6); animation: stepPulse 1.2s ease-out; } @keyframes stepPulse { 0% {  box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.6);  transform: scale(1); }  60% {  box-shadow: 0 0 0 10px rgba(56, 189, 248, 0);  transform: scale(1.015); }  100% {  box-shadow: 0 0 0 0 rgba(56, 189, 248, 0);  transform: scale(1); } } /* ===== AJUSTEMENT MOBILE ===== */@media (max-width: 768px) { .stepItem.pulse {  animation-duration: 1.4s; } } /* ===== FIX TAILLE + POSITION ICONES ÉTAPES ===== */.stepItem { display: flex; align-items: flex-start; gap: 14px; } .stepIllustration { width: 56px; height: 56px; min-width: 56px; max-width: 56px; object-fit: contain; flex-shrink: 0; }
 .stepIllustration {
   width: 56px;
   height: 56px;
@@ -89,7 +92,7 @@
   left: 0;
   height: 3px;
   width: 0%;
-  background: var(--primary);
+  background: linear-gradient(90deg, var(--primary), var(--accent));
   z-index: 9999;
   transition: width .12s linear;
 }
@@ -108,30 +111,6 @@
 /* ===== SURVOL RENFORCÉ BOUTONS / CARTES / LANGUES ===== */
 .btn { transition: transform .15s ease, box-shadow .15s ease; }
 .btn:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,.14); }
-
-/* ===== BOUTON ANIMÉ : FORMULAIRE D'AUTORISATION EN LIGNE ===== */
-.btn-cta-animated {
-  background: linear-gradient(135deg, var(--primary), var(--accent)) !important;
-  color: #fff !important;
-  border: none !important;
-  font-size: 14px !important;
-  padding: 13px 20px !important;
-  box-shadow: 0 4px 14px rgba(37,99,235,.35);
-  animation: ctaPulse 2.2s ease-in-out infinite;
-  position: relative;
-}
-.btn-cta-animated:hover {
-  animation-play-state: paused;
-  transform: translateY(-3px) scale(1.03);
-  box-shadow: 0 10px 24px rgba(37,99,235,.45);
-}
-@keyframes ctaPulse {
-  0%, 100% { box-shadow: 0 4px 14px rgba(37,99,235,.35), 0 0 0 0 rgba(37,99,235,.35); }
-  50% { box-shadow: 0 4px 18px rgba(37,99,235,.45), 0 0 0 8px rgba(37,99,235,0); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .btn-cta-animated { animation: none; }
-}
 .card { transition: box-shadow .3s ease; }
 .card:hover { box-shadow: 0 10px 28px rgba(0,0,0,.08); }
 .langBtn { transition: transform .15s ease; }
@@ -192,13 +171,14 @@
 }
 .accordion details[open] .chev { transform: rotate(180deg); }
 .accordion .ans {
-  max-height: 0;
-  overflow: hidden;
+  display: grid;
+  grid-template-rows: 0fr;
   opacity: 0;
-  margin-top: 10px;
-  transition: max-height .35s ease, opacity .3s ease;
+  margin-top: 0;
+  transition: grid-template-rows .4s ease, opacity .3s ease, margin-top .4s ease;
 }
-.accordion .ans.open { opacity: 1; }
+.accordion .ans.open { grid-template-rows: 1fr; opacity: 1; margin-top: 10px; }
+.accordion .ansInner { overflow: hidden; min-height: 0; }
 .accordion .ans { color: var(--muted) !important; font-weight: 400; }
 .accordion summary { font-weight: 800; }
 @keyframes searchHighlight {
@@ -218,7 +198,8 @@
 .institutional-logos a:nth-child(3) img { animation-delay: .25s; }
 .institutional-logos a:nth-child(4) img { animation-delay: .35s; }
 .institutional-logos a { display: inline-flex; transition: opacity .15s ease; }
-.institutional-logos a:hover, .institutional-logos a:focus-visible { opacity: .75; }
+.institutional-logos img { filter: grayscale(1); transition: filter .25s ease; }
+.institutional-logos a:hover img, .institutional-logos a:focus-visible img { filter: grayscale(0); }
 @keyframes logoFadeIn { to { opacity: 1; transform: none; } }
 @media (max-width: 768px) {
   .institutional-logos {
@@ -371,10 +352,28 @@ html, body { overflow-x: hidden; max-width: 100%; }
 }
 #heroTitle.heroAnimate { animation: heroTitleReveal .9s cubic-bezier(.22,1,.36,1) both; }
 #heroSubtitle.heroAnimate { animation: heroFadeUp .7s ease .2s both; }
+.titleFlourish {
+  display: block;
+  height: 4px;
+  width: 84px;
+  margin: 14px auto 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
+  transform: scaleX(0);
+}
+.titleFlourish.heroAnimate { animation: flourishOpen .6s ease .85s both; }
+@keyframes flourishOpen { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 
 /* ----- Les autres blocs restent plats et calmes, différenciés sans ombre ----- */
 .card { box-shadow: none; }
 #stepsCard, #videosCard, #faqCard, #contactCard { border: 1px solid var(--border); border-radius: var(--radius); }
+
+/* ----- Rayon asymétrique (un coin plus marqué) sur les blocs et cartes ----- */
+#stepsCard, #videosCard, #faqCard, #contactCard,
+.stepItem, .stepActionsInner, .videoFrame, .contactItem {
+  border-radius: 20px 20px 20px 6px;
+}
+.stepNumber, .playGlass { border-radius: 50% 50% 50% 14%; }
 
 /* ----- Le message du médecin devient un bloc éditorial, pas une carte ----- */
 #introCard {
@@ -488,15 +487,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, .btn:focus-visible,
 
                             <input id="searchInput" placeholder="Rechercher…" type="search"/>
                         </div>
-                        <div aria-label="Langue" class="langButtons" id="langButtons">
-                          <div class="langHint"><span>Choisissez votre langue</span><span class="arrow">↓</span></div>
-                          <div class="langPanelWrap">
-                            <button type="button" class="langSwitcherBtn" id="langSwitcherBtn">
-                              <span class="langSwitcherFlag" id="langSwitcherFlag"></span><span id="langSwitcherText"></span><span class="chevron">▾</span>
-                            </button>
-                            <div class="langPanel" id="langPanel" hidden></div>
-                          </div>
-                        </div>
+                        <div aria-label="Langue" class="langButtons" id="langButtons"></div>
                         <button id="themeToggle" class="btn" title="Mode clair / sombre">🌙</button>
                     </div>
                 </div>
@@ -504,6 +495,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, .btn:focus-visible,
                     <section class="hero">
                         <div class="card heroText reveal">
                             <h1 id="heroTitle">Vaccination <span class="accent">collège</span><br/>Île-de-France</h1>
+                            <span class="titleFlourish" aria-hidden="true"></span>
                             <p class="subtitle" id="heroSubtitle">
               Accédez aux informations essentielles, aux documents et à la FAQ. L’inscription se fait en quelques clics. </p>
                             <div class="btnRow" id="heroBtns"></div>
@@ -658,16 +650,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, .btn:focus-visible,
       ps: "معلومات او ثبت نام",
       ku: "زانیاری و تۆمارکردن",
       ro: "Informații și înscriere",
-      ka: "ინფორმაცია და რეგისტრაცია",
-      sq: "Informacion dhe regjistrim",
-      am: "መረጃ እና ምዝገባ",
-      zh: "信息与注册",
-      prs: "معلومات و ثبت‌نام",
-      es: "Información e inscripción",
-      pt: "Informação e inscrição",
-      ru: "Информация и регистрация",
-      uk: "Інформація та реєстрація",
-      mo: "Informații și înscriere"
+      ka: "ინფორმაცია და რეგისტრაცია"
     },
     heroTitleHtml: {
       fr: "Vaccination <span class=\"accent\">collège</span><br/>Île-de-France",
@@ -677,16 +660,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, .btn:focus-visible,
       ps: "د ښوونځي <span class=\"accent\">واکسین</span><br/>Île-de-France",
       ku: "ڤاکسینی <span class=\"accent\">قوتابخانە</span><br/>Île-de-France",
       ro: "Vaccinare <span class=\"accent\">la colegiu</span><br/>Île-de-France",
-      ka: "სკოლის <span class=\"accent\">ვაქცინაცია</span><br/>Île-de-France",
-      sq: "Vaksinimi <span class=\"accent\">në kolegj</span><br/>Île-de-France",
-      am: "የትምህርት ቤት <span class=\"accent\">ክትባት</span><br/>Île-de-France",
-      zh: "学校<span class=\"accent\">疫苗接种</span><br/>Île-de-France",
-      prs: "واکسیناسیون <span class=\"accent\">مکتب</span><br/>Île-de-France",
-      es: "Vacunación <span class=\"accent\">escolar</span><br/>Île-de-France",
-      pt: "Vacinação <span class=\"accent\">escolar</span><br/>Île-de-France",
-      ru: "Школьная <span class=\"accent\">вакцинация</span><br/>Île-de-France",
-      uk: "Шкільна <span class=\"accent\">вакцинація</span><br/>Île-de-France",
-      mo: "Vaccinare <span class=\"accent\">la colegiu</span><br/>Île-de-France"
+      ka: "სკოლის <span class=\"accent\">ვაქცინაცია</span><br/>Île-de-France"
     },
     heroSubtitle: {
   fr: "Une information claire et fiable pour accompagner les familles dans la vaccination au collège. Découvrez les documents de la campagne régionale, les réponses aux questions fréquentes et les modalités d’inscription.",
@@ -696,16 +670,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, .btn:focus-visible,
   ps: "په ښوونځي کې د واکسین په اړه د کورنیو لپاره روښانه او باوري معلومات. د سیمه‌ییز کمپاین اسناد، عامو پوښتنو ځوابونه او د نوم‌لیکنې څرنګوالی وګورئ.",
   ku: "زانیاریی ڕوون و باوەڕپێکراو بۆ هاوکاریی خێزانەکان لە ڤاکسینی قوتابخانە. دەستگەیشتن بە بەڵگەنامەکانی کمپەینی هەرێمی، پرسیارە باوەکان و زانیاریی تۆمارکردن.",
   ro: "Informații clare și de încredere pentru a sprijini familiile în vaccinarea școlară. Accesați documentele campaniei regionale, răspunsurile la întrebările frecvente și detaliile de înscriere.",
-  ka: "მკაფიო და სანდო ინფორმაცია ოჯახების მხარდასაჭერად სკოლის ვაქცინაციაში. გაეცანით რეგიონული კამპანიის დოკუმენტებს, ხშირად დასმულ კითხვებს და რეგისტრაციის პირობებს.",
-  sq: "Informacion i qartë dhe i besueshëm për të mbështetur familjet në vaksinimin në kolegj. Zbuloni dokumentet e fushatës rajonale, përgjigjet ndaj pyetjeve të shpeshta dhe mënyrat e regjistrimit.",
-  am: "በት/ቤት ክትባት ረገድ ቤተሰቦችን ለመደገፍ ግልጽና አስተማማኝ መረጃ። የክልላዊ ዘመቻውን ሰነዶች፣ ለተደጋጋሚ ጥያቄዎች መልሶችን እና የምዝገባ ሁኔታዎችን ይመልከቱ።",
-  zh: "为家庭提供清晰可靠的学校疫苗接种相关信息。查看区域接种活动的相关文件、常见问题解答以及报名方式。",
-  prs: "معلومات واضح و معتبر برای همراهی خانواده‌ها در واکسیناسیون مکتب. اسناد کمپاین ساحوی، پاسخ به سوالات مکرر و روش ثبت‌نام را مشاهده کنید.",
-  es: "Información clara y fiable para acompañar a las familias en la vacunación escolar. Descubra los documentos de la campaña regional, las respuestas a las preguntas frecuentes y las modalidades de inscripción.",
-  pt: "Informação clara e fiável para acompanhar as famílias na vacinação escolar. Descubra os documentos da campanha regional, as respostas às perguntas frequentes e as modalidades de inscrição.",
-  ru: "Понятная и достоверная информация для сопровождения семей в вопросах школьной вакцинации. Ознакомьтесь с документами региональной кампании, ответами на часто задаваемые вопросы и порядком регистрации.",
-  uk: "Зрозуміла та достовірна інформація для підтримки родин у шкільній вакцинації. Ознайомтеся з документами регіональної кампанії, відповідями на часті запитання та порядком реєстрації.",
-  mo: "Informații clare și de încredere pentru a sprijini familiile în vaccinarea școlară. Accesați documentele campaniei regionale, răspunsurile la întrebările frecvente și detaliile de înscriere."
+  ka: "მკაფიო და სანდო ინფორმაცია ოჯახების მხარდასაჭერად სკოლის ვაქცინაციაში. გაეცანით რეგიონული კამპანიის დოკუმენტებს, ხშირად დასმულ კითხვებს და რეგისტრაციის პირობებს."
 },
 introTitle: {
   fr: "Équipe Mobile de Vaccination – Sud Seine-et-Marne",
@@ -715,16 +680,7 @@ introTitle: {
   ps: "د واکسین ګرځنده ټیم – جنوبي سین-اې-مارن",
   ku: "Tîma Vakisînasyona Gerok – Başûrê Seine-et-Marne",
   ro: "Echipa Mobilă de Vaccinare – Sud Seine-et-Marne",
-  ka: "მობილური ვაქცინაციის გუნდი – სამხრეთი სენ-ე-მარნი",
-  sq: "Ekipi Lëvizës i Vaksinimit – Seine-et-Marne Jugore",
-  am: "ተንቀሳቃሽ የክትባት ቡድን – ደቡብ ሴን-ኤ-ማርን",
-  zh: "流动疫苗接种小组 – 南塞纳-马恩省",
-  prs: "تیم سیار واکسیناسیون – سین-ای-مارن جنوبی",
-  es: "Equipo Móvil de Vacunación – Sur de Seine-et-Marne",
-  pt: "Equipa Móvel de Vacinação – Sul de Seine-et-Marne",
-  ru: "Мобильная бригада вакцинации – Южный Сена-и-Марна",
-  uk: "Мобільна бригада вакцинації – Південний Сена-і-Марна",
-  mo: "Echipa Mobilă de Vaccinare – Sud Seine-et-Marne"
+  ka: "მობილური ვაქცინაციის გუნდი – სამხრეთი სენ-ე-მარნი"
 },
     "introDesc": {
   "fr": "Unité de santé publique du Groupe Hospitalier de Melun, chargée de l’organisation et de la coordination de la vaccination en milieu scolaire (collèges).",
@@ -734,16 +690,7 @@ introTitle: {
   "ps": "د مېلون د روغتون ډلې د عامې روغتیا واحد، چې په منځنیو ښوونځیو کې د واکسین کولو د تنظیم او همغږۍ مسؤلیت لري.",
   "ku": "Yekîneya tenduristiya giştî ya Koma Nexweşxaneya Melunê, ku berpirsiyar e ji bo rêxistin û hevrêziya vakîsîna li dibistanên navîn.",
   "ro": "Unitate de sănătate publică a Grupului Spitalicesc din Melun, responsabilă de organizarea și coordonarea vaccinării în mediul școlar (colegii).",
-  "ka": "მელუნის ჰოსპიტალური ჯგუფის საზოგადოებრივი ჯანმრთელობის ერთეული, რომელიც პასუხისმგებელია კოლეჯებში ვაქცინაციის ორგანიზებასა და კოორდინაციაზე.",
-  sq: "Njësi e shëndetit publik e Grupit Spitalor të Melun, e ngarkuar me organizimin dhe koordinimin e vaksinimit në mjedisin shkollor (kolegje).",
-  am: "የሜሉን ሆስፒታል ቡድን የህዝብ ጤና ክፍል ሲሆን፣ በትምህርት ቤት አካባቢ (ኮሌጆች) የክትባት አደረጃጀትና ቅንጅት ኃላፊነት አለበት።",
-  zh: "默伦医院集团公共卫生部门，负责组织和协调学校（初中）环境中的疫苗接种工作。",
-  prs: "واحد صحت عامه گروپ شفاخانه‌یی ملون، مسئول تنظیم و هماهنگی واکسیناسیون در محیط مکتب (لیسه‌ها).",
-  es: "Unidad de salud pública del Grupo Hospitalario de Melun, encargada de la organización y coordinación de la vacunación en el ámbito escolar (colegios).",
-  pt: "Unidade de saúde pública do Grupo Hospitalar de Melun, responsável pela organização e coordenação da vacinação em meio escolar (colégios).",
-  ru: "Отдел общественного здравоохранения больничной группы Мелёна, отвечающий за организацию и координацию вакцинации в школьной среде (колледжах).",
-  uk: "Відділ громадського здоров'я лікарняної групи Мелена, відповідальний за організацію та координацію вакцинації у шкільному середовищі (колежах).",
-  mo: "Unitate de sănătate publică a Grupului Spitalicesc din Melun, responsabilă de organizarea și coordonarea vaccinării în mediul școlar (colegii)."
+  "ka": "მელუნის ჰოსპიტალური ჯგუფის საზოგადოებრივი ჯანმრთელობის ერთეული, რომელიც პასუხისმგებელია კოლეჯებში ვაქცინაციის ორგანიზებასა და კოორდინაციაზე."
 },
     contactTitle: {
       fr: "Nous contacter",
@@ -753,16 +700,7 @@ introTitle: {
       ps: "موږ سره اړیکه",
       ku: "پەیوەندی پێوە بکە",
       ro: "Contact",
-      ka: "დაგვიკავშირდით",
-      sq: "Na kontaktoni",
-      am: "ያግኙን",
-      zh: "联系我们",
-      prs: "با ما در تماس شوید",
-      es: "Contáctenos",
-      pt: "Contacte-nos",
-      ru: "Связаться с нами",
-      uk: "Зв'язатися з нами",
-      mo: "Contact"
+      ka: "დაგვიკავშირდით"
     },
     contactDesc: {
       fr: "Adresse, téléphone et email.",
@@ -772,16 +710,7 @@ introTitle: {
       ps: "پته، ټیلیفون او برېښنالیک.",
       ku: "ناونیشان، تەلەفۆن و ئیمەیڵ.",
       ro: "Adresă, telefon și e-mail.",
-      ka: "მისამართი, ტელეფონი და ელფოსტა.",
-      sq: "Adresa, telefoni dhe email-i.",
-      am: "አድራሻ፣ ስልክ እና ኢሜይል።",
-      zh: "地址、电话和电子邮件。",
-      prs: "آدرس، تیلفون و ایمیل.",
-      es: "Dirección, teléfono y correo electrónico.",
-      pt: "Morada, telefone e e-mail.",
-      ru: "Адрес, телефон и электронная почта.",
-      uk: "Адреса, телефон та електронна пошта.",
-      mo: "Adresă, telefon și e-mail."
+      ka: "მისამართი, ტელეფონი და ელფოსტა."
     },
     searchTitle: {
       fr: "Rechercher dans la FAQ",
@@ -791,16 +720,7 @@ introTitle: {
       ps: "په FAQ کې لټون",
       ku: "گەڕان لە FAQ",
       ro: "Caută în FAQ",
-      ka: "ძიება FAQ-ში",
-      sq: "Kërko në FAQ",
-      am: "በ FAQ ውስጥ ይፈልጉ",
-      zh: "在常见问题中搜索",
-      prs: "در سوالات مکرر جستجو کنید",
-      es: "Buscar en las preguntas frecuentes",
-      pt: "Pesquisar nas perguntas frequentes",
-      ru: "Поиск в FAQ",
-      uk: "Пошук у FAQ",
-      mo: "Caută în FAQ"
+      ka: "ძიება FAQ-ში"
     },
     searchPlaceholder: {
       fr: "Rechercher…",
@@ -810,16 +730,7 @@ introTitle: {
       ps: "ولټوئ…",
       ku: "بگەڕێ…",
       ro: "Caută…",
-      ka: "ძიება…",
-      sq: "Kërko…",
-      am: "ፈልግ…",
-      zh: "搜索…",
-      prs: "جستجو…",
-      es: "Buscar…",
-      pt: "Pesquisar…",
-      ru: "Поиск…",
-      uk: "Пошук…",
-      mo: "Caută…"
+      ka: "ძიება…"
     },
     videosTitle: {
       fr: "Vidéos",
@@ -829,16 +740,7 @@ introTitle: {
       ps: "ویډیوګانې",
       ku: "ڤیدیۆکان",
       ro: "Videoclipuri",
-      ka: "ვიდეოები",
-      sq: "Video",
-      am: "ቪዲዮዎች",
-      zh: "视频",
-      prs: "ویدیوها",
-      es: "Vídeos",
-      pt: "Vídeos",
-      ru: "Видео",
-      uk: "Відео",
-      mo: "Videoclipuri"
+      ka: "ვიდეოები"
     },
     videosDesc: {
       fr: "Regardez directement les vidéos d’information, sans quitter le site.",
@@ -848,70 +750,33 @@ introTitle: {
       ps: "د معلوماتو ویډیوګانې مستقیم او پرته د سایټ پرېښودو وګورئ.",
       ku: "ڤیدیۆکانی زانیاری ڕاستەوخۆ ببینە، بەبێ جێهێشتنی ماڵپەڕ.",
       ro: "Urmăriți videoclipurile informative direct, fără a părăsi site-ul.",
-      ka: "უყურეთ საინფორმაციო ვიდეოებს პირდაპირ, საიტის დატოვების გარეშე.",
-      sq: "Shikoni direkt videot informuese, pa dalë nga faqja.",
-      am: "የመረጃ ቪዲዮዎችን ገጹን ሳይለቁ በቀጥታ ይመልከቱ።",
-      zh: "无需离开网站，即可直接观看信息视频。",
-      prs: "ویدیوهای معلوماتی را بدون ترک سایت، به صورت مستقیم تماشا کنید.",
-      es: "Vea directamente los vídeos informativos, sin salir del sitio.",
-      pt: "Veja diretamente os vídeos informativos, sem sair do site.",
-      ru: "Смотрите информационные видео прямо на сайте, не покидая его.",
-      uk: "Дивіться інформаційні відео прямо на сайті, не залишаючи його.",
-      mo: "Urmăriți videoclipurile informative direct, fără a părăsi site-ul."
-    },
-    formOnlineLabel: {
-      fr: "Remplir le formulaire d'autorisation en ligne",
-      en: "Fill out the online authorization form",
-      ar: "املأ نموذج الموافقة عبر الإنترنت",
-      tr: "Çevrimiçi izin formunu doldurun",
-      ps: "آنلاین د اجازې فورمه ډکه کړئ",
-      ku: "فۆرمی ڕەزامەندیی ئۆنلاین پڕ بکەوە",
-      ro: "Completați formularul de autorizare online",
-      ka: "შეავსეთ ონლაინ თანხმობის ფორმა",
-      sq: "Plotësoni formularin e autorizimit online",
-      am: "የፈቃድ ቅጹን በመስመር ላይ ይሙሉ",
-      zh: "填写在线授权表",
-      prs: "فورم اجازه آنلاین را خانه‌پری کنید",
-      es: "Rellenar el formulario de autorización en línea",
-      pt: "Preencher o formulário de autorização online",
-      ru: "Заполнить онлайн-форму согласия",
-      uk: "Заповнити онлайн-форму згоди",
-      mo: "Completați formularul de autorizare online"
-    },
-    heroFormLabel: {
-      fr: "Remplissez l'autorisation parentale maintenant",
-      en: "Fill out the parental authorization now",
-      ar: "املأ إذن الوالدين الآن",
-      tr: "Ebeveyn iznini şimdi doldurun",
-      ps: "اوس د والدینو اجازه ډکه کړئ",
-      ku: "ئێستا ڕەزامەندیی دایک و باوک پڕ بکەوە",
-      ro: "Completați acum autorizația parentală",
-      ka: "შეავსეთ მშობლის თანხმობა ახლავე",
-      sq: "Plotësoni autorizimin prindëror tani",
-      am: "የወላጅ ፈቃዱን አሁኑኑ ይሙሉ",
-      zh: "立即填写家长授权书",
-      prs: "اجازه والدین را همین حالا خانه‌پری کنید",
-      es: "Complete la autorización parental ahora",
-      pt: "Preencha a autorização parental agora",
-      ru: "Заполните родительское согласие сейчас",
-      uk: "Заповніть батьківську згоду зараз",
-      mo: "Completați acum autorizația parentală"
+      ka: "უყურეთ საინფორმაციო ვიდეოებს პირდაპირ, საიტის დატოვების გარეშე."
     }
   };
 
+  let heroTitleAnimatedOnce = false;
   const applyStaticTexts = () => {
     if(els.heroKicker) els.heroKicker.textContent = t(UI_TEXT.heroKicker, els.heroKicker.textContent || '');
     if(els.heroTitle)  els.heroTitle.innerHTML   = t(UI_TEXT.heroTitleHtml, els.heroTitle.innerHTML || '');
     if(els.heroSubtitle) els.heroSubtitle.textContent = t(UI_TEXT.heroSubtitle, els.heroSubtitle.textContent || '');
-    if(els.heroTitle){
-      els.heroTitle.classList.remove('heroAnimate');
-      void els.heroTitle.offsetWidth; // force reflow pour pouvoir rejouer l'animation
-      els.heroTitle.classList.add('heroAnimate');
-    }
-    if(els.heroSubtitle){
-      els.heroSubtitle.classList.remove('heroAnimate');
-      void els.heroSubtitle.offsetWidth;
-      els.heroSubtitle.classList.add('heroAnimate');
+    if(!heroTitleAnimatedOnce){
+      heroTitleAnimatedOnce = true;
+      if(els.heroTitle){
+        els.heroTitle.classList.remove('heroAnimate');
+        void els.heroTitle.offsetWidth; // force reflow pour lancer l'animation
+        els.heroTitle.classList.add('heroAnimate');
+      }
+      if(els.heroSubtitle){
+        els.heroSubtitle.classList.remove('heroAnimate');
+        void els.heroSubtitle.offsetWidth;
+        els.heroSubtitle.classList.add('heroAnimate');
+      }
+      const flourish = document.querySelector('.titleFlourish');
+      if(flourish){
+        flourish.classList.remove('heroAnimate');
+        void flourish.offsetWidth;
+        flourish.classList.add('heroAnimate');
+      }
     }
     if(els.introTitle) els.introTitle.textContent = t(UI_TEXT.introTitle, els.introTitle.textContent || '');
     if(els.introDesc)  els.introDesc.textContent  = t(UI_TEXT.introDesc, els.introDesc.textContent || '');
@@ -946,8 +811,10 @@ if (isMail) {
   a.target = '_self';          // ✅ indispensable
 } 
 else if (isLocalPdf) {
-  a.target = '_blank';
-  a.rel = 'noopener';
+  if (key === 'calendar_full') {
+    a.dataset.downloadName = 'Les vaccins à tous les âges.pdf';
+  }
+  a.target = '_self';
 }
 
 else {
@@ -961,69 +828,20 @@ else {
 };
 
 
-  const LANG_SELF_LABEL = {
-    fr:"Choisissez votre langue", en:"Choose your language", ar:"اختر لغتك", tr:"Dilinizi seçin",
-    ps:"خپله ژبه وټاکئ", ku:"زمانەکەت هەڵبژێرە", ro:"Alegeți limba dumneavoastră", ka:"აირჩიეთ თქვენი ენა",
-    sq:"Zgjidhni gjuhën tuaj", am:"ቋንቋዎን ይምረጡ", zh:"选择您的语言", prs:"زبان خود را انتخاب کنید",
-    es:"Elija su idioma", pt:"Escolha o seu idioma", ru:"Выберите свой язык", uk:"Оберіть свою мову",
-    mo:"Alegeți limba dumneavoastră"
-  };
-  let langCycleIndex = 0;
-  let langCycleTimer = null;
-  function startLangCycle(){
-    const textEl = document.getElementById('langSwitcherText');
-    const flagEl = document.getElementById('langSwitcherFlag');
-    if(!textEl) return;
-    const langs = (faqData?.meta?.languages) || ['fr'];
-    const flags = {"fr": "<svg viewBox=\"0 0 24 16\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"8\" height=\"16\" fill=\"#002395\"/><rect x=\"8\" y=\"0\" width=\"8\" height=\"16\" fill=\"#fff\"/><rect x=\"16\" y=\"0\" width=\"8\" height=\"16\" fill=\"#ED2939\"/></svg>", "en": "<svg viewBox=\"0 0 24 16\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"24\" height=\"16\" fill=\"#00247D\"/><rect x=\"0\" y=\"6.5\" width=\"24\" height=\"3\" fill=\"#fff\"/><rect x=\"10.5\" y=\"0\" width=\"3\" height=\"16\" fill=\"#fff\"/><rect x=\"0\" y=\"7.2\" width=\"24\" height=\"1.6\" fill=\"#CF142B\"/><rect x=\"11.2\" y=\"0\" width=\"1.6\" height=\"16\" fill=\"#CF142B\"/></svg>", "ar": "<svg viewBox=\"0 0 24 16\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"24\" height=\"16\" fill=\"#006C35\"/><text x=\"12\" y=\"7.3\" font-size=\"2.4\" fill=\"#fff\" text-anchor=\"middle\" font-family=\"Traditional Arabic, Noto Naskh Arabic, Arial, sans-serif\" direction=\"rtl\">لا إله إلا الله محمد رسول الله</text><rect x=\"4\" y=\"10.5\" width=\"16\" height=\"1.3\" fill=\"#fff\"/><polygon points=\"4,11.15 5.4,10.5 5.4,11.8\" fill=\"#fff\"/></svg>", "tr": "<svg viewBox=\"0 0 24 16\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"24\" height=\"16\" fill=\"#E30A17\"/><circle cx=\"9\" cy=\"8\" r=\"4.2\" fill=\"#fff\"/><circle cx=\"10.3\" cy=\"8\" r=\"3.5\" fill=\"#E30A17\"/><polygon points=\"13,8 16.5,6.7 15.2,8 16.5,9.3\" fill=\"#fff\"/></svg>", "ps": "<svg viewBox=\"0 0 24 16\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"8\" height=\"16\" fill=\"#000\"/><rect x=\"8\" y=\"0\" width=\"8\" height=\"16\" fill=\"#D32011\"/><rect x=\"16\" y=\"0\" width=\"8\" height=\"16\" fill=\"#007A36\"/></svg>", "prs": "<svg viewBox=\"0 0 24 16\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"8\" height=\"16\" fill=\"#000\"/><rect x=\"8\" y=\"0\" width=\"8\" height=\"16\" fill=\"#D32011\"/><rect x=\"16\" y=\"0\" width=\"8\" height=\"16\" fill=\"#007A36\"/></svg>", "ku": "<svg viewBox=\"0 0 24 16\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"24\" height=\"5.3\" fill=\"#EE1B24\"/><rect x=\"0\" y=\"5.3\" width=\"24\" height=\"5.4\" fill=\"#fff\"/><rect x=\"0\" y=\"10.7\" width=\"24\" height=\"5.3\" fill=\"#007A3D\"/><circle cx=\"12\" cy=\"8\" r=\"2.4\" fill=\"#FDE816\"/></svg>", "ro": "<svg viewBox=\"0 0 24 16\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"8\" height=\"16\" fill=\"#002B7F\"/><rect x=\"8\" y=\"0\" width=\"8\" height=\"16\" fill=\"#FCD116\"/><rect x=\"16\" y=\"0\" width=\"8\" height=\"16\" fill=\"#CE1126\"/></svg>", "mo": "<svg viewBox=\"0 0 24 16\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"8\" height=\"16\" fill=\"#002B7F\"/><rect x=\"8\" y=\"0\" width=\"8\" height=\"16\" fill=\"#FCD116\"/><rect x=\"16\" y=\"0\" width=\"8\" height=\"16\" fill=\"#CE1126\"/></svg>", "ka": "<svg viewBox=\"0 0 24 16\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"24\" height=\"16\" fill=\"#fff\"/><rect x=\"0\" y=\"6.8\" width=\"24\" height=\"2.4\" fill=\"#FF0000\"/><rect x=\"10.8\" y=\"0\" width=\"2.4\" height=\"16\" fill=\"#FF0000\"/><rect x=\"3\" y=\"2.5\" width=\"2\" height=\"2\" fill=\"#FF0000\"/><rect x=\"2\" y=\"1.5\" width=\"4\" height=\"4\" fill=\"none\" stroke=\"#FF0000\" stroke-width=\"0.8\"/><rect x=\"19\" y=\"2.5\" width=\"2\" height=\"2\" fill=\"#FF0000\"/><rect x=\"18\" y=\"1.5\" width=\"4\" height=\"4\" fill=\"none\" stroke=\"#FF0000\" stroke-width=\"0.8\"/><rect x=\"3\" y=\"10.5\" width=\"2\" height=\"2\" fill=\"#FF0000\"/><rect x=\"2\" y=\"9.5\" width=\"4\" height=\"4\" fill=\"none\" stroke=\"#FF0000\" stroke-width=\"0.8\"/><rect x=\"19\" y=\"10.5\" width=\"2\" height=\"2\" fill=\"#FF0000\"/><rect x=\"18\" y=\"9.5\" width=\"4\" height=\"4\" fill=\"none\" stroke=\"#FF0000\" stroke-width=\"0.8\"/></svg>", "sq": "<svg viewBox=\"0 0 24 16\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"24\" height=\"16\" fill=\"#E41E20\"/><circle cx=\"12\" cy=\"8\" r=\"3.2\" fill=\"#000\"/><polygon points=\"12,4.5 13.5,7 16,7.5 14,9.5 14.5,12 12,10.7 9.5,12 10,9.5 8,7.5 10.5,7\" fill=\"#000\"/></svg>", "am": "<svg viewBox=\"0 0 24 16\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"24\" height=\"5.3\" fill=\"#078930\"/><rect x=\"0\" y=\"5.3\" width=\"24\" height=\"5.4\" fill=\"#FCDD09\"/><rect x=\"0\" y=\"10.7\" width=\"24\" height=\"5.3\" fill=\"#DA121A\"/><circle cx=\"12\" cy=\"8\" r=\"2.6\" fill=\"#0F47AF\"/></svg>", "zh": "<svg viewBox=\"0 0 24 16\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"24\" height=\"16\" fill=\"#DE2910\"/><polygon points=\"5,3 5.7,5 7.8,5 6.1,6.2 6.7,8.2 5,7 3.3,8.2 3.9,6.2 2.2,5 4.3,5\" fill=\"#FFDE00\"/><circle cx=\"9\" cy=\"2.2\" r=\"0.7\" fill=\"#FFDE00\"/><circle cx=\"10.3\" cy=\"4\" r=\"0.7\" fill=\"#FFDE00\"/><circle cx=\"10.3\" cy=\"6.3\" r=\"0.7\" fill=\"#FFDE00\"/><circle cx=\"9\" cy=\"8\" r=\"0.7\" fill=\"#FFDE00\"/></svg>", "es": "<svg viewBox=\"0 0 24 16\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"24\" height=\"4\" fill=\"#AA151B\"/><rect x=\"0\" y=\"4\" width=\"24\" height=\"8\" fill=\"#F1BF00\"/><rect x=\"0\" y=\"12\" width=\"24\" height=\"4\" fill=\"#AA151B\"/></svg>", "pt": "<svg viewBox=\"0 0 24 16\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"9.6\" height=\"16\" fill=\"#046A38\"/><rect x=\"9.6\" y=\"0\" width=\"14.4\" height=\"16\" fill=\"#DA291C\"/><circle cx=\"9.6\" cy=\"8\" r=\"3.3\" fill=\"#FFCC00\" stroke=\"#fff\" stroke-width=\"0.5\"/></svg>", "ru": "<svg viewBox=\"0 0 24 16\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"24\" height=\"5.3\" fill=\"#fff\"/><rect x=\"0\" y=\"5.3\" width=\"24\" height=\"5.4\" fill=\"#0039A6\"/><rect x=\"0\" y=\"10.7\" width=\"24\" height=\"5.3\" fill=\"#D52B1E\"/></svg>", "uk": "<svg viewBox=\"0 0 24 16\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"24\" height=\"8\" fill=\"#005BBB\"/><rect x=\"0\" y=\"8\" width=\"24\" height=\"8\" fill=\"#FFD500\"/></svg>"};
-    function paint(){
-      const code = langs[langCycleIndex % langs.length];
-      textEl.textContent = LANG_SELF_LABEL[code] || '';
-      if(flagEl) flagEl.innerHTML = flags[code] || '';
-    }
-    paint();
-    if(langCycleTimer) clearInterval(langCycleTimer);
-    langCycleTimer = setInterval(()=>{
-      textEl.style.opacity = 0;
-      if(flagEl) flagEl.style.opacity = 0;
-      setTimeout(()=>{
-        langCycleIndex = (langCycleIndex + 1) % langs.length;
-        paint();
-        textEl.style.opacity = 1;
-        if(flagEl) flagEl.style.opacity = 1;
-      }, 300);
-    }, 1800);
-  }
   function buildLangButtons(){
-    const panel = document.getElementById('langPanel');
-    if(!panel) return;
+    if(!els.langButtons) return;
+    els.langButtons.innerHTML = '';
     const langs = (faqData?.meta?.languages) || ['fr'];
     const labels = faqData?.meta?.lang_labels || {};
-    const flags = {"fr": "<svg viewBox=\"0 0 24 16\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"8\" height=\"16\" fill=\"#002395\"/><rect x=\"8\" y=\"0\" width=\"8\" height=\"16\" fill=\"#fff\"/><rect x=\"16\" y=\"0\" width=\"8\" height=\"16\" fill=\"#ED2939\"/></svg>", "en": "<svg viewBox=\"0 0 24 16\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"24\" height=\"16\" fill=\"#00247D\"/><rect x=\"0\" y=\"6.5\" width=\"24\" height=\"3\" fill=\"#fff\"/><rect x=\"10.5\" y=\"0\" width=\"3\" height=\"16\" fill=\"#fff\"/><rect x=\"0\" y=\"7.2\" width=\"24\" height=\"1.6\" fill=\"#CF142B\"/><rect x=\"11.2\" y=\"0\" width=\"1.6\" height=\"16\" fill=\"#CF142B\"/></svg>", "ar": "<svg viewBox=\"0 0 24 16\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"24\" height=\"16\" fill=\"#006C35\"/><text x=\"12\" y=\"7.3\" font-size=\"2.4\" fill=\"#fff\" text-anchor=\"middle\" font-family=\"Traditional Arabic, Noto Naskh Arabic, Arial, sans-serif\" direction=\"rtl\">لا إله إلا الله محمد رسول الله</text><rect x=\"4\" y=\"10.5\" width=\"16\" height=\"1.3\" fill=\"#fff\"/><polygon points=\"4,11.15 5.4,10.5 5.4,11.8\" fill=\"#fff\"/></svg>", "tr": "<svg viewBox=\"0 0 24 16\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"24\" height=\"16\" fill=\"#E30A17\"/><circle cx=\"9\" cy=\"8\" r=\"4.2\" fill=\"#fff\"/><circle cx=\"10.3\" cy=\"8\" r=\"3.5\" fill=\"#E30A17\"/><polygon points=\"13,8 16.5,6.7 15.2,8 16.5,9.3\" fill=\"#fff\"/></svg>", "ps": "<svg viewBox=\"0 0 24 16\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"8\" height=\"16\" fill=\"#000\"/><rect x=\"8\" y=\"0\" width=\"8\" height=\"16\" fill=\"#D32011\"/><rect x=\"16\" y=\"0\" width=\"8\" height=\"16\" fill=\"#007A36\"/></svg>", "prs": "<svg viewBox=\"0 0 24 16\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"8\" height=\"16\" fill=\"#000\"/><rect x=\"8\" y=\"0\" width=\"8\" height=\"16\" fill=\"#D32011\"/><rect x=\"16\" y=\"0\" width=\"8\" height=\"16\" fill=\"#007A36\"/></svg>", "ku": "<svg viewBox=\"0 0 24 16\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"24\" height=\"5.3\" fill=\"#EE1B24\"/><rect x=\"0\" y=\"5.3\" width=\"24\" height=\"5.4\" fill=\"#fff\"/><rect x=\"0\" y=\"10.7\" width=\"24\" height=\"5.3\" fill=\"#007A3D\"/><circle cx=\"12\" cy=\"8\" r=\"2.4\" fill=\"#FDE816\"/></svg>", "ro": "<svg viewBox=\"0 0 24 16\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"8\" height=\"16\" fill=\"#002B7F\"/><rect x=\"8\" y=\"0\" width=\"8\" height=\"16\" fill=\"#FCD116\"/><rect x=\"16\" y=\"0\" width=\"8\" height=\"16\" fill=\"#CE1126\"/></svg>", "mo": "<svg viewBox=\"0 0 24 16\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"8\" height=\"16\" fill=\"#002B7F\"/><rect x=\"8\" y=\"0\" width=\"8\" height=\"16\" fill=\"#FCD116\"/><rect x=\"16\" y=\"0\" width=\"8\" height=\"16\" fill=\"#CE1126\"/></svg>", "ka": "<svg viewBox=\"0 0 24 16\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"24\" height=\"16\" fill=\"#fff\"/><rect x=\"0\" y=\"6.8\" width=\"24\" height=\"2.4\" fill=\"#FF0000\"/><rect x=\"10.8\" y=\"0\" width=\"2.4\" height=\"16\" fill=\"#FF0000\"/><rect x=\"3\" y=\"2.5\" width=\"2\" height=\"2\" fill=\"#FF0000\"/><rect x=\"2\" y=\"1.5\" width=\"4\" height=\"4\" fill=\"none\" stroke=\"#FF0000\" stroke-width=\"0.8\"/><rect x=\"19\" y=\"2.5\" width=\"2\" height=\"2\" fill=\"#FF0000\"/><rect x=\"18\" y=\"1.5\" width=\"4\" height=\"4\" fill=\"none\" stroke=\"#FF0000\" stroke-width=\"0.8\"/><rect x=\"3\" y=\"10.5\" width=\"2\" height=\"2\" fill=\"#FF0000\"/><rect x=\"2\" y=\"9.5\" width=\"4\" height=\"4\" fill=\"none\" stroke=\"#FF0000\" stroke-width=\"0.8\"/><rect x=\"19\" y=\"10.5\" width=\"2\" height=\"2\" fill=\"#FF0000\"/><rect x=\"18\" y=\"9.5\" width=\"4\" height=\"4\" fill=\"none\" stroke=\"#FF0000\" stroke-width=\"0.8\"/></svg>", "sq": "<svg viewBox=\"0 0 24 16\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"24\" height=\"16\" fill=\"#E41E20\"/><circle cx=\"12\" cy=\"8\" r=\"3.2\" fill=\"#000\"/><polygon points=\"12,4.5 13.5,7 16,7.5 14,9.5 14.5,12 12,10.7 9.5,12 10,9.5 8,7.5 10.5,7\" fill=\"#000\"/></svg>", "am": "<svg viewBox=\"0 0 24 16\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"24\" height=\"5.3\" fill=\"#078930\"/><rect x=\"0\" y=\"5.3\" width=\"24\" height=\"5.4\" fill=\"#FCDD09\"/><rect x=\"0\" y=\"10.7\" width=\"24\" height=\"5.3\" fill=\"#DA121A\"/><circle cx=\"12\" cy=\"8\" r=\"2.6\" fill=\"#0F47AF\"/></svg>", "zh": "<svg viewBox=\"0 0 24 16\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"24\" height=\"16\" fill=\"#DE2910\"/><polygon points=\"5,3 5.7,5 7.8,5 6.1,6.2 6.7,8.2 5,7 3.3,8.2 3.9,6.2 2.2,5 4.3,5\" fill=\"#FFDE00\"/><circle cx=\"9\" cy=\"2.2\" r=\"0.7\" fill=\"#FFDE00\"/><circle cx=\"10.3\" cy=\"4\" r=\"0.7\" fill=\"#FFDE00\"/><circle cx=\"10.3\" cy=\"6.3\" r=\"0.7\" fill=\"#FFDE00\"/><circle cx=\"9\" cy=\"8\" r=\"0.7\" fill=\"#FFDE00\"/></svg>", "es": "<svg viewBox=\"0 0 24 16\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"24\" height=\"4\" fill=\"#AA151B\"/><rect x=\"0\" y=\"4\" width=\"24\" height=\"8\" fill=\"#F1BF00\"/><rect x=\"0\" y=\"12\" width=\"24\" height=\"4\" fill=\"#AA151B\"/></svg>", "pt": "<svg viewBox=\"0 0 24 16\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"9.6\" height=\"16\" fill=\"#046A38\"/><rect x=\"9.6\" y=\"0\" width=\"14.4\" height=\"16\" fill=\"#DA291C\"/><circle cx=\"9.6\" cy=\"8\" r=\"3.3\" fill=\"#FFCC00\" stroke=\"#fff\" stroke-width=\"0.5\"/></svg>", "ru": "<svg viewBox=\"0 0 24 16\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"24\" height=\"5.3\" fill=\"#fff\"/><rect x=\"0\" y=\"5.3\" width=\"24\" height=\"5.4\" fill=\"#0039A6\"/><rect x=\"0\" y=\"10.7\" width=\"24\" height=\"5.3\" fill=\"#D52B1E\"/></svg>", "uk": "<svg viewBox=\"0 0 24 16\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"24\" height=\"8\" fill=\"#005BBB\"/><rect x=\"0\" y=\"8\" width=\"24\" height=\"8\" fill=\"#FFD500\"/></svg>"};
-    panel.innerHTML = '';
+    const flags = { fr:'🇫🇷', en:'🇬🇧', ar:'🇸🇦', tr:'🇹🇷', ps:'🇦🇫', ku:'🇮🇶', ka:'🇬🇪', ro:'🇷🇴' };
     langs.forEach(l => {
       const b = document.createElement('button');
       b.type = 'button';
-      b.className = 'langOption' + (l===lang ? ' active' : '');
-      b.innerHTML = `<span class="langOptionFlag" aria-hidden="true">${flags[l]||''}</span><span>${labels[l] || l}</span>`;
-      b.addEventListener('click', () => {
-        panel.hidden = true;
-        setLanguage(l);
-      });
-      panel.appendChild(b);
-    });
-  }
-  const langSwitcherBtn = document.getElementById('langSwitcherBtn');
-  if(langSwitcherBtn){
-    langSwitcherBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const panel = document.getElementById('langPanel');
-      panel.hidden = !panel.hidden;
-    });
-    document.addEventListener('click', (e) => {
-      const panel = document.getElementById('langPanel');
-      const wrap = document.querySelector('.langPanelWrap');
-      if(panel && !panel.hidden && wrap && !wrap.contains(e.target)) panel.hidden = true;
+      b.className = 'langBtn' + (l===lang ? ' active' : '');
+      b.dataset.lang = l;
+      b.innerHTML = `<span aria-hidden="true">${flags[l]||'🌐'}</span><span>${labels[l] || l}</span>`;
+      b.addEventListener('click', () => setLanguage(l));
+      els.langButtons.appendChild(b);
     });
   }
 
@@ -1097,15 +915,6 @@ else {
     if(idfUrl){
       els.heroBtns.appendChild(makeBtn(idfLabel, idfUrl, 'btn'));
     }
-
-    // Formulaire d'autorisation en ligne, dupliqué ici juste sous le bouton du site officiel
-    els.heroBtns.appendChild(
-      makeBtn(
-        t(UI_TEXT.heroFormLabel, "Remplissez l'autorisation parentale maintenant"),
-        `autorisation-vaccination.html?lang=${encodeURIComponent(lang)}`,
-        'btn btn-cta-animated'
-      )
-    );
 
     // Les 3 vidéos sont désormais lues directement dans leur propre section (renderVideos)
   }
@@ -1342,17 +1151,6 @@ else {
 
     const addBtn = (label, href) => group.appendChild(makeBtn(label, href, 'btn'));
 
-    // Formulaire d'autorisation en ligne (remplace les 2 anciens PDF à remplir à la main) — en premier
-    // La langue en cours du site est transmise au formulaire via ?lang=...
-    group.appendChild(
-      makeBtn(
-        t(UI_TEXT.formOnlineLabel, "Remplir le formulaire d'autorisation en ligne"),
-        `autorisation-vaccination.html?lang=${encodeURIComponent(lang)}`,
-        'btn btn-cta-animated',
-        'form_online'
-      )
-    );
-
     // Registration button (HPV + Méningite ACWY uniquement)
     const regUrl = introData?.registration?.url || introData?.registration?.online?.url;
     const regLabel = t(introData?.registration?.label || introData?.registration?.online?.label, 'Inscription en ligne (HPV + Méningite ACWY uniquement)');
@@ -1362,8 +1160,17 @@ else {
   );
 }
 
-    // Les 2 anciens boutons PDF (form_hpv / form_other) ont été retirés :
-    // remplacés par le bouton "form_online" ci-dessus.
+    // Forms
+    (introData?.resources?.forms || []).forEach(f => {
+  group.appendChild(
+    makeBtn(
+      t(f.label, 'Formulaire'),
+      f.url,
+      'btn',
+      f.type === 'hpv' ? 'form_hpv' : 'form_other'
+    )
+  );
+});
 
     // Existing videos
 (introData?.resources?.videos || []).forEach(v => {
@@ -1428,17 +1235,42 @@ if (introData?.hpv_flyer_multilang?.url) {
       root.appendChild(mgroup);
 
       (introData.meningite_documents.items || []).forEach(it => {
-  const docBtn = makeBtn(
+  mgroup.appendChild(
+    makeBtn(
       t(it.label, 'Document'),
       normPath(it.file),
       'btn',
       'meningite_doc'
-    );
-  if (it.id === 'calendrier_vaccinal_2026_complet') {
-    docBtn.dataset.downloadName = 'Les vaccins à tous les âges.pdf';
-  }
-  mgroup.appendChild(docBtn);
+    )
+  );
 });
+
+// Calendrier simplifié des vaccinations – 2025
+if (introData?.calendar_simple?.file) {
+  group.appendChild(
+    makeBtn(
+      t(introData.calendar_simple.label, 'Calendrier simplifié des vaccinations – 2025'),
+      normPath(introData.calendar_simple.file),
+      'btn',
+      'calendar_simple'
+    )
+  );
+}
+// Calendrier vaccinal complet – 2025
+if (introData?.calendar_full?.file) {
+  group.appendChild(
+    makeBtn(
+      t(
+        introData.calendar_full.label,
+        'Les vaccins à tous les âges – Calendrier vaccinal 2025'
+      ),
+      normPath(introData.calendar_full.file),
+      'btn',
+      'calendar_full'
+    )
+  );
+}
+
 
       const note = t(introData.meningite_documents.note, '');
       if(note){
@@ -1498,11 +1330,9 @@ div.addEventListener('click', (e) => {
   const zone = actions;
 
   const closeZone = (z) => {
-    z.style.maxHeight = z.scrollHeight + 'px';
-    requestAnimationFrame(() => { z.style.maxHeight = '0px'; });
     z.classList.remove('active');
     z.parentElement?.setAttribute('aria-expanded', 'false');
-    setTimeout(() => { z.innerHTML = ''; z.style.maxHeight = ''; }, 350);
+    setTimeout(() => { z.innerHTML = ''; }, 380);
   };
 
   // Toggle simple
@@ -1517,6 +1347,9 @@ div.addEventListener('click', (e) => {
   zone.classList.add('active');
   div.classList.add('done');
   div.setAttribute('aria-expanded', 'true');
+
+  const inner = document.createElement('div');
+  inner.className = 'stepActionsInner';
 
   const group = document.createElement('div');
   group.className = 'resourceGroup';
@@ -1533,25 +1366,18 @@ div.addEventListener('click', (e) => {
     }
 
     // ÉTAPE 2 — Consentement
-    // registration_hpv (lien ARS) volontairement retiré de cette liste : il n'est plus cloné
-    // dans l'étape 2, mais le bouton d'origine existe toujours (masqué) dans #introBody.
-    if (step.number === 2 && ['form_online'].includes(key)) {
+    if (step.number === 2 && ['registration_hpv','form_hpv','form_other'].includes(key)) {
       group.appendChild(clone);
     }
 
     // ÉTAPE 3 — Vaccination
-    if (step.number === 3 && ['contact_email','meningite_doc'].includes(key)) {
+    if (step.number === 3 && ['contact_email','meningite_doc','calendar_simple','calendar_full'].includes(key)) {
       group.appendChild(clone);
     }
   });
 
-  zone.appendChild(group);
-
-  // Animation d'ouverture douce (hauteur réelle du contenu, calculée après ajout)
-  zone.style.maxHeight = '0px';
-  requestAnimationFrame(() => {
-    zone.style.maxHeight = zone.scrollHeight + 'px';
-  });
+  inner.appendChild(group);
+  zone.appendChild(inner);
 });
 
   container.appendChild(div);
@@ -1598,19 +1424,20 @@ div.addEventListener('click', (e) => {
 
       const a = document.createElement('div');
       a.className = 'ans';
-      a.textContent = t(it.a, '');
+      const ansInner = document.createElement('div');
+      ansInner.className = 'ansInner';
+      ansInner.textContent = t(it.a, '');
+      a.appendChild(ansInner);
 
       s.addEventListener('click', (e) => {
         e.preventDefault();
         const isOpen = d.hasAttribute('open');
         if(isOpen){
-          a.style.maxHeight = '0px';
           a.classList.remove('open');
-          setTimeout(() => { d.removeAttribute('open'); }, 350);
+          setTimeout(() => { d.removeAttribute('open'); }, 380);
         } else {
           d.setAttribute('open', '');
           a.classList.add('open');
-          a.style.maxHeight = a.scrollHeight + 'px';
         }
       });
 
@@ -1726,7 +1553,6 @@ div.addEventListener('click', (e) => {
 
     applyStaticTexts();
     buildLangButtons();
-    startLangCycle();
     buildSidebar();
     renderHero();
     renderIntro();
