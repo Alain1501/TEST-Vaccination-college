@@ -379,7 +379,9 @@ html, body { overflow-x: hidden; max-width: 100%; }
 .acc.ouverte { background: var(--card); box-shadow: 0 0 0 2px var(--primary) inset, 0 16px 36px -24px rgba(37,99,235,.45); }
 [data-theme="dark"] .acc.ouverte { box-shadow: 0 0 0 2px var(--primary) inset, 0 16px 36px -24px rgba(56,189,248,.5); }
 .acc h3 { margin: 0; font-size: 1rem; }
-.acc button { all: unset; box-sizing: border-box; display: flex; width: 100%; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 16px; cursor: pointer; font-weight: 800; line-height: 1.35; color: var(--text); }
+.acc button { all: unset; box-sizing: border-box; display: flex; width: 100%; align-items: center; gap: 12px; padding: 1.05rem 1.35rem; cursor: pointer; font-weight: 800; line-height: 1.35; color: var(--text); }
+.acc button > span:first-child { flex: 1; min-width: 0; }
+.acc button .chip { flex: none; }
 .acc button:focus-visible { outline: 3px solid var(--primary); outline-offset: 2px; }
 .acc .signe { flex: none; width: 28px; height: 28px; border-radius: 50%; background: var(--primary-soft); color: var(--primary); display: grid; place-items: center; transition: transform .45s cubic-bezier(.22,1,.36,1), background-color .3s ease, color .3s ease; }
 .acc .signe svg { width: 15px; height: 15px; }
