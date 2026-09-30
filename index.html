@@ -375,7 +375,9 @@ html, body { overflow-x: hidden; max-width: 100%; }
 #heroSubtitle.heroAnimate { animation: heroFadeUp .7s ease .2s both; }
 
 /* ----- Accordéon FAQ : structure et mécanisme repris du site USP ----- */
-.acc { width: 100%; border-radius: 20px 20px 20px 6px; background: var(--card); border: 1px solid var(--border); margin: 0 0 10px; overflow: hidden; transition: background-color .3s ease, box-shadow .3s ease; }
+.acc { width: 100%; border-radius: 20px 20px 20px 6px; background: var(--primary-soft); border: 1px solid transparent; margin: 0 0 10px; overflow: hidden; transition: background-color .3s ease, box-shadow .3s ease; }
+.acc.ouverte { background: var(--card); box-shadow: 0 0 0 2px var(--primary) inset, 0 16px 36px -24px rgba(37,99,235,.45); }
+[data-theme="dark"] .acc.ouverte { box-shadow: 0 0 0 2px var(--primary) inset, 0 16px 36px -24px rgba(56,189,248,.5); }
 .acc h3 { margin: 0; font-size: 1rem; }
 .acc button { all: unset; box-sizing: border-box; display: flex; width: 100%; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 16px; cursor: pointer; font-weight: 800; line-height: 1.35; color: var(--text); }
 .acc button:focus-visible { outline: 3px solid var(--primary); outline-offset: 2px; }
@@ -385,7 +387,7 @@ html, body { overflow-x: hidden; max-width: 100%; }
 .acc .corps { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .45s cubic-bezier(.22,1,.36,1); }
 .acc.ouverte .corps { grid-template-rows: 1fr; }
 .acc .corps > div { overflow: hidden; }
-.acc .corps .faqAns { max-height: none; opacity: 1; overflow: visible; margin: 0 16px 16px; color: var(--text); font-size: 14px; line-height: 1.6; white-space: pre-wrap; }
+.acc .corps .faqAns { max-height: none; opacity: 1; margin: 0 16px 16px; color: var(--text); font-size: 14px; line-height: 1.6; white-space: pre-wrap; }
 .acc.searchHit { box-shadow: 0 0 0 2px var(--primary); }
 @media (prefers-reduced-motion: reduce) {
   .acc .corps, .acc .signe { transition: none; }
