@@ -3769,17 +3769,27 @@ function drawPatientQrCode(doc, x, y, size){
   q.addData(seq, "Byte");
   q.make();
   const count = q.getModuleCount();
-  const cell = size / count;
-  doc.setFillColor(255,255,255);
-  doc.rect(x, y, size, size, 'F');
-  doc.setFillColor(0,0,0);
+
+  // Rendu via un canvas (comme les 3 autres QR de cette page, déjà intégrés en
+  // image PNG) plutôt que des centaines d'appels de dessin vectoriel un par un,
+  // nettement plus rapide et fiable sur mobile.
+  const scale = 8; // pixels par module, pour une image nette
+  const canvas = document.createElement('canvas');
+  canvas.width = count * scale;
+  canvas.height = count * scale;
+  const ctx = canvas.getContext('2d');
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = '#000000';
   for(let r = 0; r < count; r++){
     for(let c = 0; c < count; c++){
       if(q.isDark(r, c)){
-        doc.rect(x + c*cell, y + r*cell, cell, cell, 'F');
+        ctx.fillRect(c*scale, r*scale, scale, scale);
       }
     }
   }
+  const dataUrl = canvas.toDataURL('image/png');
+  doc.addImage(dataUrl, 'PNG', x, y, size, size);
 }
 
 function buildPdf(){
@@ -4108,7 +4118,14 @@ function buildPdf(){
   doc.addImage(QR_B1,'PNG', qrX1, qrY, qrS, qrS);
   doc.addImage(QR_B2,'PNG', qrX2, qrY, qrS, qrS);
   doc.addImage(QR_B3,'PNG', qrX3, qrY, qrS, qrS);
-  drawPatientQrCode(doc, qrX4, qrY, qrS);
+  try {
+    drawPatientQrCode(doc, qrX4, qrY, qrS);
+  } catch(qrErr) {
+    // Le QR patient est un bonus pour Colibri : s'il échoue pour une raison
+    // quelconque, cela ne doit jamais empêcher la génération du document
+    // d'autorisation lui-même, qui est la pièce officielle attendue.
+    console.error('QR patient non généré :', qrErr);
+  }
   setF('italic',6.6,INKSOFT);
   const capX3 = qrX3 + qrS/2;
   doc.text("Plus d'info sur la campagne de", capX3, qrY+qrS+3.2, {align:'center'});
