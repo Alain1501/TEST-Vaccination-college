@@ -2727,171 +2727,70 @@ var qrcode = function() {
   /* ---- Gabarit d'impression : reproduction fidèle du document original ---- */
 #pageSubtitle{color:#dc2626;font-weight:600;}
 .subtitleEmail{color:inherit;font-weight:800;text-decoration:underline;white-space:nowrap;}
-</style>
 
-<style>
-  /* ===== Sélecteur de langue (style aligné sur le site principal) ===== */
-  .langBar{
-    display:flex;
-    flex-direction:column;
-    align-items:flex-end;
-    gap:2px;
-    direction:ltr;
-  }
-  @media (max-width:768px){ .langBar{ align-items:center; } }
-  .langHint{
-    font-size:.74rem;
-    font-weight:600;
-    color:var(--ink-soft);
-    display:flex;
-    align-items:center;
-    gap:4px;
-  }
-  .langHint .arrow{
-    animation:langArrowBounce 1.4s ease-in-out infinite;
-    font-size:.8rem;
-  }
-  @keyframes langArrowBounce{
-    0%,100%{transform:translateY(0);}
-    50%{transform:translateY(3px);}
-  }
-  .langSwitcherBtn{
-    background:var(--card);
-    border:1px solid var(--line);
-    border-radius:999px;
-    color:var(--blue-700);
-    font-weight:700;
-    font-size:.92rem;
-    cursor:pointer;
-    padding:8px 16px;
-    display:flex;
-    align-items:center;
-    gap:8px;
-    box-shadow:0 2px 8px rgba(0,0,0,.08);
-  }
-  .langSwitcherBtn .chevron{font-size:.7rem;opacity:.7;}
-  .langSwitcherFlag, #langSwitcherText{
-    transition:opacity .3s ease;
-    opacity:1;
-  }
-  .langSwitcherFlag{
-    display:inline-flex;
-    width:20px;
-    height:14px;
-    border-radius:2px;
-    overflow:hidden;
-    box-shadow:0 0 0 1px rgba(0,0,0,.12);
-    flex-shrink:0;
-  }
-  .langSwitcherFlagImg{display:block;width:100%;height:100%;object-fit:cover;}
-  .langOptionFlag{
-    display:block;
-    width:18px;
-    height:12px;
-    object-fit:cover;
-    border-radius:2px;
-    box-shadow:0 0 0 1px rgba(0,0,0,.12);
-    flex-shrink:0;
-  }
-  .langOptionCheck{display:inline-flex;width:14px;flex-shrink:0;color:var(--blue-700, #2563eb);font-weight:900;font-size:13px;}
-  .langPanelWrap{position:relative;}
-  .langPanel{
-    position:absolute;
-    top:100%;
-    left:50%;
-    transform:translateX(-50%);
-    margin-top:6px;
-    background:var(--card);
-    border:1px solid var(--line);
-    border-radius:14px;
-    box-shadow:0 10px 30px rgba(0,0,0,.18);
-    padding:10px;
-    display:grid;
-    grid-template-columns:repeat(2,minmax(130px,1fr));
-    gap:4px;
-    max-height:65vh;
-    overflow-y:auto;
-    width:max-content;
-    max-width:92vw;
-  }
-  .langPanel[hidden]{display:none;}
-  .langOption{
-    display:flex;
-    align-items:center;
-    gap:8px;
-    padding:8px 10px;
-    border-radius:10px;
-    border:1px solid transparent;
-    background:none;
-    color:var(--ink);
-    cursor:pointer;
-    font-size:.82rem;
-    font-weight:600;
-    text-align:left;
-    white-space:nowrap;
-  }
-  .langOption:hover{background:var(--blue-100);}
-  .langOption.active{border-color:var(--blue-700);background:var(--blue-100);}
-
-  .pdf-note{
-    text-align:center;
-    font-size:.76rem;
-    color:var(--ink-soft);
-    font-style:italic;
-    margin:-10px 0 18px;
-  }
-
-  /* ===== RTL (arabe, pachto, kurde) ===== */
-  html[dir="rtl"] body{direction:rtl;text-align:right;}
-  html[dir="rtl"] .field label{text-align:right;}
-  html[dir="rtl"] .help-email-msg{text-align:right;}
-  html[dir="rtl"] .help-email-link{margin-left:0;margin-right:4px;}
-  html[dir="rtl"] .sig-actions{flex-direction:row-reverse;}
-  html[dir="rtl"] .choice-btn{text-align:center;}
-  html[dir="rtl"] .sub-hint{margin-left:0;margin-right:24px;}
-  html[dir="rtl"] .nav-row{flex-direction:row-reverse;}
-  html[dir="rtl"] .summary-item{flex-direction:row-reverse;}
-  html[dir="rtl"] .carnet-option{flex-direction:row-reverse;}
-  html[dir="rtl"] .solo-checks .field label{flex-direction:row-reverse;}
-  html[dir="rtl"] .sub-check-line label{flex-direction:row-reverse;}
-
-/* ===== BANDE LOGOS INSTITUTIONNELS (identique au site principal) ===== */
-.institutional-logos{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;min-height:90px;padding:10px 24px;background:#fff;border-bottom:1px solid #e5e7eb;max-width:1200px;margin:0 auto;}
-.logosGroup{display:grid;grid-auto-flow:column;align-items:center;gap:28px;}
-.institutional-logos img{height:56px;width:auto;max-width:160px;object-fit:contain;display:block;}
+/* =====================================================================
+   EN-TÊTE DU FORMULAIRE : logos institutionnels + sélecteur de langue
+   Bloc unique, écrit à neuf, aucune règle historique réutilisée.
+===================================================================== */
+.siteHeader{background:#fff;border-bottom:1px solid #e5e7eb;position:relative;z-index:100;}
+.siteHeaderInner{max-width:1200px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+.headerLogos{display:flex;align-items:center;gap:28px;flex-wrap:wrap;}
+.headerLogos a{display:inline-flex;transition:opacity .15s ease;}
+.headerLogos a:hover,.headerLogos a:focus-visible{opacity:.75;}
+.headerLogos img{height:56px;width:auto;max-width:160px;object-fit:contain;display:block;}
+.headerLangPicker{display:flex;flex-direction:column;align-items:flex-end;gap:4px;}
+.headerLangHint{font-size:12px;font-weight:600;color:#6b7280;}
+.langDropdown{position:relative;}
+.langDropdownBtn{display:flex;align-items:center;gap:8px;padding:8px 16px;border-radius:999px;border:1px solid #e5e7eb;background:#fff;color:#2563eb;font-weight:700;font-size:14px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.06);}
+.langDropdownFlag{width:20px;height:14px;object-fit:cover;border-radius:2px;box-shadow:0 0 0 1px rgba(0,0,0,.12);flex-shrink:0;display:block;}
+.langDropdownChevron{width:11px;height:11px;opacity:.65;flex-shrink:0;}
+.langDropdownPanel{position:absolute;top:calc(100% + 8px);right:0;background:#fff;border:1px solid #e5e7eb;border-radius:14px;box-shadow:0 20px 50px rgba(0,0,0,.2);padding:10px;display:grid;grid-template-columns:repeat(2,minmax(150px,1fr));gap:4px;max-height:70vh;overflow-y:auto;width:max-content;max-width:92vw;z-index:200;}
+.langDropdownPanel[hidden]{display:none;}
+.langDropdownOption{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:10px;border:1px solid transparent;background:none;color:#111827;cursor:pointer;font-size:13px;font-weight:600;text-align:left;white-space:nowrap;width:100%;}
+.langDropdownOption:hover{background:#eff6ff;}
+.langDropdownOption.active{border-color:#2563eb;background:#eff6ff;}
+.langDropdownCheck{width:14px;flex-shrink:0;color:#2563eb;font-weight:900;font-size:13px;}
+.langDropdownOptionFlag{width:18px;height:12px;object-fit:cover;border-radius:2px;box-shadow:0 0 0 1px rgba(0,0,0,.12);flex-shrink:0;display:block;}
 @media (max-width:768px){
-  .institutional-logos{flex-direction:column;justify-content:center;height:auto;gap:14px;padding:14px 10px;}
-  .logosGroup{grid-auto-flow:row;grid-template-columns:1fr 1fr;justify-items:center;gap:14px 18px;width:100%;}
-  .institutional-logos img{height:38px;max-width:100%;}
+  .siteHeaderInner{flex-direction:column;align-items:center;text-align:center;}
+  .headerLogos{justify-content:center;}
+  .headerLangPicker{align-items:center;}
+  .langDropdownPanel{right:auto;left:50%;transform:translateX(-50%);}
 }
 </style>
+
+
 </head>
 <body>
-<div class="institutional-logos">
-  <div class="logosGroup">
-    <a href="https://www.iledefrance.ars.sante.fr/rentree-scolaire-2026-2027-la-vaccination-au-college-un-geste-essentiel-pour-proteger-les" target="_blank" rel="noopener" aria-label="Agence Régionale de Santé Île-de-France">
+<header class="siteHeader">
+  <div class="siteHeaderInner">
+    <div class="headerLogos">
+      <a href="https://www.iledefrance.ars.sante.fr/rentree-scolaire-2026-2027-la-vaccination-au-college-un-geste-essentiel-pour-proteger-les" target="_blank" rel="noopener" aria-label="Agence Régionale de Santé Île-de-France">
         <img src="img/ARS.png" alt="Agence Régionale de Santé Île-de-France">
-    </a>
-    <a href="https://www.ameli.fr/medecin/sante-prevention/pathologies/cancers/cancer-du-col-de-l-uterus/vaccination-papillomavirus-humains-hpv" target="_blank" rel="noopener" aria-label="Assurance Maladie">
+      </a>
+      <a href="https://www.ameli.fr/medecin/sante-prevention/pathologies/cancers/cancer-du-col-de-l-uterus/vaccination-papillomavirus-humains-hpv" target="_blank" rel="noopener" aria-label="Assurance Maladie">
         <img src="img/AM.png" alt="Assurance Maladie">
-    </a>
-    <a href="https://www.ghsif.fr/" target="_blank" rel="noopener" aria-label="Groupe Hospitalier de Melun">
+      </a>
+      <a href="https://www.ghsif.fr/" target="_blank" rel="noopener" aria-label="Groupe Hospitalier de Melun">
         <img src="img/CHMELUN.png" alt="Groupe Hospitalier de Melun">
-    </a>
-    <a href="index.html#contactCard" aria-label="Équipe Mobile de Vaccination">
+      </a>
+      <a href="index.html#contactCard" aria-label="Équipe Mobile de Vaccination">
         <img src="img/EMV.png" alt="Équipe Mobile de Vaccination">
-    </a>
-  </div>
-  <div class="langBar">
-    <div class="langHint"><span>Choisissez votre langue</span><span class="arrow">↓</span></div>
-    <div class="langPanelWrap">
-      <button type="button" class="langSwitcherBtn" id="langSwitcherBtn">
-        <span class="langSwitcherFlag" id="langSwitcherFlag"></span><span id="langSwitcherText"></span><span class="chevron">▾</span>
-      </button>
-      <div class="langPanel" id="langPanel" hidden></div>
+      </a>
+    </div>
+    <div class="headerLangPicker">
+      <span class="headerLangHint" id="headerLangHint">Choisissez votre langue</span>
+      <div class="langDropdown">
+        <button type="button" class="langDropdownBtn" id="langSwitcherBtn" aria-haspopup="listbox" aria-expanded="false">
+          <img class="langDropdownFlag" id="langSwitcherFlag" src="" alt="">
+          <span id="langSwitcherText"></span>
+          <svg class="langDropdownChevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="langDropdownPanel" id="langPanel" role="listbox" hidden></div>
+      </div>
     </div>
   </div>
-</div>
+</header>
 <div class="wrap">
   <header class="page-head">
     <h1 data-i18n="pageTitle"></h1>
@@ -3167,18 +3066,15 @@ const FLAG_FILES = {
   fr:'fr', en:'gb-eng', ar:'sa', tr:'tr', ps:'af', ku:'iq', ro:'ro', ka:'ge',
   sq:'al', am:'et', zh:'cn', prs:'af', es:'es', pt:'pt', ru:'ru', uk:'ua', mo:'md'
 };
-function flagImg(code, cls){
-  return `<img class="${cls}" src="Flags/${FLAG_FILES[code] || 'fr'}.png" alt="">`;
-}
 let langCycleTimer = null;
 function startLangCycle(){
   const textEl = document.getElementById('langSwitcherText');
-  const flagEl = document.getElementById('langSwitcherFlag');
+  const flagEl = document.getElementById('langSwitcherFlag'); // <img> direct
   if(!textEl) return;
   function paint(){
     const code = SUPPORTED_LANGS[langCycleIndex];
     textEl.textContent = LANG_SELF_LABEL[code] || '';
-    if(flagEl) flagEl.innerHTML = flagImg(code, 'langSwitcherFlagImg');
+    if(flagEl){ flagEl.src = `Flags/${FLAG_FILES[code] || 'fr'}.png`; flagEl.alt = ''; }
   }
   paint();
   if(langCycleTimer) clearInterval(langCycleTimer);
@@ -3201,17 +3097,19 @@ function buildLangBar(){
     const isActive = code === currentLang;
     const b = document.createElement('button');
     b.type = 'button';
-    b.className = 'langOption' + (isActive ? ' active' : '');
-    b.innerHTML = `<span class="langOptionCheck">${isActive ? '✓' : ''}</span>${flagImg(code, 'langOptionFlag')}<span>${I18N[code].langName}</span>`;
+    b.setAttribute('role', 'option');
+    b.className = 'langDropdownOption' + (isActive ? ' active' : '');
+    b.innerHTML = `<span class="langDropdownCheck">${isActive ? '✓' : ''}</span><img class="langDropdownOptionFlag" src="Flags/${FLAG_FILES[code] || 'fr'}.png" alt=""><span>${I18N[code].langName}</span>`;
     b.addEventListener('click', ()=>{
       panel.hidden = true;
+      langSwitcherBtnEl.setAttribute('aria-expanded', 'false');
       // Dès qu'une langue est choisie, le bouton arrête de défiler et affiche
       // définitivement la langue sélectionnée.
       if(langCycleTimer){ clearInterval(langCycleTimer); langCycleTimer = null; }
       const textEl = document.getElementById('langSwitcherText');
       const flagEl = document.getElementById('langSwitcherFlag');
       if(textEl) textEl.textContent = LANG_SELF_LABEL[code] || code;
-      if(flagEl) flagEl.innerHTML = flagImg(code, 'langSwitcherFlagImg');
+      if(flagEl){ flagEl.src = `Flags/${FLAG_FILES[code] || 'fr'}.png`; flagEl.alt = ''; }
       if(code === currentLang) return;
       currentLang = code;
       applyLanguage();
@@ -3220,16 +3118,20 @@ function buildLangBar(){
   });
 }
 
-document.getElementById('langSwitcherBtn').addEventListener('click', (e)=>{
+const langSwitcherBtnEl = document.getElementById('langSwitcherBtn');
+langSwitcherBtnEl.addEventListener('click', (e)=>{
   e.stopPropagation();
   const panel = document.getElementById('langPanel');
+  const willOpen = panel.hidden;
   panel.hidden = !panel.hidden;
+  langSwitcherBtnEl.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
 });
 document.addEventListener('click', (e)=>{
   const panel = document.getElementById('langPanel');
-  const wrap = document.querySelector('.langPanelWrap');
+  const wrap = document.querySelector('.langDropdown');
   if(panel && !panel.hidden && wrap && !wrap.contains(e.target)){
     panel.hidden = true;
+    langSwitcherBtnEl.setAttribute('aria-expanded', 'false');
   }
 });
 startLangCycle();
