@@ -2732,20 +2732,13 @@ var qrcode = function() {
 <style>
   /* ===== Sélecteur de langue (style aligné sur le site principal) ===== */
   .langBar{
-    position:sticky;
-    top:0;
-    z-index:50;
     display:flex;
     flex-direction:column;
-    align-items:center;
+    align-items:flex-end;
     gap:2px;
-    padding:10px 0 12px;
-    margin:-24px -14px 16px;
-    background:var(--bg);
-    border-bottom:1px solid var(--line);
-    box-shadow:0 4px 14px rgba(0,0,0,.10);
     direction:ltr;
   }
+  @media (max-width:768px){ .langBar{ align-items:center; } }
   .langHint{
     font-size:.74rem;
     font-weight:600;
@@ -2863,16 +2856,19 @@ var qrcode = function() {
   html[dir="rtl"] .sub-check-line label{flex-direction:row-reverse;}
 
 /* ===== BANDE LOGOS INSTITUTIONNELS (identique au site principal) ===== */
-.institutional-logos{display:flex;justify-content:center;align-items:center;gap:32px;height:90px;padding:10px 20px;background:#fff;border-bottom:1px solid #e5e7eb;}
+.institutional-logos{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;min-height:90px;padding:10px 20px;background:#fff;border-bottom:1px solid #e5e7eb;}
+.logosGroup{display:flex;align-items:center;gap:32px;flex-wrap:wrap;}
 .institutional-logos img{max-height:70px;width:auto;object-fit:contain;}
 @media (max-width:768px){
-  .institutional-logos{flex-wrap:wrap;height:auto;gap:16px;padding:12px 10px;}
+  .institutional-logos{justify-content:center;height:auto;gap:14px;padding:12px 10px;}
+  .logosGroup{justify-content:center;gap:16px;}
   .institutional-logos img{max-height:48px;max-width:45%;}
 }
 </style>
 </head>
 <body>
 <div class="institutional-logos">
+  <div class="logosGroup">
     <a href="https://www.iledefrance.ars.sante.fr/rentree-scolaire-2026-2027-la-vaccination-au-college-un-geste-essentiel-pour-proteger-les" target="_blank" rel="noopener" aria-label="Agence Régionale de Santé Île-de-France">
         <img src="img/ARS.png" alt="Agence Régionale de Santé Île-de-France">
     </a>
@@ -2885,8 +2881,7 @@ var qrcode = function() {
     <a href="index.html#contactCard" aria-label="Équipe Mobile de Vaccination">
         <img src="img/EMV.png" alt="Équipe Mobile de Vaccination">
     </a>
-</div>
-<div class="wrap">
+  </div>
   <div class="langBar">
     <div class="langHint"><span>Choisissez votre langue</span><span class="arrow">↓</span></div>
     <div class="langPanelWrap">
@@ -2896,6 +2891,8 @@ var qrcode = function() {
       <div class="langPanel" id="langPanel" hidden></div>
     </div>
   </div>
+</div>
+<div class="wrap">
   <header class="page-head">
     <h1 data-i18n="pageTitle"></h1>
     <p id="pageSubtitle"></p>

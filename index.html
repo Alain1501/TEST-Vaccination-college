@@ -19,7 +19,7 @@
     180deg,
     var(--card) 0%,
     var(--bg) 100%
-  ) !important; } /* ===== BANDE LOGOS INSTITUTIONNELS ===== */.institutional-logos { display: flex; justify-content: center; align-items: center; gap: 32px; height: 90px;  /* ≈ 5–6 cm */ padding: 10px 20px; background: var(--bg); border-bottom: 1px solid var(--border); } .institutional-logos img { max-height: 70px; width: auto; object-fit: contain; } /* ===== RESPONSIVE LOGOS – MOBILE ===== */@media (max-width: 768px) { .institutional-logos {  flex-wrap: wrap;   /* autorise le retour à la ligne */  height: auto;   /* supprime la contrainte fixe */  gap: 16px;  padding: 12px 10px; }  .institutional-logos img {  max-height: 48px;   /* logos plus petits sur mobile */  max-width: 45%; } } /* ===== FIX LANG BUTTONS – DARK MODE ===== */[data-theme="dark"] .langBtn { background: var(--card) !important; color: var(--text) !important; border-color: var(--border) !important; } [data-theme="dark"] .langBtn.active { background: var(--primary) !important; color: #ffffff !important; } [data-theme="dark"] .langPanel { background: var(--card) !important; border-color: var(--border) !important; } [data-theme="dark"] .langOption { color: var(--text) !important; } /* ===== CONTACT SECTION WIDE ===== */.contactWide { padding-top: 20px; } .contactGrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; } .contactItem { display: flex; align-items: center; gap: 14px; padding: 18px 18px; border-radius: 18px; background: var(--card); border: 1px solid var(--border); color: var(--text); text-decoration: none; font-weight: 700; transition: background .15s ease, transform .12s ease, box-shadow .15s ease; box-shadow: 0 1px 3px rgba(0,0,0,.04); } .contactItem:hover { background: var(--primary-soft); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,.08); } .contactIconBadge { width: 44px; height: 44px; min-width: 44px; border-radius: 50%; background: var(--primary-soft); display: flex; align-items: center; justify-content: center; flex-shrink: 0; } .contactLabel { display: block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); margin-bottom: 2px; } .contactIcon { font-size: 20px; } .contactText { line-height: 1.35; } /* ===== SCHÉMA : Vaccination en 3 étapes ===== */.stepsContainer { display: flex; flex-direction: column; gap: 14px; } .stepItem { display: flex; align-items: flex-start; gap: 14px; padding: 16px; border-radius: 16px; background: var(--card); border: 1px solid var(--border); } /* ===== VISIBILITÉ FORCÉE DES ÉTAPES ===== */.stepItem { background: var(--card) !important; opacity: 1 !important; } .stepItem:hover { background: var(--primary-soft); cursor: pointer; } .stepNumber { width: 36px; height: 36px; border-radius: 999px; background: var(--primary); color: #fff; font-weight: 900; display: flex; align-items: center; justify-content: center; flex-shrink: 0; } .stepTitle { font-weight: 900; font-size: 15px; margin-bottom: 4px; } .stepText { font-size: 13px; line-height: 1.5; color: var(--muted); } /* ===== AFFICHAGE DES BOUTONS PAR ÉTAPE ===== */.stepTextWrap { flex: 1; min-width: 0; }
+  ) !important; } /* ===== BANDE LOGOS INSTITUTIONNELS ===== */.institutional-logos { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; min-height: 90px; padding: 10px 20px; background: var(--bg); border-bottom: 1px solid var(--border); } .logosGroup { display: flex; align-items: center; gap: 32px; flex-wrap: wrap; } .institutional-logos img { max-height: 70px; width: auto; object-fit: contain; } /* ===== RESPONSIVE LOGOS – MOBILE ===== */@media (max-width: 768px) { .institutional-logos {  justify-content: center; height: auto;   /* supprime la contrainte fixe */  gap: 14px;  padding: 12px 10px; } .logosGroup { justify-content: center; gap: 16px; } .institutional-logos img {  max-height: 48px;   /* logos plus petits sur mobile */  max-width: 45%; } } /* ===== FIX LANG BUTTONS – DARK MODE ===== */[data-theme="dark"] .langBtn { background: var(--card) !important; color: var(--text) !important; border-color: var(--border) !important; } [data-theme="dark"] .langBtn.active { background: var(--primary) !important; color: #ffffff !important; } [data-theme="dark"] .langPanel { background: var(--card) !important; border-color: var(--border) !important; } [data-theme="dark"] .langOption { color: var(--text) !important; } /* ===== CONTACT SECTION WIDE ===== */.contactWide { padding-top: 20px; } .contactGrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; } .contactItem { display: flex; align-items: center; gap: 14px; padding: 18px 18px; border-radius: 18px; background: var(--card); border: 1px solid var(--border); color: var(--text); text-decoration: none; font-weight: 700; transition: background .15s ease, transform .12s ease, box-shadow .15s ease; box-shadow: 0 1px 3px rgba(0,0,0,.04); } .contactItem:hover { background: var(--primary-soft); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,.08); } .contactIconBadge { width: 44px; height: 44px; min-width: 44px; border-radius: 50%; background: var(--primary-soft); display: flex; align-items: center; justify-content: center; flex-shrink: 0; } .contactLabel { display: block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); margin-bottom: 2px; } .contactIcon { font-size: 20px; } .contactText { line-height: 1.35; } /* ===== SCHÉMA : Vaccination en 3 étapes ===== */.stepsContainer { display: flex; flex-direction: column; gap: 14px; } .stepItem { display: flex; align-items: flex-start; gap: 14px; padding: 16px; border-radius: 16px; background: var(--card); border: 1px solid var(--border); } /* ===== VISIBILITÉ FORCÉE DES ÉTAPES ===== */.stepItem { background: var(--card) !important; opacity: 1 !important; } .stepItem:hover { background: var(--primary-soft); cursor: pointer; } .stepNumber { width: 36px; height: 36px; border-radius: 999px; background: var(--primary); color: #fff; font-weight: 900; display: flex; align-items: center; justify-content: center; flex-shrink: 0; } .stepTitle { font-weight: 900; font-size: 15px; margin-bottom: 4px; } .stepText { font-size: 13px; line-height: 1.5; color: var(--muted); } /* ===== AFFICHAGE DES BOUTONS PAR ÉTAPE ===== */.stepTextWrap { flex: 1; min-width: 0; }
 .stepActions {
   max-height: 0;
   overflow: hidden;
@@ -378,33 +378,50 @@ html, body { overflow-x: hidden; max-width: 100%; }
 /* ----- Accordéon FAQ : structure et mécanisme repris du site USP ----- */
 #faqCard { max-width: 720px; margin-left: auto; margin-right: auto; }
 
-/* ===== Question de classe + boutons 4e / 5e ===== */
-.gradeQuestion { font-size: 17px; font-weight: 900; color: var(--text); margin-bottom: 14px; }
-.gradeButtons { display: flex; gap: 12px; flex-wrap: wrap; }
-.gradeCard { flex: 1; min-width: 140px; display: flex; align-items: center; justify-content: center; gap: 10px; padding: 16px 18px; border-radius: 14px; border: 1px solid var(--border); background: var(--card); color: var(--text); font-size: 18px; font-weight: 900; cursor: pointer; transition: background .15s ease, color .15s ease, border-color .15s ease, transform .1s ease; }
-.gradeCard .gradeIcon { width: 24px; height: 24px; flex-shrink: 0; color: var(--primary); transition: color .15s ease; }
-.gradeCard:hover { border-color: var(--primary); }
-.gradeCard.selected { background: var(--primary); border-color: var(--primary); color: #fff; }
-.gradeCard.selected .gradeIcon { color: #fff; }
-.scheduleSearchZone { margin-top: 18px; }
-@media (max-width: 480px) {
-  .gradeCard { min-width: 0; padding: 18px 14px; font-size: 17px; }
+/* ===== Mise en page à deux colonnes : illustration + contenu ===== */
+.scheduleLayout { display: grid; grid-template-columns: 280px 1fr; gap: 0; align-items: stretch; }
+.scheduleIllustration { display: flex; align-items: center; justify-content: center; padding: 20px; background: linear-gradient(180deg, var(--primary-soft), transparent); border-radius: 18px 0 0 18px; }
+.scheduleIllustration img { max-width: 100%; height: auto; display: block; }
+.scheduleMain { min-width: 0; }
+@media (max-width: 760px) {
+  .scheduleLayout { grid-template-columns: 1fr; }
+  .scheduleIllustration { border-radius: 18px 18px 0 0; padding: 16px; }
+  .scheduleIllustration img { max-height: 160px; }
 }
 
-/* ===== Barre de recherche de date (classe + recherche reunies) ===== */
-.scheduleBar { display: flex; align-items: stretch; border: 1px solid var(--border); border-radius: 14px; overflow: hidden; background: var(--card); }
-.scheduleGradeWrap { display: flex; flex-direction: column; justify-content: center; gap: 2px; padding: 8px 16px; border-right: 1px solid var(--border); min-width: 180px; background: var(--primary-soft); }
-.scheduleGradeWrap label { font-size: 11px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .03em; }
-.scheduleGradeWrap select { border: none; background: transparent; color: var(--text); font-size: 14px; font-weight: 700; padding: 2px 0; outline: none; cursor: pointer; }
-.scheduleSearchWrap { flex: 1; display: flex; align-items: center; gap: 10px; padding: 0 16px; min-width: 200px; }
+/* ===== Pastilles numérotées des étapes ===== */
+.scheduleStepLine { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+.scheduleStepNum { width: 26px; height: 26px; min-width: 26px; border-radius: 50%; background: var(--primary); color: #fff; font-weight: 900; font-size: 13px; display: flex; align-items: center; justify-content: center; }
+.gradeQuestion { font-size: 16px; font-weight: 900; color: var(--text); }
+
+/* ===== Boutons 4e / 5e : bordure + rond radio (style de la maquette) ===== */
+.gradeButtons { display: flex; gap: 12px; flex-wrap: wrap; margin-left: 36px; }
+.gradeCard { flex: 1; min-width: 140px; display: flex; align-items: center; gap: 10px; padding: 16px 18px; border-radius: 12px; border: 2px solid var(--border); background: var(--card); color: var(--text); font-size: 18px; font-weight: 900; cursor: pointer; transition: background .15s ease, border-color .15s ease, transform .1s ease; }
+.gradeCard .gradeIcon { width: 24px; height: 24px; flex-shrink: 0; color: #2563eb; }
+.gradeCard:hover { border-color: var(--primary); transform: translateY(-1px); }
+.gradeCard.selected { background: var(--primary-soft); border-color: var(--primary); }
+.gradeRadio { width: 20px; height: 20px; min-width: 20px; margin-left: auto; border-radius: 50%; border: 2px solid var(--border); position: relative; }
+.gradeCard.selected .gradeRadio { border-color: var(--primary); }
+.gradeCard.selected .gradeRadio::after { content: ''; position: absolute; inset: 3px; border-radius: 50%; background: var(--primary); }
+.scheduleSearchZone { margin-top: 20px; margin-left: 36px; }
+@media (max-width: 480px) {
+  .gradeCard { min-width: 0; padding: 16px 14px; font-size: 16px; }
+  .gradeButtons, .scheduleSearchZone { margin-left: 0; }
+}
+
+/* ===== Barre de recherche + bouton Rechercher ===== */
+.scheduleBar { display: flex; gap: 10px; align-items: stretch; }
+.scheduleSearchBtn { border-radius: 12px; padding: 0 22px; font-weight: 800; white-space: nowrap; }
+
+.scheduleSearchWrap { flex: 1; display: flex; align-items: center; gap: 10px; padding: 0 16px; min-width: 160px; border: 1px solid var(--border); border-radius: 12px; background: var(--card); }
 .scheduleSearchWrap input { border: none; outline: none; width: 100%; font-size: 14px; background: transparent; color: var(--text); padding: 14px 0; }
 @media (max-width: 640px) {
   .scheduleBar { flex-direction: column; }
-  .scheduleGradeWrap { border-right: none; border-bottom: 1px solid var(--border); min-width: 0; }
 }
 
 /* ===== Alignement du selecteur de langue ===== */
-.langButtons { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.langButtons { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; position: static; z-index: auto; padding: 0; background: none; box-shadow: none; }
+@media (max-width: 768px) { .langButtons { align-items: center; } }
 .langHint { justify-content: center; }
 .acc { width: 100%; border-radius: 20px 20px 20px 6px; background: var(--primary-soft); border: 1px solid transparent; margin: 0 0 10px; overflow: hidden; transition: background-color .3s ease, box-shadow .3s ease; }
 .acc.ouverte { background: var(--card); box-shadow: 0 0 0 2px var(--primary) inset, 0 16px 36px -24px rgba(37,99,235,.45); }
@@ -557,6 +574,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, .btn:focus-visible,
         <div id="scrollProgress"></div>
         <!-- ===== BANDE LOGOS INSTITUTIONNELS ===== -->
         <div class="institutional-logos">
+          <div class="logosGroup">
             <a href="https://www.iledefrance.ars.sante.fr/rentree-scolaire-2026-2027-la-vaccination-au-college-un-geste-essentiel-pour-proteger-les" target="_blank" rel="noopener" aria-label="Agence Régionale de Santé Île-de-France">
                 <img src="img/ARS.png" alt="Agence Régionale de Santé Île-de-France">
             </a>
@@ -569,6 +587,16 @@ a:focus-visible, button:focus-visible, input:focus-visible, .btn:focus-visible,
             <a href="#contactCard" class="logoContactLink" aria-label="Nous contacter">
                 <img src="img/EMV.png" alt="Équipe Mobile de Vaccination">
             </a>
+          </div>
+            <div aria-label="Langue" class="langButtons" id="langButtons">
+              <div class="langHint"><span>Choisissez votre langue</span><span class="arrow">↓</span></div>
+              <div class="langPanelWrap">
+                <button type="button" class="langSwitcherBtn" id="langSwitcherBtn">
+                  <span class="langSwitcherFlag" id="langSwitcherFlag"></span><span id="langSwitcherText"></span><span class="chevron">▾</span>
+                </button>
+                <div class="langPanel" id="langPanel" hidden></div>
+              </div>
+            </div>
         </div>
         <!-- ===== FIN BANDE LOGOS ===== -->
         <div class="layout">
@@ -594,15 +622,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, .btn:focus-visible,
                             🔎 
 
                             <input id="searchInput" placeholder="Rechercher…" type="search"/>
-                        </div>
-                        <div aria-label="Langue" class="langButtons" id="langButtons">
-                          <div class="langHint"><span>Choisissez votre langue</span><span class="arrow">↓</span></div>
-                          <div class="langPanelWrap">
-                            <button type="button" class="langSwitcherBtn" id="langSwitcherBtn">
-                              <span class="langSwitcherFlag" id="langSwitcherFlag"></span><span id="langSwitcherText"></span><span class="chevron">▾</span>
-                            </button>
-                            <div class="langPanel" id="langPanel" hidden></div>
-                          </div>
                         </div>
                         <button id="themeToggle" class="btn" title="Mode clair / sombre">🌙</button>
                     </div>
@@ -631,36 +650,52 @@ a:focus-visible, button:focus-visible, input:focus-visible, .btn:focus-visible,
 <!-- ===== RECHERCHE DATE DE VACCINATION COLLÈGE ===== -->
 <section class="container" id="scheduleSearchSection" style="margin-bottom:24px;">
   <div class="card">
-    <div class="sectionHead">
-      <div class="sectionTitle" id="scheduleTitle"></div>
-    </div>
-    <div class="sectionBody">
-      <div class="gradeQuestion" id="scheduleGradeLabel"></div>
-      <div class="gradeButtons">
-        <button type="button" class="gradeCard" id="gradeBtn4e" data-grade="4e">
-          <svg class="gradeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><circle cx="16" cy="9" r="2.3"/><path d="M3 20c0-3 2.7-5 6-5s6 2 6 5"/><path d="M14.5 15.3c2.6.3 4.5 2 4.5 4.7"/></svg>
-          <span id="scheduleGradeOpt4e"></span>
-        </button>
-        <button type="button" class="gradeCard" id="gradeBtn5e" data-grade="5e">
-          <svg class="gradeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><circle cx="16" cy="9" r="2.3"/><path d="M3 20c0-3 2.7-5 6-5s6 2 6 5"/><path d="M14.5 15.3c2.6.3 4.5 2 4.5 4.7"/></svg>
-          <span id="scheduleGradeOpt5e"></span>
-        </button>
+    <div class="scheduleLayout">
+      <div class="scheduleIllustration">
+        <img src="img/school.png" alt="" loading="lazy">
       </div>
-      <select id="scheduleGradeSelect" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;" aria-hidden="true" tabindex="-1">
-        <option id="scheduleGradeOptEmpty" value=""></option>
-        <option value="4e"></option>
-        <option value="5e"></option>
-      </select>
-      <div class="scheduleSearchZone" id="scheduleSearchZone" style="display:none;">
-        <div class="sectionDesc" id="scheduleHint"></div>
-        <div class="scheduleBar">
-          <div class="scheduleSearchWrap">
-            🔎
-            <input type="search" id="scheduleSearchInput" autocomplete="off"/>
+      <div class="scheduleMain">
+        <div class="sectionHead">
+          <div class="sectionTitle" id="scheduleTitle"></div>
+        </div>
+        <div class="sectionBody">
+          <div class="scheduleStepLine">
+            <span class="scheduleStepNum">1</span>
+            <div class="gradeQuestion" id="scheduleGradeLabel"></div>
           </div>
+          <div class="gradeButtons">
+            <button type="button" class="gradeCard" id="gradeBtn4e" data-grade="4e">
+              <svg class="gradeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><circle cx="16" cy="9" r="2.3"/><path d="M3 20c0-3 2.7-5 6-5s6 2 6 5"/><path d="M14.5 15.3c2.6.3 4.5 2 4.5 4.7"/></svg>
+              <span id="scheduleGradeOpt4e"></span>
+              <span class="gradeRadio" aria-hidden="true"></span>
+            </button>
+            <button type="button" class="gradeCard" id="gradeBtn5e" data-grade="5e">
+              <svg class="gradeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><circle cx="16" cy="9" r="2.3"/><path d="M3 20c0-3 2.7-5 6-5s6 2 6 5"/><path d="M14.5 15.3c2.6.3 4.5 2 4.5 4.7"/></svg>
+              <span id="scheduleGradeOpt5e"></span>
+              <span class="gradeRadio" aria-hidden="true"></span>
+            </button>
+          </div>
+          <select id="scheduleGradeSelect" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;" aria-hidden="true" tabindex="-1">
+            <option id="scheduleGradeOptEmpty" value=""></option>
+            <option value="4e"></option>
+            <option value="5e"></option>
+          </select>
+          <div class="scheduleSearchZone" id="scheduleSearchZone" style="display:none;">
+            <div class="scheduleStepLine">
+              <span class="scheduleStepNum">2</span>
+              <div class="sectionDesc" id="scheduleHint" style="margin:0;"></div>
+            </div>
+            <div class="scheduleBar">
+              <div class="scheduleSearchWrap">
+                🔎
+                <input type="search" id="scheduleSearchInput" autocomplete="off"/>
+              </div>
+              <button type="button" class="btn primary scheduleSearchBtn" id="scheduleSearchBtn"></button>
+            </div>
+          </div>
+          <div id="scheduleResults" style="margin-top:16px;display:none;"></div>
         </div>
       </div>
-      <div id="scheduleResults" style="margin-top:16px;display:none;"></div>
     </div>
   </div>
 </section>
@@ -2210,6 +2245,12 @@ const SCHEDULE_TEXT = {
     uk: "Назва коледжу, поштовий індекс або місто…",
     mo: "Numele școlii, codul poștal sau localitatea…"
   },
+  searchBtn: {
+    fr: "Rechercher", en: "Search", ar: "بحث", tr: "Ara", ps: "لټون",
+    ku: "گەڕان", ro: "Căutare", ka: "ძებნა", sq: "Kërko", am: "ፈልግ",
+    zh: "搜索", prs: "جستجو", es: "Buscar", pt: "Pesquisar", ru: "Поиск",
+    uk: "Пошук", mo: "Căutare"
+  },
   addCalendar: {
     fr: "Ajouter au calendrier",
     en: "Add to calendar",
@@ -2249,23 +2290,23 @@ const SCHEDULE_TEXT = {
     mo: "Niciun rezultat găsit."
   },
   gradeLabel: {
-    fr: "Votre enfant est scolarisé en quelle classe ?",
-    en: "What grade is your child in?",
-    ar: "طفلك مسجل في أي صف؟",
-    tr: "Çocuğunuz hangi sınıfta okuyor?",
-    ps: "ستاسو ماشوم په کوم ټولګي کې دی؟",
-    ku: "منداڵەکەت لە چ پۆلەدایە؟",
-    ro: "În ce clasă este școlarizat copilul dumneavoastră?",
-    ka: "რომელ კლასშია თქვენი შვილი?",
-    sq: "Në cilën klasë është regjistruar fëmija juaj?",
-    am: "ልጅዎ በየትኛው ክፍል ነው የሚማረው?",
-    zh: "您的孩子就读几年级？",
-    prs: "فرزند شما در کدام صنف درس می‌خواند؟",
-    es: "¿En qué curso está escolarizado/a su hijo/a?",
-    pt: "Em que ano está matriculado/a o seu filho/a?",
-    ru: "В каком классе учится ваш ребёнок?",
-    uk: "У якому класі навчається ваша дитина?",
-    mo: "În ce clasă este școlarizat copilul dumneavoastră?"
+    fr: "Choisissez la classe de votre enfant",
+    en: "Choose your child's grade",
+    ar: "اختر صف طفلك",
+    tr: "Çocuğunuzun sınıfını seçin",
+    ps: "د خپل ماشوم ټولګی وټاکئ",
+    ku: "پۆلی منداڵەکەت هەڵبژێرە",
+    ro: "Alegeți clasa copilului dumneavoastră",
+    ka: "აირჩიეთ თქვენი შვილის კლასი",
+    sq: "Zgjidhni klasën e fëmijës suaj",
+    am: "የልጅዎን ክፍል ይምረጡ",
+    zh: "请选择您孩子的年级",
+    prs: "صنف فرزند خود را انتخاب کنید",
+    es: "Elija el curso de su hijo/a",
+    pt: "Escolha o ano do seu filho/a",
+    ru: "Выберите класс вашего ребёнка",
+    uk: "Оберіть клас вашої дитини",
+    mo: "Alegeți clasa copilului dumneavoastră"
   },
   gradeSelectOption: {
     fr: "Sélectionner…",
@@ -2419,6 +2460,8 @@ results.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }
 
   input.addEventListener('input', runScheduleSearch);
+  const searchBtnEl = document.getElementById('scheduleSearchBtn');
+  if (searchBtnEl) searchBtnEl.addEventListener('click', runScheduleSearch);
   gradeSelect.addEventListener('change', runScheduleSearch);
 
   // Boutons 4e / 5e : la sélection pilote le même <select> caché, qui déclenche
@@ -2454,6 +2497,8 @@ function applyScheduleTexts() {
   if (optEmpty) optEmpty.textContent = tSchedule(SCHEDULE_TEXT.gradeSelectOption);
   if (opt4e) opt4e.textContent = tSchedule(SCHEDULE_TEXT.grade4e);
   if (opt5e) opt5e.textContent = tSchedule(SCHEDULE_TEXT.grade5e);
+  const searchBtn = document.getElementById('scheduleSearchBtn');
+  if (searchBtn) searchBtn.textContent = tSchedule(SCHEDULE_TEXT.searchBtn);
 }
 
 /* Hook langue EXISTANT */
