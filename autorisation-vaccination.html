@@ -2790,17 +2790,17 @@ var qrcode = function() {
     box-shadow:0 0 0 1px rgba(0,0,0,.12);
     flex-shrink:0;
   }
-  .langSwitcherFlag svg{display:block;width:100%;height:100%;}
+  .langSwitcherFlagImg{display:block;width:100%;height:100%;object-fit:cover;}
   .langOptionFlag{
-    display:inline-flex;
+    display:block;
     width:18px;
     height:12px;
+    object-fit:cover;
     border-radius:2px;
-    overflow:hidden;
     box-shadow:0 0 0 1px rgba(0,0,0,.12);
     flex-shrink:0;
   }
-  .langOptionFlag svg{display:block;width:100%;height:100%;}
+  .langOptionCheck{display:inline-flex;width:14px;flex-shrink:0;color:var(--blue-700, #2563eb);font-weight:900;font-size:13px;}
   .langPanelWrap{position:relative;}
   .langPanel{
     position:absolute;
@@ -2861,9 +2861,31 @@ var qrcode = function() {
   html[dir="rtl"] .carnet-option{flex-direction:row-reverse;}
   html[dir="rtl"] .solo-checks .field label{flex-direction:row-reverse;}
   html[dir="rtl"] .sub-check-line label{flex-direction:row-reverse;}
+
+/* ===== BANDE LOGOS INSTITUTIONNELS (identique au site principal) ===== */
+.institutional-logos{display:flex;justify-content:center;align-items:center;gap:32px;height:90px;padding:10px 20px;background:#fff;border-bottom:1px solid #e5e7eb;}
+.institutional-logos img{max-height:70px;width:auto;object-fit:contain;}
+@media (max-width:768px){
+  .institutional-logos{flex-wrap:wrap;height:auto;gap:16px;padding:12px 10px;}
+  .institutional-logos img{max-height:48px;max-width:45%;}
+}
 </style>
 </head>
 <body>
+<div class="institutional-logos">
+    <a href="https://www.iledefrance.ars.sante.fr/rentree-scolaire-2026-2027-la-vaccination-au-college-un-geste-essentiel-pour-proteger-les" target="_blank" rel="noopener" aria-label="Agence Régionale de Santé Île-de-France">
+        <img src="img/ARS.png" alt="Agence Régionale de Santé Île-de-France">
+    </a>
+    <a href="https://www.ameli.fr/medecin/sante-prevention/pathologies/cancers/cancer-du-col-de-l-uterus/vaccination-papillomavirus-humains-hpv" target="_blank" rel="noopener" aria-label="Assurance Maladie">
+        <img src="img/AM.png" alt="Assurance Maladie">
+    </a>
+    <a href="https://www.ghsif.fr/" target="_blank" rel="noopener" aria-label="Groupe Hospitalier de Melun">
+        <img src="img/CHMELUN.png" alt="Groupe Hospitalier de Melun">
+    </a>
+    <a href="index.html#contactCard" aria-label="Équipe Mobile de Vaccination">
+        <img src="img/EMV.png" alt="Équipe Mobile de Vaccination">
+    </a>
+</div>
 <div class="wrap">
   <div class="langBar">
     <div class="langHint"><span>Choisissez votre langue</span><span class="arrow">↓</span></div>
@@ -3142,6 +3164,15 @@ const LANG_SELF_LABEL = {
 };
 
 let langCycleIndex = 0;
+// Correspondance langue -> fichier PNG du dossier /Flags/ (drapeaux réels fournis,
+// plus aucun drapeau en SVG généré). دری et پښتو partagent volontairement af.png.
+const FLAG_FILES = {
+  fr:'fr', en:'gb-eng', ar:'sa', tr:'tr', ps:'af', ku:'iq', ro:'ro', ka:'ge',
+  sq:'al', am:'et', zh:'cn', prs:'af', es:'es', pt:'pt', ru:'ru', uk:'ua', mo:'md'
+};
+function flagImg(code, cls){
+  return `<img class="${cls}" src="Flags/${FLAG_FILES[code] || 'fr'}.png" alt="">`;
+}
 let langCycleTimer = null;
 function startLangCycle(){
   const textEl = document.getElementById('langSwitcherText');
@@ -3150,7 +3181,7 @@ function startLangCycle(){
   function paint(){
     const code = SUPPORTED_LANGS[langCycleIndex];
     textEl.textContent = LANG_SELF_LABEL[code] || '';
-    if(flagEl) flagEl.innerHTML = LANG_FLAGS[code] || '';
+    if(flagEl) flagEl.innerHTML = flagImg(code, 'langSwitcherFlagImg');
   }
   paint();
   if(langCycleTimer) clearInterval(langCycleTimer);
@@ -3170,12 +3201,20 @@ function buildLangBar(){
   const panel = document.getElementById('langPanel');
   panel.innerHTML = '';
   SUPPORTED_LANGS.forEach(code=>{
+    const isActive = code === currentLang;
     const b = document.createElement('button');
     b.type = 'button';
-    b.className = 'langOption' + (code===currentLang ? ' active' : '');
-    b.innerHTML = `<span class="langOptionFlag" aria-hidden="true">${LANG_FLAGS[code]||''}</span><span>${I18N[code].langName}</span>`;
+    b.className = 'langOption' + (isActive ? ' active' : '');
+    b.innerHTML = `<span class="langOptionCheck">${isActive ? '✓' : ''}</span>${flagImg(code, 'langOptionFlag')}<span>${I18N[code].langName}</span>`;
     b.addEventListener('click', ()=>{
       panel.hidden = true;
+      // Dès qu'une langue est choisie, le bouton arrête de défiler et affiche
+      // définitivement la langue sélectionnée.
+      if(langCycleTimer){ clearInterval(langCycleTimer); langCycleTimer = null; }
+      const textEl = document.getElementById('langSwitcherText');
+      const flagEl = document.getElementById('langSwitcherFlag');
+      if(textEl) textEl.textContent = LANG_SELF_LABEL[code] || code;
+      if(flagEl) flagEl.innerHTML = flagImg(code, 'langSwitcherFlagImg');
       if(code === currentLang) return;
       currentLang = code;
       applyLanguage();
