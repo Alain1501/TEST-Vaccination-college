@@ -2856,13 +2856,13 @@ var qrcode = function() {
   html[dir="rtl"] .sub-check-line label{flex-direction:row-reverse;}
 
 /* ===== BANDE LOGOS INSTITUTIONNELS (identique au site principal) ===== */
-.institutional-logos{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;min-height:90px;padding:10px 20px;background:#fff;border-bottom:1px solid #e5e7eb;}
-.logosGroup{display:flex;align-items:center;gap:32px;flex-wrap:wrap;}
-.institutional-logos img{max-height:70px;width:auto;object-fit:contain;}
+.institutional-logos{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;min-height:90px;padding:10px 24px;background:#fff;border-bottom:1px solid #e5e7eb;max-width:1200px;margin:0 auto;}
+.logosGroup{display:grid;grid-auto-flow:column;align-items:center;gap:28px;}
+.institutional-logos img{height:56px;width:auto;max-width:160px;object-fit:contain;display:block;}
 @media (max-width:768px){
-  .institutional-logos{justify-content:center;height:auto;gap:14px;padding:12px 10px;}
-  .logosGroup{justify-content:center;gap:16px;}
-  .institutional-logos img{max-height:48px;max-width:45%;}
+  .institutional-logos{flex-direction:column;justify-content:center;height:auto;gap:14px;padding:14px 10px;}
+  .logosGroup{grid-auto-flow:row;grid-template-columns:1fr 1fr;justify-items:center;gap:14px 18px;width:100%;}
+  .institutional-logos img{height:38px;max-width:100%;}
 }
 </style>
 </head>
