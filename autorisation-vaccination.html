@@ -2733,13 +2733,13 @@ var qrcode = function() {
    Bloc unique, écrit à neuf, aucune règle historique réutilisée.
 ===================================================================== */
 .siteHeader{background:#fff;border-bottom:1px solid #e5e7eb;position:relative;z-index:100;}
-.siteHeaderInner{max-width:1200px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+.siteHeaderInner{max-width:1200px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:48px;}
 .headerLogos{display:flex;align-items:center;gap:28px;flex-wrap:wrap;}
 .headerLogos a{display:inline-flex;transition:opacity .15s ease;}
 .headerLogos a:hover,.headerLogos a:focus-visible{opacity:.75;}
 .headerLogos img{height:56px;width:auto;max-width:160px;object-fit:contain;display:block;}
 .headerLangPicker{display:flex;flex-direction:column;align-items:flex-end;gap:4px;}
-.headerLangHint{font-size:12px;font-weight:600;color:#6b7280;}
+.headerLangHint{font-size:12px;font-weight:600;color:#6b7280;transition:opacity .3s ease;}
 .langDropdown{position:relative;}
 .langDropdownBtn{display:flex;align-items:center;gap:8px;padding:8px 16px;border-radius:999px;border:1px solid #e5e7eb;background:#fff;color:#2563eb;font-weight:700;font-size:14px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.06);}
 .langDropdownFlag{width:20px;height:14px;object-fit:cover;border-radius:2px;box-shadow:0 0 0 1px rgba(0,0,0,.12);flex-shrink:0;display:block;}
@@ -3068,24 +3068,27 @@ const FLAG_FILES = {
 };
 let langCycleTimer = null;
 function startLangCycle(){
+  // Le bouton reste FIXE sur le français tant que l'utilisateur n'a rien choisi.
   const textEl = document.getElementById('langSwitcherText');
-  const flagEl = document.getElementById('langSwitcherFlag'); // <img> direct
-  if(!textEl) return;
+  const flagEl = document.getElementById('langSwitcherFlag');
+  if(textEl) textEl.textContent = I18N.fr.langName;
+  if(flagEl){ flagEl.src = 'Flags/fr.png'; flagEl.alt = ''; }
+
+  // C'est la phrase d'invitation au-dessus du bouton qui défile dans les 17 langues.
+  const hintEl = document.getElementById('headerLangHint');
+  if(!hintEl) return;
   function paint(){
     const code = SUPPORTED_LANGS[langCycleIndex];
-    textEl.textContent = LANG_SELF_LABEL[code] || '';
-    if(flagEl){ flagEl.src = `Flags/${FLAG_FILES[code] || 'fr'}.png`; flagEl.alt = ''; }
+    hintEl.textContent = LANG_SELF_LABEL[code] || '';
   }
   paint();
   if(langCycleTimer) clearInterval(langCycleTimer);
   langCycleTimer = setInterval(()=>{
-    textEl.style.opacity = 0;
-    if(flagEl) flagEl.style.opacity = 0;
+    hintEl.style.opacity = 0;
     setTimeout(()=>{
       langCycleIndex = (langCycleIndex + 1) % SUPPORTED_LANGS.length;
       paint();
-      textEl.style.opacity = 1;
-      if(flagEl) flagEl.style.opacity = 1;
+      hintEl.style.opacity = 1;
     }, 300);
   }, 1800);
 }
@@ -3103,12 +3106,11 @@ function buildLangBar(){
     b.addEventListener('click', ()=>{
       panel.hidden = true;
       langSwitcherBtnEl.setAttribute('aria-expanded', 'false');
-      // Dès qu'une langue est choisie, le bouton arrête de défiler et affiche
-      // définitivement la langue sélectionnée.
-      if(langCycleTimer){ clearInterval(langCycleTimer); langCycleTimer = null; }
+      // Le bouton affiche la langue choisie ; la phrase d'invitation au-dessus
+      // continue de défiler dans les 17 langues, indépendamment du choix fait.
       const textEl = document.getElementById('langSwitcherText');
       const flagEl = document.getElementById('langSwitcherFlag');
-      if(textEl) textEl.textContent = LANG_SELF_LABEL[code] || code;
+      if(textEl) textEl.textContent = I18N[code].langName;
       if(flagEl){ flagEl.src = `Flags/${FLAG_FILES[code] || 'fr'}.png`; flagEl.alt = ''; }
       if(code === currentLang) return;
       currentLang = code;
