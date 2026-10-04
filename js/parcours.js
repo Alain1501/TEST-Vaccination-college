@@ -207,8 +207,8 @@
     var p = new URLSearchParams(location.search).get('lang');
     return p || 'fr';
   }
-  function L(key) {
-    var l = currentLang();
+  function L(key, forced) {
+    var l = forced || currentLang();
     return (LABELS[l] || LABELS.fr)[key] || LABELS.fr[key];
   }
   function withLang(url) {
@@ -220,12 +220,12 @@
   }
 
   /* ---------- Construction du voile animé ---------- */
-  function buildOverlay(key, color) {
+  function buildOverlay(key, color, forcedLang) {
     var o = document.createElement('div');
     o.className = 'ptOverlay';
     o.style.setProperty('--pt-color', color);
-    var word = (DEST[key] && key !== 'hub') ? L(key) : 'Vaccination';
-    var lng = currentLang();
+    var lng = forcedLang || currentLang();
+    var word = (DEST[key] && key !== 'hub') ? L(key, lng) : 'Vaccination';
     var rtl = ['ar','ps','ku','prs'].indexOf(lng) > -1;
     // Animation lettre par lettre seulement pour les alphabets dont les lettres restent séparées.
     // Arabe, dari, pashto, kurde, amharique, chinois : animation mot par mot, pour garder les lettres liées.
@@ -235,7 +235,7 @@
       return '<span style="--k:' + i + '">' + (ch === ' ' ? '&nbsp;' : ch) + '</span>';
     }).join(byLetter ? '' : '<span>&nbsp;</span>');
     o.innerHTML = '<div class="ptInner">' + FAN.replace('__P2__', key === 'lycee' ? DEST.lycee.color : DEST.college.color) + '<div class="ptWord" aria-hidden="true" dir="' + (rtl ? 'rtl' : 'ltr') + '">' + letters + '</div>' +
-      '<div class="ptSub" dir="' + (rtl ? 'rtl' : 'ltr') + '">' + L('unit') + '</div></div>';
+      '<div class="ptSub" dir="' + (rtl ? 'rtl' : 'ltr') + '">' + L('unit', lng) + '</div></div>';
     return o;
   }
 
@@ -273,7 +273,7 @@
     o.animate([{ clipPath: 'circle(0px at ' + x + 'px ' + y + 'px)' }, { clipPath: 'circle(' + r + 'px at ' + x + 'px ' + y + 'px)' }],
       { duration: 620, easing: 'cubic-bezier(.7,0,.25,1)', fill: 'both' });
     animatePetals(o, true);
-    try { sessionStorage.setItem('ptEnter', JSON.stringify({ key: key, color: dest.color, t: Date.now() })); } catch (e) {}
+    try { sessionStorage.setItem('ptEnter', JSON.stringify({ key: key, color: dest.color, lang: currentLang(), t: Date.now() })); } catch (e) {}
     setTimeout(function () { location.href = url; }, 900);
   }
   window.ptGo = go;
@@ -296,19 +296,28 @@
 
   function playEnter() {
     if (!enter || reduce) return;
-    var o = buildOverlay(enter.key, enter.color);
+    // Le voile garde la langue de la page de départ et reste affiché
+    // tant que la page d'arrivée n'a pas fini d'appliquer cette langue (pas de passage par le français)
+    var o = buildOverlay(enter.key, enter.color, enter.lang);
     document.body.appendChild(o);
     html.classList.remove('ptEnter');
     var cx = innerWidth / 2, cy = innerHeight / 2;
     var r = Math.hypot(cx, cy) + 20;
     // Le logo et le mot restent un court instant, puis le voile se referme en cercle.
     o.querySelectorAll('.ptP,.ptWord span,.ptSub').forEach(function (n) { n.style.opacity = 1; });
+    var waited = 0;
+    (function waitLang() {
+      if (html.classList.contains('langPending') && waited < 5000) { waited += 50; setTimeout(waitLang, 50); return; }
+      close();
+    })();
+    function close() {
     setTimeout(function () {
       animatePetals(o, false);
       var a = o.animate([{ clipPath: 'circle(' + r + 'px at ' + cx + 'px ' + cy + 'px)' }, { clipPath: 'circle(0px at ' + cx + 'px ' + cy + 'px)' }],
         { duration: 760, delay: 140, easing: 'cubic-bezier(.65,0,.2,1)', fill: 'both' });
       a.onfinish = function () { o.remove(); };
     }, 260);
+    }
   }
 
   /* Retour arrière (cache du navigateur) : on retire tout voile restant */

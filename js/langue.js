@@ -19,7 +19,9 @@
   var st = document.createElement('style');
   st.id = 'langueStyle';
   st.textContent =
-    'html.rtlText :is(input,textarea){direction:rtl;text-align:right}';
+    'html.rtlText :is(input,textarea){direction:rtl;text-align:right}' +
+    /* Pendant l'application de la langue : contenu masqué, seul le voile de transition reste visible */
+    'html.langPending body > *:not(.ptOverlay){visibility:hidden !important}';
   (document.head || html).appendChild(st);
 
   function stored() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
@@ -82,6 +84,16 @@
   if (wanted && LANGS.indexOf(wanted) < 0) wanted = null;
   if (fromUrl && wanted === fromUrl) store(fromUrl);
 
+  /* Une autre langue que le français est attendue : on masque la page jusqu'à ce qu'elle soit appliquée */
+  var pending = !!(wanted && wanted !== 'fr');
+  if (pending) html.classList.add('langPending');
+  function release() {
+    if (!pending) return;
+    pending = false;
+    setTimeout(function () { html.classList.remove('langPending'); }, 60);
+  }
+  setTimeout(release, 5000); // sécurité : la page ne reste jamais masquée
+
   function pageReady() {
     if (typeof window.hubSetLanguage === 'function') return true;                       // accueil
     try { if (typeof faqData !== 'undefined' && faqData && typeof window.setLanguage === 'function') return true; } catch (e) {} // collège, lycée
@@ -119,14 +131,15 @@
   function loop() {
     tries++;
     if (!settled) {
-      if (!pageReady()) { if (tries > 80) settled = true; return; }
+      if (!pageReady()) { if (tries > 80) { settled = true; release(); } return; }
       var c = current();
       if (wanted && c !== wanted) {
         if (!applied) { applied = true; applyWanted(wanted); }
-        if (tries > 80) settled = true;
+        if (tries > 80) { settled = true; release(); }
         return;
       }
       settled = true;
+      release();
     }
     syncFormButton();
     var now = current();
