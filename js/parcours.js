@@ -6,9 +6,24 @@
 (function () {
   'use strict';
 
+  /* =================================================================
+     INTERRUPTEUR DE PUBLICATION
+     false : seul le collège est visible. L'accueil et le lycée renvoient
+             directement vers le collège, et le bouton Accueil / Collège /
+             Lycée est masqué.
+     true  : site complet (accueil commun, collège, lycée, bouton).
+     ================================================================= */
+  var LYCEE_VISIBLE = false;
+
   var script = document.currentScript;
   var PAGE = (script && script.getAttribute('data-page')) || 'hub';
   var html = document.documentElement;
+
+  if (!LYCEE_VISIBLE && (PAGE === 'hub' || PAGE === 'lycee')) {
+    html.style.visibility = 'hidden';
+    location.replace('college.html' + location.search + location.hash);
+    return;
+  }
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   var DEST = {
@@ -182,7 +197,7 @@
 
   /* ---------- Sélecteur flottant Accueil / Collège / Lycée ---------- */
   function buildSwitch() {
-    if (PAGE === 'hub') return;
+    if (PAGE === 'hub' || !LYCEE_VISIBLE) return;
     var nav = document.createElement('nav');
     nav.className = 'ptSwitch';
     nav.setAttribute('aria-label', L('aria'));
