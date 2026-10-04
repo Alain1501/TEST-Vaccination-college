@@ -13,7 +13,7 @@
              Lycée est masqué.
      true  : site complet (accueil commun, collège, lycée, bouton).
      ================================================================= */
-  var LYCEE_VISIBLE = true;
+  var LYCEE_VISIBLE = false;
 
   var script = document.currentScript;
   var PAGE = (script && script.getAttribute('data-page')) || 'hub';
