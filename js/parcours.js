@@ -225,11 +225,17 @@
     o.className = 'ptOverlay';
     o.style.setProperty('--pt-color', color);
     var word = (DEST[key] && key !== 'hub') ? L(key) : 'Vaccination';
-    var letters = word.split('').map(function (ch, i) {
+    var lng = currentLang();
+    var rtl = ['ar','ps','ku','prs'].indexOf(lng) > -1;
+    // Animation lettre par lettre seulement pour les alphabets dont les lettres restent séparées.
+    // Arabe, dari, pashto, kurde, amharique, chinois : animation mot par mot, pour garder les lettres liées.
+    var byLetter = /^[A-Za-zÀ-ÿĀ-žА-яЁёЇїІіЄєҐґ\u10A0-\u10FF\s'-]+$/.test(word);
+    var parts = byLetter ? word.split('') : word.split(/\s+/);
+    var letters = parts.map(function (ch, i) {
       return '<span style="--k:' + i + '">' + (ch === ' ' ? '&nbsp;' : ch) + '</span>';
-    }).join('');
-    o.innerHTML = '<div class="ptInner">' + FAN.replace('__P2__', key === 'lycee' ? DEST.lycee.color : DEST.college.color) + '<div class="ptWord" aria-hidden="true">' + letters + '</div>' +
-      '<div class="ptSub">' + L('unit') + '</div></div>';
+    }).join(byLetter ? '' : '<span>&nbsp;</span>');
+    o.innerHTML = '<div class="ptInner">' + FAN.replace('__P2__', key === 'lycee' ? DEST.lycee.color : DEST.college.color) + '<div class="ptWord" aria-hidden="true" dir="' + (rtl ? 'rtl' : 'ltr') + '">' + letters + '</div>' +
+      '<div class="ptSub" dir="' + (rtl ? 'rtl' : 'ltr') + '">' + L('unit') + '</div></div>';
     return o;
   }
 
