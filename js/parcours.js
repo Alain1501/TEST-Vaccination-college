@@ -34,8 +34,125 @@
     lycee:   { url: ROOT + 'lycee/index.html',   color: '#6d28d9', label: 'Lycée' }
   };
   var LABELS = {
-    fr: { hub: 'Accueil', college: 'Collège', lycee: 'Lycée', aria: 'Changer de parcours' },
-    en: { hub: 'Home', college: 'Middle school', lycee: 'High school', aria: 'Switch path' }
+    "fr": {
+      "hub": "Accueil",
+      "college": "Collège",
+      "lycee": "Lycée",
+      "aria": "Changer de parcours",
+      "unit": "Unité de santé publique de l’hôpital de Melun – équipe mobile de vaccination"
+    },
+    "en": {
+      "hub": "Home",
+      "college": "Middle school",
+      "lycee": "High school",
+      "aria": "Switch section",
+      "unit": "Public Health Unit of Melun Hospital – mobile vaccination team"
+    },
+    "ar": {
+      "hub": "الرئيسية",
+      "college": "الإعدادية",
+      "lycee": "الثانوية",
+      "aria": "تغيير المسار",
+      "unit": "وحدة الصحة العامة في مستشفى ميلون – فريق التلقيح المتنقل"
+    },
+    "tr": {
+      "hub": "Ana sayfa",
+      "college": "Ortaokul",
+      "lycee": "Lise",
+      "aria": "Bölüm değiştir",
+      "unit": "Melun Hastanesi Halk Sağlığı Birimi – mobil aşı ekibi"
+    },
+    "ps": {
+      "hub": "کور پاڼه",
+      "college": "منځنی ښوونځی",
+      "lycee": "لیسه",
+      "aria": "لاره بدله کړئ",
+      "unit": "د مېلون روغتون د عامې روغتیا واحد – د واکسین ګرځنده ټیم"
+    },
+    "ku": {
+      "hub": "سەرەکی",
+      "college": "ناوەندی",
+      "lycee": "ئامادەیی",
+      "aria": "گۆڕینی ڕێڕەو",
+      "unit": "یەکەی تەندروستیی گشتیی نەخۆشخانەی مێلون – تیمی گەڕۆکی ڤاکسین"
+    },
+    "ro": {
+      "hub": "Acasă",
+      "college": "Colegiu",
+      "lycee": "Liceu",
+      "aria": "Schimbați parcursul",
+      "unit": "Unitatea de sănătate publică a spitalului din Melun – echipa mobilă de vaccinare"
+    },
+    "ka": {
+      "hub": "მთავარი",
+      "college": "კოლეჯი",
+      "lycee": "ლიცეუმი",
+      "aria": "მიმართულების შეცვლა",
+      "unit": "მელუნის საავადმყოფოს საზოგადოებრივი ჯანმრთელობის განყოფილება – ვაქცინაციის მობილური გუნდი"
+    },
+    "sq": {
+      "hub": "Kreu",
+      "college": "Kolegji",
+      "lycee": "Shkolla e mesme",
+      "aria": "Ndryshoni rrugën",
+      "unit": "Njësia e shëndetit publik e spitalit të Melun – ekipi i lëvizshëm i vaksinimit"
+    },
+    "am": {
+      "hub": "መነሻ",
+      "college": "ኮሌጅ",
+      "lycee": "ሁለተኛ ደረጃ",
+      "aria": "ክፍል ይቀይሩ",
+      "unit": "የሜሉን ሆስፒታል የሕዝብ ጤና ክፍል – ተንቀሳቃሽ የክትባት ቡድን"
+    },
+    "zh": {
+      "hub": "首页",
+      "college": "初中",
+      "lycee": "高中",
+      "aria": "切换栏目",
+      "unit": "默伦医院公共卫生科 – 流动疫苗接种团队"
+    },
+    "prs": {
+      "hub": "صفحه اصلی",
+      "college": "مکتب متوسطه",
+      "lycee": "لیسه",
+      "aria": "تغییر مسیر",
+      "unit": "واحد صحت عامه شفاخانه ملون – تیم سیار واکسیناسیون"
+    },
+    "es": {
+      "hub": "Inicio",
+      "college": "Colegio",
+      "lycee": "Instituto",
+      "aria": "Cambiar de recorrido",
+      "unit": "Unidad de salud pública del hospital de Melun – equipo móvil de vacunación"
+    },
+    "pt": {
+      "hub": "Início",
+      "college": "Colégio",
+      "lycee": "Liceu",
+      "aria": "Mudar de percurso",
+      "unit": "Unidade de saúde pública do hospital de Melun – equipa móvel de vacinação"
+    },
+    "ru": {
+      "hub": "Главная",
+      "college": "Коллеж",
+      "lycee": "Лицей",
+      "aria": "Сменить раздел",
+      "unit": "Отдел общественного здравоохранения больницы Мелёна – мобильная бригада вакцинации"
+    },
+    "uk": {
+      "hub": "Головна",
+      "college": "Колеж",
+      "lycee": "Ліцей",
+      "aria": "Змінити розділ",
+      "unit": "Відділ громадського здоров’я лікарні Мелена – мобільна бригада вакцинації"
+    },
+    "mo": {
+      "hub": "Acasă",
+      "college": "Colegiu",
+      "lycee": "Liceu",
+      "aria": "Schimbați parcursul",
+      "unit": "Unitatea de sănătate publică a spitalului din Melun – echipa mobilă de vaccinare"
+    }
   };
 
   /* Pétales de l'éventail du site (mêmes tracés que le logo du hero) */
@@ -112,7 +229,7 @@
       return '<span style="--k:' + i + '">' + (ch === ' ' ? '&nbsp;' : ch) + '</span>';
     }).join('');
     o.innerHTML = '<div class="ptInner">' + FAN.replace('__P2__', key === 'lycee' ? DEST.lycee.color : DEST.college.color) + '<div class="ptWord" aria-hidden="true">' + letters + '</div>' +
-      '<div class="ptSub">Unité de santé publique de l’hôpital de Melun – équipe mobile de vaccination</div></div>';
+      '<div class="ptSub">' + L('unit') + '</div></div>';
     return o;
   }
 
@@ -279,7 +396,7 @@
   function onReady() {
     playEnter();
     buildSwitch();
-    applyUrlLang();
+    // La langue (adresse ou mémoire) est appliquée par js/langue.js
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', onReady);
   else onReady();

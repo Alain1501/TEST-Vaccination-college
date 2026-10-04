@@ -10,8 +10,9 @@
     /* Ancien lien vers la section contact du collège (formulaire d'autorisation) */
     if (location.hash === '#contactCard') { location.replace('college/index.html' + location.search + '#contactCard'); }
   </script>
-  <script src="js/parcours.js?v=20261004-4" data-page="hub"></script>
+  <script src="js/parcours.js?v=20261004-8" data-page="hub"></script>
   <script src="js/entete.js" defer></script>
+  <script src="js/langue.js?v=20261004-1"></script>
   <style>
     :root{
       --bg:#f5f7fb; --card:#ffffff; --ink:#111827; --muted:#5b6474; --line:#e5e7eb;
@@ -34,10 +35,34 @@
 
     /* En-tête logos */
     .top{background:rgba(255,255,255,.75);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-    .topIn{max-width:1180px;margin:0 auto;padding:12px 20px}
+    .topIn{max-width:1180px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;gap:24px}
+    .topIn .headerLogos{flex:1 1 auto}
+    .hubLang{position:relative;flex:0 0 auto;display:flex;flex-direction:column;align-items:center;gap:6px}
+    .hubLangHint{font-size:12.5px;font-weight:800;color:#1e3a8a;letter-spacing:.01em}
+    .hubLangBtn{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:#fff;
+      font:700 14px/1 var(--font);color:#1d4ed8;cursor:pointer;box-shadow:0 4px 14px rgba(17,24,39,.06);transition:box-shadow .2s ease,border-color .2s ease}
+    .hubLangBtn:hover,.hubLangBtn[aria-expanded="true"]{border-color:#93c5fd;box-shadow:0 8px 22px rgba(37,99,235,.15)}
+    .hubLangBtn img{width:22px;height:15px;object-fit:cover;border-radius:3px;box-shadow:0 0 0 1px rgba(0,0,0,.08)}
+    .hubLangBtn svg{width:14px;height:14px;transition:transform .25s ease}
+    .hubLangBtn[aria-expanded="true"] svg{transform:rotate(180deg)}
+    .hubLangList{position:absolute;top:calc(100% + 8px);right:0;z-index:50;width:250px;max-height:min(60vh,430px);overflow:auto;margin:0;padding:6px;list-style:none;
+      background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 24px 50px -12px rgba(17,24,39,.28);
+      opacity:0;transform:translateY(-6px) scale(.98);transform-origin:top right;pointer-events:none;transition:opacity .18s ease,transform .22s cubic-bezier(.2,.9,.25,1.2)}
+    .hubLangList.open{opacity:1;transform:none;pointer-events:auto}
+    .hubLangList button{width:100%;display:flex;align-items:center;gap:10px;padding:9px 10px;border:0;border-radius:10px;background:none;
+      font:600 14px/1.2 var(--font);color:var(--ink);cursor:pointer;text-align:start}
+    .hubLangList button:hover,.hubLangList button:focus-visible{background:#eff6ff;outline:none}
+    .hubLangList button[aria-selected="true"]{background:#dbeafe;color:#1d4ed8;font-weight:800}
+    .hubLangList img{width:22px;height:15px;object-fit:cover;border-radius:3px;box-shadow:0 0 0 1px rgba(0,0,0,.08)}
+    [dir="rtl"] .path{text-align:right}
+    [dir="rtl"] .go svg{transform:scaleX(-1)}
+    [dir="rtl"] .ci{text-align:right}
+    [dir="rtl"] .hubLangList{right:auto;left:0;transform-origin:top left}
+    body.langFade main{opacity:.25;transition:opacity .2s ease}
+    main{transition:opacity .25s ease}
     .topIn .headerLogos a{transition:opacity .2s ease}
     .topIn .headerLogos a:hover{opacity:.75}
-    @media (max-width:768px){.topIn{padding:12px 14px}}
+    @media (max-width:768px){.topIn{padding:12px 14px;flex-direction:column;gap:10px}.topIn .headerLogos{width:100%}.hubLangList{right:50%;transform-origin:top center;margin-right:-125px}[dir="rtl"] .hubLangList{left:auto}}
 
     main{max-width:1080px;margin:0 auto;padding:clamp(28px,6vw,60px) 20px 120px}
 
@@ -160,6 +185,11 @@
         <a href="https://www.ghsif.fr/" target="_blank" rel="noopener" aria-label="Groupe Hospitalier de Melun"><img src="img/CHMELUN.png" alt="Groupe Hospitalier de Melun"></a>
         <a href="#contact" aria-label="Équipe Mobile de Vaccination"><img src="img/EMV.png" alt="Équipe Mobile de Vaccination"></a>
       </div>
+      <div class="hubLang">
+        <div class="hubLangHint" data-i18n="lang_choose">Choisissez votre langue</div>
+        <button type="button" class="hubLangBtn" id="hubLangBtn" aria-haspopup="listbox" aria-expanded="false"><img id="hubLangFlag" src="Flags/fr.png" alt=""><span id="hubLangName">Français</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <ul class="hubLangList" id="hubLangList" role="listbox" aria-label="Langue"><li><button type="button" role="option" data-lang="fr" aria-selected="true"><img src="Flags/fr.png" alt="">Français</button></li><li><button type="button" role="option" data-lang="en" aria-selected="false"><img src="Flags/gb-eng.png" alt="">English</button></li><li><button type="button" role="option" data-lang="ar" aria-selected="false"><img src="Flags/sa.png" alt="">العربية</button></li><li><button type="button" role="option" data-lang="tr" aria-selected="false"><img src="Flags/tr.png" alt="">Türkçe</button></li><li><button type="button" role="option" data-lang="ps" aria-selected="false"><img src="Flags/af.png" alt="">پښتو</button></li><li><button type="button" role="option" data-lang="ku" aria-selected="false"><img src="Flags/iq.png" alt="">Kurdî (Soranî)</button></li><li><button type="button" role="option" data-lang="ro" aria-selected="false"><img src="Flags/ro.png" alt="">Română</button></li><li><button type="button" role="option" data-lang="ka" aria-selected="false"><img src="Flags/ge.png" alt="">ქართული</button></li><li><button type="button" role="option" data-lang="sq" aria-selected="false"><img src="Flags/al.png" alt="">Shqip</button></li><li><button type="button" role="option" data-lang="am" aria-selected="false"><img src="Flags/et.png" alt="">አማርኛ</button></li><li><button type="button" role="option" data-lang="zh" aria-selected="false"><img src="Flags/cn.png" alt="">中文</button></li><li><button type="button" role="option" data-lang="prs" aria-selected="false"><img src="Flags/af.png" alt="">دری</button></li><li><button type="button" role="option" data-lang="es" aria-selected="false"><img src="Flags/es.png" alt="">Español</button></li><li><button type="button" role="option" data-lang="pt" aria-selected="false"><img src="Flags/pt.png" alt="">Português</button></li><li><button type="button" role="option" data-lang="ru" aria-selected="false"><img src="Flags/ru.png" alt="">Русский</button></li><li><button type="button" role="option" data-lang="uk" aria-selected="false"><img src="Flags/ua.png" alt="">Українська</button></li><li><button type="button" role="option" data-lang="mo" aria-selected="false"><img src="Flags/md.png" alt="">Moldovenească</button></li></ul>
+      </div>
     </div>
   </header>
 
@@ -178,27 +208,27 @@
       </svg>
 
       <h1>
-        <span class="w" style="--k:0">Vaccination</span> <span class="w" style="--k:1">des</span> <span class="w" style="--k:2">adolescents</span>
+        <span id="hubTitle"><span class="w" style="--k:0">Vaccination</span> <span class="w" style="--k:1">des</span> <span class="w" style="--k:2">adolescents</span></span>
         <span class="place"><span class="w" style="--k:3">Île-de-France</span></span>
       </h1>
-      <p class="lead">Ce site accompagne les adolescents et leurs familles tout au long de leur parcours vaccinal, du collège au lycée. Choisissez votre parcours pour trouver les informations adaptées.</p>
-      <div class="unit"><img src="img/EMV.png" alt="">Unité de santé publique de l’hôpital de Melun – équipe mobile de vaccination</div>
+      <p class="lead" data-i18n="lead">Ce site accompagne les adolescents et leurs familles tout au long de leur parcours vaccinal, du collège au lycée. Choisissez votre parcours pour trouver les informations adaptées.</p>
+      <div class="unit"><img src="img/EMV.png" alt=""><span data-i18n="unit">Unité de santé publique de l’hôpital de Melun – équipe mobile de vaccination</span></div>
     </section>
 
-    <section class="paths" aria-label="Choisir un parcours">
+    <section class="paths" aria-label="Choisir un parcours" data-i18n-aria="paths_aria">
       <a class="path college" href="college/index.html" data-pt="college" style="--d:1.35s" data-hover="hoverCollege">
         <div class="levels"><span>5e</span><span>4e</span></div>
-        <h2>Vaccination <b>au collège</b></h2>
-        <p>Informations sur les vaccins, dates de vaccination dans les collèges et autorisation parentale.</p>
-        <div class="go"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i><span class="goTxt">Accéder au parcours collège</span><span class="goShort">Entrer</span></div>
+        <h2 data-i18n-html="h2_col">Vaccination <b>au collège</b></h2>
+        <p data-i18n="desc_col">Informations sur les vaccins, dates de vaccination dans les collèges et autorisation parentale.</p>
+        <div class="go"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i><span class="goTxt" data-i18n="go_col">Accéder au parcours collège</span><span class="goShort" data-i18n="go_short">Entrer</span></div>
         <svg class="mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/></svg>
       </a>
 
       <a class="path lycee" href="lycee/index.html" data-pt="lycee" style="--d:1.5s" data-hover="hoverLycee">
         <div class="levels"><span>2nde</span><span>1ère</span><span>Tle</span></div>
-        <h2>Vaccination <b>au lycée</b></h2>
-        <p>Vérifier et compléter ses vaccinations, HPV, méningocoques ACWY et B, rappels.</p>
-        <div class="go"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i><span class="goTxt">Accéder au parcours lycée</span><span class="goShort">Entrer</span></div>
+        <h2 data-i18n-html="h2_lyc">Vaccination <b>au lycée</b></h2>
+        <p data-i18n="desc_lyc">Vérifier et compléter ses vaccinations, HPV, méningocoques ACWY et B, rappels.</p>
+        <div class="go"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i><span class="goTxt" data-i18n="go_lyc">Accéder au parcours lycée</span><span class="goShort" data-i18n="go_short">Entrer</span></div>
         <svg class="mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V9l8-5 8 5v12"/><path d="M9 21v-6h6v6"/><path d="M12 4V1.5"/></svg>
       </a>
     </section>
@@ -206,26 +236,26 @@
     <section class="foot" id="contact" aria-label="Contact">
       <a class="ci c1" href="https://maps.app.goo.gl/zGLgVufgVPTTqRAg8" target="_blank" rel="noopener">
         <span class="ciIcon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.6"/></svg></span>
-        <span class="ciText"><small>Adresse</small><span>8 Rue de Vaux, 77000 Melun</span></span>
+        <span class="ciText"><small data-i18n="addr">Adresse</small><span>8 Rue de Vaux, 77000 Melun</span></span>
         <svg class="ciArrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
       </a>
       <a class="ci c2" href="tel:0181742850">
         <span class="ciIcon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h3.5l1.8 4.6-2.3 1.4a11 11 0 0 0 7 7l1.4-2.3L21 15.5V19a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg></span>
-        <span class="ciText"><small>Téléphone</small><span>01 81 74 28 50</span></span>
+        <span class="ciText"><small data-i18n="phone">Téléphone</small><span>01 81 74 28 50</span></span>
         <svg class="ciArrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
       </a>
       <a class="ci c3" href="tel:0181743247">
         <span class="ciIcon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h3.5l1.8 4.6-2.3 1.4a11 11 0 0 0 7 7l1.4-2.3L21 15.5V19a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg></span>
-        <span class="ciText"><small>Téléphone</small><span>01 81 74 32 47</span></span>
+        <span class="ciText"><small data-i18n="phone">Téléphone</small><span>01 81 74 32 47</span></span>
         <svg class="ciArrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
       </a>
       <a class="ci c4" href="mailto:vaccin-hpv@ghsif.fr">
         <span class="ciIcon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5"/></svg></span>
-        <span class="ciText"><small>Email</small><span>vaccin-hpv@ghsif.fr</span></span>
+        <span class="ciText"><small data-i18n="email">Email</small><span>vaccin-hpv@ghsif.fr</span></span>
         <svg class="ciArrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
       </a>
     </section>
-    <p class="credit">Unité de santé publique de l’hôpital de Melun – équipe mobile de vaccination</p>
+    <p class="credit" data-i18n="unit">Unité de santé publique de l’hôpital de Melun – équipe mobile de vaccination</p>
   </main>
 
   <script>
@@ -256,6 +286,53 @@
           card.style.setProperty('--ry', ((px-.5)*7)+'deg'); card.style.setProperty('--rx', ((.5-py)*6)+'deg');
         });
       });
+    })();
+  </script>
+  <script>
+    /* Langue de l'accueil : mêmes 17 langues que le collège et le lycée */
+    var HUB_I18N = {"title": {"fr": "Vaccination des adolescents", "en": "Adolescent vaccination", "ar": "تلقيح المراهقين", "tr": "Ergen aşılaması", "ps": "د تنکیو ځوانانو واکسین", "ku": "ڤاکسینی هەرزەکاران", "ro": "Vaccinarea adolescenților", "ka": "მოზარდების ვაქცინაცია", "sq": "Vaksinimi i adoleshentëve", "am": "የታዳጊዎች ክትባት", "zh": "青少年疫苗接种", "prs": "واکسیناسیون نوجوانان", "es": "Vacunación de los adolescentes", "pt": "Vacinação dos adolescentes", "ru": "Вакцинация подростков", "uk": "Вакцинація підлітків", "mo": "Vaccinarea adolescenților"}, "lead": {"fr": "Ce site accompagne les adolescents et leurs familles tout au long de leur parcours vaccinal, du collège au lycée. Choisissez votre parcours pour trouver les informations adaptées.", "en": "This site supports adolescents and their families throughout their vaccination journey, from middle school to high school. Choose your path to find the right information.", "ar": "يرافق هذا الموقع المراهقين وعائلاتهم طوال مسارهم التلقيحي، من الإعدادية إلى الثانوية. اختر مسارك للعثور على المعلومات المناسبة.", "tr": "Bu site, ergenlere ve ailelerine ortaokuldan liseye kadar aşı süreçleri boyunca eşlik eder. Size uygun bilgileri bulmak için yolunuzu seçin.", "ps": "دا وېبپاڼه تنکي ځوانان او د هغوی کورنۍ د واکسین په ټوله لاره کې، له منځني ښوونځي تر لیسې پورې، ملاتړ کوي. د مناسبو معلوماتو د موندلو لپاره خپله لاره وټاکئ.", "ku": "ئەم ماڵپەڕە هاوڕێی هەرزەکاران و خێزانەکانیانە لە سەرانسەری ڕێڕەوی ڤاکسینیاندا، لە قوتابخانەی ناوەندییەوە تا ئامادەیی. ڕێڕەوەکەت هەڵبژێرە بۆ دۆزینەوەی زانیاریی گونجاو.", "ro": "Acest site îi însoțește pe adolescenți și pe familiile lor pe tot parcursul vaccinării, de la colegiu la liceu. Alegeți-vă parcursul pentru a găsi informațiile potrivite.", "ka": "ეს საიტი მოზარდებსა და მათ ოჯახებს ეხმარება ვაქცინაციის მთელ გზაზე, კოლეჯიდან ლიცეუმამდე. აირჩიეთ თქვენი მიმართულება შესაბამისი ინფორმაციის მოსაძებნად.", "sq": "Ky sajt i shoqëron adoleshentët dhe familjet e tyre gjatë gjithë rrugëtimit të vaksinimit, nga kolegji te shkolla e mesme. Zgjidhni rrugën tuaj për të gjetur informacionin e duhur.", "am": "ይህ ድረ-ገጽ ታዳጊዎችን እና ቤተሰቦቻቸውን ከኮሌጅ እስከ ሁለተኛ ደረጃ ትምህርት ቤት ድረስ በክትባት ጉዟቸው ሁሉ ይደግፋል። ተገቢውን መረጃ ለማግኘት መንገድዎን ይምረጡ።", "zh": "本网站在青少年从初中到高中的整个疫苗接种过程中为他们及其家庭提供帮助。请选择您的路径以查找相应信息。", "prs": "این وب‌سایت نوجوانان و خانواده‌های آن‌ها را در تمام مسیر واکسیناسیون، از مکتب متوسطه تا لیسه، همراهی می‌کند. مسیر خود را انتخاب کنید تا معلومات مناسب را بیابید.", "es": "Este sitio acompaña a los adolescentes y a sus familias a lo largo de su recorrido de vacunación, del colegio al instituto. Elija su recorrido para encontrar la información adecuada.", "pt": "Este site acompanha os adolescentes e as suas famílias ao longo do seu percurso de vacinação, do colégio ao liceu. Escolha o seu percurso para encontrar a informação adequada.", "ru": "Этот сайт сопровождает подростков и их семьи на всём пути вакцинации, от коллежа до лицея. Выберите свой раздел, чтобы найти нужную информацию.", "uk": "Цей сайт супроводжує підлітків та їхні родини на всьому шляху вакцинації, від колежу до ліцею. Оберіть свій розділ, щоб знайти потрібну інформацію.", "mo": "Acest site îi însoțește pe adolescenți și pe familiile lor pe tot parcursul vaccinării, de la colegiu la liceu. Alegeți-vă parcursul pentru a găsi informațiile potrivite."}, "h2_col": {"fr": "Vaccination <b>au collège</b>", "en": "<b>Middle school</b> vaccination", "ar": "التلقيح <b>في الإعدادية</b>", "tr": "<b>Ortaokulda</b> aşılama", "ps": "<b>په منځني ښوونځي کې</b> واکسین", "ku": "ڤاکسین <b>لە قوتابخانەی ناوەندی</b>", "ro": "Vaccinare <b>la colegiu</b>", "ka": "ვაქცინაცია <b>კოლეჯში</b>", "sq": "Vaksinimi <b>në kolegj</b>", "am": "<b>በኮሌጅ</b> ክትባት", "zh": "<b>初中</b>疫苗接种", "prs": "واکسیناسیون <b>در مکتب متوسطه</b>", "es": "Vacunación <b>en el colegio</b>", "pt": "Vacinação <b>no colégio</b>", "ru": "Вакцинация <b>в коллеже</b>", "uk": "Вакцинація <b>в колежі</b>", "mo": "Vaccinare <b>la colegiu</b>"}, "h2_lyc": {"fr": "Vaccination <b>au lycée</b>", "en": "<b>High school</b> vaccination", "ar": "التلقيح <b>في الثانوية</b>", "tr": "<b>Lisede</b> aşılama", "ps": "<b>په لیسه کې</b> واکسین", "ku": "ڤاکسین <b>لە ئامادەیی</b>", "ro": "Vaccinare <b>la liceu</b>", "ka": "ვაქცინაცია <b>ლიცეუმში</b>", "sq": "Vaksinimi <b>në shkollën e mesme</b>", "am": "<b>በሁለተኛ ደረጃ ትምህርት ቤት</b> ክትባት", "zh": "<b>高中</b>疫苗接种", "prs": "واکسیناسیون <b>در لیسه</b>", "es": "Vacunación <b>en el instituto</b>", "pt": "Vacinação <b>no liceu</b>", "ru": "Вакцинация <b>в лицее</b>", "uk": "Вакцинація <b>в ліцеї</b>", "mo": "Vaccinare <b>la liceu</b>"}, "desc_col": {"fr": "Informations sur les vaccins, dates de vaccination dans les collèges et autorisation parentale.", "en": "Vaccine information, vaccination dates in middle schools and parental consent.", "ar": "معلومات عن اللقاحات، ومواعيد التلقيح في الإعداديات، والموافقة الأبوية.", "tr": "Aşılar hakkında bilgiler, ortaokullardaki aşı tarihleri ve veli izni.", "ps": "د واکسینونو په اړه معلومات، په منځنیو ښوونځیو کې د واکسین نېټې او د والدینو اجازه.", "ku": "زانیاری دەربارەی ڤاکسینەکان، ڕێکەوتەکانی ڤاکسین لە قوتابخانە ناوەندییەکان و ڕەزامەندیی دایک و باوک.", "ro": "Informații despre vaccinuri, datele vaccinării în colegii și autorizația părinților.", "ka": "ინფორმაცია ვაქცინების შესახებ, ვაქცინაციის თარიღები კოლეჯებში და მშობლის ნებართვა.", "sq": "Informacion për vaksinat, datat e vaksinimit në kolegje dhe autorizimi i prindërve.", "am": "ስለ ክትባቶች መረጃ፣ በኮሌጆች ውስጥ የክትባት ቀኖች እና የወላጅ ፈቃድ።", "zh": "疫苗信息、各初中的接种日期以及家长同意书。", "prs": "معلومات درباره واکسین‌ها، تاریخ‌های واکسیناسیون در مکاتب متوسطه و اجازه والدین.", "es": "Información sobre las vacunas, fechas de vacunación en los colegios y autorización parental.", "pt": "Informações sobre as vacinas, datas de vacinação nos colégios e autorização parental.", "ru": "Информация о вакцинах, даты вакцинации в коллежах и согласие родителей.", "uk": "Інформація про вакцини, дати вакцинації в колежах та згода батьків.", "mo": "Informații despre vaccinuri, datele vaccinării în colegii și autorizația părinților."}, "desc_lyc": {"fr": "Vérifier et compléter ses vaccinations, HPV, méningocoques ACWY et B, rappels.", "en": "Check and complete your vaccinations, HPV, meningococcal ACWY and B, boosters.", "ar": "تحقق من تطعيماتك وأكملها، فيروس الورم الحليمي البشري، المكورات السحائية ACWY وB، الجرعات المعززة.", "tr": "Aşılarınızı kontrol edin ve tamamlayın, HPV, ACWY ve B meningokok, rapeller.", "ps": "خپل واکسینونه وګورئ او بشپړ یې کړئ، HPV، د مننژوکوک ACWY او B، تکراري ډوزونه.", "ku": "ڤاکسینەکانت بپشکنە و تەواویان بکە، HPV، مێنینگۆکۆکی ACWY و B، دووبارەکردنەوەکان.", "ro": "Verificați și completați-vă vaccinările, HPV, meningococ ACWY și B, rapeluri.", "ka": "შეამოწმეთ და შეავსეთ თქვენი ვაქცინაციები, HPV, მენინგოკოკი ACWY და B, განმეორებითი დოზები.", "sq": "Kontrolloni dhe plotësoni vaksinimet tuaja, HPV, meningokokët ACWY dhe B, përforcuesit.", "am": "ክትባቶችዎን ያረጋግጡ እና ያጠናቅቁ፣ HPV፣ ማኒንጎኮከስ ACWY እና B፣ ማጠናከሪያዎች።", "zh": "检查并补全您的疫苗接种：HPV、ACWY 和 B 型脑膜炎球菌、加强针。", "prs": "واکسین‌های خود را بررسی و تکمیل کنید، HPV، مننگوکوک ACWY و B، دوزهای تقویتی.", "es": "Verificar y completar sus vacunas, VPH, meningococos ACWY y B, refuerzos.", "pt": "Verificar e completar as suas vacinas, HPV, meningococos ACWY e B, reforços.", "ru": "Проверить и дополнить свои прививки, ВПЧ, менингококки ACWY и B, ревакцинации.", "uk": "Перевірити та доповнити свої щеплення, ВПЛ, менінгококи ACWY і B, ревакцинації.", "mo": "Verificați și completați-vă vaccinările, HPV, meningococ ACWY și B, rapeluri."}, "go_col": {"fr": "Accéder au parcours collège", "en": "Go to the middle school section", "ar": "الدخول إلى قسم الإعدادية", "tr": "Ortaokul bölümüne git", "ps": "د منځني ښوونځي برخې ته ورشئ", "ku": "چوونە بۆ بەشی قوتابخانەی ناوەندی", "ro": "Accesați parcursul colegiu", "ka": "კოლეჯის განყოფილებაზე გადასვლა", "sq": "Hyni në seksionin e kolegjit", "am": "ወደ ኮሌጅ ክፍል ይሂዱ", "zh": "进入初中栏目", "prs": "ورود به بخش مکتب متوسطه", "es": "Acceder al apartado colegio", "pt": "Aceder ao percurso colégio", "ru": "Перейти в раздел коллежа", "uk": "Перейти до розділу колежу", "mo": "Accesați parcursul colegiu"}, "go_lyc": {"fr": "Accéder au parcours lycée", "en": "Go to the high school section", "ar": "الدخول إلى قسم الثانوية", "tr": "Lise bölümüne git", "ps": "د لیسې برخې ته ورشئ", "ku": "چوونە بۆ بەشی ئامادەیی", "ro": "Accesați parcursul liceu", "ka": "ლიცეუმის განყოფილებაზე გადასვლა", "sq": "Hyni në seksionin e shkollës së mesme", "am": "ወደ ሁለተኛ ደረጃ ትምህርት ቤት ክፍል ይሂዱ", "zh": "进入高中栏目", "prs": "ورود به بخش لیسه", "es": "Acceder al apartado instituto", "pt": "Aceder ao percurso liceu", "ru": "Перейти в раздел лицея", "uk": "Перейти до розділу ліцею", "mo": "Accesați parcursul liceu"}, "go_short": {"fr": "Entrer", "en": "Enter", "ar": "دخول", "tr": "Gir", "ps": "ننوځئ", "ku": "چوونە ژوورەوە", "ro": "Intrați", "ka": "შესვლა", "sq": "Hyni", "am": "ግባ", "zh": "进入", "prs": "ورود", "es": "Entrar", "pt": "Entrar", "ru": "Войти", "uk": "Увійти", "mo": "Intrați"}, "paths_aria": {"fr": "Choisir un parcours", "en": "Choose a path", "ar": "اختر مسارًا", "tr": "Bir bölüm seçin", "ps": "یوه لاره وټاکئ", "ku": "ڕێڕەوێک هەڵبژێرە", "ro": "Alegeți un parcurs", "ka": "აირჩიეთ მიმართულება", "sq": "Zgjidhni një rrugë", "am": "መንገድ ይምረጡ", "zh": "选择栏目", "prs": "یک مسیر انتخاب کنید", "es": "Elegir un recorrido", "pt": "Escolher um percurso", "ru": "Выберите раздел", "uk": "Оберіть розділ", "mo": "Alegeți un parcurs"}, "lang_choose": {"fr": "Choisissez votre langue", "en": "Choose your language", "ar": "اختر لغتك", "tr": "Dilinizi seçin", "ps": "خپله ژبه وټاکئ", "ku": "زمانەکەت هەڵبژێرە", "ro": "Alegeți limba", "ka": "აირჩიეთ ენა", "sq": "Zgjidhni gjuhën", "am": "ቋንቋዎን ይምረጡ", "zh": "选择语言", "prs": "زبان خود را انتخاب کنید", "es": "Elija su idioma", "pt": "Escolha o seu idioma", "ru": "Выберите язык", "uk": "Оберіть мову", "mo": "Alegeți limba"}, "unit": {"fr": "Unité de santé publique de l’hôpital de Melun – équipe mobile de vaccination", "en": "Public Health Unit of Melun Hospital – mobile vaccination team", "ar": "وحدة الصحة العامة في مستشفى ميلون – فريق التلقيح المتنقل", "tr": "Melun Hastanesi Halk Sağlığı Birimi – mobil aşı ekibi", "ps": "د مېلون روغتون د عامې روغتیا واحد – د واکسین ګرځنده ټیم", "ku": "یەکەی تەندروستیی گشتیی نەخۆشخانەی مێلون – تیمی گەڕۆکی ڤاکسین", "ro": "Unitatea de sănătate publică a spitalului din Melun – echipa mobilă de vaccinare", "ka": "მელუნის საავადმყოფოს საზოგადოებრივი ჯანმრთელობის განყოფილება – ვაქცინაციის მობილური გუნდი", "sq": "Njësia e shëndetit publik e spitalit të Melun – ekipi i lëvizshëm i vaksinimit", "am": "የሜሉን ሆስፒታል የሕዝብ ጤና ክፍል – ተንቀሳቃሽ የክትባት ቡድን", "zh": "默伦医院公共卫生科 – 流动疫苗接种团队", "prs": "واحد صحت عامه شفاخانه ملون – تیم سیار واکسیناسیون", "es": "Unidad de salud pública del hospital de Melun – equipo móvil de vacunación", "pt": "Unidade de saúde pública do hospital de Melun – equipa móvel de vacinação", "ru": "Отдел общественного здравоохранения больницы Мелёна – мобильная бригада вакцинации", "uk": "Відділ громадського здоров’я лікарні Мелена – мобільна бригада вакцинації", "mo": "Unitatea de sănătate publică a spitalului din Melun – echipa mobilă de vaccinare"}, "addr": {"fr": "Adresse", "en": "Address", "ar": "العنوان", "tr": "Adres", "ps": "پته", "ku": "ناونیشان", "ro": "Adresă", "ka": "მისამართი", "sq": "Adresa", "am": "አድራሻ", "zh": "地址", "prs": "آدرس", "es": "Dirección", "pt": "Morada", "ru": "Адрес", "uk": "Адреса", "mo": "Adresă"}, "phone": {"fr": "Téléphone", "en": "Phone", "ar": "الهاتف", "tr": "Telefon", "ps": "تلیفون", "ku": "تەلەفۆن", "ro": "Telefon", "ka": "ტელეფონი", "sq": "Telefoni", "am": "ስልክ", "zh": "电话", "prs": "تلیفون", "es": "Teléfono", "pt": "Telefone", "ru": "Телефон", "uk": "Телефон", "mo": "Telefon"}, "email": {"fr": "Email", "en": "Email", "ar": "البريد الإلكتروني", "tr": "E-posta", "ps": "بریښنالیک", "ku": "ئیمەیل", "ro": "Email", "ka": "ელფოსტა", "sq": "Email", "am": "ኢሜይል", "zh": "电子邮件", "prs": "ایمیل", "es": "Correo electrónico", "pt": "Email", "ru": "Эл. почта", "uk": "Ел. пошта", "mo": "Email"}};
+    var HUB_LABELS = {"fr": "Français", "ar": "العربية", "tr": "Türkçe", "en": "English", "ps": "پښتو", "ku": "Kurdî (Soranî)", "ka": "ქართული", "ro": "Română", "sq": "Shqip", "am": "አማርኛ", "zh": "中文", "prs": "دری", "es": "Español", "pt": "Português", "ru": "Русский", "uk": "Українська", "mo": "Moldovenească"};
+    var HUB_FLAGS = {"fr": "fr", "en": "gb-eng", "ar": "sa", "tr": "tr", "ps": "af", "ku": "iq", "ro": "ro", "ka": "ge", "sq": "al", "am": "et", "zh": "cn", "prs": "af", "es": "es", "pt": "pt", "ru": "ru", "uk": "ua", "mo": "md"};
+    var RTL_LANGS = ['ar','ps','ku','prs'];
+    var lang = (function(){ var q = new URLSearchParams(location.search).get('lang'); if (q && HUB_LABELS[q]) return q; var m = null; try { m = localStorage.getItem('vaccinationSud77Lang'); } catch(e){} return (m && HUB_LABELS[m]) ? m : 'fr'; })();
+    (function(){
+      function tr(k){ var o = HUB_I18N[k] || {}; return o[lang] || o.fr || ''; }
+      function renderTitle(animate){
+        var el = document.getElementById('hubTitle');
+        el.parentElement.setAttribute('dir', RTL_LANGS.indexOf(lang) > -1 ? 'rtl' : 'ltr');
+        el.innerHTML = tr('title').split(' ').map(function(w,i){
+          return '<span class="w" style="--k:'+i+(animate ? '' : ';animation:none;opacity:1;transform:none')+'">'+w+'</span>';
+        }).join(' ');
+      }
+      function apply(animate){
+        document.documentElement.lang = lang;
+        renderTitle(animate);
+        document.querySelectorAll('[data-i18n]').forEach(function(n){ n.textContent = tr(n.getAttribute('data-i18n')); });
+        document.querySelectorAll('[data-i18n-html]').forEach(function(n){ n.innerHTML = tr(n.getAttribute('data-i18n-html')); });
+        document.querySelectorAll('[data-i18n-aria]').forEach(function(n){ n.setAttribute('aria-label', tr(n.getAttribute('data-i18n-aria'))); });
+        document.getElementById('hubLangName').textContent = HUB_LABELS[lang];
+        document.getElementById('hubLangFlag').src = 'Flags/' + (HUB_FLAGS[lang] || 'fr') + '.png';
+        document.querySelectorAll('#hubLangList button').forEach(function(b){ b.setAttribute('aria-selected', b.dataset.lang === lang ? 'true' : 'false'); });
+      }
+      function setLang(l){
+        if (l === lang) return;
+        document.body.classList.add('langFade');
+        setTimeout(function(){
+          lang = l; apply(false);
+          var u = new URL(location.href);
+          if (l === 'fr') u.searchParams.delete('lang'); else u.searchParams.set('lang', l);
+          history.replaceState(null, '', u);
+          document.body.classList.remove('langFade');
+        }, 200);
+      }
+      apply(true);
+      window.hubSetLanguage = setLang;
+      var btn = document.getElementById('hubLangBtn'), list = document.getElementById('hubLangList');
+      function open(v){ list.classList.toggle('open', v); btn.setAttribute('aria-expanded', v ? 'true' : 'false'); if(v){ var cur = list.querySelector('[aria-selected="true"]'); if(cur) cur.focus(); } }
+      btn.addEventListener('click', function(e){ e.stopPropagation(); open(!list.classList.contains('open')); });
+      list.addEventListener('click', function(e){ var b = e.target.closest('button[data-lang]'); if(!b) return; open(false); setLang(b.dataset.lang); btn.focus(); });
+      document.addEventListener('click', function(e){ if(!e.target.closest('.hubLang')) open(false); });
+      document.addEventListener('keydown', function(e){ if(e.key === 'Escape') open(false); });
     })();
   </script>
 </body>

@@ -24,41 +24,185 @@
     "max_vaccines_per_session": 4,
     "consent_required": "two_parents_written_if_minor_self_if_adult",
     "text": {
-      "fr": "Votre enfant est scolarisé au lycée, en seconde, en première ou en terminale, et à ce titre, peut bénéficier gratuitement de la vaccination contre les HPV et contre les méningocoques ACWY et B, mais aussi de la mise à jour des autres vaccinations recommandées, pendant cette année scolaire 2026-2027.\n\nCette vaccination contre les HPV est recommandée depuis de nombreuses années chez les filles et les garçons âgés de 11 à 14 ans afin de réduire voire éliminer les cancers induits par l’infection par les HPV. Pour les jeunes qui n’ont pas été vaccinés à cet âge, un rattrapage est recommandé jusqu’à 26 ans révolus. Le schéma vaccinal comporte deux doses espacées d’au moins 6 mois lorsque la vaccination débute avant 15 ans, et trois doses à partir de 15 ans. Cette vaccination bénéficie d’une sécurité sanitaire des plus solides avec plus de 500 millions de doses déjà réalisées lors de ces 20 dernières années.\n\nLa recrudescence des cas de méningites à méningocoque, notamment en milieu scolaire et en collectivités, a amené les autorités de santé à recommander une vaccination contre les méningocoques ACWY entre 11 et 14 ans, avec un rattrapage jusqu’à 24 ans. Une seule dose de vaccin suffit pour être protégé. La vaccination contre le méningocoque B est également recommandée en rattrapage de 15 à 24 ans, en deux doses.\n\nCes vaccinations, sûres et efficaces, sont volontaires et totalement gratuites, et seront réalisées par des équipes de professionnels de santé qualifiés et expérimentés. Notre équipe de vaccination, forte de deux années de campagne en milieu scolaire en Seine-et-Marne et de la réalisation de près de 10 000 doses de vaccin, aucun événement indésirable majeur n’a été relevé.\n\nLe jour de la séance de vaccination, les élèves autorisés devront être munis de leur carnet de santé ou de vaccination afin d’assurer une traçabilité optimale. Un rappel vous sera transmis par l’établissement. Une séance de vaccination pouvant comporter au maximum 4 vaccins, le nombre exact de vaccins réalisés sera conforme aussi au consentement de chaque élève.\n\nPour inscrire votre enfant mineur, l’accord écrit des deux parents est nécessaire. Un élève majeur donne lui-même son consentement.\n"
+      "fr": "Votre enfant est scolarisé au lycée, en seconde, en première ou en terminale, et à ce titre, peut bénéficier gratuitement de la vaccination contre les HPV et contre les méningocoques ACWY et B, mais aussi de la mise à jour des autres vaccinations recommandées, pendant cette année scolaire 2026-2027.\n\nCette vaccination contre les HPV est recommandée depuis de nombreuses années chez les filles et les garçons âgés de 11 à 14 ans afin de réduire voire éliminer les cancers induits par l’infection par les HPV. Pour les jeunes qui n’ont pas été vaccinés à cet âge, un rattrapage est recommandé jusqu’à 26 ans révolus. Le schéma vaccinal comporte deux doses espacées d’au moins 6 mois lorsque la vaccination débute avant 15 ans, et trois doses à partir de 15 ans. Cette vaccination bénéficie d’une sécurité sanitaire des plus solides avec plus de 500 millions de doses déjà réalisées lors de ces 20 dernières années.\n\nLa recrudescence des cas de méningites à méningocoque, notamment en milieu scolaire et en collectivités, a amené les autorités de santé à recommander une vaccination contre les méningocoques ACWY entre 11 et 14 ans, avec un rattrapage jusqu’à 24 ans. Une seule dose de vaccin suffit pour être protégé. La vaccination contre le méningocoque B est également recommandée en rattrapage de 15 à 24 ans, en deux doses.\n\nCes vaccinations, sûres et efficaces, sont volontaires et totalement gratuites, et seront réalisées par des équipes de professionnels de santé qualifiés et expérimentés. Notre équipe de vaccination, forte de deux années de campagne en milieu scolaire en Seine-et-Marne et de la réalisation de près de 10 000 doses de vaccin, aucun événement indésirable majeur n’a été relevé.\n\nLe jour de la séance de vaccination, les élèves autorisés devront être munis de leur carnet de santé ou de vaccination afin d’assurer une traçabilité optimale. Un rappel vous sera transmis par l’établissement. Une séance de vaccination pouvant comporter au maximum 4 vaccins, le nombre exact de vaccins réalisés sera conforme aussi au consentement de chaque élève.\n\nPour inscrire votre enfant mineur, l’accord écrit des deux parents est nécessaire. Un élève majeur donne lui-même son consentement.\n",
+      "en": "Your child attends high school, in Seconde, Première or Terminale, and can therefore receive free vaccination against HPV and against meningococcus ACWY and B, as well as updates of the other recommended vaccinations, during this 2026-2027 school year.\n\nVaccination against HPV has been recommended for many years for girls and boys aged 11 to 14, in order to reduce or even eliminate cancers caused by HPV infection. For young people who were not vaccinated at that age, catch-up vaccination is recommended up to age 26 inclusive. The schedule includes two doses at least 6 months apart when vaccination starts before age 15, and three doses from age 15. This vaccination has a very strong safety record, with more than 500 million doses given over the last 20 years.\n\nThe rise in cases of meningococcal meningitis, particularly in schools and communities, has led health authorities to recommend vaccination against meningococcus ACWY between ages 11 and 14, with catch-up up to age 24. A single dose of vaccine is enough to be protected. Vaccination against meningococcus B is also recommended as a catch-up from 15 to 24, in two doses.\n\nThese vaccinations, which are safe and effective, are voluntary and completely free, and will be carried out by teams of qualified and experienced health professionals. Our vaccination team has two years of school campaigns in Seine-et-Marne behind it and has given nearly 10 000 doses of vaccine, with no major adverse event reported.\n\nOn the day of the vaccination session, authorised students must bring their health or vaccination record to ensure optimal traceability. A reminder will be sent to you by the school. As a vaccination session can include a maximum of 4 vaccines, the exact number of vaccines given will also follow each student's consent.\n\nTo register your child under 18, the written agreement of both parents is required. A student aged 18 or over gives their own consent.\n",
+      "ar": "طفلكم مسجل في الثانوية، في السنة الأولى أو الثانية أو النهائية، ويمكنه بهذه الصفة الاستفادة مجانًا من التلقيح ضد فيروس الورم الحليمي البشري وضد المكورات السحائية ACWY وB، وكذلك من تحديث التطعيمات الأخرى الموصى بها، خلال هذه السنة الدراسية ‎2026-2027.\n\nيُوصى بالتلقيح ضد فيروس الورم الحليمي البشري منذ سنوات عديدة للفتيات والفتيان من 11 إلى 14 سنة، بهدف تقليل بل والقضاء على السرطانات الناجمة عن العدوى بهذا الفيروس. وبالنسبة للشباب الذين لم يُلقَّحوا في هذا العمر، يُوصى بالتلقيح الاستدراكي حتى إتمام 26 سنة. ويتضمن المخطط جرعتين تفصل بينهما 6 أشهر على الأقل عندما يبدأ التلقيح قبل 15 سنة، وثلاث جرعات ابتداءً من 15 سنة. ويتمتع هذا التلقيح بسلامة صحية من أمتن ما يكون، مع أكثر من 500 مليون جرعة أُعطيت خلال السنوات الـ20 الماضية.\n\nدفع ارتفاع حالات التهاب السحايا بالمكورات السحائية، ولا سيما في الوسط المدرسي والجماعات، السلطات الصحية إلى التوصية بالتلقيح ضد المكورات السحائية ACWY بين 11 و14 سنة، مع تلقيح استدراكي حتى 24 سنة. وتكفي جرعة واحدة من اللقاح للحماية. ويُوصى أيضًا بالتلقيح الاستدراكي ضد المكورات السحائية B من 15 إلى 24 سنة، بجرعتين.\n\nهذه التطعيمات آمنة وفعالة، وهي طوعية ومجانية بالكامل، وستقوم بها فرق من المهنيين الصحيين المؤهلين وذوي الخبرة. وقد أجرى فريق التلقيح لدينا حملتين مدرسيتين على مدى سنتين في سين إي مارن، وأعطى ما يقارب 10 000 جرعة لقاح، دون تسجيل أي حدث جانبي خطير.\n\nيوم جلسة التلقيح، يجب على التلاميذ المأذون لهم إحضار دفترهم الصحي أو دفتر التلقيح لضمان تتبع أمثل. وسترسل إليكم المؤسسة تذكيرًا. وبما أن جلسة التلقيح يمكن أن تتضمن 4 لقاحات كحد أقصى، فإن العدد الدقيق للقاحات المعطاة سيكون مطابقًا أيضًا لموافقة كل تلميذ.\n\nلتسجيل طفلكم القاصر، تلزم الموافقة الكتابية لكلا الوالدين. أما التلميذ البالغ فيعطي موافقته بنفسه.\n",
+      "tr": "Çocuğunuz lisede, seconde, première veya terminale sınıfında öğrenim görüyor ve bu nedenle 2026-2027 eğitim yılı boyunca HPV'ye ve ACWY ile B meningokoklarına karşı ücretsiz aşılamadan, ayrıca önerilen diğer aşıların güncellenmesinden yararlanabilir.\n\nHPV'ye karşı aşılama, HPV enfeksiyonunun neden olduğu kanserleri azaltmak, hatta ortadan kaldırmak için uzun yıllardır 11-14 yaş arasındaki kız ve erkeklere önerilmektedir. Bu yaşta aşılanmamış gençler için 26 yaşını doldurana kadar telafi aşısı önerilir. Aşılama 15 yaşından önce başladığında şema en az 6 ay arayla iki dozdan, 15 yaşından itibaren ise üç dozdan oluşur. Bu aşı, son 20 yılda 500 milyondan fazla doz yapılmış olmasıyla en sağlam güvenlik geçmişlerinden birine sahiptir.\n\nÖzellikle okullarda ve toplu yaşam alanlarında meningokok menenjiti vakalarındaki artış, sağlık otoritelerini 11-14 yaş arasında ACWY meningokoklarına karşı aşılamayı ve 24 yaşına kadar telafi aşısını önermeye yöneltmiştir. Korunmak için tek doz aşı yeterlidir. B meningokokuna karşı aşılama da 15-24 yaş arasında, iki doz olarak telafi aşısı şeklinde önerilmektedir.\n\nGüvenli ve etkili olan bu aşılar gönüllüdür ve tamamen ücretsizdir, nitelikli ve deneyimli sağlık profesyonellerinden oluşan ekipler tarafından yapılacaktır. Aşı ekibimiz, Seine-et-Marne'da iki yıllık okul kampanyası deneyimine sahiptir ve yaklaşık 10 000 doz aşı yapmıştır, hiçbir ciddi yan etki kaydedilmemiştir.\n\nAşı seansı günü, izinli öğrenciler en iyi izlenebilirliği sağlamak için sağlık veya aşı kartlarını yanlarında getirmelidir. Okul size bir hatırlatma gönderecektir. Bir aşı seansında en fazla 4 aşı yapılabildiğinden, yapılan aşıların tam sayısı her öğrencinin onayına da uygun olacaktır.\n\nReşit olmayan çocuğunuzu kaydettirmek için iki ebeveynin yazılı onayı gereklidir. Reşit öğrenci onayını kendisi verir.\n",
+      "ps": "ستاسو ماشوم په لیسه کې، په لسم، یوولسم یا دولسم ټولګي کې زده کړه کوي، او له همدې امله کولی شي د ‎2026-2027 تعلیمي کال په اوږدو کې د HPV او د ACWY او B مننژوکوکونو پر وړاندې وړیا واکسین، او همدارنګه د نورو سپارښتل شویو واکسینونو تازه کول ترلاسه کړي.\n\nد HPV پر وړاندې واکسین له ډېرو کلونو راهیسې د ۱۱ تر ۱۴ کلنو نجونو او هلکانو ته سپارښتل کېږي، ترڅو د HPV له انتان څخه رامنځته شوي سرطانونه کم او حتی له منځه یوړل شي. هغو ځوانانو ته چې په دې عمر کې واکسین شوي نه دي، تر ۲۶ کلنۍ بشپړېدو پورې جبراني واکسین سپارښتل کېږي. کله چې واکسین له ۱۵ کلنۍ مخکې پیل شي، مهالوېش دوه ډوزونه لري چې لږ تر لږه ۶ میاشتې واټن ولري، او له ۱۵ کلنۍ وروسته درې ډوزونه. دا واکسین تر ټولو پیاوړی روغتیایي خوندیتوب لري، او په تېرو ۲۰ کلونو کې یې له 500 میلیونو ډېر ډوزونه ورکړل شوي دي.\n\nد مننژوکوکي مننژیت د پېښو زیاتوالي، په ځانګړي ډول په ښوونځیو او ډله ییزو ځایونو کې، روغتیایي چارواکي دې ته اړ کړل چې د ۱۱ او ۱۴ کلنۍ ترمنځ د ACWY مننژوکوکونو پر وړاندې واکسین، او تر ۲۴ کلنۍ پورې جبراني واکسین، سپارښتنه وکړي. د ساتنې لپاره د واکسین یو ډوز بس دی. د B مننژوکوک پر وړاندې جبراني واکسین هم له ۱۵ تر ۲۴ کلنۍ، په دوو ډوزونو کې، سپارښتل کېږي.\n\nدا واکسینونه خوندي او اغېزمن دي، داوطلبانه او بشپړ وړیا دي، او د وړ او تجربه لرونکو روغتیایي کارپوهانو د ټیمونو له خوا ترسره کېږي. زموږ د واکسین ټیم په سېن-اې-مارن کې د ښوونځیو د دوو کلونو کمپاینونو تجربه لري او نږدې 10 000 ډوزه واکسین یې ورکړي، او هېڅ جدي جانبي پېښه نه ده ثبت شوې.\n\nد واکسین د غونډې په ورځ، اجازه لرونکي زده کوونکي باید خپله روغتیایي یا د واکسین کتابچه له ځانه سره راوړي ترڅو دقیق ثبت تضمین شي. ښوونځی به تاسو ته یادونه درولېږي. ځکه چې د واکسین یوه غونډه تر ټولو زیات ۴ واکسینونه لرلی شي، د ورکړل شویو واکسینونو دقیق شمېر به د هر زده کوونکي له موافقې سره هم سم وي.\n\nد خپل کم عمره ماشوم د نوم لیکنې لپاره، د دواړو والدینو لیکلې موافقه اړینه ده. بالغ زده کوونکی پخپله خپله موافقه ورکوي.\n",
+      "ku": "منداڵەکەتان لە ئامادەیی، لە پۆلی دەیەم، یازدەیەم یان دوازدەیەم دەخوێنێت، و بەم پێیە دەتوانێت لەم ساڵی خوێندنی ‎2026-2027 دا بە خۆڕایی ڤاکسینی دژی HPV و دژی مێنینگۆکۆکەکانی ACWY و B وەربگرێت، هەروەها ڤاکسینە ڕاسپێردراوەکانی تری نوێ بکرێنەوە.\n\nڤاکسینی دژی HPV چەندین ساڵە بۆ کچان و کوڕانی ١١ تا ١٤ ساڵ ڕاسپێردراوە، بۆ کەمکردنەوە و تەنانەت نەهێشتنی ئەو شێرپەنجانەی بەهۆی تووشبوون بە HPV دروست دەبن. بۆ ئەو گەنجانەی لەم تەمەنەدا ڤاکسین نەکراون، قەرەبووکردنەوە تا تەواوبوونی ٢٦ ساڵی ڕاسپێردراوە. کاتێک ڤاکسین پێش ١٥ ساڵی دەست پێدەکات، خشتەکە دوو دۆزە بە ماوەی لانیکەم ٦ مانگ، و لە ١٥ ساڵییەوە سێ دۆز. ئەم ڤاکسینە یەکێکە لە بەهێزترین تۆمارەکانی سەلامەتیی تەندروستی، و لە ٢٠ ساڵی ڕابردوودا زیاتر لە 500 ملیۆن دۆزی دراوە.\n\nزیادبوونی حاڵەتەکانی هەوکردنی پەردەی مێشک بە مێنینگۆکۆک، بەتایبەتی لە قوتابخانە و شوێنە گشتییەکاندا، دەسەڵاتە تەندروستییەکانی هاندا ڤاکسینی دژی مێنینگۆکۆکەکانی ACWY لە نێوان ١١ و ١٤ ساڵیدا ڕابسپێرن، لەگەڵ قەرەبووکردنەوە تا ٢٤ ساڵی. یەک دۆزی ڤاکسین بەسە بۆ پاراستن. ڤاکسینی قەرەبووکردنەوە دژی مێنینگۆکۆکی B ش لە ١٥ تا ٢٤ ساڵی، بە دوو دۆز، ڕاسپێردراوە.\n\nئەم ڤاکسینانە سەلامەت و کاریگەرن، خۆبەخشانە و تەواو بێبەرامبەرن، و لەلایەن تیمی پسپۆڕانی تەندروستیی شارەزا و بەئەزموونەوە ئەنجام دەدرێن. تیمی ڤاکسینەکەمان دوو ساڵ ئەزموونی هەڵمەتی قوتابخانەیی لە سێن-ئێ-مارن هەیە و نزیکەی 10 000 دۆزی ڤاکسینی داوە، و هیچ ڕووداوێکی لاوەکیی گەورە تۆمار نەکراوە.\n\nلە ڕۆژی دانیشتنی ڤاکسیندا، قوتابیانی مۆڵەتپێدراو دەبێت دەفتەری تەندروستی یان ڤاکسینەکەیان لەگەڵ خۆیان بهێنن بۆ دڵنیابوون لە تۆمارکردنی ورد. قوتابخانەکە بیرخستنەوەیەکتان بۆ دەنێرێت. لەبەر ئەوەی یەک دانیشتنی ڤاکسین دەتوانێت زۆرترین ٤ ڤاکسین لەخۆبگرێت، ژمارەی ڕاستەقینەی ڤاکسینە دراوەکان لەگەڵ ڕەزامەندیی هەر قوتابییەکیش دەگونجێت.\n\nبۆ تۆمارکردنی منداڵە خوار تەمەنی یاساییەکەتان، ڕەزامەندیی نووسراوی هەردوو دایک و باوک پێویستە. قوتابیی گەورە خۆی ڕەزامەندی دەدات.\n",
+      "ro": "Copilul dvs. este elev la liceu, în clasa seconde, première sau terminale, și, în această calitate, poate beneficia gratuit de vaccinarea împotriva HPV și împotriva meningococilor ACWY și B, precum și de actualizarea celorlalte vaccinări recomandate, în acest an școlar 2026-2027.\n\nVaccinarea împotriva HPV este recomandată de mulți ani fetelor și băieților între 11 și 14 ani, pentru a reduce, chiar a elimina, cancerele cauzate de infecția cu HPV. Pentru tinerii care nu au fost vaccinați la această vârstă, vaccinarea de recuperare este recomandată până la 26 de ani împliniți. Schema cuprinde două doze la cel puțin 6 luni distanță când vaccinarea începe înainte de 15 ani și trei doze de la 15 ani. Această vaccinare beneficiază de o siguranță dintre cele mai solide, cu peste 500 de milioane de doze administrate în ultimii 20 de ani.\n\nCreșterea numărului de cazuri de meningită meningococică, în special în mediul școlar și în colectivități, a determinat autoritățile sanitare să recomande vaccinarea împotriva meningococilor ACWY între 11 și 14 ani, cu recuperare până la 24 de ani. O singură doză de vaccin este suficientă pentru a fi protejat. Vaccinarea împotriva meningococului B este de asemenea recomandată ca recuperare între 15 și 24 de ani, în două doze.\n\nAceste vaccinări, sigure și eficiente, sunt voluntare și complet gratuite și vor fi efectuate de echipe de profesioniști din domeniul sănătății calificați și experimentați. Echipa noastră de vaccinare, cu doi ani de campanii școlare în Seine-et-Marne și aproape 10 000 de doze de vaccin administrate, nu a înregistrat niciun eveniment advers major.\n\nÎn ziua sesiunii de vaccinare, elevii autorizați trebuie să aibă asupra lor carnetul de sănătate sau de vaccinare, pentru o trasabilitate optimă. Școala vă va trimite o reamintire. Deoarece o sesiune de vaccinare poate cuprinde cel mult 4 vaccinuri, numărul exact de vaccinuri efectuate va respecta și consimțământul fiecărui elev.\n\nPentru a înscrie copilul dvs. minor, este necesar acordul scris al ambilor părinți. Un elev major își dă singur consimțământul.\n",
+      "ka": "თქვენი შვილი სწავლობს ლიცეუმში, seconde, première ან terminale კლასში, და ამიტომ 2026-2027 სასწავლო წლის განმავლობაში შეუძლია უფასოდ აიცრას HPV-ისა და ACWY და B მენინგოკოკების საწინააღმდეგოდ, ასევე განაახლოს სხვა რეკომენდებული აცრები.\n\nHPV-ის საწინააღმდეგო ვაქცინაცია მრავალი წელია რეკომენდებულია 11-დან 14 წლამდე გოგონებისა და ბიჭებისთვის, HPV ინფექციით გამოწვეული სიმსივნეების შესამცირებლად და აღმოსაფხვრელადაც კი. იმ ახალგაზრდებისთვის, რომლებიც ამ ასაკში არ აცრილან, დამატებითი აცრა რეკომენდებულია 26 წლის შესრულებამდე. სქემა მოიცავს ორ დოზას მინიმუმ 6 თვის შუალედით, თუ აცრა 15 წლამდე იწყება, და სამ დოზას 15 წლიდან. ამ ვაქცინას უსაფრთხოების ერთ-ერთი ყველაზე მყარი ისტორია აქვს, ბოლო 20 წელიწადში 500 მილიონზე მეტი დოზაა გაკეთებული.\n\nმენინგოკოკური მენინგიტის შემთხვევების ზრდამ, განსაკუთრებით სკოლებსა და კოლექტივებში, ჯანდაცვის ორგანოებს ACWY მენინგოკოკების საწინააღმდეგო აცრის რეკომენდაცია მიაცემინა 11-დან 14 წლამდე, დამატებითი აცრით 24 წლამდე. დასაცავად ვაქცინის ერთი დოზა საკმარისია. მენინგოკოკ B-ის საწინააღმდეგო აცრაც რეკომენდებულია დამატებით 15-დან 24 წლამდე, ორი დოზით.\n\nეს უსაფრთხო და ეფექტური აცრები ნებაყოფლობითი და სრულიად უფასოა, მათ კვალიფიციური და გამოცდილი სამედიცინო სპეციალისტების გუნდები ჩაატარებენ. ჩვენმა ვაქცინაციის გუნდმა სენ-ე-მარნში ორწლიანი სასკოლო კამპანიების განმავლობაში თითქმის 10 000 დოზა ვაქცინა გააკეთა და არცერთი მძიმე გვერდითი მოვლენა არ დაფიქსირებულა.\n\nვაქცინაციის სესიის დღეს ნებადართულმა მოსწავლეებმა თან უნდა იქონიონ ჯანმრთელობის ან ვაქცინაციის ბარათი ზუსტი აღრიცხვისთვის. სასწავლებელი შეხსენებას გამოგიგზავნით. ვინაიდან ერთ სესიაზე მაქსიმუმ 4 ვაქცინის გაკეთება შეიძლება, გაკეთებული ვაქცინების ზუსტი რაოდენობა თითოეული მოსწავლის თანხმობასაც შეესაბამება.\n\nთქვენი არასრულწლოვანი შვილის ჩასაწერად საჭიროა ორივე მშობლის წერილობითი თანხმობა. სრულწლოვანი მოსწავლე თანხმობას თავად იძლევა.\n",
+      "sq": "Fëmija juaj ndjek shkollën e mesme, në klasën seconde, première ose terminale, dhe për këtë arsye mund të përfitojë falas vaksinimin kundër HPV dhe kundër meningokokëve ACWY dhe B, si dhe përditësimin e vaksinimeve të tjera të rekomanduara, gjatë këtij viti shkollor 2026-2027.\n\nVaksinimi kundër HPV rekomandohet prej shumë vitesh për vajzat dhe djemtë 11 deri në 14 vjeç, për të ulur e madje për të eliminuar kanceret e shkaktuara nga infeksioni me HPV. Për të rinjtë që nuk janë vaksinuar në këtë moshë, rekomandohet vaksinim plotësues deri në 26 vjeç të mbushur. Skema përfshin dy doza me të paktën 6 muaj diferencë kur vaksinimi fillon para 15 vjeç, dhe tre doza nga 15 vjeç. Ky vaksinim ka një nga historitë më të forta të sigurisë, me mbi 500 milionë doza të bëra gjatë 20 viteve të fundit.\n\nRritja e rasteve të meningjitit meningokoksik, veçanërisht në shkolla dhe komunitete, i ka shtyrë autoritetet shëndetësore të rekomandojnë vaksinimin kundër meningokokëve ACWY midis 11 dhe 14 vjeç, me plotësim deri në 24 vjeç. Një dozë e vetme e vaksinës mjafton për t'u mbrojtur. Vaksinimi kundër meningokokut B rekomandohet gjithashtu si plotësues nga 15 deri në 24 vjeç, në dy doza.\n\nKëto vaksinime, të sigurta dhe efektive, janë vullnetare dhe plotësisht falas, dhe do të kryhen nga ekipe profesionistësh shëndetësorë të kualifikuar dhe me përvojë. Ekipi ynë i vaksinimit, me dy vite fushatash shkollore në Seine-et-Marne dhe rreth 10 000 doza vaksine të bëra, nuk ka regjistruar asnjë ngjarje të rëndë anësore.\n\nDitën e seancës së vaksinimit, nxënësit e autorizuar duhet të kenë me vete librezën shëndetësore ose të vaksinimit për të siguruar gjurmueshmëri optimale. Shkolla do t'ju dërgojë një kujtesë. Meqë një seancë vaksinimi mund të përfshijë më së shumti 4 vaksina, numri i saktë i vaksinave të bëra do të jetë në përputhje edhe me pëlqimin e secilit nxënës.\n\nPër të regjistruar fëmijën tuaj të mitur, nevojitet pëlqimi me shkrim i të dy prindërve. Një nxënës madhor jep vetë pëlqimin.\n",
+      "am": "ልጅዎ በሁለተኛ ደረጃ ትምህርት ቤት (seconde፣ première ወይም terminale ክፍል) ይማራል፣ በዚህም በ2026-2027 የትምህርት ዘመን የHPV እና የACWY እና B ማኒንጎኮከስ ክትባቶችን እንዲሁም የሌሎች የሚመከሩ ክትባቶችን ማደስ በነጻ ማግኘት ይችላል።\n\nየHPV ክትባት በHPV ኢንፌክሽን የሚመጡ ካንሰሮችን ለመቀነስ፣ ብሎም ለማጥፋት ከ11 እስከ 14 ዓመት ለሆኑ ሴቶችና ወንዶች ልጆች ለብዙ ዓመታት ሲመከር ቆይቷል። በዚህ ዕድሜ ላልተከተቡ ወጣቶች እስከ 26 ዓመት ሙሉ ድረስ የማካካሻ ክትባት ይመከራል። ክትባቱ ከ15 ዓመት በፊት ሲጀመር መርሐ ግብሩ ቢያንስ በ6 ወር ልዩነት ሁለት መጠኖችን፣ ከ15 ዓመት ጀምሮ ደግሞ ሦስት መጠኖችን ያካትታል። ይህ ክትባት ባለፉት 20 ዓመታት ከ500 ሚሊዮን በላይ መጠኖች የተሰጡበት በጣም ጠንካራ የደህንነት ታሪክ አለው።\n\nበተለይ በትምህርት ቤቶችና በጋራ መኖሪያዎች የማኒንጎኮከስ የማጅራት ገትር ጉዳዮች መጨመር የጤና ባለሥልጣናት ከ11 እስከ 14 ዓመት በACWY ማኒንጎኮከስ ላይ ክትባትን፣ እስከ 24 ዓመትም ማካካሻን እንዲመክሩ አድርጓቸዋል። ለመጠበቅ አንድ የክትባት መጠን በቂ ነው። በማኒንጎኮከስ B ላይ የሚሰጥ ክትባትም ከ15 እስከ 24 ዓመት በሁለት መጠኖች እንደ ማካካሻ ይመከራል።\n\nእነዚህ ደህንነታቸው የተጠበቀና ውጤታማ ክትባቶች በፈቃደኝነት የሚሰጡና ሙሉ በሙሉ ነጻ ሲሆኑ ብቁና ልምድ ባላቸው የጤና ባለሙያዎች ቡድኖች ይሰጣሉ። የክትባት ቡድናችን በሴን-ኤ-ማርን ለሁለት ዓመታት የትምህርት ቤት ዘመቻዎችን አካሂዶ ወደ 10 000 የሚጠጉ የክትባት መጠኖችን ሰጥቷል፣ ምንም ከባድ የጎንዮሽ ክስተት አልተመዘገበም።\n\nበክትባቱ ቀን ፈቃድ ያላቸው ተማሪዎች ትክክለኛ ምዝገባን ለማረጋገጥ የጤና ወይም የክትባት ደብተራቸውን ይዘው መምጣት አለባቸው። ትምህርት ቤቱ ማሳሰቢያ ይልክልዎታል። አንድ የክትባት ክፍለ ጊዜ ቢበዛ 4 ክትባቶችን ሊያካትት ስለሚችል፣ የሚሰጡት ክትባቶች ትክክለኛ ቁጥር ከእያንዳንዱ ተማሪ ፈቃድ ጋርም የሚጣጣም ይሆናል።\n\nዕድሜው ያልደረሰ ልጅዎን ለማስመዝገብ የሁለቱም ወላጆች የጽሑፍ ፈቃድ ያስፈልጋል። ዕድሜው የደረሰ ተማሪ ራሱ ፈቃዱን ይሰጣል።\n",
+      "zh": "您的孩子正在高中就读（seconde、première 或 terminale 年级），因此在2026-2027学年期间可以免费接种HPV疫苗以及ACWY型和B型脑膜炎球菌疫苗，并更新其他推荐的疫苗接种。\n\n多年来，HPV疫苗一直被推荐给11至14岁的女孩和男孩接种，以减少甚至消除由HPV感染引起的癌症。对于在这个年龄未接种的年轻人，推荐补种至满26岁。15岁前开始接种的，程序为两剂，间隔至少6个月；从15岁起为三剂。该疫苗拥有极为可靠的安全记录，过去20年已接种超过5亿剂。\n\n由于脑膜炎球菌性脑膜炎病例增加，特别是在学校和集体场所，卫生部门建议在11至14岁之间接种ACWY型脑膜炎球菌疫苗，并补种至24岁。接种一剂即可获得保护。同时也推荐15至24岁补种B型脑膜炎球菌疫苗，共两剂。\n\n这些疫苗安全有效，自愿且完全免费，将由合格且经验丰富的医护团队实施。我们的疫苗接种团队已在塞纳-马恩省开展了两年的校园接种活动，接种了近 10 000 剂疫苗，未记录到任何严重不良事件。\n\n接种当天，获得许可的学生须携带健康手册或疫苗接种本，以确保最佳的可追溯性。学校会向您发送提醒。由于每次最多可接种4种疫苗，实际接种的疫苗数量也将符合每位学生的同意内容。\n\n为未成年孩子报名，需要父母双方的书面同意。成年学生由本人表示同意。\n",
+      "prs": "فرزند شما در لیسه، در صنف دهم، یازدهم یا دوازدهم، درس می‌خواند و به همین دلیل می‌تواند در این سال تعلیمی ‎2026-2027 به‌طور رایگان از واکسیناسیون علیه HPV و مننگوکوک‌های ACWY و B و همچنین از به‌روزرسانی سایر واکسین‌های توصیه‌شده استفاده کند.\n\nواکسیناسیون علیه HPV سال‌هاست برای دختران و پسران ۱۱ تا ۱۴ ساله توصیه می‌شود تا سرطان‌های ناشی از عفونت HPV کاهش یابد و حتی از بین برود. برای جوانانی که در این سن واکسین نشده‌اند، واکسیناسیون جبرانی تا ۲۶ سال کامل توصیه می‌شود. وقتی واکسیناسیون قبل از ۱۵ سالگی شروع شود، برنامه شامل دو دوز با فاصله حداقل ۶ ماه است و از ۱۵ سالگی سه دوز. این واکسیناسیون از قوی‌ترین سوابق ایمنی برخوردار است و در ۲۰ سال گذشته بیش از 500 میلیون دوز آن زده شده است.\n\nافزایش موارد مننژیت مننگوکوکی، به‌ویژه در محیط مکتب و جمعیت‌ها، مقامات صحی را به توصیه واکسیناسیون علیه مننگوکوک‌های ACWY بین ۱۱ تا ۱۴ سالگی، با جبران تا ۲۴ سالگی، واداشته است. یک دوز واکسین برای محافظت کافی است. واکسیناسیون جبرانی علیه مننگوکوک B نیز از ۱۵ تا ۲۴ سالگی، در دو دوز، توصیه می‌شود.\n\nاین واکسین‌ها مصئون و مؤثرند، داوطلبانه و کاملاً رایگان هستند و توسط تیم‌هایی از متخصصان صحی واجد شرایط و باتجربه انجام می‌شوند. تیم واکسیناسیون ما با دو سال کمپاین مکتبی در سن-اِ-مارن و نزدیک به 10 000 دوز واکسین زده‌شده، هیچ رویداد جانبی جدی ثبت نکرده است.\n\nدر روز جلسه واکسیناسیون، شاگردانی که اجازه دارند باید دفترچه صحی یا دفترچه واکسین خود را همراه داشته باشند تا ثبت دقیق تضمین شود. مکتب یادآوری برای شما ارسال خواهد کرد. از آنجا که هر جلسه می‌تواند حداکثر ۴ واکسین داشته باشد، تعداد دقیق واکسین‌های زده‌شده مطابق رضایت هر شاگرد نیز خواهد بود.\n\nبرای ثبت‌نام فرزند زیر سن قانونی شما، موافقت کتبی هر دو والد لازم است. شاگرد بالغ خودش رضایت می‌دهد.\n",
+      "es": "Su hijo está escolarizado en el instituto, en seconde, première o terminale, y por ello puede beneficiarse gratuitamente de la vacunación contra el VPH y contra los meningococos ACWY y B, así como de la actualización de las demás vacunas recomendadas, durante este curso escolar 2026-2027.\n\nLa vacunación contra el VPH se recomienda desde hace muchos años a chicas y chicos de 11 a 14 años para reducir, e incluso eliminar, los cánceres causados por la infección por VPH. Para los jóvenes que no se vacunaron a esa edad, se recomienda una vacunación de recuperación hasta los 26 años cumplidos. La pauta incluye dos dosis separadas al menos 6 meses cuando la vacunación empieza antes de los 15 años, y tres dosis a partir de los 15 años. Esta vacunación cuenta con una seguridad sanitaria de las más sólidas, con más de 500 millones de dosis administradas en los últimos 20 años.\n\nEl aumento de casos de meningitis por meningococo, sobre todo en el ámbito escolar y en colectividades, ha llevado a las autoridades sanitarias a recomendar la vacunación contra los meningococos ACWY entre los 11 y los 14 años, con una recuperación hasta los 24 años. Una sola dosis de vacuna basta para estar protegido. La vacunación contra el meningococo B también se recomienda como recuperación de los 15 a los 24 años, en dos dosis.\n\nEstas vacunas, seguras y eficaces, son voluntarias y totalmente gratuitas, y las realizarán equipos de profesionales sanitarios cualificados y con experiencia. Nuestro equipo de vacunación, con dos años de campañas escolares en Seine-et-Marne y cerca de 10 000 dosis de vacuna administradas, no ha registrado ningún efecto adverso grave.\n\nEl día de la sesión de vacunación, los alumnos autorizados deberán traer su cartilla de salud o de vacunación para garantizar una trazabilidad óptima. El centro le enviará un recordatorio. Como una sesión de vacunación puede incluir como máximo 4 vacunas, el número exacto de vacunas administradas se ajustará también al consentimiento de cada alumno.\n\nPara inscribir a su hijo menor de edad, es necesario el acuerdo por escrito de ambos padres. Un alumno mayor de edad da su propio consentimiento.\n",
+      "pt": "O seu filho frequenta o liceu, no seconde, première ou terminale, e por isso pode beneficiar gratuitamente da vacinação contra o HPV e contra os meningococos ACWY e B, bem como da atualização das outras vacinas recomendadas, durante este ano letivo 2026-2027.\n\nA vacinação contra o HPV é recomendada há muitos anos para raparigas e rapazes dos 11 aos 14 anos, para reduzir, ou mesmo eliminar, os cancros causados pela infeção por HPV. Para os jovens que não foram vacinados nessa idade, é recomendada uma recuperação até aos 26 anos completos. O esquema inclui duas doses com pelo menos 6 meses de intervalo quando a vacinação começa antes dos 15 anos, e três doses a partir dos 15 anos. Esta vacinação tem uma segurança sanitária das mais sólidas, com mais de 500 milhões de doses administradas nos últimos 20 anos.\n\nO aumento dos casos de meningite por meningococo, nomeadamente em meio escolar e em coletividades, levou as autoridades de saúde a recomendar a vacinação contra os meningococos ACWY entre os 11 e os 14 anos, com recuperação até aos 24 anos. Uma única dose de vacina basta para ficar protegido. A vacinação contra o meningococo B é também recomendada como recuperação dos 15 aos 24 anos, em duas doses.\n\nEstas vacinas, seguras e eficazes, são voluntárias e totalmente gratuitas, e serão administradas por equipas de profissionais de saúde qualificados e experientes. A nossa equipa de vacinação, com dois anos de campanhas escolares em Seine-et-Marne e perto de 10 000 doses de vacina administradas, não registou nenhum efeito indesejável grave.\n\nNo dia da sessão de vacinação, os alunos autorizados devem trazer o seu boletim de saúde ou de vacinas para garantir uma rastreabilidade ótima. A escola enviar-lhe-á um lembrete. Como uma sessão de vacinação pode incluir no máximo 4 vacinas, o número exato de vacinas administradas respeitará também o consentimento de cada aluno.\n\nPara inscrever o seu filho menor, é necessário o acordo escrito de ambos os pais. Um aluno maior de idade dá ele próprio o seu consentimento.\n",
+      "ru": "Ваш ребёнок учится в лицее, в классе seconde, première или terminale, и поэтому в течение 2026-2027 учебного года может бесплатно получить прививки против ВПЧ и против менингококков ACWY и B, а также обновить другие рекомендуемые прививки.\n\nВакцинация против ВПЧ уже много лет рекомендуется девочкам и мальчикам 11–14 лет, чтобы снизить и даже устранить рак, вызванный инфекцией ВПЧ. Молодым людям, не привитым в этом возрасте, рекомендуется догоняющая вакцинация до полных 26 лет. Если вакцинация начинается до 15 лет, схема включает две дозы с интервалом не менее 6 месяцев, а с 15 лет — три дозы. Эта вакцина имеет одну из самых надёжных историй безопасности: за последние 20 лет введено более 500 миллионов доз.\n\nРост числа случаев менингококкового менингита, особенно в школах и коллективах, побудил органы здравоохранения рекомендовать вакцинацию против менингококков ACWY в возрасте от 11 до 14 лет с догоняющей вакцинацией до 24 лет. Для защиты достаточно одной дозы вакцины. Вакцинация против менингококка B также рекомендуется как догоняющая с 15 до 24 лет, в две дозы.\n\nЭти безопасные и эффективные прививки добровольны и полностью бесплатны, их проводят бригады квалифицированных и опытных медицинских работников. Наша бригада вакцинации за два года школьных кампаний в департаменте Сена и Марна ввела почти 10 000 доз вакцины, и ни одного серьёзного нежелательного явления не зарегистрировано.\n\nВ день сеанса вакцинации ученики, получившие разрешение, должны взять с собой медицинскую книжку или прививочный сертификат для точного учёта. Учебное заведение пришлёт вам напоминание. Поскольку за один сеанс можно сделать не более 4 прививок, точное число сделанных прививок будет также соответствовать согласию каждого ученика.\n\nЧтобы записать несовершеннолетнего ребёнка, требуется письменное согласие обоих родителей. Совершеннолетний ученик даёт согласие сам.\n",
+      "uk": "Ваша дитина навчається в ліцеї, у класі seconde, première або terminale, і тому протягом 2026-2027 навчального року може безкоштовно отримати щеплення проти ВПЛ і проти менінгококів ACWY та B, а також оновити інші рекомендовані щеплення.\n\nЩеплення проти ВПЛ уже багато років рекомендоване дівчатам і хлопцям 11–14 років, щоб зменшити і навіть усунути рак, спричинений інфекцією ВПЛ. Молодим людям, не щепленим у цьому віці, рекомендоване наздоганяльне щеплення до повних 26 років. Якщо вакцинацію розпочато до 15 років, схема включає дві дози з інтервалом щонайменше 6 місяців, а з 15 років — три дози. Ця вакцина має одну з найнадійніших історій безпеки: за останні 20 років введено понад 500 мільйонів доз.\n\nЗростання кількості випадків менінгококового менінгіту, особливо в школах і колективах, спонукало органи охорони здоров'я рекомендувати щеплення проти менінгококів ACWY у віці від 11 до 14 років із наздоганяльним щепленням до 24 років. Для захисту достатньо однієї дози вакцини. Щеплення проти менінгокока B також рекомендоване як наздоганяльне з 15 до 24 років, у дві дози.\n\nЦі безпечні й ефективні щеплення добровільні та повністю безкоштовні, їх проводитимуть бригади кваліфікованих і досвідчених медичних працівників. Наша бригада вакцинації за два роки шкільних кампаній у департаменті Сена і Марна ввела майже 10 000 доз вакцини, і жодного серйозного небажаного явища не зареєстровано.\n\nУ день сеансу вакцинації учні, які отримали дозвіл, мають принести медичну книжку або щеплювальний сертифікат для точного обліку. Навчальний заклад надішле вам нагадування. Оскільки за один сеанс можна зробити не більше 4 щеплень, точна кількість зроблених щеплень також відповідатиме згоді кожного учня.\n\nЩоб записати неповнолітню дитину, потрібна письмова згода обох батьків. Повнолітній учень дає згоду сам.\n",
+      "mo": "Copilul dvs. este elev la liceu, în clasa seconde, première sau terminale, și, în această calitate, poate beneficia gratuit de vaccinarea împotriva HPV și împotriva meningococilor ACWY și B, precum și de actualizarea celorlalte vaccinări recomandate, în acest an școlar 2026-2027.\n\nVaccinarea împotriva HPV este recomandată de mulți ani fetelor și băieților între 11 și 14 ani, pentru a reduce, chiar a elimina, cancerele cauzate de infecția cu HPV. Pentru tinerii care nu au fost vaccinați la această vârstă, vaccinarea de recuperare este recomandată până la 26 de ani împliniți. Schema cuprinde două doze la cel puțin 6 luni distanță când vaccinarea începe înainte de 15 ani și trei doze de la 15 ani. Această vaccinare beneficiază de o siguranță dintre cele mai solide, cu peste 500 de milioane de doze administrate în ultimii 20 de ani.\n\nCreșterea numărului de cazuri de meningită meningococică, în special în mediul școlar și în colectivități, a determinat autoritățile sanitare să recomande vaccinarea împotriva meningococilor ACWY între 11 și 14 ani, cu recuperare până la 24 de ani. O singură doză de vaccin este suficientă pentru a fi protejat. Vaccinarea împotriva meningococului B este de asemenea recomandată ca recuperare între 15 și 24 de ani, în două doze.\n\nAceste vaccinări, sigure și eficiente, sunt voluntare și complet gratuite și vor fi efectuate de echipe de profesioniști din domeniul sănătății calificați și experimentați. Echipa noastră de vaccinare, cu doi ani de campanii școlare în Seine-et-Marne și aproape 10 000 de doze de vaccin administrate, nu a înregistrat niciun eveniment advers major.\n\nÎn ziua sesiunii de vaccinare, elevii autorizați trebuie să aibă asupra lor carnetul de sănătate sau de vaccinare, pentru o trasabilitate optimă. Școala vă va trimite o reamintire. Deoarece o sesiune de vaccinare poate cuprinde cel mult 4 vaccinuri, numărul exact de vaccinuri efectuate va respecta și consimțământul fiecărui elev.\n\nPentru a înscrie copilul dvs. minor, este necesar acordul scris al ambilor părinți. Un elev major își dă singur consimțământul.\n"
     },
     "vaccination_steps": {
       "title": {
-        "fr": "La vaccination au lycée, en 3 étapes"
+        "fr": "La vaccination au lycée, en 3 étapes",
+        "en": "Vaccination at high school in 3 steps",
+        "ar": "التلقيح في الثانوية في 3 مراحل",
+        "tr": "3 adımda lisede aşılama",
+        "ps": "په لیسه کې واکسین په ۳ ګامونو کې",
+        "ku": "ڤاکسین لە ئامادەیی بە ٣ هەنگاو",
+        "ro": "Vaccinarea la liceu, în 3 etape",
+        "ka": "ვაქცინაცია ლიცეუმში 3 ნაბიჯად",
+        "sq": "Vaksinimi në shkollën e mesme, në 3 hapa",
+        "am": "በሁለተኛ ደረጃ ትምህርት ቤት ክትባት በ3 ደረጃዎች",
+        "zh": "高中疫苗接种三步走",
+        "prs": "واکسیناسیون در لیسه در ۳ مرحله",
+        "es": "La vacunación en el instituto, en 3 pasos",
+        "pt": "A vacinação no liceu, em 3 etapas",
+        "ru": "Вакцинация в лицее в 3 этапа",
+        "uk": "Вакцинація в ліцеї у 3 кроки",
+        "mo": "Vaccinarea la liceu, în 3 etape"
       },
       "subtitle": {
-        "fr": "Comprendre simplement le déroulement du dispositif."
+        "fr": "Comprendre simplement le déroulement du dispositif.",
+        "en": "A simple overview of how the programme works.",
+        "ar": "فهم مبسّط لكيفية سير العملية.",
+        "tr": "Sürecin basit bir özeti.",
+        "ps": "د بهیر ساده تشریح.",
+        "ku": "ڕوونکردنەوەی سادەی پرۆسەکە.",
+        "ro": "O prezentare simplă a desfășurării.",
+        "ka": "პროცესის მარტივი ახსნა.",
+        "sq": "Kuptoni thjesht se si funksionon procesi.",
+        "am": "የሂደቱን አካሄድ በቀላሉ ይረዱ።",
+        "zh": "简单了解整个流程。",
+        "prs": "روند این پروسه را به سادگی درک کنید.",
+        "es": "Comprenda fácilmente el desarrollo del dispositivo.",
+        "pt": "Compreenda facilmente o funcionamento do dispositivo.",
+        "ru": "Простое объяснение того, как проходит процесс.",
+        "uk": "Просте пояснення того, як проходить процес.",
+        "mo": "O prezentare simplă a desfășurării."
       },
       "steps": [
         {
           "number": 1,
           "title": {
-            "fr": "S’informer"
+            "fr": "S’informer",
+            "en": "Get informed",
+            "ar": "الاطلاع",
+            "tr": "Bilgi edinmek",
+            "ps": "معلومات ترلاسه کول",
+            "ku": "زانیاری وەرگرتن",
+            "ro": "Informarea",
+            "ka": "ინფორმაციის მიღება",
+            "sq": "Informohuni",
+            "am": "መረጃ ማግኘት",
+            "zh": "了解信息",
+            "prs": "معلومات گرفتن",
+            "es": "Informarse",
+            "pt": "Informar-se",
+            "ru": "Узнать информацию",
+            "uk": "Дізнатися інформацію",
+            "mo": "Informarea"
           },
           "text": {
-            "fr": "Consulter les informations et la FAQ pour comprendre les vaccins proposés et le déroulement au lycée."
+            "fr": "Consulter les informations et la FAQ pour comprendre les vaccins proposés et le déroulement au lycée.",
+            "en": "Read the information and the FAQ to understand the vaccines offered and how things work at high school.",
+            "ar": "اطّلع على المعلومات والأسئلة الشائعة لفهم اللقاحات المقترحة وكيفية سير التلقيح في الثانوية.",
+            "tr": "Sunulan aşıları ve lisede işleyişi anlamak için bilgileri ve SSS'yi okuyun.",
+            "ps": "معلومات او FAQ ولولئ ترڅو وړاندې شوي واکسینونه او په لیسه کې بهیر وپوهېږئ.",
+            "ku": "زانیارییەکان و پرسیارە باوەکان بخوێنەوە بۆ تێگەیشتن لە ڤاکسینە پێشکەشکراوەکان و چۆنیەتیی ئەنجامدانی لە ئامادەیی.",
+            "ro": "Consultați informațiile și FAQ pentru a înțelege vaccinurile propuse și desfășurarea la liceu.",
+            "ka": "გაეცანით ინფორმაციას და FAQ-ს, რათა გაიგოთ შემოთავაზებული ვაქცინები და პროცესი ლიცეუმში.",
+            "sq": "Lexoni informacionin dhe FAQ-në për të kuptuar vaksinat e ofruara dhe ecurinë në shkollën e mesme.",
+            "am": "የቀረቡትን ክትባቶች እና በሁለተኛ ደረጃ ትምህርት ቤት ያለውን ሂደት ለመረዳት መረጃዎቹን እና FAQ ን ያንብቡ።",
+            "zh": "阅读相关信息和常见问题，了解提供的疫苗以及在高中的接种流程。",
+            "prs": "معلومات و سوالات مکرر را بخوانید تا واکسین‌های پیشنهادی و روند کار در لیسه را بفهمید.",
+            "es": "Consultar la información y las preguntas frecuentes para comprender las vacunas propuestas y el desarrollo en el instituto.",
+            "pt": "Consultar as informações e as perguntas frequentes para compreender as vacinas propostas e o funcionamento no liceu.",
+            "ru": "Ознакомьтесь с информацией и FAQ, чтобы понять, какие вакцины предлагаются и как всё проходит в лицее.",
+            "uk": "Ознайомтеся з інформацією та FAQ, щоб зрозуміти, які вакцини пропонуються і як усе відбувається в ліцеї.",
+            "mo": "Consultați informațiile și FAQ pentru a înțelege vaccinurile propuse și desfășurarea la liceu."
           }
         },
         {
           "number": 2,
           "title": {
-            "fr": "Donner son consentement"
+            "fr": "Donner son consentement",
+            "en": "Give consent",
+            "ar": "إعطاء الموافقة",
+            "tr": "Onay vermek",
+            "ps": "رضایت ورکول",
+            "ku": "ڕەزامەندی دان",
+            "ro": "Exprimarea consimțământului",
+            "ka": "თანხმობის მიცემა",
+            "sq": "Jepni pëlqimin",
+            "am": "ፈቃድ መስጠት",
+            "zh": "给予同意",
+            "prs": "دادن رضایت",
+            "es": "Dar su consentimiento",
+            "pt": "Dar o consentimento",
+            "ru": "Дать согласие",
+            "uk": "Надати згоду",
+            "mo": "Exprimarea consimțământului"
           },
           "text": {
-            "fr": "Pour un élève mineur, les parents remplissent l’autorisation. Un élève majeur donne lui-même son accord."
+            "fr": "Pour un élève mineur, les parents remplissent l’autorisation. Un élève majeur donne lui-même son accord.",
+            "en": "For a student under 18, parents fill in the consent form. A student aged 18 or over gives consent personally.",
+            "ar": "بالنسبة للتلميذ القاصر، يملأ الوالدان الموافقة. أما التلميذ البالغ فيعطي موافقته بنفسه.",
+            "tr": "Reşit olmayan öğrenci için izni ebeveynler doldurur. Reşit öğrenci onayını kendisi verir.",
+            "ps": "د کم عمره زده کوونکي لپاره، مور او پلار اجازه ډکوي. بالغ زده کوونکی پخپله خپله موافقه ورکوي.",
+            "ku": "بۆ قوتابیی خوار تەمەنی یاسایی، دایک و باوک ڕەزامەندنامەکە پڕ دەکەنەوە. قوتابیی گەورە خۆی ڕەزامەندی دەدات.",
+            "ro": "Pentru un elev minor, părinții completează autorizația. Un elev major își dă singur acordul.",
+            "ka": "არასრულწლოვანი მოსწავლისთვის ნებართვას მშობლები ავსებენ. სრულწლოვანი მოსწავლე თანხმობას თავად აცხადებს.",
+            "sq": "Për një nxënës të mitur, prindërit plotësojnë autorizimin. Një nxënës madhor jep vetë pëlqimin.",
+            "am": "ዕድሜው ያልደረሰ ተማሪ ከሆነ ወላጆች ፈቃዱን ይሞላሉ። ዕድሜው የደረሰ ተማሪ ራሱ ፈቃዱን ይሰጣል።",
+            "zh": "未成年学生由家长填写同意书。成年学生由本人表示同意。",
+            "prs": "برای شاگرد زیر سن قانونی، والدین اجازه‌نامه را پر می‌کنند. شاگرد بالغ خودش رضایت می‌دهد.",
+            "es": "Para un alumno menor de edad, los padres rellenan la autorización. Un alumno mayor de edad da su propio consentimiento.",
+            "pt": "Para um aluno menor, os pais preenchem a autorização. Um aluno maior de idade dá ele próprio o seu acordo.",
+            "ru": "Для несовершеннолетнего ученика разрешение заполняют родители. Совершеннолетний ученик даёт согласие сам.",
+            "uk": "Для неповнолітнього учня дозвіл заповнюють батьки. Повнолітній учень надає згоду самостійно.",
+            "mo": "Pentru un elev minor, părinții completează autorizația. Un elev major își dă singur acordul."
           }
         },
         {
           "number": 3,
           "title": {
-            "fr": "Vaccination au lycée"
+            "fr": "Vaccination au lycée",
+            "en": "Vaccination at high school",
+            "ar": "التلقيح في الثانوية",
+            "tr": "Lisede aşılama",
+            "ps": "په لیسه کې واکسین",
+            "ku": "ڤاکسین لە ئامادەیی",
+            "ro": "Vaccinarea la liceu",
+            "ka": "ვაქცინაცია ლიცეუმში",
+            "sq": "Vaksinimi në shkollën e mesme",
+            "am": "በሁለተኛ ደረጃ ትምህርት ቤት ክትባት",
+            "zh": "在高中接种",
+            "prs": "واکسیناسیون در لیسه",
+            "es": "Vacunación en el instituto",
+            "pt": "Vacinação no liceu",
+            "ru": "Вакцинация в лицее",
+            "uk": "Вакцинація в ліцеї",
+            "mo": "Vaccinarea la liceu"
           },
           "text": {
-            "fr": "La vaccination est réalisée dans l’établissement par des professionnels de santé qualifiés, après vérification du carnet."
+            "fr": "La vaccination est réalisée dans l’établissement par des professionnels de santé qualifiés, après vérification du carnet.",
+            "en": "Vaccination is carried out at school by qualified health professionals, after the vaccination record has been checked.",
+            "ar": "يُجرى التلقيح داخل المؤسسة على يد مهنيين صحيين مؤهلين، بعد التحقق من الدفتر الصحي.",
+            "tr": "Aşılama, aşı kartı kontrol edildikten sonra okulda nitelikli sağlık profesyonelleri tarafından yapılır.",
+            "ps": "واکسین په ښوونځي کې د وړ روغتیایي کارپوهانو له خوا، د کتابچې له کتلو وروسته ترسره کېږي.",
+            "ku": "ڤاکسینەکە لە ناو قوتابخانەکە لەلایەن پسپۆڕانی تەندروستیی شارەزاوە ئەنجام دەدرێت، دوای پشکنینی دەفتەرەکە.",
+            "ro": "Vaccinarea se face în unitatea de învățământ de către profesioniști din domeniul sănătății calificați, după verificarea carnetului.",
+            "ka": "ვაქცინაციას სასწავლებელში ატარებენ კვალიფიციური სამედიცინო სპეციალისტები, ვაქცინაციის ბარათის შემოწმების შემდეგ.",
+            "sq": "Vaksinimi kryhet në shkollë nga profesionistë të kualifikuar shëndetësorë, pas verifikimit të librezës.",
+            "am": "ክትባቱ የክትባት ደብተሩ ከተረጋገጠ በኋላ ብቁ በሆኑ የጤና ባለሙያዎች በትምህርት ቤቱ ውስጥ ይሰጣል።",
+            "zh": "在核对疫苗接种本后，由合格的医护人员在学校内进行接种。",
+            "prs": "واکسیناسیون پس از بررسی دفترچه، توسط متخصصان صحی واجد شرایط در مکتب انجام می‌شود.",
+            "es": "La vacunación la realizan en el centro profesionales sanitarios cualificados, tras comprobar la cartilla.",
+            "pt": "A vacinação é realizada no estabelecimento por profissionais de saúde qualificados, após verificação do boletim.",
+            "ru": "Вакцинацию проводят в учебном заведении квалифицированные медицинские работники после проверки прививочного сертификата.",
+            "uk": "Вакцинацію проводять у навчальному закладі кваліфіковані медичні працівники після перевірки щеплювального сертифіката.",
+            "mo": "Vaccinarea se face în unitatea de învățământ de către profesioniști din domeniul sănătății calificați, după verificarea carnetului."
           }
         }
       ]
@@ -72,7 +216,23 @@
       {
         "id": "form_lycee",
         "label": {
-          "fr": "Remplir le formulaire d’autorisation en ligne"
+          "fr": "Remplir le formulaire d’autorisation en ligne",
+          "en": "Fill in the consent form online",
+          "ar": "ملء استمارة الموافقة عبر الإنترنت",
+          "tr": "Onay formunu çevrimiçi doldurun",
+          "ps": "د اجازې فورمه آنلاین ډکه کړئ",
+          "ku": "فۆرمی ڕەزامەندی بە ئۆنلاین پڕ بکەرەوە",
+          "ro": "Completați formularul de autorizare online",
+          "ka": "შეავსეთ ნებართვის ფორმა ონლაინ",
+          "sq": "Plotësoni formularin e autorizimit në internet",
+          "am": "የፈቃድ ቅጹን በመስመር ላይ ይሙሉ",
+          "zh": "在线填写同意书",
+          "prs": "فورم اجازه را آنلاین پر کنید",
+          "es": "Rellenar el formulario de autorización en línea",
+          "pt": "Preencher o formulário de autorização online",
+          "ru": "Заполнить форму разрешения онлайн",
+          "uk": "Заповнити форму дозволу онлайн",
+          "mo": "Completați formularul de autorizare online"
         },
         "url": "autorisation-vaccination.html"
       }
@@ -128,7 +288,23 @@
   },
   "meningite_documents": {
     "label": {
-      "fr": "Méningocoques et calendrier vaccinal, documents utiles (PDF)"
+      "fr": "Méningocoques et calendrier vaccinal, documents utiles (PDF)",
+      "en": "Meningococcus and vaccination schedule, useful documents (PDF)",
+      "ar": "المكورات السحائية وجدول التطعيمات، وثائق مفيدة (PDF)",
+      "tr": "Meningokok ve aşı takvimi, faydalı belgeler (PDF)",
+      "ps": "مننژوکوک او د واکسین مهالوېش، ګټور اسناد (PDF)",
+      "ku": "مێنینگۆکۆک و خشتەی ڤاکسین، بەڵگەنامە بەسوودەکان (PDF)",
+      "ro": "Meningococi și calendarul vaccinărilor, documente utile (PDF)",
+      "ka": "მენინგოკოკი და ვაქცინაციის კალენდარი, სასარგებლო დოკუმენტები (PDF)",
+      "sq": "Meningokokët dhe kalendari i vaksinimit, dokumente të dobishme (PDF)",
+      "am": "ማኒንጎኮከስ እና የክትባት መርሐ ግብር፣ ጠቃሚ ሰነዶች (PDF)",
+      "zh": "脑膜炎球菌与疫苗接种日程，实用文件（PDF）",
+      "prs": "مننگوکوک و تقویم واکسیناسیون، اسناد مفید (PDF)",
+      "es": "Meningococos y calendario de vacunación, documentos útiles (PDF)",
+      "pt": "Meningococos e calendário vacinal, documentos úteis (PDF)",
+      "ru": "Менингококки и календарь прививок, полезные документы (PDF)",
+      "uk": "Менінгококи та календар щеплень, корисні документи (PDF)",
+      "mo": "Meningococi și calendarul vaccinărilor, documente utile (PDF)"
     },
     "items": [
       {

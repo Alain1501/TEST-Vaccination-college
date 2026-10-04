@@ -29,10 +29,42 @@
   },
   "calendar_message": {
     "title": {
-      "fr": "Vaccination au lycée – rappel"
+      "fr": "Vaccination au lycée – rappel",
+      "en": "High school vaccination – reminder",
+      "ar": "التلقيح في الثانوية – تذكير",
+      "tr": "Lisede aşılama – hatırlatma",
+      "ps": "په لیسه کې واکسین – یادونه",
+      "ku": "ڤاکسین لە ئامادەیی – بیرخستنەوە",
+      "ro": "Vaccinare la liceu – reamintire",
+      "ka": "ვაქცინაცია ლიცეუმში – შეხსენება",
+      "sq": "Vaksinimi në shkollën e mesme – kujtesë",
+      "am": "በሁለተኛ ደረጃ ትምህርት ቤት ክትባት – ማሳሰቢያ",
+      "zh": "高中疫苗接种 – 提醒",
+      "prs": "واکسیناسیون در لیسه – یادآوری",
+      "es": "Vacunación en el instituto – recordatorio",
+      "pt": "Vacinação no liceu – lembrete",
+      "ru": "Вакцинация в лицее – напоминание",
+      "uk": "Вакцинація в ліцеї – нагадування",
+      "mo": "Vaccinare la liceu – reamintire"
     },
     "description": {
-      "fr": "Séance de vaccination demain dans votre lycée par l'équipe mobile de vaccination de Sud Seine-et-Marne.\nPensez à apporter votre carnet de santé ou de vaccination.\nPour les élèves mineurs, si ce n'est pas encore fait, l'autorisation parentale (disponible sur le site) est à compléter.\nVaccination gratuite, sécurisée et conforme aux recommandations sanitaires."
+      "fr": "Séance de vaccination demain dans votre lycée par l'équipe mobile de vaccination de Sud Seine-et-Marne.\nPensez à apporter votre carnet de santé ou de vaccination.\nPour les élèves mineurs, si ce n'est pas encore fait, l'autorisation parentale (disponible sur le site) est à compléter.\nVaccination gratuite, sécurisée et conforme aux recommandations sanitaires.",
+      "en": "Vaccination session tomorrow at your high school by the South Seine-et-Marne mobile vaccination team.\nRemember to bring your health or vaccination record.\nFor students under 18, if not already done, the parental consent form (available on the website) must be completed.\nFree, safe vaccination in line with health recommendations.",
+      "ar": "جلسة تلقيح غدًا في ثانويتك من قبل فريق التلقيح المتنقل لجنوب سين إي مارن.\nلا تنسَ إحضار دفترك الصحي أو دفتر التلقيح.\nبالنسبة للتلاميذ القاصرين، إن لم يتم ذلك بعد، يجب ملء الموافقة الأبوية (المتوفرة على الموقع).\nتلقيح مجاني وآمن ومطابق للتوصيات الصحية.",
+      "tr": "Yarın lisenizde Güney Seine-et-Marne mobil aşı ekibi tarafından aşı seansı yapılacaktır.\nSağlık veya aşı kartınızı getirmeyi unutmayın.\nReşit olmayan öğrenciler için, henüz yapılmadıysa, veli izni (sitede mevcut) doldurulmalıdır.\nÜcretsiz, güvenli ve sağlık önerilerine uygun aşılama.",
+      "ps": "سبا ستاسو په لیسه کې د سویلي سېن-اې-مارن د واکسین ګرځنده ټیم له خوا د واکسین غونډه ده.\nخپله روغتیایي یا د واکسین کتابچه له ځانه سره راوړئ.\nد کم عمره زده کوونکو لپاره، که لا نه وي شوې، د والدینو اجازه (په وېبپاڼه کې شته) باید ډکه شي.\nوړیا، خوندي او د روغتیایي سپارښتنو سره سم واکسین.",
+      "ku": "سبەینێ دانیشتنی ڤاکسین لە ئامادەییەکەت لەلایەن تیمی گەڕۆکی ڤاکسینی باشووری سێن-ئێ-مارن.\nلەبیرت نەچێت دەفتەری تەندروستی یان ڤاکسینەکەت بهێنیت.\nبۆ قوتابیانی خوار تەمەنی یاسایی، ئەگەر هێشتا نەکراوە، ڕەزامەندنامەی دایک و باوک (لە ماڵپەڕەکەدا بەردەستە) دەبێت پڕ بکرێتەوە.\nڤاکسینی بێبەرامبەر، سەلامەت و گونجاو لەگەڵ ڕاسپاردە تەندروستییەکان.",
+      "ro": "Mâine, sesiune de vaccinare la liceul dvs., organizată de echipa mobilă de vaccinare din Sud Seine-et-Marne.\nNu uitați să aduceți carnetul de sănătate sau de vaccinare.\nPentru elevii minori, dacă nu ați făcut-o deja, autorizația părinților (disponibilă pe site) trebuie completată.\nVaccinare gratuită, sigură și conformă recomandărilor sanitare.",
+      "ka": "ხვალ თქვენს ლიცეუმში ვაქცინაციის სესია ჩატარდება სამხრეთ სენ-ე-მარნის ვაქცინაციის მობილური გუნდის მიერ.\nარ დაგავიწყდეთ ჯანმრთელობის ან ვაქცინაციის ბარათის მოტანა.\nარასრულწლოვანი მოსწავლეებისთვის, თუ ჯერ არ გაგიკეთებიათ, უნდა შეივსოს მშობლის ნებართვა (ხელმისაწვდომია საიტზე).\nუფასო, უსაფრთხო და ჯანდაცვის რეკომენდაციების შესაბამისი ვაქცინაცია.",
+      "sq": "Nesër seancë vaksinimi në shkollën tuaj të mesme nga ekipi i lëvizshëm i vaksinimit të Sud Seine-et-Marne.\nMos harroni të sillni librezën shëndetësore ose të vaksinimit.\nPër nxënësit e mitur, nëse nuk është bërë ende, autorizimi prindëror (i disponueshëm në sajt) duhet plotësuar.\nVaksinim falas, i sigurt dhe në përputhje me rekomandimet shëndetësore.",
+      "am": "ነገ በሁለተኛ ደረጃ ትምህርት ቤትዎ በደቡብ ሴን-ኤ-ማርን ተንቀሳቃሽ የክትባት ቡድን የክትባት ክፍለ ጊዜ ይኖራል።\nየጤና ወይም የክትባት ደብተርዎን ማምጣትዎን አይርሱ።\nዕድሜያቸው ላልደረሱ ተማሪዎች፣ እስካሁን ካልተሞላ፣ የወላጅ ፈቃድ (በድረ-ገጹ ላይ ይገኛል) መሞላት አለበት።\nነጻ፣ ደህንነቱ የተጠበቀ እና ከጤና ምክሮች ጋር የሚጣጣም ክትባት።",
+      "zh": "明天南塞纳-马恩省流动疫苗接种团队将在您的高中进行疫苗接种。\n请记得携带您的健康手册或疫苗接种本。\n未成年学生如尚未填写，请填写家长同意书（可在网站上获取）。\n接种免费、安全，并符合卫生建议。",
+      "prs": "فردا جلسه واکسیناسیون در لیسه شما توسط تیم سیار واکسیناسیون جنوب سن-اِ-مارن برگزار می‌شود.\nفراموش نکنید دفترچه صحی یا دفترچه واکسین خود را بیاورید.\nبرای شاگردان زیر سن قانونی، اگر هنوز انجام نشده، اجازه‌نامه والدین (موجود در وب‌سایت) باید پر شود.\nواکسیناسیون رایگان، مصئون و مطابق با توصیه‌های صحی.",
+      "es": "Mañana, sesión de vacunación en su instituto a cargo del equipo móvil de vacunación de Sud Seine-et-Marne.\nRecuerde traer su cartilla de salud o de vacunación.\nPara los alumnos menores de edad, si aún no se ha hecho, hay que rellenar la autorización parental (disponible en el sitio).\nVacunación gratuita, segura y conforme a las recomendaciones sanitarias.",
+      "pt": "Amanhã, sessão de vacinação no seu liceu pela equipa móvel de vacinação de Sud Seine-et-Marne.\nLembre-se de trazer o seu boletim de saúde ou de vacinas.\nPara os alunos menores, se ainda não o fez, a autorização parental (disponível no site) deve ser preenchida.\nVacinação gratuita, segura e conforme às recomendações sanitárias.",
+      "ru": "Завтра в вашем лицее пройдёт сеанс вакцинации, который проведёт мобильная бригада вакцинации Юга Сены и Марны.\nНе забудьте взять медицинскую книжку или прививочный сертификат.\nДля несовершеннолетних учеников, если это ещё не сделано, необходимо заполнить разрешение родителей (доступно на сайте).\nБесплатная, безопасная вакцинация в соответствии с санитарными рекомендациями.",
+      "uk": "Завтра у вашому ліцеї відбудеться сеанс вакцинації, який проведе мобільна бригада вакцинації Півдня Сени і Марни.\nНе забудьте взяти медичну книжку або щеплювальний сертифікат.\nДля неповнолітніх учнів, якщо це ще не зроблено, потрібно заповнити дозвіл батьків (доступний на сайті).\nБезкоштовна, безпечна вакцинація відповідно до санітарних рекомендацій.",
+      "mo": "Mâine, sesiune de vaccinare la liceul dvs., organizată de echipa mobilă de vaccinare din Sud Seine-et-Marne.\nNu uitați să aduceți carnetul de sănătate sau de vaccinare.\nPentru elevii minori, dacă nu ați făcut-o deja, autorizația părinților (disponibilă pe site) trebuie completată.\nVaccinare gratuită, sigură și conformă recomandărilor sanitare."
     },
     "reminder": {
       "offset": "P1D",

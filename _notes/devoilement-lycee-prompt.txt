@@ -13,6 +13,7 @@ Le dépôt GitHub est synchronisé à l'identique avec le domaine vaccination-su
 Racine (accueil et fichiers communs)
 - index.html = accueil commun. 6 logos dans cet ordre Région, Département, ARS, Assurance Maladie, Hôpital, EMV. Cartes de contact avec icônes. Un ancien lien index.html#contactCard est redirigé vers college/index.html#contactCard.
 - js/parcours.js = transitions animées entre les pages, bouton flottant Accueil / Collège / Lycée en bas à gauche, et interrupteur de publication LYCEE_VISIBLE (ligne 16). Les adresses des pages sont calculées depuis la racine du site.
+- js/langue.js = langue mémorisée (localStorage) sur les 5 pages, la langue de l'adresse ?lang= prime. Langues arabe, pashto, kurde et dari écrites de droite à gauche bloc par bloc, sans jamais inverser la mise en page ni les logos.
 - js/entete.js = bandeau de logos sur une ligne (ordinateur) ou deux lignes horizontales (téléphone), sans défilement.
 - css/contact.css = cartes de contact du collège, du lycée et des deux formulaires, même grille que l'accueil.
 - img/ (logos, images des étapes, dont region.png et departement.png, ce dernier recoloré en noir pour fond clair), Flags/ (drapeaux des langues), pdf/ (tous les PDF, laissés à la racine pour ne casser aucun lien direct déjà diffusé).
@@ -34,12 +35,12 @@ Dans les pages des dossiers college/ et lycee/, les fichiers communs sont appel�
 ÉTAT ACTUEL (au 04/10/2026)
 - Dans js/parcours.js, var LYCEE_VISIBLE = false;
 - Effet. L'adresse du site, index.html et lycee/index.html redirigent directement vers college/index.html, en gardant ?lang= et #ancre. Le bouton de bascule est masqué. Tous les fichiers lycée restent en place.
-- index.html, college/index.html et lycee/index.html appellent le script avec un numéro de version, parcours.js?v=20261004-4, pour éviter le cache.
+- index.html, college/index.html et lycee/index.html appellent le script avec un numéro de version, parcours.js?v=20261004-8, pour éviter le cache.
 - Les pages des deux parcours et les deux formulaires appellent contact.css?v=20261004-2.
 
 PROCÉDURE DE DÉVOILEMENT DU LYCÉE
 1. Dans js/parcours.js, remplacer var LYCEE_VISIBLE = false; par var LYCEE_VISIBLE = true;
-2. Dans index.html, college/index.html et lycee/index.html, changer le numéro de version du script (par exemple v=20261004-4 devient v=AAAAMMJJ-1 à la date du jour).
+2. Dans index.html, college/index.html et lycee/index.html, changer le numéro de version du script (par exemple v=20261004-8 devient v=AAAAMMJJ-1 à la date du jour).
 3. Me livrer uniquement les fichiers modifiés dans un zip, en respectant les dossiers, sans dossier img.
 4. Me rappeler de recharger avec Cmd + Maj + R après l'envoi sur GitHub.
 5. Contrôles attendus. La racine ouvre l'accueil avec les deux cartes. Le clic sur une carte lance la transition en cercle (vert collège, violet lycée). Le bouton Accueil / Collège / Lycée apparaît en bas à gauche du collège et du lycée. La langue choisie est conservée d'une page à l'autre. Le lien retour de chaque formulaire mène au contact de son parcours.
@@ -47,7 +48,7 @@ PROCÉDURE DE DÉVOILEMENT DU LYCÉE
 POINTS À VÉRIFIER AVANT DE DÉVOILER (me les rappeler)
 - Planning lycée lycee/schedule_sessions.json encore vide.
 - Formulaire lycée encore provisoire.
-- Textes lycée seulement en français, traductions des 16 autres langues à faire après ma validation.
+- Traductions. Tout le lycée (FAQ de 44 questions, message du Dr LEROY, interface), l'accueil et le bouton de bascule sont traduits dans les 17 langues. Les traductions ont été faites par Claude et gagneraient à être relues par des locuteurs natifs.
 - Trois questions de la FAQ collège pas encore reprises au lycée (qu'est-ce que la vaccination, pourquoi vacciner un enfant en bonne santé, message principal), en attente de ma décision.
 - Ordre des logos des deux formulaires pas encore aligné sur les pages (en attente de ma décision).
 - Lien Assurance Maladie à vérifier en ligne.
