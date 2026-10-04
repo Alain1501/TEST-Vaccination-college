@@ -1,0 +1,228 @@
+{
+  "intro": {
+    "signature": "Dr Pierre LEROY",
+    "role": {
+      "fr": "Médecin responsable de la campagne de vaccination scolaire",
+      "en": "Physician in charge of the school vaccination campaign",
+      "ar": "الطبيب المسؤول عن حملة التلقيح المدرسية",
+      "tr": "Okul aşılama kampanyasından sorumlu hekim",
+      "ps": "د ښوونځي د واکسین کمپاین مسؤل ډاکټر",
+      "ku": "پزیشکی بەرپرسیار لە کمپەینی ڤاکسینی قوتابخانە",
+      "ro": "Medic responsabil de campania de vaccinare școlară",
+      "ka": "სასკოლო ვაქცინაციის კამპანიაზე პასუხისმგებელი ექიმი",
+      "sq": "Mjeku përgjegjës i fushatës së vaksinimit shkollor",
+      "am": "የትምህርት ቤት ክትባት ዘመቻ ኃላፊ ሐኪም",
+      "zh": "学校疫苗接种活动负责医生",
+      "prs": "داکتر مسئول کمپاین واکسیناسیون مکتبی",
+      "es": "Médico responsable de la campaña de vacunación escolar",
+      "pt": "Médico responsável pela campanha de vacinação escolar",
+      "ru": "Врач, ответственный за школьную кампанию вакцинации",
+      "uk": "Лікар, відповідальний за шкільну кампанію вакцинації",
+      "mo": "Medic responsabil de campania de vaccinare școlară"
+    },
+    "school_year": "2026-2027",
+    "max_vaccines_per_session": 4,
+    "consent_required": "two_parents_written_if_minor_self_if_adult",
+    "text": {
+      "fr": "Votre enfant est scolarisé au lycée, en seconde, en première ou en terminale, et à ce titre, peut bénéficier gratuitement de la vaccination contre les HPV et contre les méningocoques ACWY et B, mais aussi de la mise à jour des autres vaccinations recommandées, pendant cette année scolaire 2026-2027.\n\nCette vaccination contre les HPV est recommandée depuis de nombreuses années chez les filles et les garçons âgés de 11 à 14 ans afin de réduire voire éliminer les cancers induits par l’infection par les HPV. Pour les jeunes qui n’ont pas été vaccinés à cet âge, un rattrapage est recommandé jusqu’à 26 ans révolus. Le schéma vaccinal comporte deux doses espacées d’au moins 6 mois lorsque la vaccination débute avant 15 ans, et trois doses à partir de 15 ans. Cette vaccination bénéficie d’une sécurité sanitaire des plus solides avec plus de 500 millions de doses déjà réalisées lors de ces 20 dernières années.\n\nLa recrudescence des cas de méningites à méningocoque, notamment en milieu scolaire et en collectivités, a amené les autorités de santé à recommander une vaccination contre les méningocoques ACWY entre 11 et 14 ans, avec un rattrapage jusqu’à 24 ans. Une seule dose de vaccin suffit pour être protégé. La vaccination contre le méningocoque B est également recommandée en rattrapage de 15 à 24 ans, en deux doses.\n\nCes vaccinations, sûres et efficaces, sont volontaires et totalement gratuites, et seront réalisées par des équipes de professionnels de santé qualifiés et expérimentés. Notre équipe de vaccination, forte de deux années de campagne en milieu scolaire en Seine-et-Marne et de la réalisation de près de 10 000 doses de vaccin, aucun événement indésirable majeur n’a été relevé.\n\nLe jour de la séance de vaccination, les élèves autorisés devront être munis de leur carnet de santé ou de vaccination afin d’assurer une traçabilité optimale. Un rappel vous sera transmis par l’établissement. Une séance de vaccination pouvant comporter au maximum 4 vaccins, le nombre exact de vaccins réalisés sera conforme aussi au consentement de chaque élève.\n\nPour inscrire votre enfant mineur, l’accord écrit des deux parents est nécessaire. Un élève majeur donne lui-même son consentement.\n"
+    },
+    "vaccination_steps": {
+      "title": {
+        "fr": "La vaccination au lycée, en 3 étapes"
+      },
+      "subtitle": {
+        "fr": "Comprendre simplement le déroulement du dispositif."
+      },
+      "steps": [
+        {
+          "number": 1,
+          "title": {
+            "fr": "S’informer"
+          },
+          "text": {
+            "fr": "Consulter les informations et la FAQ pour comprendre les vaccins proposés et le déroulement au lycée."
+          }
+        },
+        {
+          "number": 2,
+          "title": {
+            "fr": "Donner son consentement"
+          },
+          "text": {
+            "fr": "Pour un élève mineur, les parents remplissent l’autorisation. Un élève majeur donne lui-même son accord."
+          }
+        },
+        {
+          "number": 3,
+          "title": {
+            "fr": "Vaccination au lycée"
+          },
+          "text": {
+            "fr": "La vaccination est réalisée dans l’établissement par des professionnels de santé qualifiés, après vérification du carnet."
+          }
+        }
+      ]
+    }
+  },
+  "contact": {
+    "email": "vaccin-hpv@ghsif.fr"
+  },
+  "resources": {
+    "forms": [
+      {
+        "id": "form_lycee",
+        "label": {
+          "fr": "Remplir le formulaire d’autorisation en ligne"
+        },
+        "url": "autorisation-vaccination-lycee.html"
+      }
+    ],
+    "videos": []
+  },
+  "branding": {
+    "service_logo": {
+      "alt": {
+        "fr": "Logo du service",
+        "en": "Service logo",
+        "ar": "شعار القسم",
+        "tr": "Servis logosu",
+        "ps": "د څانګې لوګو",
+        "ku": "لۆگۆی بەش",
+        "ro": "Sigla serviciului",
+        "ka": "სამსახურის ლოგო",
+        "sq": "Logoja e shërbimit",
+        "am": "የአገልግሎት አርማ",
+        "zh": "服务标志",
+        "prs": "لوگوی خدمت",
+        "es": "Logotipo del servicio",
+        "pt": "Logótipo do serviço",
+        "ru": "Логотип службы",
+        "uk": "Логотип служби",
+        "mo": "Sigla serviciului"
+      },
+      "file": "img/logo_service.png",
+      "placement": "footer"
+    }
+  },
+  "hpv_flyer_multilang": {
+    "label": {
+      "fr": "Ressources officielles HPV – adolescents (toutes langues)",
+      "en": "Official HPV resources – adolescents (all languages)",
+      "ar": "موارد HPV الرسمية – للمراهقين (كل اللغات)",
+      "tr": "Resmî HPV kaynakları – ergenler (tüm diller)",
+      "ps": "د HPV رسمي سرچینې – تنکي ځوانان (ټولې ژبې)",
+      "ku": "سەرچاوە فەرمییەکانی HPV – گەنجان (هەموو زمانەکان)",
+      "ro": "Resurse oficiale HPV – adolescenți (toate limbile)",
+      "ka": "HPV-ის ოფიციალური რესურსები – მოზარდები (ყველა ენა)",
+      "sq": "Burime zyrtare HPV – adoleshentë (të gjitha gjuhët)",
+      "am": "ኦፊሴላዊ የHPV ምንጮች – ለወጣቶች (በሁሉም ቋንቋዎች)",
+      "zh": "HPV官方资源 – 青少年（所有语言）",
+      "prs": "منابع رسمی HPV – نوجوانان (به تمام زبان‌ها)",
+      "es": "Recursos oficiales VPH – adolescentes (todos los idiomas)",
+      "pt": "Recursos oficiais HPV – adolescentes (todos os idiomas)",
+      "ru": "Официальные материалы о ВПЧ – для подростков (на всех языках)",
+      "uk": "Офіційні матеріали про ВПЛ – для підлітків (усіма мовами)",
+      "mo": "Resurse oficiale HPV – adolescenți (toate limbile)"
+    },
+    "url": "https://vaccination-hpv-iledefrance.fr/ressources/"
+  },
+  "meningite_documents": {
+    "label": {
+      "fr": "Méningocoques et calendrier vaccinal, documents utiles (PDF)"
+    },
+    "items": [
+      {
+        "id": "flyer_meningite_spf",
+        "label": {
+          "fr": "Flyer Méningite – Santé publique France",
+          "en": "Meningitis flyer – Santé publique France",
+          "ar": "منشور التهاب السحايا – صحة عامة فرنسا",
+          "tr": "Menenjit broşürü – Santé publique France",
+          "ps": "د مننژیت پاڼه – Santé publique France",
+          "ku": "فلایەری مننژیت – Santé publique France",
+          "ro": "Flyer meningită – Santé publique France",
+          "ka": "მენინგიტის ფლაერი – Santé publique France",
+          "sq": "Fletushka Meningjiti – Shëndeti Publik Francë",
+          "am": "የማጅራት ገትር ወረቀት – የፈረንሳይ የህዝብ ጤና",
+          "zh": "脑膜炎宣传单 – 法国公共卫生署",
+          "prs": "بروشور مننژیت – صحت عامه فرانسه",
+          "es": "Folleto Meningitis – Salud Pública Francia",
+          "pt": "Folheto Meningite – Saúde Pública França",
+          "ru": "Листовка о менингите – Служба общественного здравоохранения Франции",
+          "uk": "Листівка про менінгіт – Служба громадського здоров'я Франції",
+          "mo": "Flyer meningită – Santé publique France"
+        },
+        "file": "pdf/flyer_meningite_spf.pdf"
+      },
+      {
+        "id": "memo_meningite",
+        "label": {
+          "fr": "Fiche mémo Méningite",
+          "en": "Meningitis memo sheet",
+          "ar": "ملخص سريع عن التهاب السحايا",
+          "tr": "Menenjit özet bilgi",
+          "ps": "د مننژیت لنډ یادښت",
+          "ku": "پەڕەی یادداشت – مننژیت",
+          "ro": "Fișă memo meningită",
+          "ka": "მენინგიტის მემორანდუმი",
+          "sq": "Fletë përkujtimi Meningjiti",
+          "am": "የማጅራት ገትር ማስታወሻ ወረቀት",
+          "zh": "脑膜炎备忘单",
+          "prs": "ورقه یادداشت مننژیت",
+          "es": "Ficha resumen Meningitis",
+          "pt": "Ficha resumo Meningite",
+          "ru": "Памятка по менингиту",
+          "uk": "Пам'ятка про менінгіт",
+          "mo": "Fișă memo meningită"
+        },
+        "file": "pdf/fiche_memo_meningite.pdf"
+      },
+      {
+        "id": "calendrier_vaccinal_2026_simplifie",
+        "label": {
+          "fr": "Calendrier simplifié des vaccinations – 2026",
+          "en": "Simplified vaccination schedule – 2026",
+          "ar": "الجدول المبسط للتطعيمات – 2026",
+          "tr": "Basitleştirilmiş aşı takvimi – 2026",
+          "ps": "د واکسین ساده مهالوېش – 2026",
+          "ku": "ڕۆژژمێری سادەی ڤاکسین – 2026",
+          "ro": "Calendar simplificat al vaccinărilor – 2026",
+          "ka": "ვაქცინაციის გამარტივებული კალენდარი – 2026",
+          "sq": "Kalendari i thjeshtuar i vaksinimeve – 2026",
+          "am": "ቀላል የክትባት ቀን መቁጠሪያ – 2026",
+          "zh": "简化疫苗接种日程表 – 2026年",
+          "prs": "کلندر ساده واکسیناسیون – ۲۰۲۶",
+          "es": "Calendario simplificado de vacunación – 2026",
+          "pt": "Calendário simplificado de vacinação – 2026",
+          "ru": "Упрощённый календарь прививок – 2026",
+          "uk": "Спрощений календар щеплень – 2026",
+          "mo": "Calendar simplificat al vaccinărilor – 2026"
+        },
+        "file": "pdf/calendrier_vaccinal_2026_simplifie.pdf"
+      },
+      {
+        "id": "calendrier_vaccinal_2026_complet",
+        "label": {
+          "fr": "Les vaccins à tous les âges – Calendrier vaccinal 2026 (complet)",
+          "en": "Vaccines at all ages – Vaccination schedule 2026 (full)",
+          "ar": "اللقاحات في جميع الأعمار – الجدول الزمني للتطعيمات 2026 (كامل)",
+          "tr": "Her yaş için aşılar – Aşı takvimi 2026 (tam)",
+          "ps": "په هر عمر کې واکسینونه – د واکسین مهالوېش 2026 (بشپړ)",
+          "ku": "ڤاکسین بۆ هەموو تەمەنەکان – ڕۆژژمێری ڤاکسین 2026 (تەواو)",
+          "ro": "Vaccinuri la toate vârstele – Calendarul de vaccinare 2026 (complet)",
+          "ka": "ვაქცინები ყველა ასაკისთვის – ვაქცინაციის კალენდარი 2026 (სრული)",
+          "sq": "Vaksinat në çdo moshë – Kalendari i vaksinimit 2026 (i plotë)",
+          "am": "ክትባቶች በሁሉም ዕድሜዎች – የ2026 ክትባት ቀን መቁጠሪያ (ሙሉ)",
+          "zh": "各年龄段疫苗接种 – 2026年完整疫苗接种日程表",
+          "prs": "واکسین‌ها در تمام سنین – کلندر واکسیناسیون ۲۰۲۶ (کامل)",
+          "es": "Las vacunas a cualquier edad – Calendario vacunal 2026 (completo)",
+          "pt": "As vacinas em todas as idades – Calendário vacinal 2026 (completo)",
+          "ru": "Прививки в любом возрасте – Полный календарь прививок 2026",
+          "uk": "Щеплення в будь-якому віці – Повний календар щеплень 2026",
+          "mo": "Vaccinuri la toate vârstele – Calendarul de vaccinare 2026 (complet)"
+        },
+        "file": "pdf/calendrier_vaccinal_2026_complet.pdf"
+      }
+    ]
+  }
+}

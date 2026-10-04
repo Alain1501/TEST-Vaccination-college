@@ -1,0 +1,43 @@
+{
+  "meta": {
+    "school_year": "2026-2027",
+    "timezone": "Europe/Paris",
+    "last_update": "2026-10-03",
+    "parcours": "lycee"
+  },
+  "_aide": {
+    "fr": "Ajouter une entrée par passage dans sessions. Champs city, postal_code, lycee_name, date (AAAA-MM-JJ, à omettre si inconnue) et grade (seconde, premiere ou terminale). Exemple dans _exemple_session, non affiché sur le site."
+  },
+  "_exemple_session": {
+    "city": "Ville",
+    "postal_code": "77000",
+    "lycee_name": "Nom du lycée",
+    "date": "2027-01-15",
+    "grade": "seconde"
+  },
+  "grades": [
+    "seconde",
+    "premiere",
+    "terminale"
+  ],
+  "search_index": {
+    "fields": [
+      "city",
+      "postal_code",
+      "lycee_name"
+    ]
+  },
+  "calendar_message": {
+    "title": {
+      "fr": "Vaccination au lycée – rappel"
+    },
+    "description": {
+      "fr": "Séance de vaccination demain dans votre lycée par l'équipe mobile de vaccination de Sud Seine-et-Marne.\nPensez à apporter votre carnet de santé ou de vaccination.\nPour les élèves mineurs, si ce n'est pas encore fait, l'autorisation parentale (disponible sur le site) est à compléter.\nVaccination gratuite, sécurisée et conforme aux recommandations sanitaires."
+    },
+    "reminder": {
+      "offset": "P1D",
+      "time": "18:00"
+    }
+  },
+  "sessions": []
+}

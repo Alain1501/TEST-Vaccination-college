@@ -1,0 +1,29 @@
+/* =====================================================================
+   CARTES DE CONTACT — même présentation que la page d'accueil
+   Utilisé par college.html, lycee.html et les deux formulaires.
+   ===================================================================== */
+/* Même grille que la page d'accueil */
+.ciGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.ci{--ic:#2563eb;--ib:rgba(37,99,235,.1);display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:18px;
+  background:rgba(255,255,255,.85);border:1px solid #e5e7eb;color:#111827;text-decoration:none;font-size:14.5px;font-weight:700;
+  position:relative;overflow:hidden;text-align:left;
+  transition:transform .35s cubic-bezier(.2,.9,.25,1.2),border-color .3s ease,box-shadow .35s ease}
+.ci.c1{--ic:#be163a;--ib:rgba(190,22,58,.1)}
+.ci.c2,.ci.c3{--ic:#16a34a;--ib:rgba(22,163,74,.1)}
+.ci.c4{--ic:#6d28d9;--ib:rgba(109,40,217,.1)}
+.ci:hover,.ci:focus-visible{transform:translateY(-4px);border-color:var(--ic);box-shadow:0 18px 34px -18px var(--ic)}
+.ci:focus-visible{outline:3px solid var(--ic);outline-offset:3px}
+.ciIcon{flex:0 0 44px;width:44px;height:44px;border-radius:14px;display:grid;place-items:center;color:var(--ic);background:var(--ib);
+  transition:transform .45s cubic-bezier(.2,.9,.25,1.4),background .3s ease,color .3s ease}
+.ciIcon svg{width:22px;height:22px}
+.ci:hover .ciIcon{transform:rotate(-8deg) scale(1.08);background:var(--ic);color:#fff}
+.ciText{display:flex;flex-direction:column;gap:2px;min-width:0}
+.ciText small{font-size:11.5px;color:#5b6474;font-weight:700;letter-spacing:.01em}
+.ciText span{overflow-wrap:anywhere}
+.ciArrow{width:18px;height:18px;margin-left:auto;flex:0 0 auto;color:var(--ic);opacity:0;transform:translate(-4px,4px);transition:opacity .25s ease,transform .3s ease}
+.ci:hover .ciArrow{opacity:1;transform:none}
+.rtl .ci,[dir="rtl"] .ci{direction:ltr}
+/* Bloc contact ajouté au bas des formulaires */
+.formContact{max-width:760px;margin:28px auto 40px;padding:0 16px}
+.formContact h2{font-size:17px;margin:0 0 12px;color:#111827;font-weight:800;text-align:center}
+@media (prefers-reduced-motion: reduce){.ci,.ciIcon,.ciArrow{transition:none}}

@@ -1,0 +1,644 @@
+{
+  "meta": {
+    "title": {
+      "fr": "Questions fréquentes",
+      "ar": "الأسئلة الشائعة",
+      "tr": "Sıkça Sorulan Sorular",
+      "en": "Frequently Asked Questions",
+      "ps": "پوښتنې او ځوابونه",
+      "ku": "پرسیار و وەڵام",
+      "ro": "Întrebări frecvente",
+      "ka": "ხშირი კითხვები",
+      "sq": "Pyetje të shpeshta",
+      "am": "ተደጋጋሚ ጥያቄዎች",
+      "zh": "常见问题",
+      "prs": "سوالات مکرر",
+      "es": "Preguntas frecuentes",
+      "pt": "Perguntas frequentes",
+      "ru": "Часто задаваемые вопросы",
+      "uk": "Часті запитання",
+      "mo": "Întrebări frecvente"
+    },
+    "languages": [
+      "fr",
+      "en",
+      "ar",
+      "tr",
+      "ps",
+      "ku",
+      "ro",
+      "ka",
+      "sq",
+      "am",
+      "zh",
+      "prs",
+      "es",
+      "pt",
+      "ru",
+      "uk",
+      "mo"
+    ],
+    "lang_labels": {
+      "fr": "Français",
+      "ar": "العربية",
+      "tr": "Türkçe",
+      "en": "English",
+      "ps": "پښتو",
+      "ku": "Kurdî (Soranî)",
+      "ka": "ქართული",
+      "ro": "Română",
+      "sq": "Shqip",
+      "am": "አማርኛ",
+      "zh": "中文",
+      "prs": "دری",
+      "es": "Español",
+      "pt": "Português",
+      "ru": "Русский",
+      "uk": "Українська",
+      "mo": "Moldovenească"
+    },
+    "parcours": "lycee",
+    "school_year": "2026-2027",
+    "last_update": "2026-10-04",
+    "_note": "Contenu medical aligne sur data/vaccine_recommendations.json. Le champ refs indique quelle recommandation chaque reponse utilise."
+  },
+  "sections": [
+    {
+      "key": "general",
+      "title": {
+        "fr": "Généralités"
+      }
+    },
+    {
+      "key": "hpv",
+      "title": {
+        "fr": "Vaccin HPV"
+      }
+    },
+    {
+      "key": "meningococcal",
+      "title": {
+        "fr": "Méningocoques"
+      }
+    },
+    {
+      "key": "other",
+      "title": {
+        "fr": "Autres vaccinations"
+      }
+    },
+    {
+      "key": "safety",
+      "title": {
+        "fr": "Sécurité des vaccins"
+      }
+    },
+    {
+      "key": "school_process",
+      "title": {
+        "fr": "Comment se déroule la vaccination au lycée ?"
+      }
+    },
+    {
+      "key": "consent",
+      "title": {
+        "fr": "Consentement"
+      }
+    }
+  ],
+  "items": [
+    {
+      "id": "l1",
+      "section": "general",
+      "refs": [],
+      "q": {
+        "fr": "Pourquoi parler de vaccination au lycée ?"
+      },
+      "a": {
+        "fr": "Le lycée est un bon moment pour faire le point sur ses vaccinations. L'adolescence est une période où plusieurs vaccinations sont recommandées ou doivent être mises à jour, et certaines bénéficient d'un rattrapage jusqu'au début de l'âge adulte. La vaccination au lycée permet de proposer cette protection dans un cadre organisé, avec des professionnels de santé formés et un suivi adapté."
+      }
+    },
+    {
+      "id": "l2",
+      "section": "general",
+      "refs": [],
+      "q": {
+        "fr": "Tous les lycéens reçoivent-ils les mêmes vaccins ?"
+      },
+      "a": {
+        "fr": "Non. Chaque élève a un parcours vaccinal différent. Les vaccins proposés dépendent de l'âge, des vaccins déjà reçus et du consentement donné. Certains élèves n'auront besoin d'aucun vaccin."
+      }
+    },
+    {
+      "id": "l3",
+      "section": "general",
+      "refs": [],
+      "q": {
+        "fr": "Pourquoi vérifier mon statut vaccinal ?"
+      },
+      "a": {
+        "fr": "La vérification du carnet permet de savoir quels vaccins ont déjà été reçus, d'éviter toute dose inutile et de compléter uniquement ce qui manque."
+      }
+    },
+    {
+      "id": "l4",
+      "section": "hpv",
+      "refs": [
+        "hpv"
+      ],
+      "q": {
+        "fr": "Qu'est-ce que le HPV ?"
+      },
+      "a": {
+        "fr": "Le HPV, ou papillomavirus humain, est un groupe de virus très fréquents. La plupart des personnes seront exposées à un HPV au cours de leur vie, souvent sans le savoir, car l'infection ne provoque généralement aucun symptôme. Dans la majorité des cas, elle disparaît spontanément. Certains types de HPV peuvent cependant persister et, plusieurs années plus tard, être à l'origine de certaines lésions précancéreuses ou de certains cancers. La vaccination permet de prévenir une partie importante de ces infections."
+      }
+    },
+    {
+      "id": "l5",
+      "section": "hpv",
+      "refs": [
+        "hpv"
+      ],
+      "q": {
+        "fr": "Quelles maladies le HPV peut-il provoquer ?"
+      },
+      "a": {
+        "fr": "La plupart des infections à HPV disparaissent spontanément sans conséquence. Certains types de HPV peuvent toutefois persister, contribuer au développement de plusieurs cancers, notamment du col de l'utérus, de l'anus, du pénis, de la vulve, du vagin et de certaines régions ORL. La vaccination permet de réduire le risque d'infection par les principaux types de HPV responsables de ces maladies."
+      }
+    },
+    {
+      "id": "l6",
+      "section": "hpv",
+      "refs": [
+        "hpv"
+      ],
+      "q": {
+        "fr": "Le vaccin HPV est-il lié à la sexualité ?"
+      },
+      "a": {
+        "fr": "Non. Le vaccin HPV est une vaccination de prévention contre une infection virale très fréquente. Il est recommandé à l'adolescence car la protection est optimale lorsqu'il est administré avant une éventuelle exposition au virus. Proposer ce vaccin à un adolescent ne signifie donc pas qu'il est sexuellement actif et ne modifie pas les comportements sexuels."
+      }
+    },
+    {
+      "id": "l7",
+      "section": "hpv",
+      "refs": [
+        "hpv"
+      ],
+      "q": {
+        "fr": "Pourquoi le vaccin HPV peut-il être proposé au lycée alors qu'il est également proposé plus tôt ?"
+      },
+      "a": {
+        "fr": "Tous les adolescents n'ont pas le même âge ni le même parcours vaccinal. La vaccination est recommandée entre 11 et 14 ans, et un rattrapage est recommandé jusqu'à 26 ans révolus pour les jeunes qui n'ont pas été vaccinés plus tôt."
+      }
+    },
+    {
+      "id": "l8",
+      "section": "hpv",
+      "refs": [
+        "hpv"
+      ],
+      "q": {
+        "fr": "Si j'ai déjà reçu le vaccin HPV au collège, dois-je être vacciné à nouveau au lycée ?"
+      },
+      "a": {
+        "fr": "Pas automatiquement. Le carnet est vérifié pour connaître les doses déjà reçues. Une vaccination complète n'est pas répétée. Si elle est incomplète, le professionnel de santé indique les doses qui restent à faire."
+      }
+    },
+    {
+      "id": "l9",
+      "section": "hpv",
+      "refs": [
+        "hpv"
+      ],
+      "q": {
+        "fr": "Pourquoi certains lycéens n'ont-ils pas été vaccinés contre le HPV au collège ?"
+      },
+      "a": {
+        "fr": "Les raisons sont nombreuses. L'élève a pu arriver en France ou changer d'établissement, être absent le jour de la séance, ne pas avoir de carnet disponible, ou sa famille a pu souhaiter prendre plus de temps pour décider. Le lycée offre une nouvelle occasion de se faire vacciner."
+      }
+    },
+    {
+      "id": "l10",
+      "section": "hpv",
+      "refs": [
+        "hpv"
+      ],
+      "q": {
+        "fr": "À quel âge peut-on recevoir le vaccin HPV ?"
+      },
+      "a": {
+        "fr": "La vaccination est recommandée pour les filles et les garçons de 11 à 14 ans révolus. Un rattrapage est recommandé de 15 à 26 ans révolus. Plus la vaccination est faite tôt, plus elle est efficace."
+      }
+    },
+    {
+      "id": "l11",
+      "section": "hpv",
+      "refs": [
+        "hpv"
+      ],
+      "q": {
+        "fr": "Combien de doses sont nécessaires pour le vaccin HPV ?"
+      },
+      "a": {
+        "fr": "Lorsque la vaccination HPV débute entre 11 et 14 ans révolus, le schéma recommandé comprend 2 doses espacées d'au moins 6 mois. À partir de 15 ans, le schéma comporte 3 doses, la deuxième 2 mois après la première et la troisième 6 mois après la première. Le carnet de santé est vérifié afin de déterminer le schéma adapté à chaque élève."
+      }
+    },
+    {
+      "id": "l12",
+      "section": "hpv",
+      "refs": [
+        "hpv"
+      ],
+      "q": {
+        "fr": "J'ai commencé ma vaccination HPV mais je ne l'ai pas terminée, dois-je recommencer ?"
+      },
+      "a": {
+        "fr": "Non, on ne recommence jamais une vaccination. Les doses déjà reçues comptent. Si la première dose a été faite avant 15 ans, le schéma reste à 2 doses au total. Le professionnel de santé vérifie le carnet et indique les doses qui manquent."
+      }
+    },
+    {
+      "id": "l13",
+      "section": "meningococcal",
+      "refs": [
+        "acwy",
+        "menb"
+      ],
+      "q": {
+        "fr": "Qu'est-ce que le méningocoque ?"
+      },
+      "a": {
+        "fr": "Le méningocoque est une bactérie qui peut provoquer des infections graves, notamment des méningites et des septicémies. Ces infections peuvent débuter brutalement et évoluer rapidement, parfois chez des personnes qui étaient en parfaite santé. Il en existe plusieurs groupes, appelés sérogroupes, dont les principaux en France sont A, B, C, W et Y."
+      }
+    },
+    {
+      "id": "l14",
+      "section": "meningococcal",
+      "refs": [
+        "acwy",
+        "menb"
+      ],
+      "q": {
+        "fr": "Pourquoi une infection à méningocoque peut-elle être grave ?"
+      },
+      "a": {
+        "fr": "Les infections invasives à méningocoque peuvent évoluer rapidement et nécessitent une prise en charge médicale urgente. Elles peuvent entraîner des complications importantes ou des séquelles durables et, dans certains cas, être mortelles. Une fièvre accompagnée de taches rouges ou violacées sur la peau est une urgence, il faut appeler le 15 immédiatement. La vaccination permet de réduire le risque de certaines de ces infections."
+      }
+    },
+    {
+      "id": "l15",
+      "section": "meningococcal",
+      "refs": [],
+      "q": {
+        "fr": "Comment le méningocoque se transmet-il ?"
+      },
+      "a": {
+        "fr": "Il se transmet par les gouttelettes de salive lors de contacts proches et répétés, par exemple en s'embrassant, en partageant un verre ou une cigarette, ou lors de la vie en collectivité. La bactérie survit très mal en dehors du corps."
+      }
+    },
+    {
+      "id": "l16",
+      "section": "meningococcal",
+      "refs": [
+        "acwy",
+        "menb"
+      ],
+      "q": {
+        "fr": "Quelle est la différence entre les vaccins ACWY et B ?"
+      },
+      "a": {
+        "fr": "Le vaccin ACWY protège contre les sérogroupes A, C, W et Y. Le vaccin B protège contre le sérogroupe B. Ce sont deux vaccins différents qui ne se remplacent pas. Aucun des deux ne protège contre toutes les méningites, car d'autres microbes peuvent aussi en provoquer."
+      }
+    },
+    {
+      "id": "l17",
+      "section": "meningococcal",
+      "refs": [
+        "acwy"
+      ],
+      "q": {
+        "fr": "Pourquoi le méningocoque ACWY est-il important à l'adolescence ?"
+      },
+      "a": {
+        "fr": "Après les jeunes enfants, les adolescents et les jeunes adultes de 15 à 24 ans font partie des plus touchés. Une seule dose de vaccin ACWY assure une protection d'au moins 10 ans, ce qui couvre cette période à risque."
+      }
+    },
+    {
+      "id": "l18",
+      "section": "meningococcal",
+      "refs": [
+        "menb"
+      ],
+      "q": {
+        "fr": "Pourquoi parle-t-on du méningocoque B au lycée ?"
+      },
+      "a": {
+        "fr": "Le méningocoque B est le plus fréquent en France, et les adolescents et jeunes adultes sont particulièrement touchés. La vaccination contre le méningocoque B est recommandée en rattrapage de 15 à 24 ans révolus."
+      }
+    },
+    {
+      "id": "l19",
+      "section": "meningococcal",
+      "refs": [
+        "menb"
+      ],
+      "q": {
+        "fr": "Qui peut bénéficier d'un rattrapage contre le méningocoque B ?"
+      },
+      "a": {
+        "fr": "Tous les jeunes de 15 à 24 ans révolus qui n'ont pas été vaccinés contre le méningocoque B. Un lycéen de moins de 15 ans pourra en bénéficier à partir de ses 15 ans."
+      }
+    },
+    {
+      "id": "l20",
+      "section": "meningococcal",
+      "refs": [
+        "acwy",
+        "menb"
+      ],
+      "q": {
+        "fr": "Si j'ai déjà reçu un vaccin contre le méningocoque, dois-je recevoir un autre vaccin ?"
+      },
+      "a": {
+        "fr": "Cela dépend du vaccin reçu. Si vous avez déjà été vacciné contre les méningocoques ACWY, aucune dose ACWY supplémentaire n'est nécessaire. Si vous avez été vacciné uniquement contre le méningocoque C, une dose de vaccin ACWY est recommandée. Si vous avez moins de 15 ans, le schéma habituel des 11 à 14 ans s'applique. Dans tous les cas, ces vaccins ne protègent pas contre le méningocoque B, qui fait l'objet d'une vaccination séparée."
+      }
+    },
+    {
+      "id": "l21",
+      "section": "meningococcal",
+      "refs": [
+        "menb"
+      ],
+      "q": {
+        "fr": "Le vaccin B protège-t-il contre les méningocoques ACWY ?"
+      },
+      "a": {
+        "fr": "Non. Le vaccin B protège uniquement contre le méningocoque B."
+      }
+    },
+    {
+      "id": "l22",
+      "section": "meningococcal",
+      "refs": [
+        "acwy"
+      ],
+      "q": {
+        "fr": "Le vaccin ACWY protège-t-il contre le méningocoque B ?"
+      },
+      "a": {
+        "fr": "Non. Le vaccin ACWY protège uniquement contre les sérogroupes A, C, W et Y."
+      }
+    },
+    {
+      "id": "l23",
+      "section": "meningococcal",
+      "refs": [
+        "acwy",
+        "menb"
+      ],
+      "q": {
+        "fr": "Combien de doses sont nécessaires ?"
+      },
+      "a": {
+        "fr": "Pour la vaccination contre les méningocoques ACWY, une seule dose est recommandée. Pour le méningocoque B, l'équipe utilise le vaccin Bexsero, avec 2 doses espacées d'au moins 1 mois. Il existe aussi le vaccin Trumenba, qui se fait en 2 ou 3 doses selon le schéma. Une vaccination B commencée avec un vaccin se termine avec le même vaccin. Le professionnel de santé vérifie le carnet de santé afin de déterminer les vaccinations nécessaires et de confirmer le schéma adapté."
+      }
+    },
+    {
+      "id": "l24",
+      "section": "other",
+      "refs": [
+        "dtcap"
+      ],
+      "q": {
+        "fr": "Le rappel diphtérie, tétanos, poliomyélite et coqueluche est-il concerné ?"
+      },
+      "a": {
+        "fr": "Oui. Un rappel est prévu entre 11 et 13 ans. S'il n'a pas été fait, il peut être réalisé lors de la séance après vérification du carnet."
+      }
+    },
+    {
+      "id": "l25",
+      "section": "other",
+      "refs": [
+        "ror"
+      ],
+      "q": {
+        "fr": "Et la vaccination rougeole, oreillons, rubéole ?"
+      },
+      "a": {
+        "fr": "Toute personne née depuis 1980 doit avoir reçu 2 doses au total. Si une dose manque, elle peut être faite au lycée. Si le statut vaccinal est inconnu, 2 doses sont réalisées à au moins 1 mois d'intervalle."
+      }
+    },
+    {
+      "id": "l26",
+      "section": "other",
+      "refs": [
+        "hepb"
+      ],
+      "q": {
+        "fr": "Et la vaccination contre l'hépatite B ?"
+      },
+      "a": {
+        "fr": "Le rattrapage est recommandé jusqu'à 15 ans révolus. À partir de 16 ans, la vaccination est recommandée uniquement en cas d'exposition à un risque particulier, que le professionnel de santé évalue avec l'élève."
+      }
+    },
+    {
+      "id": "l27",
+      "section": "safety",
+      "refs": [],
+      "q": {
+        "fr": "Les vaccins sont-ils sûrs ?"
+      },
+      "a": {
+        "fr": "Oui. Avant d'être autorisés, les vaccins sont évalués pour vérifier leur qualité, leur efficacité et leur sécurité. Après leur commercialisation, ils continuent d'être surveillés afin de détecter et d'évaluer les éventuels effets indésirables."
+      }
+    },
+    {
+      "id": "l28",
+      "section": "safety",
+      "refs": [],
+      "q": {
+        "fr": "Comment les vaccins sont-ils évalués ?"
+      },
+      "a": {
+        "fr": "Ils sont d'abord testés dans des essais cliniques sur des milliers de personnes. Ils sont ensuite autorisés par les autorités européennes et françaises du médicament, et la Haute Autorité de santé décide de leur place dans les recommandations. Après leur mise sur le marché, l'ANSM surveille les effets signalés, et chacun peut déclarer un effet indésirable sur le portail officiel de signalement."
+      }
+    },
+    {
+      "id": "l29",
+      "section": "safety",
+      "refs": [],
+      "q": {
+        "fr": "Quels sont les effets indésirables les plus fréquents ?"
+      },
+      "a": {
+        "fr": "Après une vaccination, il est fréquent d'avoir une douleur ou une petite rougeur au niveau du bras, parfois accompagnée d'une légère fatigue. Ces réactions sont généralement bénignes, temporaires et disparaissent spontanément en 1 à 2 jours. Chez les adolescents, un malaise au moment de l'injection est assez fréquent. Il est lié au stress de la piqûre plus qu'au vaccin."
+      }
+    },
+    {
+      "id": "l30",
+      "section": "safety",
+      "refs": [],
+      "q": {
+        "fr": "Existe-t-il des effets indésirables graves ?"
+      },
+      "a": {
+        "fr": "Les effets indésirables graves sont exceptionnels. Les vaccins sont surveillés en continu pour garantir leur sécurité. Après l'injection, l'élève reste quelques minutes sous surveillance par l'équipe de vaccination. Il est important de signaler toute allergie avant la vaccination."
+      }
+    },
+    {
+      "id": "l31",
+      "section": "safety",
+      "refs": [],
+      "q": {
+        "fr": "Les vaccins peuvent-ils provoquer une infertilité ?"
+      },
+      "a": {
+        "fr": "Non. Les études scientifiques disponibles ne montrent pas de lien entre les vaccins et l'infertilité. Les vaccins sont utilisés depuis de nombreuses années et leur sécurité est surveillée en continu. À ce jour, aucun élément scientifique ne montre que la vaccination puisse avoir un effet sur la fertilité future."
+      }
+    },
+    {
+      "id": "l32",
+      "section": "safety",
+      "refs": [],
+      "q": {
+        "fr": "Est-ce aussi sûr qu'en cabinet médical ?"
+      },
+      "a": {
+        "fr": "Oui. La vaccination au lycée est réalisée selon les mêmes règles de sécurité, d'hygiène, de traçabilité et de surveillance que dans les autres lieux de vaccination."
+      }
+    },
+    {
+      "id": "l33",
+      "section": "school_process",
+      "refs": [],
+      "q": {
+        "fr": "Qui réalise la vaccination ?"
+      },
+      "a": {
+        "fr": "La vaccination est réalisée par des professionnels de santé habilités à vacciner, notamment des médecins et des infirmiers de l'équipe mobile de vaccination de l'Unité de santé publique de l'hôpital de Melun. Ils vérifient les informations nécessaires avant l'injection, répondent aux questions des élèves et des familles et assurent la surveillance de l'élève après la vaccination."
+      }
+    },
+    {
+      "id": "l34",
+      "section": "school_process",
+      "refs": [],
+      "q": {
+        "fr": "Le carnet de vaccination est-il vérifié ?"
+      },
+      "a": {
+        "fr": "Oui. Le carnet de santé est vérifié avant la vaccination, et il est obligatoire. Cela permet de connaître les vaccins déjà reçus, d'éviter une injection inutile et de déterminer précisément les doses qui restent éventuellement nécessaires."
+      }
+    },
+    {
+      "id": "l35",
+      "section": "school_process",
+      "refs": [],
+      "q": {
+        "fr": "Que se passe-t-il si j'ai déjà été vacciné ?"
+      },
+      "a": {
+        "fr": "Les vaccins déjà reçus sont pris en compte. On ne réalise aucune dose inutile."
+      }
+    },
+    {
+      "id": "l36",
+      "section": "school_process",
+      "refs": [],
+      "q": {
+        "fr": "Peut-on compléter une vaccination commencée auparavant ?"
+      },
+      "a": {
+        "fr": "Oui. Les doses déjà reçues comptent et on réalise seulement celles qui manquent."
+      }
+    },
+    {
+      "id": "l37",
+      "section": "school_process",
+      "refs": [],
+      "q": {
+        "fr": "Que se passe-t-il avant l'injection ?"
+      },
+      "a": {
+        "fr": "Un professionnel de santé fait le point avec l'élève sur son état de santé et ses allergies éventuelles, vérifie le carnet et le consentement, et répond aux questions. Une séance peut comporter au maximum 4 vaccins."
+      }
+    },
+    {
+      "id": "l38",
+      "section": "school_process",
+      "refs": [],
+      "q": {
+        "fr": "Que se passe-t-il après l'injection ?"
+      },
+      "a": {
+        "fr": "L'élève reste quelques minutes sous surveillance sur place. Les vaccins réalisés sont inscrits dans son carnet, puis il retourne en cours. En cas de question après la séance, on peut [[contacter l'équipe|email]]."
+      }
+    },
+    {
+      "id": "l39",
+      "section": "consent",
+      "refs": [],
+      "q": {
+        "fr": "La vaccination au lycée est-elle obligatoire ?"
+      },
+      "a": {
+        "fr": "Non. La vaccination proposée est recommandée et nécessite l'accord des parents pour un élève mineur, ou celui de l'élève lui-même s'il est majeur. Elle n'est pas imposée."
+      }
+    },
+    {
+      "id": "l40",
+      "section": "consent",
+      "refs": [],
+      "q": {
+        "fr": "Quelles sont les règles pour un lycéen mineur ?"
+      },
+      "a": {
+        "fr": "L'accord écrit des deux parents ou responsables légaux est nécessaire, au moyen du [[formulaire d'autorisation|form]]. L'avis du lycéen est aussi recherché, et il peut poser toutes ses questions à l'équipe."
+      }
+    },
+    {
+      "id": "l41",
+      "section": "consent",
+      "refs": [],
+      "q": {
+        "fr": "Quelles sont les règles pour un lycéen majeur ?"
+      },
+      "a": {
+        "fr": "Un lycéen majeur décide seul. Il donne lui-même son consentement, sans autorisation parentale. Il peut bien sûr en parler avec sa famille."
+      }
+    },
+    {
+      "id": "l42",
+      "section": "consent",
+      "refs": [],
+      "q": {
+        "fr": "Faut-il une autorisation parentale ?"
+      },
+      "a": {
+        "fr": "Oui pour un élève mineur. Une autorisation parentale est nécessaire pour le vacciner, et sans autorisation valide la vaccination ne sera pas réalisée. Si un seul parent exerce l'autorité parentale, le formulaire prévoit cette situation. Non pour un élève majeur, qui donne lui-même son consentement."
+      }
+    },
+    {
+      "id": "l43",
+      "section": "consent",
+      "refs": [],
+      "q": {
+        "fr": "Qui donne son consentement ?"
+      },
+      "a": {
+        "fr": "Pour un élève mineur, ce sont ses parents ou responsables légaux, et l'avis de l'élève est recherché. Pour un élève majeur, c'est l'élève lui-même."
+      }
+    },
+    {
+      "id": "l44",
+      "section": "consent",
+      "refs": [],
+      "q": {
+        "fr": "Un parent peut-il refuser pour son enfant mineur ?"
+      },
+      "a": {
+        "fr": "Oui. L'accord des parents est nécessaire pour que la vaccination d'un élève mineur soit réalisée. Vous pouvez prendre le temps de vous informer et poser toutes vos questions à [[notre équipe|email]] avant de prendre votre décision."
+      }
+    }
+  ]
+}
