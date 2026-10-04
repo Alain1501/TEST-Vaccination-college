@@ -10,7 +10,7 @@
     /* Ancien lien vers la section contact du collège (formulaire d'autorisation) */
     if (location.hash === '#contactCard') { location.replace('college/index.html' + location.search + '#contactCard'); }
   </script>
-  <script src="js/parcours.js?v=20261004-12" data-page="hub"></script>
+  <script src="js/parcours.js?v=20261004-14" data-page="hub"></script>
   <script src="js/entete.js" defer></script>
   <script src="js/langue.js?v=20261004-2"></script>
   <style>
@@ -34,7 +34,7 @@
     @keyframes drift{to{transform:translate3d(2vmax,-1.5vmax,0) rotate(4deg)}}
 
     /* En-tête logos */
-    .top{background:rgba(255,255,255,.75);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+    .top{position:relative;z-index:30;background:rgba(255,255,255,.75);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
     .topIn{max-width:1180px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;gap:24px}
     .topIn .headerLogos{flex:1 1 auto}
     .hubLang{position:relative;flex:0 0 auto;display:flex;flex-direction:column;align-items:center;gap:6px}
@@ -45,7 +45,8 @@
     .hubLangBtn img{width:22px;height:15px;object-fit:cover;border-radius:3px;box-shadow:0 0 0 1px rgba(0,0,0,.08)}
     .hubLangBtn svg{width:14px;height:14px;transition:transform .25s ease}
     .hubLangBtn[aria-expanded="true"] svg{transform:rotate(180deg)}
-    .hubLangList{position:absolute;top:calc(100% + 8px);right:0;z-index:50;width:250px;max-height:min(60vh,430px);overflow:auto;margin:0;padding:6px;list-style:none;
+    .hubLangList{position:absolute;top:calc(100% + 8px);right:0;z-index:50;width:400px;max-width:calc(100vw - 24px);margin:0;padding:6px;list-style:none;
+      display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2px;
       background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 24px 50px -12px rgba(17,24,39,.28);
       opacity:0;transform:translateY(-6px) scale(.98);transform-origin:top right;pointer-events:none;transition:opacity .18s ease,transform .22s cubic-bezier(.2,.9,.25,1.2)}
     .hubLangList.open{opacity:1;transform:none;pointer-events:auto}
@@ -62,7 +63,7 @@
     main{transition:opacity .25s ease}
     .topIn .headerLogos a{transition:opacity .2s ease}
     .topIn .headerLogos a:hover{opacity:.75}
-    @media (max-width:768px){.topIn{padding:12px 14px;flex-direction:column;gap:10px}.topIn .headerLogos{width:100%}.hubLangList{right:50%;transform-origin:top center;margin-right:-125px}[dir="rtl"] .hubLangList{left:auto}}
+    @media (max-width:768px){.topIn{padding:12px 14px;flex-direction:column;gap:10px}.topIn .headerLogos{width:100%}.hubLangList{right:auto;left:50%;width:340px;max-width:none;margin-left:-170px;transform-origin:top center}.hubLangList button{padding:8px 8px;font-size:13.5px}}
 
     main{max-width:1080px;margin:0 auto;padding:clamp(28px,6vw,60px) 20px 120px}
 
