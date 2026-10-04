@@ -15,6 +15,7 @@ Racine (accueil et fichiers communs)
 - js/parcours.js = transitions animées entre les pages, bouton flottant Accueil / Collège / Lycée en bas à gauche, et interrupteur de publication LYCEE_VISIBLE (ligne 16). Les adresses des pages sont calculées depuis la racine du site.
 - js/langue.js = langue mémorisée (localStorage) sur les 5 pages, la langue de l'adresse ?lang= prime. Langues arabe, pashto, kurde et dari écrites de droite à gauche bloc par bloc, sans jamais inverser la mise en page ni les logos.
 - js/entete.js = bandeau de logos sur une ligne (ordinateur) ou deux lignes horizontales (téléphone), sans défilement.
+- js/effets.js et css/effets.css = effets visuels du collège et du lycée. Étapes en 3 cartes avec les illustrations step1 à step3 et boutons aux couleurs de chaque étape. FAQ avec une couleur et une icône par rubrique. Message du Dr LEROY qui apparaît en avance sur la lecture (2 à 3 dernières lignes de l'écran cachées) avec vague, lumière et mots magnétiques.
 - css/contact.css = cartes de contact du collège, du lycée et des deux formulaires, même grille que l'accueil.
 - img/ (logos, images des étapes, dont region.png et departement.png, ce dernier recoloré en noir pour fond clair), Flags/ (drapeaux des langues), pdf/ (tous les PDF, laissés à la racine pour ne casser aucun lien direct déjà diffusé).
 - college.html, lycee.html, autorisation-vaccination.html, autorisation-vaccination-lycee.html = petites pages de redirection vers les anciennes adresses, à conserver.

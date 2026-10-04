@@ -1,0 +1,87 @@
+/* =====================================================================
+   EFFETS VISUELS — étapes, FAQ en couleurs, message du médecin
+   Partagé par college/index.html et lycee/index.html.
+   Ne modifie aucun texte : seulement la présentation.
+   ===================================================================== */
+
+/* ---------- 1. ÉTAPES : trois cartes avec les illustrations du site ---------- */
+#stepsContainer.stepsContainer{display:grid !important;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;align-items:start;padding:6px 2px 4px}
+#stepsContainer.stepsContainer::before,#stepsContainer.stepsContainer::after{display:none !important}
+@media (max-width:860px){#stepsContainer.stepsContainer{grid-template-columns:1fr}}
+#stepsContainer .stepItem{--sc:#185FA5;--sb:#E6F1FB;
+  position:relative;display:flex !important;flex-direction:column;align-items:center;text-align:center;gap:10px !important;
+  padding:22px 18px 22px !important;border-radius:22px !important;border:1px solid var(--border) !important;background:var(--card) !important;
+  opacity:1 !important;filter:none !important;animation:none !important;overflow:hidden;cursor:pointer;
+  transition:transform .45s cubic-bezier(.2,.9,.25,1.3),border-color .3s ease,box-shadow .4s ease !important}
+#stepsContainer .stepItem:nth-child(2){--sc:#0F6E56;--sb:#E1F5EE}
+#stepsContainer .stepItem:nth-child(3){--sc:#534AB7;--sb:#EEEDFE}
+#stepsContainer .stepItem::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;opacity:0;transition:opacity .4s ease;
+  background:radial-gradient(420px circle at var(--mx,50%) var(--my,0%),var(--sb),transparent 60%)}
+#stepsContainer .stepItem::after{content:"";position:absolute;left:0;right:0;bottom:0;height:5px;background:var(--sc);transform:scaleX(0);transform-origin:left;transition:transform .6s cubic-bezier(.2,.9,.25,1)}
+#stepsContainer .stepItem > *{position:relative;z-index:1}
+#stepsContainer .stepItem:hover,#stepsContainer .stepItem[aria-expanded="true"]{transform:translateY(-8px);border-color:var(--sc) !important;box-shadow:0 26px 44px -26px var(--sc) !important;background:var(--card) !important}
+#stepsContainer .stepItem:hover::before,#stepsContainer .stepItem[aria-expanded="true"]::before{opacity:1}
+#stepsContainer .stepItem:hover::after,#stepsContainer .stepItem[aria-expanded="true"]::after{transform:scaleX(1)}
+#stepsContainer .stepIllustration{width:132px !important;height:132px !important;min-width:0 !important;max-width:none !important;object-fit:contain;
+  border-radius:50%;background:var(--sb);padding:10px;transition:transform .6s cubic-bezier(.2,.9,.25,1.4)}
+#stepsContainer .stepItem:hover .stepIllustration,#stepsContainer .stepItem[aria-expanded="true"] .stepIllustration{transform:scale(1.07) rotate(-4deg)}
+#stepsContainer .stepNumber{position:absolute !important;top:14px;left:14px;width:40px !important;height:40px !important;background:var(--sb) !important;color:var(--sc) !important;
+  font-size:17px;transition:transform .5s cubic-bezier(.2,.9,.25,1.6),background .3s ease,color .3s ease}
+#stepsContainer .stepItem:hover .stepNumber,#stepsContainer .stepItem[aria-expanded="true"] .stepNumber{background:var(--sc) !important;color:#fff !important;transform:scale(1.12) rotate(-10deg)}
+#stepsContainer .stepTextWrap{width:100%}
+#stepsContainer .stepActions{border:0 !important;background:none !important;box-shadow:none !important;padding:0 !important;margin:0 !important}
+#stepsContainer .stepTitle{font-size:17px !important;color:var(--text);margin:2px 0 6px}
+#stepsContainer .stepText{font-size:14px !important;color:var(--muted)}
+/* Menu de boutons de chaque étape : mêmes couleurs et mêmes effets que l'étape */
+#stepsContainer .stepActions .resourceGroup{flex-direction:column;align-items:stretch;gap:10px;padding-top:14px}
+#stepsContainer .stepActions .btn{position:relative;overflow:hidden;justify-content:center;text-align:center;white-space:normal;
+  background:var(--sb) !important;color:var(--sc) !important;border:1px solid var(--sc) !important;border-radius:999px;padding:11px 16px;
+  transition:transform .4s cubic-bezier(.2,.9,.25,1.4),background .3s ease,color .3s ease,box-shadow .35s ease !important;
+  animation:fxBtnIn .5s cubic-bezier(.2,.9,.25,1.2) both}
+#stepsContainer .stepActions .btn:nth-child(2){animation-delay:.08s}
+#stepsContainer .stepActions .btn:nth-child(3){animation-delay:.16s}
+#stepsContainer .stepActions .btn:nth-child(4){animation-delay:.24s}
+#stepsContainer .stepActions .btn:hover{background:var(--sc) !important;color:#fff !important;transform:translateY(-3px) scale(1.02);box-shadow:0 14px 26px -16px var(--sc) !important}
+@keyframes fxBtnIn{from{opacity:0;transform:translateY(14px) scale(.96)}to{opacity:1;transform:none}}
+
+/* ---------- 2. FAQ : une couleur et une icône par rubrique ---------- */
+.acc{--qc:#185FA5;--qb:#E6F1FB}
+.acc[data-section="hpv"]{--qc:#993556;--qb:#FBEAF0}
+.acc[data-section="meningococcal"]{--qc:#993C1D;--qb:#FAECE7}
+.acc[data-section="safety"]{--qc:#0F6E56;--qb:#E1F5EE}
+.acc[data-section="school_process"]{--qc:#854F0B;--qb:#FAEEDA}
+.acc[data-section="consent"]{--qc:#534AB7;--qb:#EEEDFE}
+.acc[data-section="other"]{--qc:#5F5E5A;--qb:#F1EFE8}
+.acc[data-section="key_messages"]{--qc:#185FA5;--qb:#E6F1FB}
+.faqSectionHead[data-section]{display:flex;align-items:center;gap:8px;color:var(--qc) !important}
+.faqSectionHead[data-section]::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--qc)}
+#faqList .acc{position:relative;background:var(--card) !important;border:1px solid var(--border) !important;border-radius:18px !important;
+  transition:transform .35s cubic-bezier(.2,.9,.25,1.3),border-color .3s ease,box-shadow .35s ease !important}
+#faqList .acc:hover{transform:translateX(5px);border-color:var(--qc) !important}
+#faqList .acc.ouverte{border-color:var(--qc) !important;box-shadow:0 0 0 1px var(--qc) inset,0 18px 36px -26px var(--qc) !important}
+#faqList .acc button > span:not(.fxIco):not(.signe){flex:1 1 auto;min-width:0}
+#faqList .acc .corps .faqAns{margin:0 18px 0 64px !important;padding:0;transition:padding .45s ease,opacity .35s ease;opacity:0}
+#faqList .acc.ouverte .corps .faqAns{padding-bottom:16px;opacity:1}
+@media (max-width:560px){#faqList .acc .corps .faqAns{margin:0 16px 0 16px !important}}
+#faqList .acc .fxIco{flex:0 0 34px;width:34px;height:34px;border-radius:11px;display:grid;place-items:center;background:var(--qb);color:var(--qc);
+  transition:transform .45s cubic-bezier(.2,.9,.25,1.6),background .3s ease,color .3s ease}
+#faqList .acc .fxIco svg{width:18px;height:18px}
+#faqList .acc:hover .fxIco,#faqList .acc.ouverte .fxIco{background:var(--qc);color:#fff;transform:rotate(-10deg) scale(1.06)}
+#faqList .acc .signe{background:var(--qb) !important;color:var(--qc) !important}
+#faqList .acc.ouverte .signe{background:var(--qc) !important;color:#fff !important}
+#faqList .acc .fxRip{position:absolute;border-radius:50%;background:var(--qb);transform:scale(0);opacity:.9;pointer-events:none;z-index:0;animation:fxRip .7s ease-out forwards}
+#faqList .acc h3,#faqList .acc .corps{position:relative;z-index:1}
+@keyframes fxRip{to{transform:scale(1);opacity:0}}
+
+/* ---------- 3. MESSAGE DU MÉDECIN : apparition en avance sur la lecture ---------- */
+#introBody .fadeWord{color:var(--text) !important;font-weight:inherit !important;display:inline-block;white-space:pre-wrap;
+  transition:opacity .45s ease,transform .55s cubic-bezier(.2,.9,.25,1.3),filter .45s ease,color .6s ease}
+#introBody .fadeWord.fxH{opacity:0;transform:translateY(16px) rotate(-5deg);filter:blur(6px)}
+#introBody .fadeWord.counterNum{font-weight:800 !important}
+#introBody::before{display:none !important}
+
+@media (prefers-reduced-motion: reduce){
+  #stepsContainer .stepItem,#stepsContainer .stepIllustration,#stepsContainer .stepNumber,#faqList .acc,#faqList .acc .fxIco,#introBody .fadeWord{transition:none !important}
+  #introBody .fadeWord.fxH{opacity:1;transform:none;filter:none}
+  #stepsContainer .stepActions .btn{animation:none}
+}

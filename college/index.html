@@ -649,6 +649,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, .btn:focus-visible,
 </style>
         <link href="../../Documents/Pinegrow%20Projects/Tailwind-CSS-20260203-211032/tailwind_theme/tailwind.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="../css/contact.css?v=20261004-2">
+<link rel="stylesheet" href="../css/effets.css?v=20261004-1">
+<script src="../js/effets.js?v=20261004-1" data-accent="college" defer></script>
 </head>
     <body>
         <div id="scrollProgress"></div>
@@ -2023,6 +2025,7 @@ div.addEventListener('click', (e) => {
 
       const acc = document.createElement('div');
       acc.className = 'acc';
+      acc.setAttribute('data-section', it.section || 'general');
       if(q) acc.classList.add('searchHit');
 
       const h3 = document.createElement('h3');
