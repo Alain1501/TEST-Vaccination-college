@@ -74,7 +74,7 @@
         "label": {
           "fr": "Remplir le formulaire d’autorisation en ligne"
         },
-        "url": "autorisation-vaccination-lycee.html"
+        "url": "autorisation-vaccination.html"
       }
     ],
     "videos": []
@@ -100,7 +100,7 @@
         "uk": "Логотип служби",
         "mo": "Sigla serviciului"
       },
-      "file": "img/logo_service.png",
+      "file": "../img/logo_service.png",
       "placement": "footer"
     }
   },
@@ -152,7 +152,7 @@
           "uk": "Листівка про менінгіт – Служба громадського здоров'я Франції",
           "mo": "Flyer meningită – Santé publique France"
         },
-        "file": "pdf/flyer_meningite_spf.pdf"
+        "file": "../pdf/flyer_meningite_spf.pdf"
       },
       {
         "id": "memo_meningite",
@@ -175,7 +175,7 @@
           "uk": "Пам'ятка про менінгіт",
           "mo": "Fișă memo meningită"
         },
-        "file": "pdf/fiche_memo_meningite.pdf"
+        "file": "../pdf/fiche_memo_meningite.pdf"
       },
       {
         "id": "calendrier_vaccinal_2026_simplifie",
@@ -198,7 +198,7 @@
           "uk": "Спрощений календар щеплень – 2026",
           "mo": "Calendar simplificat al vaccinărilor – 2026"
         },
-        "file": "pdf/calendrier_vaccinal_2026_simplifie.pdf"
+        "file": "../pdf/calendrier_vaccinal_2026_simplifie.pdf"
       },
       {
         "id": "calendrier_vaccinal_2026_complet",
@@ -221,7 +221,7 @@
           "uk": "Щеплення в будь-якому віці – Повний календар щеплень 2026",
           "mo": "Vaccinuri la toate vârstele – Calendarul de vaccinare 2026 (complet)"
         },
-        "file": "pdf/calendrier_vaccinal_2026_complet.pdf"
+        "file": "../pdf/calendrier_vaccinal_2026_complet.pdf"
       }
     ]
   }

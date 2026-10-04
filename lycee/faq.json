@@ -60,7 +60,7 @@
     "parcours": "lycee",
     "school_year": "2026-2027",
     "last_update": "2026-10-04",
-    "_note": "Contenu medical aligne sur data/vaccine_recommendations.json. Le champ refs indique quelle recommandation chaque reponse utilise."
+    "_note": "Contenu medical aligne sur lycee/recommandations.json. Le champ refs indique quelle recommandation chaque reponse utilise."
   },
   "sections": [
     {

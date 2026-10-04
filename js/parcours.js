@@ -1,7 +1,7 @@
 /* =====================================================================
    PARCOURS — transitions animées et sélecteur collège / lycée
-   Fichier partagé par index.html (accueil), college.html et lycee.html.
-   Chargé dans le <head> avec : <script src="js/parcours.js" data-page="college"></script>
+   Fichier partagé par index.html (accueil), college/index.html et lycee/index.html.
+   Chargé dans le <head> avec : <script src="../js/parcours.js" data-page="college"></script>
    ===================================================================== */
 (function () {
   'use strict';
@@ -18,18 +18,20 @@
   var script = document.currentScript;
   var PAGE = (script && script.getAttribute('data-page')) || 'hub';
   var html = document.documentElement;
+  /* Racine du site, déduite de l'adresse de ce script (…/js/parcours.js) */
+  var ROOT = (script && script.src) ? script.src.replace(/js\/parcours\.js(\?.*)?$/, '') : '';
 
   if (!LYCEE_VISIBLE && (PAGE === 'hub' || PAGE === 'lycee')) {
     html.style.visibility = 'hidden';
-    location.replace('college.html' + location.search + location.hash);
+    location.replace(ROOT + 'college/index.html' + location.search + location.hash);
     return;
   }
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   var DEST = {
-    hub:     { url: 'index.html',   color: '#2563eb', label: 'Accueil' },
-    college: { url: 'college.html', color: '#16a34a', label: 'Collège' },
-    lycee:   { url: 'lycee.html',   color: '#6d28d9', label: 'Lycée' }
+    hub:     { url: ROOT + 'index.html',         color: '#2563eb', label: 'Accueil' },
+    college: { url: ROOT + 'college/index.html', color: '#16a34a', label: 'Collège' },
+    lycee:   { url: ROOT + 'lycee/index.html',   color: '#6d28d9', label: 'Lycée' }
   };
   var LABELS = {
     fr: { hub: 'Accueil', college: 'Collège', lycee: 'Lycée', aria: 'Changer de parcours' },
@@ -203,11 +205,11 @@
     nav.setAttribute('aria-label', L('aria'));
     nav.innerHTML =
       '<span class="ptPill"></span>' +
-      '<a href="index.html" data-pt="hub" class="ptHome" style="--h:#2563eb" aria-label="' + L('hub') + '">' +
+      '<a href="' + DEST.hub.url + '" data-pt="hub" class="ptHome" style="--h:#2563eb" aria-label="' + L('hub') + '">' +
         '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg>' +
         '<span class="ptHomeTxt">' + L('hub') + '</span></a>' +
-      '<a href="college.html" data-pt="college" style="--h:#16a34a"><span class="ptDot"></span>' + L('college') + '</a>' +
-      '<a href="lycee.html" data-pt="lycee" style="--h:#6d28d9"><span class="ptDot"></span>' + L('lycee') + '</a>';
+      '<a href="' + DEST.college.url + '" data-pt="college" style="--h:#16a34a"><span class="ptDot"></span>' + L('college') + '</a>' +
+      '<a href="' + DEST.lycee.url + '" data-pt="lycee" style="--h:#6d28d9"><span class="ptDot"></span>' + L('lycee') + '</a>';
     document.body.appendChild(nav);
     var cur = nav.querySelector('[data-pt="' + PAGE + '"]');
     if (cur) { cur.classList.add('ptCurrent'); cur.setAttribute('aria-current', 'page'); }

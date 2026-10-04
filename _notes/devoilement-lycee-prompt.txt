@@ -1,37 +1,51 @@
 CONTEXTE DU PROJET, À LIRE AVANT TOUTE ACTION
 
-Je suis le Dr Ali ALKHAFAGI, médecin à l'Unité de santé publique du Groupe Hospitalier Sud Île-de-France (hôpital de Melun). Je gère le site multilingue d'information sur la vaccination scolaire de l'équipe mobile de vaccination (EMV), hébergé sur GitHub Pages. Le français est la langue source, le site existe en 17 langues (fr, en, ar, tr, ps, ku, ro, ka, sq, am, zh, prs, es, pt, ru, uk, mo).
+Je suis le Dr Ali ALKHAFAGI, médecin à l'Unité de santé publique du Groupe Hospitalier Sud Île-de-France (hôpital de Melun). Je gère le site multilingue d'information sur la vaccination scolaire de l'équipe mobile de vaccination (EMV), publié à partir d'un dépôt GitHub synchronisé avec le domaine vaccination-sud77.fr. Le français est la langue source, le site existe en 17 langues (fr, en, ar, tr, ps, ku, ro, ka, sq, am, zh, prs, es, pt, ru, uk, mo).
 
 Le site a trois entrées.
 - Une page d'accueil commune « Vaccination des adolescents, Île-de-France » avec deux cartes, Vaccination au collège et Vaccination au lycée, et la mention « Unité de santé publique de l'hôpital de Melun – équipe mobile de vaccination ».
 - Le parcours collège (5e et 4e), validé et en ligne. Il ne doit jamais être modifié sans ma demande explicite.
 - Le parcours lycée (seconde, première, terminale), terminé mais pas encore dévoilé.
 
-ARCHITECTURE DES FICHIERS (racine du dépôt)
-- index.html = accueil commun. 6 logos dans cet ordre Région, Département, ARS, Assurance Maladie, Hôpital, EMV. Cartes de contact avec icônes. Un ancien lien index.html#contactCard est redirigé vers college.html#contactCard.
-- college.html = parcours collège (ancien index.html). Logos Département, ARS, Assurance Maladie, Hôpital, EMV. Données faq.json, intro_resources.json, schedule_sessions.json. Formulaire autorisation-vaccination.html. Couleur d'accent verte #16a34a. FAQ affichée par rubriques.
-- lycee.html = parcours lycée. Logos Région, ARS, Assurance Maladie, Hôpital, EMV. Données lycee/faq_lycee.json (44 questions en 7 rubriques), lycee/intro_resources_lycee.json (message du Dr LEROY adressé aux parents, année 2026-2027), schedule_sessions_lycee.json (même structure que le collège, champ lycee_name, aucune date pour l'instant). Formulaire autorisation-vaccination-lycee.html, copie provisoire du formulaire collège que je remplacerai. Couleur d'accent violette #6d28d9. Aucune vidéo.
-- js/parcours.js = transitions animées entre les pages, bouton flottant Accueil / Collège / Lycée en bas à gauche, et interrupteur de publication LYCEE_VISIBLE (ligne 16).
+ARCHITECTURE DES FICHIERS (organisation du dépôt depuis le 04/10/2026)
+Le dépôt GitHub est synchronisé à l'identique avec le domaine vaccination-sud77.fr. Tout fichier du dépôt est donc public.
+
+Racine (accueil et fichiers communs)
+- index.html = accueil commun. 6 logos dans cet ordre Région, Département, ARS, Assurance Maladie, Hôpital, EMV. Cartes de contact avec icônes. Un ancien lien index.html#contactCard est redirigé vers college/index.html#contactCard.
+- js/parcours.js = transitions animées entre les pages, bouton flottant Accueil / Collège / Lycée en bas à gauche, et interrupteur de publication LYCEE_VISIBLE (ligne 16). Les adresses des pages sont calculées depuis la racine du site.
 - js/entete.js = bandeau de logos sur une ligne (ordinateur) ou deux lignes horizontales (téléphone), sans défilement.
 - css/contact.css = cartes de contact du collège, du lycée et des deux formulaires, même grille que l'accueil.
-- data/vaccine_recommendations.json = référence médicale interne du lycée, jamais affichée.
-- img/ (dont region.png et departement.png, ce dernier recoloré en noir pour fond clair), pdf/, Flags/.
+- img/ (logos, images des étapes, dont region.png et departement.png, ce dernier recoloré en noir pour fond clair), Flags/ (drapeaux des langues), pdf/ (tous les PDF, laissés à la racine pour ne casser aucun lien direct déjà diffusé).
+- college.html, lycee.html, autorisation-vaccination.html, autorisation-vaccination-lycee.html = petites pages de redirection vers les anciennes adresses, à conserver.
+
+Dossier college/
+- index.html = parcours collège. Logos Département, ARS, Assurance Maladie, Hôpital, EMV. Couleur d'accent verte #16a34a. FAQ affichée par rubriques.
+- autorisation-vaccination.html = formulaire collège.
+- faq.json, intro_resources.json, schedule_sessions.json.
+
+Dossier lycee/
+- index.html = parcours lycée (seconde, première, terminale). Boutons de classe du planning en libellés courts 2nde, 1ère, Tle pour tenir sur une ligne sur téléphone. Logos Région, ARS, Assurance Maladie, Hôpital, EMV. Couleur d'accent violette #6d28d9. Aucune vidéo.
+- autorisation-vaccination.html = formulaire lycée, copie provisoire du formulaire collège que je remplacerai.
+- faq.json (44 questions en 7 rubriques), intro_resources.json (message du Dr LEROY adressé aux parents, année 2026-2027), schedule_sessions.json (même structure que le collège, champ lycee_name, aucune date pour l'instant).
+- recommandations.json = référence médicale interne du lycée, jamais affichée.
+
+Dans les pages des dossiers college/ et lycee/, les fichiers communs sont appelés avec ../ (par exemple ../img/ARS.png, ../js/parcours.js).
 
 ÉTAT ACTUEL (au 04/10/2026)
 - Dans js/parcours.js, var LYCEE_VISIBLE = false;
-- Effet. L'adresse du site, index.html et lycee.html redirigent directement vers college.html, en gardant ?lang= et #ancre. Le bouton de bascule est masqué. Tous les fichiers lycée restent en place.
-- index.html, college.html et lycee.html appellent le script avec un numéro de version, js/parcours.js?v=20261004-3, pour éviter le cache.
-- Les pages college.html, lycee.html et les deux formulaires appellent css/contact.css?v=20261004-2.
+- Effet. L'adresse du site, index.html et lycee/index.html redirigent directement vers college/index.html, en gardant ?lang= et #ancre. Le bouton de bascule est masqué. Tous les fichiers lycée restent en place.
+- index.html, college/index.html et lycee/index.html appellent le script avec un numéro de version, parcours.js?v=20261004-4, pour éviter le cache.
+- Les pages des deux parcours et les deux formulaires appellent contact.css?v=20261004-2.
 
 PROCÉDURE DE DÉVOILEMENT DU LYCÉE
 1. Dans js/parcours.js, remplacer var LYCEE_VISIBLE = false; par var LYCEE_VISIBLE = true;
-2. Dans index.html, college.html et lycee.html, changer le numéro de version du script (par exemple v=20261004-3 devient v=AAAAMMJJ-1 à la date du jour).
-3. Me livrer uniquement les fichiers modifiés dans un zip, sans dossier img.
+2. Dans index.html, college/index.html et lycee/index.html, changer le numéro de version du script (par exemple v=20261004-4 devient v=AAAAMMJJ-1 à la date du jour).
+3. Me livrer uniquement les fichiers modifiés dans un zip, en respectant les dossiers, sans dossier img.
 4. Me rappeler de recharger avec Cmd + Maj + R après l'envoi sur GitHub.
-5. Contrôles attendus. La racine ouvre l'accueil avec les deux cartes. Le clic sur une carte lance la transition en cercle (vert collège, violet lycée). Le bouton Accueil / Collège / Lycée apparaît en bas à gauche du collège et du lycée. La langue choisie est conservée d'une page à l'autre. Le lien retour du formulaire collège mène au contact du collège.
+5. Contrôles attendus. La racine ouvre l'accueil avec les deux cartes. Le clic sur une carte lance la transition en cercle (vert collège, violet lycée). Le bouton Accueil / Collège / Lycée apparaît en bas à gauche du collège et du lycée. La langue choisie est conservée d'une page à l'autre. Le lien retour de chaque formulaire mène au contact de son parcours.
 
 POINTS À VÉRIFIER AVANT DE DÉVOILER (me les rappeler)
-- Planning lycée schedule_sessions_lycee.json encore vide.
+- Planning lycée lycee/schedule_sessions.json encore vide.
 - Formulaire lycée encore provisoire.
 - Textes lycée seulement en français, traductions des 16 autres langues à faire après ma validation.
 - Trois questions de la FAQ collège pas encore reprises au lycée (qu'est-ce que la vaccination, pourquoi vacciner un enfant en bonne santé, message principal), en attente de ma décision.
@@ -51,7 +65,8 @@ RÈGLES DE TRAVAIL
 - Travailler étape par étape et attendre ma validation avant de passer à la suite.
 - Aucune initiative ni modification sans instruction explicite.
 - Ne jamais inventer une information médicale. En cas de doute, vérifier sur le site de la HAS.
-- Toujours livrer seulement les fichiers modifiés. Ne jamais me faire remplacer un dossier entier (le Finder supprime alors son ancien contenu).
+- Toujours livrer seulement les fichiers modifiés, en respectant les dossiers. Ne jamais me faire remplacer un dossier entier (le Finder supprime alors son ancien contenu).
+- Ne jamais placer de notes internes dans le dépôt, il est public.
 - Après toute modification d'un fichier partagé (js ou css), changer son numéro de version dans les pages qui l'appellent.
 - Pour mes textes en français, pas de tiret cadratin, pas de deux-points, pas de point-virgule, « on » plutôt que « nous ».
 

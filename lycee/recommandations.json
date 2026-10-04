@@ -1,5 +1,5 @@
 {
-  "_usage": "Fichier interne, non affiché sur le site. Référence unique des recommandations utilisées par le parcours lycée (faq_lycee.json, champ refs). Mettre à jour ici en premier si une recommandation change, puis reprendre les réponses FAQ portant la même référence.",
+  "_usage": "Fichier interne, non affiché sur le site. Référence unique des recommandations utilisées par le parcours lycée (lycee/faq.json, champ refs). Mettre à jour ici en premier si une recommandation change, puis reprendre les réponses FAQ portant la même référence.",
   "last_checked": "2026-10-03",
   "vaccineRecommendations": {
     "hpv": {

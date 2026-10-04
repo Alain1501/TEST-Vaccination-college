@@ -300,7 +300,7 @@
           "uk": "Форма всіх щеплень (ВПЛ, менінгіт, dTPcoq, КПК, гепатит B)",
           "mo": "Formular toate vaccinurile (HPV, Meningită, dTPcoq, ROR, Hepatita B)"
         },
-        "url": "https://vaccination-sud77.fr/pdf/Autorisation%20parentale%20DTPC%20ROR%20HepB.pdf"
+        "url": "autorisation-vaccination.html"
       }
     ],
     "videos": [
@@ -503,7 +503,7 @@
         "uk": "Логотип служби",
         "mo": "Sigla serviciului"
       },
-      "file": "img/logo_service.png",
+      "file": "../img/logo_service.png",
       "placement": "footer"
     }
   },
@@ -550,7 +550,7 @@
         "uk": "Офіційна листівка – Кампанія вакцинації в коледжах Іль-де-Франс (PDF)",
         "mo": "Flyer oficial – Campania de vaccinare la colegiu Île-de-France (PDF)"
       },
-      "file": "pdf/flyer_officiel_vaccination_college_idf.pdf"
+      "file": "../pdf/flyer_officiel_vaccination_college_idf.pdf"
     }
   },
   "hpv_flyer_multilang": {
@@ -617,7 +617,7 @@
           "uk": "Листівка про менінгіт – Служба громадського здоров'я Франції",
           "mo": "Flyer meningită – Santé publique France"
         },
-        "file": "pdf/flyer_meningite_spf.pdf"
+        "file": "../pdf/flyer_meningite_spf.pdf"
       },
       {
         "id": "memo_meningite",
@@ -640,7 +640,7 @@
           "uk": "Пам'ятка про менінгіт",
           "mo": "Fișă memo meningită"
         },
-        "file": "pdf/fiche_memo_meningite.pdf"
+        "file": "../pdf/fiche_memo_meningite.pdf"
       },
       {
         "id": "calendrier_vaccinal_2026_simplifie",
@@ -663,7 +663,7 @@
           "uk": "Спрощений календар щеплень – 2026",
           "mo": "Calendar simplificat al vaccinărilor – 2026"
         },
-        "file": "pdf/calendrier_vaccinal_2026_simplifie.pdf"
+        "file": "../pdf/calendrier_vaccinal_2026_simplifie.pdf"
       },
       {
         "id": "calendrier_vaccinal_2026_complet",
@@ -686,7 +686,7 @@
           "uk": "Щеплення в будь-якому віці – Повний календар щеплень 2026",
           "mo": "Vaccinuri la toate vârstele – Calendarul de vaccinare 2026 (complet)"
         },
-        "file": "pdf/calendrier_vaccinal_2026_complet.pdf"
+        "file": "../pdf/calendrier_vaccinal_2026_complet.pdf"
       }
     ]
   }
