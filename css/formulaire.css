@@ -1,0 +1,63 @@
+/* =====================================================================
+   EFFETS VISUELS DES FORMULAIRES — collège et lycée
+   Une couleur par étape du formulaire, champs, choix et boutons animés.
+   Ne modifie aucun texte ni aucun comportement du formulaire.
+   ===================================================================== */
+body{--sc:#185FA5;--sb:#E6F1FB}
+body:has(.step.active[data-step="2"]){--sc:#0F6E56;--sb:#E1F5EE}
+body:has(.step.active[data-step="3"]){--sc:#534AB7;--sb:#EEEDFE}
+body:has(.step.active[data-step="4"]){--sc:#993556;--sb:#FBEAF0}
+body:has(.step.active[data-step="5"]){--sc:#993C1D;--sb:#FAECE7}
+body:has(.step.active[data-step="6"]){--sc:#3B6D11;--sb:#EAF3DE}
+
+/* Barre de progression */
+.stepper .dot{height:8px !important;border-radius:999px !important;position:relative;overflow:hidden;transition:background .4s ease,transform .4s cubic-bezier(.2,.9,.25,1.4) !important}
+.stepper .dot.done,.stepper .dot.active{background:var(--sc) !important}
+.stepper .dot.active{transform:scaleY(1.35)}
+.stepper .dot.active::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.65),transparent);animation:fxShine 1.8s ease-in-out infinite}
+@keyframes fxShine{from{transform:translateX(-100%)}to{transform:translateX(100%)}}
+.step-label b,.step-label strong{color:var(--sc)}
+
+/* Carte et titres */
+.wrap > .card{position:relative;border-radius:22px !important;overflow:hidden;transition:box-shadow .4s ease,border-color .4s ease}
+.wrap > .card::before{content:"";position:absolute;left:0;right:0;top:0;height:5px;background:var(--sc);transition:background .4s ease}
+.section-title{display:flex;align-items:center;gap:10px;color:var(--sc) !important;transition:color .4s ease}
+.section-title::before{content:"";width:12px;height:12px;border-radius:50%;background:var(--sc);box-shadow:0 0 0 5px var(--sb);flex:0 0 auto}
+.step.active{animation:fxStepIn .35s cubic-bezier(.2,.8,.2,1) !important}
+@keyframes fxStepIn{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:none}}
+
+/* Champs */
+.field input,.field select,.field textarea{border-radius:12px !important;transition:border-color .25s ease,box-shadow .3s ease,background .3s ease,transform .25s ease !important}
+.field input:hover,.field select:hover,.field textarea:hover{border-color:var(--sc) !important}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none !important;border-color:var(--sc) !important;box-shadow:0 0 0 4px var(--sb) !important;transform:translateY(-1px)}
+.field label{transition:color .25s ease}
+.field:focus-within label{color:var(--sc) !important}
+
+/* Choix Oui / Non et options */
+.choice-btn{position:relative;overflow:hidden;border-radius:14px !important;transition:transform .4s cubic-bezier(.2,.9,.25,1.4),border-color .25s ease,background .3s ease,color .3s ease,box-shadow .35s ease !important}
+.choice-btn:hover{transform:translateY(-3px);border-color:var(--sc) !important;box-shadow:0 12px 22px -16px var(--sc)}
+.choice-btn.selected{animation:fxPop .45s cubic-bezier(.2,.9,.25,1.6)}
+@keyframes fxPop{0%{transform:scale(.94)}60%{transform:scale(1.05)}100%{transform:scale(1)}}
+.radio-line,.carnet-option,.sub-check-line{transition:background .25s ease,transform .3s cubic-bezier(.2,.9,.25,1.3) !important;border-radius:12px !important}
+.radio-line:hover,.sub-check-line:hover{background:var(--sb) !important;transform:translateX(4px)}
+.field input[type="checkbox"],.field input[type="radio"],input[type="checkbox"],input[type="radio"]{accent-color:var(--sc)}
+.parent-block,.auth-block{border-radius:16px !important;transition:border-color .3s ease,box-shadow .35s ease,transform .35s ease}
+.parent-block:hover,.auth-block:hover{border-color:var(--sc) !important;box-shadow:0 14px 28px -24px var(--sc)}
+.sig-wrap{border-radius:14px !important;transition:border-color .25s ease,box-shadow .3s ease}
+.sig-wrap:hover,.sig-wrap:focus-within{border-color:var(--sc) !important;box-shadow:0 0 0 4px var(--sb)}
+
+/* Boutons */
+.nav-btn,.mailto-btn{position:relative;overflow:hidden;border-radius:999px !important;transition:transform .4s cubic-bezier(.2,.9,.25,1.4),background .3s ease,color .3s ease,border-color .3s ease,box-shadow .35s ease !important}
+.nav-btn:not(:disabled):hover,.mailto-btn:hover{transform:translateY(-3px);border-color:var(--sc) !important;box-shadow:0 14px 26px -16px var(--sc)}
+.nav-btn.primary{background:var(--sc) !important;border-color:var(--sc) !important;color:#fff !important}
+.nav-btn.primary:not(:disabled):hover{filter:brightness(1.08)}
+.mailto-btn:hover{background:var(--sb) !important;color:var(--sc) !important}
+.fxRip{position:absolute;border-radius:50%;background:rgba(255,255,255,.55);transform:scale(0);pointer-events:none;animation:fxRip .65s ease-out forwards}
+.choice-btn .fxRip,.mailto-btn .fxRip,.nav-btn:not(.primary) .fxRip{background:var(--sb)}
+@keyframes fxRip{to{transform:scale(1);opacity:0}}
+
+@media (prefers-reduced-motion: reduce){
+  .stepper .dot.active::after{animation:none}
+  .step.active,.choice-btn.selected{animation:none !important}
+  .nav-btn,.mailto-btn,.choice-btn,.field input,.field select,.radio-line,.parent-block{transition:none !important}
+}

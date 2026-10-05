@@ -72,6 +72,98 @@
     });
   }
 
+  /* ---------- Vidéos : lumière qui suit le pointeur, effet au toucher ---------- */
+  function decorateVideos() {
+    document.querySelectorAll('#videoGrid .videoCard').forEach(function (c) {
+      if (c.dataset.fx) return;
+      c.dataset.fx = '1';
+      c.addEventListener('pointermove', function (e) {
+        var r = c.getBoundingClientRect();
+        c.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100) + '%');
+        c.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100) + '%');
+      });
+      c.addEventListener('touchstart', function () {
+        document.querySelectorAll('#videoGrid .videoCard.fxTouch').forEach(function (o) { if (o !== c) o.classList.remove('fxTouch'); });
+        c.classList.add('fxTouch');
+        clearTimeout(c._t); c._t = setTimeout(function () { c.classList.remove('fxTouch'); }, 1600);
+      }, { passive: true });
+    });
+  }
+
+  /* ---------- Vidéos : grande fenêtre et badge « Déjà vue » ---------- */
+  var SEEN_KEY = 'vaccinationSud77Seen';
+  var SEEN_TXT = {fr:'Déjà vue',en:'Watched',ar:'تمت المشاهدة',tr:'İzlendi',ps:'لیدل شوې',ku:'بینراوە',ro:'Vizionat',ka:'ნანახია',sq:'E parë',am:'ታይቷል',zh:'已观看',prs:'دیده شده',es:'Vista',pt:'Vista',ru:'Просмотрено',uk:'Переглянуто',mo:'Vizionat'};
+  var CLOSE_TXT = {fr:'Fermer',en:'Close',ar:'إغلاق',tr:'Kapat',ps:'بندول',ku:'داخستن',ro:'Închide',ka:'დახურვა',sq:'Mbyll',am:'ዝጋ',zh:'关闭',prs:'بستن',es:'Cerrar',pt:'Fechar',ru:'Закрыть',uk:'Закрити',mo:'Închide'};
+  function curLang() { try { if (typeof lang === 'string' && lang) return lang; } catch (e) {} return 'fr'; }
+  function seenList() { try { return JSON.parse(localStorage.getItem(SEEN_KEY) || '[]'); } catch (e) { return []; } }
+  function markSeen(id) { var l = seenList(); if (l.indexOf(id) < 0) { l.push(id); try { localStorage.setItem(SEEN_KEY, JSON.stringify(l)); } catch (e) {} } }
+  function videoList() { try { return (introData && introData.resources && introData.resources.videos) || []; } catch (e) { return []; } }
+  function ytId(url) {
+    var m = (url || '').match(/youtube\.com\/shorts\/([\w-]+)/) || (url || '').match(/[?&]v=([\w-]+)/) || (url || '').match(/youtu\.be\/([\w-]+)/);
+    return m ? m[1] : null;
+  }
+  var CHECK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>';
+  var badgeBusy = false;
+  function badges() {
+    if (badgeBusy) return; badgeBusy = true;
+    var vids = videoList().filter(function (v) { return ytId(v.url); });
+    var seen = seenList(), l = curLang();
+    document.querySelectorAll('#videoGrid .videoCard').forEach(function (c, i) {
+      var v = vids[i]; if (!v) return;
+      var id = ytId(v.url), frame = c.querySelector('.videoFrame');
+      if (!frame) return;
+      c.dataset.vid = id; c.dataset.short = /\/shorts\//.test(v.url) ? '1' : '';
+      var b = frame.querySelector('.fxBadge'), txt = CHECK + (SEEN_TXT[l] || SEEN_TXT.fr);
+      if (seen.indexOf(id) > -1) {
+        if (!b) { b = document.createElement('span'); b.className = 'fxBadge'; frame.appendChild(b); }
+        if (b.innerHTML !== txt) b.innerHTML = txt;
+      } else if (b) b.remove();
+    });
+    setTimeout(function () { badgeBusy = false; }, 0);
+  }
+  function openLightbox(card, title) {
+    var id = card.dataset.vid; if (!id) return;
+    var lb = document.createElement('div');
+    lb.className = 'fxLb';
+    lb.style.setProperty('--vc', getComputedStyle(card).getPropertyValue('--vc'));
+    lb.setAttribute('role', 'dialog'); lb.setAttribute('aria-modal', 'true'); lb.setAttribute('aria-label', title);
+    lb.innerHTML = '<div class="fxLbBox' + (card.dataset.short ? ' short' : '') + '"><button type="button" class="fxLbClose" aria-label="' + (CLOSE_TXT[curLang()] || CLOSE_TXT.fr) + '">&times;</button>' +
+      '<div class="fxLbFrame"><iframe src="https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1&iv_load_policy=3&playsinline=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>' +
+      '<div class="fxLbTitle"></div></div>';
+    lb.querySelector('iframe').title = title;
+    lb.querySelector('.fxLbTitle').textContent = title;
+    document.body.appendChild(lb);
+    document.documentElement.classList.add('fxNoScroll');
+    requestAnimationFrame(function () { lb.classList.add('on'); });
+    var closeBtn = lb.querySelector('.fxLbClose');
+    closeBtn.focus();
+    function close() {
+      lb.classList.remove('on');
+      document.documentElement.classList.remove('fxNoScroll');
+      document.removeEventListener('keydown', onKey);
+      setTimeout(function () { lb.remove(); }, 320);
+      var t = card.querySelector('.videoThumb'); if (t) t.focus({ preventScroll: true });
+    }
+    function onKey(e) { if (e.key === 'Escape') close(); }
+    document.addEventListener('keydown', onKey);
+    closeBtn.addEventListener('click', close);
+    lb.addEventListener('click', function (e) { if (e.target === lb) close(); });
+    markSeen(id);
+    setTimeout(badges, 400);
+  }
+  // Le clic sur une vignette ouvre la grande fenêtre au lieu de lire dans la vignette
+  document.addEventListener('click', function (e) {
+    var thumb = e.target.closest && e.target.closest('#videoGrid .videoThumb');
+    if (!thumb) return;
+    var card = thumb.closest('.videoCard');
+    if (!card) return;
+    if (!card.dataset.vid) badges();
+    if (!card.dataset.vid) return;
+    e.preventDefault(); e.stopImmediatePropagation();
+    var tl = card.querySelector('.videoTitle > div');
+    openLightbox(card, (tl && tl.textContent) || thumb.getAttribute('aria-label') || '');
+  }, true);
+
   /* ---------- Message du médecin : les mots apparaissent en avance sur la lecture ----------
      Tout le texte visible à l'écran est lisible, sauf les ~2,6 dernières lignes en bas.
      Effets combinés : vague (montée, flou, rotation), lumière (dernières lignes en couleur),
@@ -147,13 +239,13 @@
 
   /* Les pages reconstruisent la FAQ, les étapes et le message à chaque changement de langue */
   var mo = new MutationObserver(function () {
-    decorateFaq(); decorateSteps();
+    decorateFaq(); decorateSteps(); decorateVideos(); badges();
     var body = document.querySelector('#introBody .scrollReadText');
     if (body && (!words.length || !document.body.contains(words[0]) || body.querySelector('.fadeWord:not([data-fx])'))) collectWords();
   });
   function start() {
     mo.observe(document.body, { childList: true, subtree: true });
-    decorateFaq(); decorateSteps(); collectWords();
+    decorateFaq(); decorateSteps(); decorateVideos(); badges(); collectWords();
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
   else start();

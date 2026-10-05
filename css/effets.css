@@ -85,3 +85,61 @@
   #introBody .fadeWord.fxH{opacity:1;transform:none;filter:none}
   #stepsContainer .stepActions .btn{animation:none}
 }
+
+/* ---------- 4. APPARITION DES SECTIONS : plus rapide ---------- */
+.reveal{transform:translateY(10px) !important;transition:opacity .3s ease,transform .35s cubic-bezier(.2,.8,.2,1) !important;transition-delay:0s !important}
+.reveal.visible{transform:none !important}
+
+/* ---------- 5. VIDÉOS : couleurs, zoom léger, effets au survol et au toucher ---------- */
+#videoGrid .videoCard{--vc:#185FA5;--vb:#E6F1FB;position:relative;padding:10px 10px 14px;border-radius:20px;border:1px solid var(--border);background:var(--card);
+  transition:transform .45s cubic-bezier(.2,.9,.25,1.3),border-color .3s ease,box-shadow .4s ease}
+#videoGrid .videoCard:nth-child(5n+2){--vc:#993556;--vb:#FBEAF0}
+#videoGrid .videoCard:nth-child(5n+3){--vc:#993C1D;--vb:#FAECE7}
+#videoGrid .videoCard:nth-child(5n+4){--vc:#0F6E56;--vb:#E1F5EE}
+#videoGrid .videoCard:nth-child(5n+5){--vc:#534AB7;--vb:#EEEDFE}
+#videoGrid .videoCard::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .4s ease;
+  background:radial-gradient(320px circle at var(--mx,50%) var(--my,30%),var(--vb),transparent 65%)}
+#videoGrid .videoCard > *{position:relative}
+#videoGrid .videoCard:hover,#videoGrid .videoCard.fxTouch{transform:translateY(-8px);border-color:var(--vc);box-shadow:0 26px 44px -26px var(--vc)}
+#videoGrid .videoCard:hover::before,#videoGrid .videoCard.fxTouch::before{opacity:1}
+#videoGrid .videoFrame{border-radius:14px;box-shadow:none;outline:2px solid transparent;outline-offset:2px;transition:outline-color .3s ease}
+#videoGrid .videoCard:hover .videoFrame,#videoGrid .videoCard.fxTouch .videoFrame{outline-color:var(--vc)}
+#videoGrid .videoThumb{transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+#videoGrid .videoCard:hover .videoThumb,#videoGrid .videoCard.fxTouch .videoThumb{transform:scale(1.08)}
+#videoGrid .videoThumb::after{content:"";position:absolute;inset:0;background:var(--vc);opacity:0;mix-blend-mode:multiply;transition:opacity .4s ease;pointer-events:none}
+#videoGrid .videoCard:hover .videoThumb::after,#videoGrid .videoCard.fxTouch .videoThumb::after{opacity:.22}
+#videoGrid .playGlass{transition:transform .5s cubic-bezier(.2,.9,.25,1.6),background .3s ease,border-color .3s ease !important}
+#videoGrid .videoCard:hover .playGlass,#videoGrid .videoCard.fxTouch .playGlass{background:var(--vc) !important;border-color:#fff !important;transform:scale(1.18) !important}
+#videoGrid .playGlass::after{content:"";position:absolute;inset:-6px;border-radius:50%;border:2px solid #fff;opacity:0;pointer-events:none}
+#videoGrid .videoCard:hover .playGlass::after,#videoGrid .videoCard.fxTouch .playGlass::after{animation:fxRing 1.4s ease-out infinite}
+@keyframes fxRing{0%{opacity:.8;transform:scale(.85)}100%{opacity:0;transform:scale(1.55)}}
+#videoGrid .videoTitle{transition:color .3s ease}
+#videoGrid .videoCard:hover .videoTitle > div:first-child,#videoGrid .videoCard.fxTouch .videoTitle > div:first-child{color:var(--vc)}
+#videoGrid .videoPresenter{color:var(--vc) !important}
+#videoGrid .videoLink{color:var(--vc) !important;background:var(--vb);border:1px solid var(--vc);border-radius:999px;padding:5px 12px;margin-top:8px;
+  transition:transform .4s cubic-bezier(.2,.9,.25,1.4),background .3s ease,color .3s ease,box-shadow .35s ease}
+#videoGrid .videoLink:hover{background:var(--vc);color:#fff !important;transform:translateY(-2px) scale(1.04);box-shadow:0 12px 22px -14px var(--vc)}
+@media (prefers-reduced-motion: reduce){#videoGrid .videoCard,#videoGrid .videoThumb,#videoGrid .playGlass{transition:none !important}#videoGrid .playGlass::after{animation:none !important}}
+
+/* ---------- 6. VIDÉOS : grande fenêtre de lecture et badge « Déjà vue » ---------- */
+#videoGrid .fxBadge{position:absolute;z-index:3;top:8px;left:8px;display:inline-flex;align-items:center;gap:4px;padding:4px 9px;border-radius:999px;
+  font-size:11px;font-weight:800;background:rgba(255,255,255,.92);color:var(--vc);box-shadow:0 4px 12px rgba(0,0,0,.18);pointer-events:none;
+  animation:fxPopIn .45s cubic-bezier(.2,.9,.25,1.6)}
+#videoGrid .fxBadge svg{width:12px;height:12px}
+@keyframes fxPopIn{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}
+.fxLb{position:fixed;inset:0;z-index:2147483000;display:grid;place-items:center;padding:20px;
+  background:rgba(10,14,25,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);opacity:0;transition:opacity .3s ease}
+.fxLb.on{opacity:1}
+.fxLbBox{position:relative;width:min(960px,100%);border-radius:22px;overflow:hidden;background:#000;
+  box-shadow:0 0 0 3px var(--vc,#2563eb),0 40px 90px -30px rgba(0,0,0,.6);transform:scale(.88) translateY(20px);transition:transform .45s cubic-bezier(.2,.9,.25,1.25)}
+.fxLb.on .fxLbBox{transform:none}
+.fxLbBox.short{width:min(420px,100%,calc((100vh - 120px) * 9 / 16))}
+.fxLbFrame{position:relative;aspect-ratio:16/9}
+.fxLbBox.short .fxLbFrame{aspect-ratio:9/16}
+.fxLbFrame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.fxLbTitle{background:var(--vc,#2563eb);color:#fff;font-weight:800;font-size:14px;padding:12px 56px 12px 18px}
+.fxLbClose{position:absolute;top:6px;right:8px;width:38px;height:38px;border-radius:50%;border:0;background:rgba(255,255,255,.2);color:#fff;cursor:pointer;
+  display:grid;place-items:center;font-size:22px;line-height:1;transition:transform .35s cubic-bezier(.2,.9,.25,1.6),background .25s ease;z-index:2}
+.fxLbClose:hover{transform:rotate(90deg);background:rgba(255,255,255,.35)}
+html.fxNoScroll{overflow:hidden}
+@media (prefers-reduced-motion: reduce){.fxLb,.fxLbBox{transition:none}}
