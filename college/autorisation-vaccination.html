@@ -2791,6 +2791,7 @@ var qrcode = function() {
 <link rel="stylesheet" href="../css/contact.css?v=20261004-2">
 <link rel="stylesheet" href="../css/formulaire.css?v=20261004-1">
 <script src="../js/formulaire.js?v=20261004-1" defer></script>
+<script src="../js/pdf-fonts.js?v=20261007-1" defer></script>
 </head>
 <body>
 <header class="siteHeader">
@@ -3846,226 +3847,304 @@ function drawPatientQrCode(doc, x, y, size){
   doc.addImage(dataUrl, 'PNG', x, y, size, size);
 }
 
+// ---- Police du PDF : Carlito (équivalent libre de Calibri, mêmes dimensions) ----
+// Chargée en arrière-plan depuis ../fonts/ ; à défaut, le PDF utilise Helvetica.
+let PDF_FONT_DATA = null;
+function pdfArrayBufferToBase64(buf){
+  let bin = ''; const bytes = new Uint8Array(buf); const CH = 0x8000;
+  for(let i=0;i<bytes.length;i+=CH){ bin += String.fromCharCode.apply(null, bytes.subarray(i, i+CH)); }
+  return btoa(bin);
+}
+const PDF_FONTS_READY = (async ()=>{
+  try{
+    const out = {};
+    for(const n of ['Regular','Bold','Italic','BoldItalic']){
+      const r = await fetch('../fonts/Carlito-' + n + '.ttf');
+      if(!r.ok) throw new Error('police ' + n);
+      out[n] = pdfArrayBufferToBase64(await r.arrayBuffer());
+    }
+    PDF_FONT_DATA = out;
+  }catch(e){ PDF_FONT_DATA = null; console.warn('Police Carlito indisponible, Helvetica utilisée', e); }
+})();
+
+// Le PDF doit tenir en deux pages : si le contenu déborde (police de repli plus large, textes longs),
+// il est reconstruit avec des caractères légèrement plus petits.
 function buildPdf(){
+  let last = null;
+  for(const scale of [1, 0.95, 0.9, 0.85, 0.8]){
+    const r = buildPdfScaled(scale);
+    last = r.doc;
+    if(!r.overflow) return r.doc;
+  }
+  return last;
+}
+
+function buildPdfScaled(scale){
+  let overflow = false;
   const { jsPDF } = window.jspdf;
-  const doc = new jsPDF('p','mm','a4');
+  const doc = new jsPDF({orientation:'p', unit:'mm', format:'a4', compress:true});
 
+  let FONT = 'helvetica';
+  if(!PDF_FONT_DATA && window.PDF_FONT_DATA_EMBED) PDF_FONT_DATA = window.PDF_FONT_DATA_EMBED;
+  if(PDF_FONT_DATA){
+    try{
+      [['Regular','normal'],['Bold','bold'],['Italic','italic'],['BoldItalic','bolditalic']].forEach(([n,st])=>{
+        doc.addFileToVFS('Carlito-'+n+'.ttf', PDF_FONT_DATA[n]);
+        doc.addFont('Carlito-'+n+'.ttf', 'Carlito', st);
+      });
+      FONT = 'Carlito';
+    }catch(e){ FONT = 'helvetica'; }
+  }
+
+  // Si Carlito n'est pas disponible, Helvetica est plus large : on réduit légèrement les tailles pour garder la mise en page
+  const KS = (FONT === 'Carlito' ? 1 : 0.9) * scale;
   const MX = 14, PAGE_W = 210, RIGHT = PAGE_W - MX, USABLE_W = RIGHT - MX;
-  const BLUE900=[11,61,92], BLUE700=[14,107,168], INK=[25,30,38], INKSOFT=[95,105,115];
-  const GREEN_FILL=[226,239,218], GREEN_BORDER=[168,213,181];
-  const PINK_FILL=[251,228,228], PINK_BORDER=[232,180,175];
-  let y = 16;
+  const INK=[0,0,0], BLUE=[46,116,181], LINK=[5,99,193], GREEN=[0,128,64], RED=[255,0,0];
+  const GREEN_FILL=[226,245,233], PINK_FILL=[253,228,228], GREY_FILL=[242,242,242];
+  let y = 20;
 
-  function setF(style,size,color){ doc.setFont('helvetica',style); doc.setFontSize(size); doc.setTextColor(color[0],color[1],color[2]); }
-  function wrap(str,width,size,style){ doc.setFont('helvetica',style||'normal'); doc.setFontSize(size); return doc.splitTextToSize(str,width); }
+  function setF(style,size,color){ doc.setFont(FONT,style); doc.setFontSize(size*KS); const c=color||INK; doc.setTextColor(c[0],c[1],c[2]); }
+  function wrap(str,width,size,style){ doc.setFont(FONT,style||'normal'); doc.setFontSize(size*KS); return doc.splitTextToSize(str,width); }
   function centered(str,yy,size,style,color){ setF(style,size,color); doc.text(str,105,yy,{align:'center'}); }
-  function checkboxAt(x,yBase,ticked){
-    const s=3.0, top=yBase-s+0.9;
-    doc.setDrawColor(0,0,0); doc.setLineWidth(0.25);
+  // Case à cocher : contour de couleur, intérieur rempli si cochée
+  function checkboxAt(x,yBase,ticked,color){
+    const c = color || INK, s=2.8, top=yBase-s+0.7;
+    doc.setDrawColor(c[0],c[1],c[2]); doc.setLineWidth(0.25);
     doc.rect(x,top,s,s);
-    if(ticked){ doc.setFillColor(0,0,0); doc.rect(x+0.6,top+0.6,s-1.2,s-1.2,'F'); }
+    if(ticked){ doc.setFillColor(c[0],c[1],c[2]); doc.rect(x+0.55,top+0.55,s-1.1,s-1.1,'F'); }
+    doc.setDrawColor(0,0,0);
     return s;
   }
-  function sectionHeader(str){
-    const lines = wrap(str,176,9.5,'bold');
-    setF('bold',9.5,BLUE700);
-    lines.forEach((l,i)=> doc.text(l,105,y+i*3.6,{align:'center'}));
-    y += lines.length*3.6 + 1;
+  function sectionHeader(str,size){
+    const s = size || 11.5;
+    const lines = wrap(str,182,s,'bold');
+    setF('bold',s,BLUE);
+    lines.forEach((l,i)=> doc.text(l,105,y+i*4.6,{align:'center'}));
+    y += lines.length*4.6 + 0.6;
+  }
+  // Texte riche : morceaux de styles différents, retour à la ligne automatique, justification facultative
+  function richText(runs, x, width, size, lineH, justify){
+    const words = [];
+    runs.forEach(r=>{
+      String(r.text).split(/(\s+)/).forEach(tok=>{
+        if(tok==='') return;
+        if(/^\s+$/.test(tok)){ words.push({space:true, r}); return; }
+        words.push({t:tok, r});
+      });
+    });
+    const meas = w => { doc.setFont(FONT, w.r.style||'normal'); doc.setFontSize(size*KS); return doc.getTextWidth(w.space ? ' ' : w.t); };
+    const lines = []; let cur = []; let curW = 0;
+    words.forEach(w=>{
+      const ww = meas(w);
+      if(w.space){ if(cur.length){ cur.push({w, ww}); curW += ww; } return; }
+      if(curW + ww > width && cur.length){
+        while(cur.length && cur[cur.length-1].w.space){ curW -= cur.pop().ww; }
+        lines.push({items:cur, w:curW}); cur=[]; curW=0;
+      }
+      cur.push({w, ww}); curW += ww;
+    });
+    while(cur.length && cur[cur.length-1].w.space){ curW -= cur.pop().ww; }
+    if(cur.length) lines.push({items:cur, w:curW});
+    lines.forEach((ln,li)=>{
+      const gaps = ln.items.filter(it=>it.w.space).length;
+      const extra = (justify && li < lines.length-1 && gaps) ? (width - ln.w)/gaps : 0;
+      let cx = x; const yy = y + li*lineH;
+      ln.items.forEach(it=>{
+        if(it.w.space){ cx += it.ww + extra; return; }
+        const r = it.w.r;
+        setF(r.style||'normal', size, r.color||INK);
+        if(r.link){ doc.textWithLink(it.w.t, cx, yy, {url:r.link}); } else { doc.text(it.w.t, cx, yy); }
+        if(r.underline){ const c=r.color||INK; doc.setDrawColor(c[0],c[1],c[2]); doc.setLineWidth(0.2); doc.line(cx, yy+0.7, cx+it.ww, yy+0.7); doc.setDrawColor(0,0,0); }
+        cx += it.ww;
+      });
+    });
+    return lines.length*lineH;
   }
 
   // ---------------- PAGE 1 ----------------
-  const titleLines = wrap("AUTORISATION PARENTALE POUR LA VACCINATION CONTRE LES PAPILLOMAVIRUS HUMAINS (HPV) ET/OU CONTRE LES MÉNINGITES À MÉNINGOCOQUE ACWY ET/OU AUTRES VACCINATIONS RECOMMANDÉES", 148, 11, 'bold');
-  setF('bold',11,BLUE900);
-  titleLines.forEach((l,i)=> doc.text(l,MX,y+i*4.3,{align:'left'}));
-  const titleH = titleLines.length*4.3;
-  doc.addImage(QR_TOP,'PNG', RIGHT-28, 14, 28, 28);
-  y = Math.max(y+titleH, 14+28) + 3;
+  // Titre, comme le modèle : centré, noir, gras
+  {
+    const titleLines = wrap("AUTORISATION PARENTALE POUR LA VACCINATION CONTRE LES PAPILLOMAVIRUS HUMAINS (HPV) ET/OU CONTRE LES MÉNINGITES À MÉNINGOCOQUE ACWY ET/OU AUTRES VACCINATIONS RECOMMANDÉES", 182, 11.2, 'bold');
+    setF('bold',11.2,INK);
+    titleLines.forEach((l,i)=> doc.text(l,105,y+i*5,{align:'center'}));
+    y += titleLines.length*5;
+  }
+  // QR code encadré à droite, phrase d'envoi centrée
+  const qrTopY = y - 1;
+  doc.setDrawColor(0,0,0); doc.setLineWidth(0.3);
+  doc.rect(RIGHT-22, qrTopY, 22, 22);
+  doc.addImage(QR_TOP,'PNG', RIGHT-21, qrTopY+1, 20, 20);
+  y += 4;
+  setF('normal',9.2,INK);
+  doc.text("Merci de télécharger ce formulaire une fois complété et de l'envoyer à", 98, y, {align:'center'}); y += 3.9;
+  setF('normal',9.2,LINK);
+  {
+    const em = "vaccin-hpv@ghsif.fr", w = doc.getTextWidth(em);
+    doc.textWithLink(em, 98 - w/2, y, {url:'mailto:vaccin-hpv@ghsif.fr'});
+    doc.setDrawColor(LINK[0],LINK[1],LINK[2]); doc.setLineWidth(0.2); doc.line(98-w/2, y+0.7, 98+w/2, y+0.7); doc.setDrawColor(0,0,0);
+  }
+  y = Math.max(y + 6, qrTopY + 22 + 4);
 
-  setF('normal',8,INKSOFT);
-  doc.text("Merci de télécharger ce formulaire une fois complété et de l'envoyer à", 105, y, {align:'center'}); y+=3.8;
-  doc.setTextColor(BLUE700[0],BLUE700[1],BLUE700[2]);
-  doc.textWithLink("vaccin-hpv@ghsif.fr", 105, y, {align:'center', url:'mailto:vaccin-hpv@ghsif.fr'});
-  y += 6;
-
-  // ---- Section 1 : enfant ----
-  sectionHeader("1. Informations sur l’enfant");
-  const t1Top = y, rowH1 = 5.7;
+  // ---- Section 1 : enfant (présentation du site) ----
+  sectionHeader("1.   Informations sur l’enfant");
+  const t1Top = y, rowH1 = 5.6;
   doc.setDrawColor(0,0,0); doc.setLineWidth(0.2);
+  doc.setFillColor(GREY_FILL[0],GREY_FILL[1],GREY_FILL[2]);
+  doc.rect(MX, t1Top, USABLE_W, rowH1, 'F');
   doc.rect(MX, t1Top, USABLE_W, rowH1*3);
   doc.line(MX, t1Top+rowH1, RIGHT, t1Top+rowH1);
   doc.line(MX, t1Top+rowH1*2, RIGHT, t1Top+rowH1*2);
   doc.line(105, t1Top, 105, t1Top+rowH1*3);
-
   function labelVal(x,yy,label,val,size){
-    const s = size||7.6;
+    const s = size||9.4;
     setF('bold', s, INK); doc.text(label,x,yy);
     const w = doc.getTextWidth(label+' ');
     setF('normal', s, INK); doc.text(String(val||''), x+w, yy);
   }
-  labelVal(MX+2, t1Top+4.2, "Nom de l'enfant :", document.getElementById('childLastName').value);
-  labelVal(107, t1Top+4.2, "Prénom de l'enfant :", document.getElementById('childFirstName').value);
-  labelVal(MX+2, t1Top+rowH1+4.2, "Date de naissance :", fmtDate(document.getElementById('childDob').value));
+  labelVal(MX+1.5, t1Top+4.1, "Nom de l'enfant :", document.getElementById('childLastName').value);
+  labelVal(106.5, t1Top+4.1, "Prénom de l'enfant :", document.getElementById('childFirstName').value);
+  labelVal(MX+1.5, t1Top+rowH1+4.1, "Date de naissance :", fmtDate(document.getElementById('childDob').value));
   {
-    const sx = 107, sy = t1Top+rowH1+4.2;
-    setF('bold',7.6,INK); doc.text("Sexe :", sx, sy);
-    let cx = sx + doc.getTextWidth("Sexe : ")+1;
+    const sx = 106.5, sy = t1Top+rowH1+4.1;
+    setF('bold',9.4,INK); doc.text("Sexe :", sx, sy);
+    let cx = sx + doc.getTextWidth("Sexe : ")+0.5;
     const sexVal = document.getElementById('childSex').value;
-    cx += checkboxAt(cx, sy, sexVal==='F')+1; setF('normal',7.6,INK); doc.text('F',cx,sy); cx+=4;
-    cx += checkboxAt(cx, sy, sexVal==='G')+1; setF('normal',7.6,INK); doc.text('G',cx,sy); cx+=5;
-    setF('bold',7.6,INK); doc.text("Classe scolaire :", cx, sy);
+    cx += checkboxAt(cx, sy, sexVal==='F')+1; setF('normal',9.4,INK); doc.text('F',cx,sy); cx+=4;
+    cx += checkboxAt(cx, sy, sexVal==='G')+1; setF('normal',9.4,INK); doc.text('G',cx,sy);
+    const clx = 152;
+    setF('bold',9.4,INK); doc.text("Classe scolaire :", clx, sy);
     const clw = doc.getTextWidth("Classe scolaire : ");
-    setF('normal',7.6,INK); doc.text(document.getElementById('childClass').value, cx+clw+1, sy);
+    setF('normal',9.4,INK); doc.text(document.getElementById('childClass').value, clx+clw, sy);
   }
-  labelVal(MX+2, t1Top+rowH1*2+4.2, "Nom du collège :", document.getElementById('schoolName').value);
-  labelVal(107, t1Top+rowH1*2+4.2, "Commune du collège :", document.getElementById('schoolTown').value);
-  y = t1Top + rowH1*3 + 3;
+  labelVal(MX+1.5, t1Top+rowH1*2+4.1, "Nom du collège :", document.getElementById('schoolName').value);
+  labelVal(106.5, t1Top+rowH1*2+4.1, "Commune du collège :", document.getElementById('schoolTown').value);
+  y = t1Top + rowH1*3 + 6.5;
 
-  // ---- Section 2 : parents ----
-  sectionHeader("2. Informations sur les parents / responsables légaux");
-  const t2Top = y, rowH2 = 5.7, col0=46, col1=(USABLE_W-col0)/2;
-  const rowTops = [0,1,2,3].map(i=> t2Top + rowH2*i);
-  const attachRowTop = t2Top + rowH2*4;
-
-  const attachLblText = "Numéro de sécurité sociale de rattachement de l\u2019enfant";
-  const attachLbl = wrap(attachLblText, col0-3, 6.4, 'bold');
-  const attachRowH = Math.max(rowH2, attachLbl.length*2.5 + 2.6);
-  const noteRowTop = attachRowTop + attachRowH;
-
-  const noteTxt2 = "Cochez la case correspondant au parent ou responsable légal auquel l\u2019enfant est rattaché";
-  const noteLinesCalc = wrap(noteTxt2, col1-4, 6, 'italic');
-  const noteRowH = Math.max(5.2, noteLinesCalc.length*2.3 + 2.6);
-  const t2Bottom = noteRowTop + noteRowH;
-
-  doc.setDrawColor(0,0,0); doc.setLineWidth(0.2);
-  doc.rect(MX, t2Top, USABLE_W, t2Bottom - t2Top);
-  for(let i=1;i<4;i++) doc.line(MX, rowTops[i], RIGHT, rowTops[i]);
-  doc.line(MX, attachRowTop, RIGHT, attachRowTop);
-  doc.line(MX, noteRowTop, RIGHT, noteRowTop);
-  doc.line(MX+col0, t2Top, MX+col0, t2Bottom);
-  doc.line(MX+col0+col1, t2Top, MX+col0+col1, t2Bottom);
-
-  setF('bold',7.4,INK);
-  doc.text("Parent / Responsable légal 1", MX+col0+col1/2, t2Top+4.2, {align:'center'});
-  doc.text("Parent / Responsable légal 2", MX+col0+col1+col1/2, t2Top+4.2, {align:'center'});
-  const p2Labels = ["Nom et Prénom","Téléphone portable","Numéro de sécurité sociale"];
-  const p1Vals = [document.getElementById('p1Name').value, document.getElementById('p1Phone').value, document.getElementById('p1Nir').value];
-  const p2Vals = [document.getElementById('p2Name').value, document.getElementById('p2Phone').value, document.getElementById('p2Nir').value];
-  for(let i=0;i<3;i++){
-    const ry = rowTops[i+1]+4.2;
-    setF('bold',7.2,INK); doc.text(p2Labels[i], MX+2, ry);
-    setF('normal',7.2,INK);
-    doc.text(String(p1Vals[i]||''), MX+col0+2, ry);
-    doc.text(String(p2Vals[i]||''), MX+col0+col1+2, ry);
-  }
+  // ---- Section 2 : parents (présentation du modèle) ----
+  sectionHeader("2.   Informations sur les parents / responsables légaux");
   {
-    // Ligne "rattachement" : libellé (col0) en haut de sa propre ligne, cases à cocher, puis note en italique dessous
-    setF('bold',6.4,INK);
-    attachLbl.forEach((l,i)=> doc.text(l, MX+2, attachRowTop+3.2+i*2.7));
-
-    const ry = attachRowTop+4.2;
-    const attachVal = document.querySelector('input[name="attach"]:checked').value;
-    let cx = MX+col0+2;
-    setF('normal',6.8,INK);
-    cx += checkboxAt(cx, ry, attachVal==='1')+1.5;
-    doc.text("Parent / Responsable légal 1", cx, ry);
-    cx = MX+col0+col1+2;
-    const s2 = checkboxAt(cx, ry, attachVal==='2')+1.5;
-    doc.text("Parent / Responsable légal 2", cx+s2, ry);
-
-    setF('italic',6,[80,80,80]);
-    noteLinesCalc.forEach((l,i)=> doc.text(l, MX+col0+2, noteRowTop+3+i*2.6));
-    noteLinesCalc.forEach((l,i)=> doc.text(l, MX+col0+col1+2, noteRowTop+3+i*2.6));
-  }
-  y = t2Bottom + 2;
-  {
-    const noteLines = wrap("Ces informations figurent sur l'attestation de droits de l'enfant ou du/des parent(s) auquel(s) il est rattaché. Consultez www.ameli.fr/assure/attestation-droits", USABLE_W, 6.6, 'normal');
-    setF('normal',6.6,INKSOFT);
-    noteLines.forEach((l,i)=> doc.text(l, MX, y+i*2.6));
-    y += noteLines.length*2.6 + 2;
-  }
-
-  // ---- Section 3 : autorisations ----
-  sectionHeader("3. Autorisations à cocher");
-  const leftW = USABLE_W*0.62, rightW = USABLE_W*0.38 - 2;
-
-  function authBlock(titleTxt, subTxt, noTxt, ticked, subChecks){
-    const PAD_L = 2, CB = 3.0, GAP = 1.5;
-    const TITLE_INDENT = PAD_L + CB + GAP;      // texte du titre, aligné après la case à cocher
-    const SUB_INDENT = TITLE_INDENT;             // paragraphe italique aligné sous le titre
-    const SC_PAD_L = 6, SC_CB = 3.0;
-    const SC_LABEL_INDENT = SC_PAD_L + SC_CB + GAP;  // libellé des sous-cases
-    const SC_HINT_INDENT = SC_LABEL_INDENT;          // note italique alignée sous le libellé
-
-    const titleLines = wrap(titleTxt, leftW-TITLE_INDENT-2, 7.6, 'bold');
-    const subLines = subTxt ? wrap(subTxt, leftW-SUB_INDENT-2, 6.6, 'italic') : [];
-    const PAD_TOP = 3.4, PAD_BOTTOM = 1.8;
-    let leftH = PAD_TOP + titleLines.length*3.1 + 0.8 + (subLines.length? subLines.length*2.5+1.1 : 0);
-    let scH = [];
-    if(subChecks){
-      subChecks.forEach(sc=>{
-        const labLines = wrap(sc.label, leftW-SC_LABEL_INDENT-2, 6.8, 'bold');
-        const hintLines = wrap(sc.hint, leftW-SC_HINT_INDENT-2, 6, 'italic');
-        const h = labLines.length*2.7 + 2.1 + hintLines.length*2.3 + 1.0;
-        scH.push({labLines,hintLines,h});
-        leftH += h;
-      });
-    }
-    leftH += PAD_BOTTOM;
-    const rightLines = wrap(noTxt, rightW-8, 6.8, 'normal');
-    const rightH = PAD_TOP + rightLines.length*3 + PAD_BOTTOM;
-    const blockH = Math.max(leftH, rightH);
-
+    const top = y, rh = 5.5, col0 = 52, col1 = (USABLE_W-col0)/2;
+    const xA = MX+col0, xB = MX+col0+col1;
+    const rows = [top, top+rh, top+rh*2, top+rh*3, top+rh*4];   // en-tête, nom, tél, NIR, rattachement
+    const attTop = top+rh*4, attH = rh*2, bottom = attTop+attH;
     doc.setDrawColor(0,0,0); doc.setLineWidth(0.2);
-    doc.setFillColor(GREEN_FILL[0],GREEN_FILL[1],GREEN_FILL[2]);
-    doc.rect(MX, y, leftW, blockH, 'FD');
-    doc.setFillColor(PINK_FILL[0],PINK_FILL[1],PINK_FILL[2]);
-    doc.rect(MX+leftW, y, rightW, blockH, 'FD');
-
-    let ly = y+PAD_TOP;
-    checkboxAt(MX+PAD_L, ly, ticked==='yes');
-    setF('bold',7.6,INK);
-    titleLines.forEach((l,i)=> doc.text(l, MX+TITLE_INDENT, ly+i*3.1));
-    ly += titleLines.length*3.1 + 0.8;
-    if(subLines.length){
-      setF('italic',6.6,[70,70,70]);
-      subLines.forEach((l,i)=> doc.text(l, MX+SUB_INDENT, ly+i*2.5));
-      ly += subLines.length*2.5 + 1.1;
+    doc.rect(MX, top, USABLE_W, bottom-top);
+    for(let i=1;i<=4;i++) doc.line(MX, rows[i], RIGHT, rows[i]);
+    doc.line(xA, attTop+rh, RIGHT, attTop+rh);
+    doc.line(xA, top, xA, bottom);
+    doc.line(xB, top, xB, attTop+rh);
+    setF('bold',8.6,INK);
+    doc.text("Parent / Responsable légal 1", xA+col1/2, top+3.7, {align:'center'});
+    doc.text("Parent / Responsable légal 2", xB+col1/2, top+3.7, {align:'center'});
+    const labels = ["Nom et Prénom","Téléphone portable","Numéro de sécurité sociale"];
+    labels.forEach((l,i)=>{ setF('bold',8.6,INK); doc.text(l, MX+1.5, rows[i+1]+3.7); });
+    // Numéro de sécurité sociale présenté en cases, comme le modèle
+    const nirGroups = n => {
+      const d = String(n||'').replace(/\D/g,''), sizes=[1,2,2,2,3,3,2], blanks=['__','___','___','___','____','____','___'];
+      let p = 0;
+      return sizes.map((s,i)=>{ const part = d.slice(p, p+s); p += s; return '[' + (part ? part : blanks[i]) + ']'; }).join(' ');
+    };
+    const vals1 = [document.getElementById('p1Name').value, document.getElementById('p1Phone').value, nirGroups(document.getElementById('p1Nir').value)];
+    const vals2 = [document.getElementById('p2Name').value, document.getElementById('p2Phone').value, nirGroups(document.getElementById('p2Nir').value)];
+    for(let i=0;i<3;i++){
+      setF('normal',8.6,INK);
+      doc.text(String(vals1[i]||''), xA+1.5, rows[i+1]+3.7);
+      doc.text(String(vals2[i]||''), xB+1.5, rows[i+1]+3.7);
     }
-    if(subChecks){
-      subChecks.forEach((sc,idx)=>{
-        const info = scH[idx];
-        checkboxAt(MX+SC_PAD_L, ly, sc.checked);
-        setF('bold',6.8,INK);
-        info.labLines.forEach((l,i)=> doc.text(l, MX+SC_LABEL_INDENT, ly+i*2.7));
-        ly += info.labLines.length*2.7;
-        setF('italic',6,[80,80,80]);
-        info.hintLines.forEach((l,i)=> doc.text(l, MX+SC_HINT_INDENT, ly+2.1+i*2.3));
-        ly += 2.1 + info.hintLines.length*2.3 + 1.0;
-      });
-    }
-
-    let ry = y+4;
-    const cbW2 = checkboxAt(MX+leftW+2, ry, ticked==='no');
-    setF('normal',6.8,INK);
-    rightLines.forEach((l,i)=> doc.text(l, MX+leftW+2+cbW2+1.5, ry+i*3));
-
-    y += blockH + 1.6;
+    setF('bold',8.6,INK);
+    doc.text("Numéro de sécurité sociale de", MX+1.5, attTop+3.7);
+    doc.text("rattachement de l’enfant", MX+1.5, attTop+rh+3.7);
+    const att = (document.querySelector('input[name="attach"]:checked')||{}).value;
+    let cx = xA+1.5;
+    cx += checkboxAt(cx, attTop+3.7, att==='1')+1.2; setF('normal',8.6,INK); doc.text("Parent / Responsable légal 1", cx, attTop+3.7);
+    cx = xB+1.5;
+    cx += checkboxAt(cx, attTop+3.7, att==='2')+1.2; setF('normal',8.6,INK); doc.text("Parent / Responsable légal 2", cx, attTop+3.7);
+    setF('italic',8.3,INK);
+    doc.text("Cochez la case correspondant au parent ou responsable légal auquel l’enfant est rattaché", xA+1.5, attTop+rh+3.7);
+    y = bottom + 2.6;
+  }
+  // Lien ameli cliquable, comme le modèle
+  {
+    const pre = "Ces informations figurent sur l'attestation de droits de l'enfant ou du/des parent(s) auquel(s) il est rattaché. Consultez ";
+    const url = "https://www.ameli.fr/assure/attestation-droits";
+    setF('normal',6.9,INK); const w1 = doc.getTextWidth(pre); const w2 = doc.getTextWidth(url);
+    const x0 = 105 - (w1+w2+1)/2;
+    doc.text(pre, x0, y);
+    setF('normal',6.9,LINK); doc.textWithLink(url, x0+w1+1, y, {url});
+    doc.setDrawColor(LINK[0],LINK[1],LINK[2]); doc.setLineWidth(0.15); doc.line(x0+w1+1, y+0.6, x0+w1+1+w2, y+0.6); doc.setDrawColor(0,0,0);
+    y += 6;
   }
 
-  authBlock(
-    "J’autorise la vaccination contre les infections HPV. (Gardasil9®)",
+  // ---- Section 3 : autorisations (un seul tableau, vert et rose, comme le modèle) ----
+  sectionHeader("3.   Autorisations à cocher");
+  const leftW = USABLE_W*0.655, rightW = USABLE_W - leftW;
+  function authRow(titleRuns, subTxt, noTxt, ticked, subChecks){
+    const PAD = 1.8, CBW = 2.8 + 1.2;
+    // hauteur de la partie gauche
+    let h = PAD + 0.6;
+    doc.setFont(FONT,'bold'); doc.setFontSize(9.9*KS);
+    const titleText = titleRuns.map(r=>r.text).join('');
+    const titleLines = wrap(titleText, leftW - PAD*2 - CBW, 9.9, 'bold');
+    h += titleLines.length*4.2;
+    const subLines = subTxt ? [].concat(...subTxt.split('\n').map(part => wrap(part, leftW - PAD*2, 7.4, 'italic'))) : [];
+    h += subLines.length*3.1;
+    const scInfo = (subChecks||[]).map(sc=>({sc, lab: wrap(sc.label, leftW-PAD*2-8-CBW, 9.7, 'bold'), hint: wrap(sc.hint, leftW-PAD*2-8, 7.4, 'italic')}));
+    scInfo.forEach(s=>{ h += 1.4 + s.lab.length*4.1 + s.hint.length*3.1; });
+    h += PAD + 0.4;
+    const noLines = wrap(noTxt, rightW - PAD*2 - CBW, 9.9, 'normal');
+    h = Math.max(h, noLines.length*4.3 + PAD*2 + 2);
+    // fonds et bordures
+    doc.setFillColor(GREEN_FILL[0],GREEN_FILL[1],GREEN_FILL[2]); doc.rect(MX, y, leftW, h, 'F');
+    doc.setFillColor(PINK_FILL[0],PINK_FILL[1],PINK_FILL[2]); doc.rect(MX+leftW, y, rightW, h, 'F');
+    doc.setDrawColor(0,0,0); doc.setLineWidth(0.2);
+    doc.rect(MX, y, USABLE_W, h); doc.line(MX+leftW, y, MX+leftW, y+h);
+    // gauche : case verte et titre vert gras (la partie entre parenthèses en noir normal)
+    let ly = y + PAD + 3.1;
+    checkboxAt(MX+PAD, ly, ticked==='yes', GREEN);
+    {
+      // titre : première ligne avec la case, suite alignée sous le texte
+      const savedY = y; y = ly;
+      richText(titleRuns.map(r=>({text:r.text, style:r.plain?'normal':'bold', color:r.plain?INK:GREEN})), MX+PAD+CBW, leftW-PAD*2-CBW, 9.9, 4.2, false);
+      y = savedY;
+      ly += titleLines.length*4.2 - 0.6;
+    }
+    if(subLines.length){
+      setF('italic',7.4,INK);
+      subLines.forEach((l,i)=> doc.text(l, MX+PAD, ly+i*3.1));
+      ly += subLines.length*3.1;
+    }
+    scInfo.forEach(s=>{
+      ly += 1.4 + 2.6;
+      checkboxAt(MX+PAD+8, ly, s.sc.checked, GREEN);
+      setF('bold',9.7,GREEN);
+      s.lab.forEach((l,i)=> doc.text(l, MX+PAD+8+CBW, ly+i*4.1));
+      ly += s.lab.length*4.1 - 0.8;
+      setF('italic',7.4,INK);
+      s.hint.forEach((l,i)=> doc.text(l, MX+PAD+8, ly+i*3.1));
+      ly += s.hint.length*3.1 - 2.6;
+    });
+    // droite : case rouge et texte noir, centrés verticalement
+    const blockH = noLines.length*4.3;
+    let ry = y + (h - blockH)/2 + 2.9;
+    checkboxAt(MX+leftW+PAD, ry, ticked==='no', RED);
+    setF('normal',9.9,INK);
+    noLines.forEach((l,i)=> doc.text(l, MX+leftW+PAD+CBW, ry+i*4.3));
+    y += h;
+  }
+  authRow(
+    [{text:"J’autorise la vaccination contre les infections HPV. "},{text:"(Gardasil9®)", plain:true}],
     "La vaccination contre les HPV nécessite 2 doses espacées entre 5 et 13 mois, lorsqu’elle est réalisée entre 11 et 14 ans.",
     "Je n’autorise pas la vaccination contre les infections HPV.",
     authState.hpv
   );
-  authBlock(
-    "J’autorise la vaccination contre les méningites à méningocoque ACWY.",
-    "La vaccination contre les méningocoques ACWY nécessite une seule dose. Elle est aussi à refaire pour les enfants ayant déjà été vacciné contre les méningocoques C ou ACWY avant l’âge de 11 ans. La spécialité vaccinale est choisie par l’équipe médicale (Nimenrix®, MenQuadfi® ou Menveo®)",
+  authRow(
+    [{text:"J’autorise la vaccination contre les méningites à méningocoque ACWY."}],
+    "La vaccination contre les méningocoques ACWY nécessite une seule dose. Elle est aussi à refaire pour les enfants ayant déjà été vacciné contre les méningocoques C ou ACWY avant l’âge de 11 ans.\nLa spécialité vaccinale est choisie par l’équipe médicale (Nimenrix®, MenQuadfi® ou Menveo®)",
     "Je n’autorise pas la vaccination contre les méningocoques ACWY.",
     authState.acwy
   );
-  authBlock(
-    "J’autorise la vaccination contre les autres maladies recommandées par le calendrier vaccinal en vigueur.",
+  authRow(
+    [{text:"J’autorise la vaccination contre les autres maladies recommandées par le calendrier vaccinal en vigueur."}],
     "La mise à jour des vaccinations contre la diphtérie, le tétanos, la poliomyélite et la coqueluche (DTPC), la rougeole, les oreillons et la rubéole (ROR) et l’hépatite B peut également être proposée par l’équipe de vaccination. Préciser les vaccins que vous autorisez (si votre enfant est déjà à jour, il ne sera pas revacciné) :",
     "Je n’autorise pas la vaccination contre toutes les autres maladies recommandées par le calendrier vaccinal en vigueur",
     authState.other,
@@ -4076,120 +4155,99 @@ function buildPdf(){
     ]
   );
 
-  // ---- Section 4 : carnet de santé ----
-  y += 2.2;
-  sectionHeader("4. La présence du carnet de santé est essentielle pour analyser le statut vaccinal de votre enfant.");
-  function checkLine(txt, ticked){
-    const lines = wrap(txt, USABLE_W-8, 7.2, 'normal');
-    const cb = checkboxAt(MX, y+2.9, ticked);
-    setF('normal',7.2,INK);
-    lines.forEach((l,i)=> doc.text(l, MX+cb+2, y+2.9+i*2.9));
-    y += lines.length*2.9 + 1.3;
+  // ---- Section 4 : carnet de santé (vert gras, comme le modèle) ----
+  y += 7;
+  sectionHeader("4.   La présence du carnet de santé est essentielle pour analyser le statut vaccinal de votre enfant.", 11.5);
+  y += 2;
+  function greenLine(txt, ticked){
+    const lines = wrap(txt, USABLE_W-5, 9.4, 'bold');
+    checkboxAt(MX, y, ticked, GREEN);
+    setF('bold',9.4,GREEN);
+    lines.forEach((l,i)=> doc.text(l, MX+4, y+i*3.9));
+    y += lines.length*3.9 + 2;
   }
-  checkLine("Je m’engage à fournir le carnet de santé à mon enfant le jour de la vaccination.", document.getElementById('carnetFourni').checked);
-  checkLine("Je ne peux pas fournir le carnet de santé et j’atteste que mon enfant n’a pas déjà été vacciné contre HPV et la méningite ACWY", document.getElementById('carnetAbsent').checked);
-  y += 3.2;
-
-  // ---- Section 5 : signatures ----
-  sectionHeader("5. Signatures obligatoires");
-  {
-    const lines = wrap("La vaccination des mineurs nécessite l’autorisation des deux titulaires de l’autorité parentale.", USABLE_W, 7.6, 'bold');
-    setF('bold',7.6,INK);
-    lines.forEach((l,i)=>{
-      doc.text(l, MX, y+i*3.4);
-      doc.setLineWidth(0.2);
-      doc.line(MX, y+i*3.4+0.8, MX+doc.getTextWidth(l), y+i*3.4+0.8);
-    });
-    y += lines.length*3.4 + 3;
-  }
-  setF('bold',7.6,INK); doc.text("Date :", MX, y);
-  setF('normal',7.6,INK); doc.text(fmtDate(document.getElementById('signDate').value), MX+12, y);
+  greenLine("Je m’engage à fournir le carnet de santé à mon enfant le jour de la vaccination.", document.getElementById('carnetFourni').checked);
+  greenLine("Je ne peux pas fournir le carnet de santé et j’atteste que mon enfant n’a pas déjà été vacciné contre HPV et la méningite ACWY", document.getElementById('carnetAbsent').checked);
   y += 5;
 
-  const sigW = (USABLE_W-8)/2, sigH = 20;
-  setF('normal',7.4,INK);
-  doc.text("Signature Parent/Responsable légal 1 :", MX, y);
-  doc.text("Signature Parent/Responsable légal 2 :", MX+sigW+8, y);
-  y += 2;
-  doc.setDrawColor(150,150,150);
-  doc.rect(MX, y, sigW, sigH);
-  doc.rect(MX+sigW+8, y, sigW, sigH);
-  if(!pad1.isEmpty()) doc.addImage(pad1.dataUrl(),'PNG', MX+2, y+2, sigW-4, sigH-4);
-  if(!pad2.isEmpty()) doc.addImage(pad2.dataUrl(),'PNG', MX+sigW+10, y+2, sigW-4, sigH-4);
-  y += sigH + 4;
-
-  setF('normal',7,INK);
-  doc.text("À cocher uniquement lorsqu’un seul parent/responsable légal signe le formulaire :", MX, y);
-  y += 3.6;
-  checkLine("Je déclare être le seul responsable légal de l’enfant.", document.getElementById('soloOnly').checked);
-  checkLine("Je déclare sur l'honneur que l’autre parent est empêché de signer mais a donné son autorisation.", document.getElementById('soloAbsent').checked);
-
-  // ---------------- PAGE 2 ----------------
-  doc.addPage();
-  y = 18;
-  centered("INFORMATIONS SUR LE VACCIN CONTRE LES INFECTIONS A HPV ET CONTRE LES MÉNINGITES ACWY", y, 10.5, 'bold', BLUE900);
-  y += 8;
-
-  function paragraph(txt){
-    const lines = wrap(txt, USABLE_W, 8.6, 'normal');
-    setF('normal',8.6,INK);
-    lines.forEach((l,i)=> doc.text(l, MX, y+i*3.9));
-    y += lines.length*3.9 + 3.5;
-  }
-  function subHeading(txt){
-    y += 1.5;
-    centered(txt, y, 9, 'bold', INK);
-    y += 5.5;
-  }
-
-  paragraph("Le vaccin contre les infections à papillomavirus (HPV) avec lequel votre enfant sera vacciné est sûr et efficace. La vaccination contre les infections à HPV est recommandée pour toutes les jeunes filles et pour tous les jeunes garçons âgés de 11 à 14 ans révolus. En protégeant nos adolescents dès maintenant, nous pouvons les aider à réduire considérablement leur risque de développer des cancers liés au HPV plus tard dans leur vie. En effet, des études ont montré que la vaccination contre le HPV peut réduire le risque de développer des infections à HPV de manière significative, jusqu'à 90 %, ce qui permet de réduire aussi de manière significative le risque de développer des lésions précancéreuses et des cancers associés.");
-  paragraph("La vaccination contre les infections invasives à méningocoques ACWY est recommandée chez tous les jeunes âgés de 11 à 14 ans. Les méningites sont des infections transmissibles graves qui touchent particulièrement les adolescents et les jeunes adultes. Elles peuvent conduire au décès ou laisser des séquelles importantes. La vaccination contre les méningocoques ACWY avec une dose unique de vaccin permet une protection efficace et prolongée. Comme pour tous les vaccins, quelques effets secondaires sont possibles et bénins pour la grande majorité.");
-  setF('normal',8.6,INK);
+  // ---- Section 5 : signatures (sans cadre, comme le modèle) ----
+  sectionHeader("5.   Signatures obligatoires");
   {
-    const l1 = "Vous trouverez plus d’information sur le vaccin sur le site de l’Agence nationale de sécurité";
-    const l2 = "des médicaments et des produits de santé : www.ansm.sante.fr ou en scannant le QR code ci-dessous.";
-    doc.text(l1, MX, y); y+=3.9;
-    doc.setTextColor(BLUE700[0],BLUE700[1],BLUE700[2]);
-    doc.textWithLink(l2, MX, y, {url:'http://www.ansm.sante.fr'});
+    const t = "La vaccination des mineurs nécessite l’autorisation des deux titulaires de l’autorité parentale.";
+    setF('bold',9.4,INK); doc.text(t, MX, y+0.8);
+    doc.setLineWidth(0.2); doc.line(MX, y+1.6, MX+doc.getTextWidth(t), y+1.6);
     y += 7;
   }
+  setF('bold',9.4,INK); doc.text("Date :", MX, y);
+  setF('normal',9.4,INK); doc.text(fmtDate(document.getElementById('signDate').value), MX + doc.getTextWidth("Date : ") + 1, y);
+  y += 4;
+  const sigX2 = 112, sigW = 72, sigH = 18;
+  setF('normal',9.4,INK);
+  doc.text("Signature Parent/Responsable légal 1 :", MX, y);
+  doc.text("Signature Parent/Responsable légal 2 :", sigX2, y);
+  y += 1.5;
+  if(!pad1.isEmpty()) doc.addImage(pad1.dataUrl(),'PNG', MX, y, sigW, sigH);
+  if(!pad2.isEmpty()) doc.addImage(pad2.dataUrl(),'PNG', sigX2, y, sigW, sigH);
+  y += sigH + 3;
+  y += richText([{text:"À cocher uniquement lorsqu’un seul "},{text:"parent/responsable légal signe le formulaire", style:'bold'},{text:" :"}], MX, USABLE_W, 8, 3.6, false) + 1.6;
+  function smallLine(txt, ticked){
+    checkboxAt(MX, y, ticked);
+    setF('normal',8,INK); doc.text(txt, MX+4, y);
+    y += 4.3;
+  }
+  smallLine("Je déclare être le seul responsable légal de l’enfant.", document.getElementById('soloOnly').checked);
+  smallLine("Je déclare sur l'honneur que l’autre parent est empêché de signer mais a donné son autorisation.", document.getElementById('soloAbsent').checked);
+  if(y > 290) overflow = true;
 
-  subHeading("DÉROULEMENT DE LA SÉANCE DE VACCINATION");
-  paragraph("Avant la séance de vaccination, l’équipe médicale s’entretiendra avec votre enfant et vérifiera son carnet de santé. Votre enfant bénéficiera, ensuite, de l’injection d’une dose de vaccin contre les HPV et/ou une dose de vaccin contre les méningocoques ACWY dans un espace confidentiel. Il est possible d’administrer ces deux vaccins lors d’une même séance.");
-  paragraph("Après la ou les injections, il peut se produire des évanouissements, parfois accompagnés de tremblements ou raideurs et pouvant être accompagnés de chutes. Bien que les cas d'évanouissement soient peu fréquents, votre enfant restera en observation, sous la surveillance de l’équipe médicale, durant les 15 minutes suivant l’injection du ou des vaccins. Si l’équipe de vaccination offre ce service complémentaire, d’autres vaccinations recommandées pourront être réalisées (DTP coq, ROR, hépatite B) selon le statut vaccinal de votre enfant. Un maximum de 4 vaccins pourra être réalisé, en concertation avec votre enfant.");
+  // ---------------- PAGE 2 (présentation du modèle) ----------------
+  doc.addPage();
+  y = 25;
+  const PSZ = 10, PLH = 4.45;
+  function title2(txt){ centered(txt, y, 10, 'normal', INK); y += 8; }
+  function para(runs){ y += richText(typeof runs === 'string' ? [{text:runs}] : runs, MX, USABLE_W, PSZ, PLH, true); }
+  title2("INFORMATIONS SUR LE VACCIN CONTRE LES INFECTIONS A HPV ET CONTRE LES MÉNINGITES ACWY");
+  para("Le vaccin contre les infections à papillomavirus (HPV) avec lequel votre enfant sera vacciné est sûr et efficace. La vaccination contre les infections à HPV est recommandée pour toutes les jeunes filles et pour tous les jeunes garçons âgés de 11 à 14 ans révolus. En protégeant nos adolescents dès maintenant, nous pouvons les aider à réduire considérablement leur risque de développer des cancers liés au HPV plus tard dans leur vie. En effet, des études ont montré que la vaccination contre le HPV peut réduire le risque de développer des infections à HPV de manière significative, jusqu'à 90 %, ce qui permet de réduire aussi de manière significative le risque de développer des lésions précancéreuses et des cancers associés.");
+  para("La vaccination contre les infections invasives à méningocoques ACWY est recommandée chez tous les jeunes âgés de 11 à 14 ans. Les méningites sont des infections transmissibles graves qui touchent particulièrement les adolescents et les jeunes adultes. Elles peuvent conduire au décès ou laisser des séquelles importantes. La vaccination contre les méningocoques ACWY avec une dose unique de vaccin permet une protection efficace et prolongée. Comme pour tous les vaccins, quelques effets secondaires sont possibles et bénins pour la grande majorité.");
+  para([
+    {text:"Vous trouverez plus d’information sur le vaccin sur le site de l’Agence nationale de sécurité des médicaments et des produits de santé : "},
+    {text:"www.ansm.sante.fr", color:LINK, link:'http://www.ansm.sante.fr', underline:true},
+    {text:" ou en scannant le "},
+    {text:"QR code ci-dessous.", style:'italic'}
+  ]);
+  y += 4.5;
+  title2("DÉROULEMENT DE LA SÉANCE DE VACCINATION");
+  para("Avant la séance de vaccination, l’équipe médicale s’entretiendra avec votre enfant et vérifiera son carnet de santé. Votre enfant bénéficiera, ensuite, de l’injection d’une dose de vaccin contre les HPV et/ou une dose de vaccin contre les méningocoques ACWY dans un espace confidentiel. Il est possible d’administrer ces deux vaccins lors d’une même séance.");
+  para("Après la ou les injections, il peut se produire des évanouissements, parfois accompagnés de tremblements ou raideurs et pouvant être accompagnés de chutes. Bien que les cas d'évanouissement soient peu fréquents, votre enfant restera en observation, sous la surveillance de l’équipe médicale, durant les 15 minutes suivant l’injection du ou des vaccins. Si l’équipe de vaccination offre ce service complémentaire, d’autres vaccinations recommandées pourront être réalisées (DTP coq, ROR, hépatite B) selon le statut vaccinal de votre enfant. Un maximum de 4 vaccins pourra être réalisé, en concertation avec votre enfant.");
+  y += 4.5;
+  title2("MENTIONS D’INFORMATION INFORMATIQUES ET LIBERTÉS");
+  para("La présente campagne de vaccination implique la mise en œuvre de traitements de données à caractère personnel.");
+  para("En particulier, les formulaires d’autorisation à la vaccination seront utilisés, par les structures et centres de vaccination mobilisés par les ARS, aux fins d’organisation de la campagne nationale de vaccination contre les infections à papillomavirus humains et du rattrapage éventuel des autres vaccinations. Ces traitements sont mis en œuvre sous la responsabilité conjointe de l’ARS compétente et du centre de vaccination ou de la structure de prévention désignés par l’ARS réalisant la vaccination de votre enfant.");
+  para("L’établissement scolaire de votre enfant est uniquement chargé de collecter, pour le compte de ces responsables de traitement, la présente autorisation complétée par vos soins qu’il transmet ensuite au centre ou à la structure de vaccination. Cette transmission est réalisée sous enveloppe cachetée et les établissements n’ont donc pas connaissance des informations qui y figurent.");
+  para("Sont uniquement destinataires des données collectées les personnels habilités au sein des structures de santé désignées par l’ARS sur leur territoire. Elles pourront être conservées par ces entités à des fins d’éventuelles recherches en responsabilité, pendant 18 ans à compter de l’acte de vaccination.");
+  para("Les droits d’accès, de rectification, de limitation et d’opposition, prévus par les articles 15, 16, 18 et 21 du RGPD, s’agissant du traitement relatif aux formulaires d’autorisation s’exercent auprès du chef d’établissement qui transmet sans délai et par tout moyen, les demandes d’exercice des droits des personnes au centre ou à la structure de vaccination territorialement compétent.");
+  para("Par ailleurs, ces formulaires seront utilisés, après l’acte de vaccination effectué au sein de l’établissement, par ces mêmes centres et structures de vaccination, afin d’adresser à l’Assurance maladie les éléments nécessaires à la prise en charge de ces vaccins.");
+  para("Des informations complémentaires sur ces traitements sont mises à votre disposition sur le site internet du ministère chargé de la santé et des ARS.");
 
-  subHeading("MENTIONS D’INFORMATION INFORMATIQUES ET LIBERTÉS");
-  paragraph("La présente campagne de vaccination implique la mise en œuvre de traitements de données à caractère personnel.");
-  paragraph("En particulier, les formulaires d’autorisation à la vaccination seront utilisés, par les structures et centres de vaccination mobilisés par les ARS, aux fins d’organisation de la campagne nationale de vaccination contre les infections à papillomavirus humains et du rattrapage éventuel des autres vaccinations. Ces traitements sont mis en œuvre sous la responsabilité conjointe de l’ARS compétente et du centre de vaccination ou de la structure de prévention désignés par l’ARS réalisant la vaccination de votre enfant.");
-  paragraph("L’établissement scolaire de votre enfant est uniquement chargé de collecter, pour le compte de ces responsables de traitement, la présente autorisation complétée par vos soins qu’il transmet ensuite au centre ou à la structure de vaccination. Cette transmission est réalisée sous enveloppe cachetée et les établissements n’ont donc pas connaissance des informations qui y figurent.");
-  paragraph("Sont uniquement destinataires des données collectées les personnels habilités au sein des structures de santé désignées par l’ARS sur leur territoire. Elles pourront être conservées par ces entités à des fins d’éventuelles recherches en responsabilité, pendant 18 ans à compter de l’acte de vaccination.");
-  paragraph("Les droits d’accès, de rectification, de limitation et d’opposition, prévus par les articles 15, 16, 18 et 21 du RGPD, s’agissant du traitement relatif aux formulaires d’autorisation s’exercent auprès du chef d’établissement qui transmet sans délai et par tout moyen, les demandes d’exercice des droits des personnes au centre ou à la structure de vaccination territorialement compétent.");
-  paragraph("Par ailleurs, ces formulaires seront utilisés, après l’acte de vaccination effectué au sein de l’établissement, par ces mêmes centres et structures de vaccination, afin d’adresser à l’Assurance maladie les éléments nécessaires à la prise en charge de ces vaccins.");
-  paragraph("Des informations complémentaires sur ces traitements sont mises à votre disposition sur le site internet du ministère chargé de la santé et des ARS.");
-
-  const qrY = 260, qrS = 22;
-  const qrX1 = 14, qrX2 = 67.33, qrX3 = 120.67, qrX4 = 174;
-  doc.addImage(QR_B1,'PNG', qrX1, qrY, qrS, qrS);
-  doc.addImage(QR_B2,'PNG', qrX2, qrY, qrS, qrS);
+  // QR codes : ordre du modèle (médicament, puis ANSM méningocoques, puis campagne Sud 77), et QR patient du site
+  const qrS = 26, qrY = Math.min(Math.max(y + 8, 225), 260);
+  if(y + 8 > 260) overflow = true;
+  const qrX1 = 20, qrX2 = 66, qrX3 = 112, qrX4 = 162;
+  doc.addImage(QR_B2,'PNG', qrX1, qrY, qrS, qrS);
+  doc.addImage(QR_B1,'PNG', qrX2, qrY, qrS, qrS);
   doc.addImage(QR_B3,'PNG', qrX3, qrY, qrS, qrS);
   try {
     drawPatientQrCode(doc, qrX4, qrY, qrS);
   } catch(qrErr) {
-    // Le QR patient est un bonus pour Colibri : s'il échoue pour une raison
-    // quelconque, cela ne doit jamais empêcher la génération du document
-    // d'autorisation lui-même, qui est la pièce officielle attendue.
+    // Le QR patient est un bonus pour Colibri : il ne doit jamais empêcher la génération du document officiel.
     console.error('QR patient non généré :', qrErr);
   }
-  setF('italic',6.6,INKSOFT);
-  const capX3 = qrX3 + qrS/2;
-  doc.text("Plus d'info sur la campagne de", capX3, qrY+qrS+3.2, {align:'center'});
-  doc.text("vaccination Sud 77", capX3, qrY+qrS+6.4, {align:'center'});
-  const capX4 = qrX4 + qrS/2;
-  doc.text("QR patient", capX4, qrY+qrS+3.2, {align:'center'});
+  setF('italic',9.4,INK);
+  doc.text("Plus d’info sur la campagne de", qrX3+qrS/2, qrY+qrS+4, {align:'center'});
+  doc.text("vaccination Sud 77", qrX3+qrS/2, qrY+qrS+8, {align:'center'});
+  doc.text("QR patient", qrX4+qrS/2, qrY+qrS+4, {align:'center'});
 
-  return doc;
+  return { doc, overflow };
 }
-
 
 // Nom-Prénom-Collège.pdf (le collège est ajouté seulement s'il est renseigné)
 function buildPdfFilename(){
@@ -4234,6 +4292,7 @@ document.getElementById('sendEmailBtn').addEventListener('click', async ()=>{
   btn.disabled = true;
   btn.textContent = tr('sendingLabel');
   try{
+    try { await PDF_FONTS_READY; } catch(e) {}
     const pdfDoc = buildPdf();
     const pdfBase64 = pdfToBase64(pdfDoc);
 
@@ -4294,6 +4353,7 @@ document.getElementById('downloadBtn').addEventListener('click', async ()=>{
   btn.disabled = true;
   btn.textContent = tr('generatingLabel');
   try{
+    try { await PDF_FONTS_READY; } catch(e) {}
     const doc = buildPdf();
     const filename = buildPdfFilename();
     const blob = doc.output('blob');

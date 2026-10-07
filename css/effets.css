@@ -143,3 +143,23 @@
 .fxLbClose:hover{transform:rotate(90deg);background:rgba(255,255,255,.35)}
 html.fxNoScroll{overflow:hidden}
 @media (prefers-reduced-motion: reduce){.fxLb,.fxLbBox{transition:none}}
+
+/* ---------- 7. MESSAGE PRÉSENTÉ COMME LA LETTRE PAPIER ---------- */
+#introBody .scrollReadText.letterText{white-space:normal !important;font-size:15px;line-height:1.75}
+#introBody .letterP{margin:0 0 14px;text-align:justify;text-indent:2.4em}
+#introBody .letterP.letterGreet{text-indent:0;text-align:start}
+#introBody .letterP .fadeWord{text-indent:0}
+#introBody .fadeWord.b{font-weight:800 !important}
+#introBody .letterSign{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;margin-top:22px}
+#introBody .letterWho{text-align:center}
+#introBody .letterName{font-weight:800;font-size:15px;color:var(--text)}
+#introBody .letterRole{font-size:14px;color:var(--text);white-space:pre-line;margin-top:2px}
+#introBody .letterLogos{display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+#introBody .letterLogos img{height:56px;width:auto;max-width:180px;object-fit:contain}
+@media (max-width:640px){
+  #introBody .letterP{text-indent:1.6em}
+  #introBody .letterSign{grid-template-columns:1fr;justify-items:center}
+  #introBody .letterSign > div:first-child{display:none}
+  #introBody .letterLogos{flex-direction:row;align-items:center;justify-content:center}
+  #introBody .letterLogos img{height:44px}
+}

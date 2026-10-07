@@ -3,27 +3,52 @@
   "last_checked": "2026-10-03",
   "vaccineRecommendations": {
     "hpv": {
-      "routine": "Filles et garçons de 11 à 14 ans révolus",
-      "catch_up": "15 à 26 ans révolus, Gardasil 9",
+      "routine": "Filles et garçons entre 11 et 15 ans (formulation de la lettre du Dr LEROY, le calendrier 2026 indique 11 à 14 ans révolus)",
+      "catch_up": "Jusqu'à 26 ans, Gardasil 9",
       "schedule_start_before_15": "2 doses espacées d'au moins 6 mois (choix de l'équipe, calendrier 5 à 13 mois)",
       "schedule_start_from_15": "3 doses M0, M2, M6, en moins d'un an",
       "incomplete": "Ne jamais recommencer, compléter. Première dose avant 15 ans, schéma à 2 doses",
-      "sources": ["HAS, recommandation du 13/05/2025, rattrapage jusqu'à 26 ans", "Calendrier des vaccinations 2026, version juillet 2026, chapitre 2.12"]
+      "sources": [
+        "HAS, recommandation du 13/05/2025, rattrapage jusqu'à 26 ans",
+        "Calendrier des vaccinations 2026, version juillet 2026, chapitre 2.12"
+      ]
     },
     "acwy": {
       "routine": "Tous les adolescents de 11 à 14 ans révolus, 1 dose",
       "catch_up": "15 à 24 ans révolus, 1 dose (Nimenrix, MenQuadfi ou Menveo)",
       "prior_vaccination": "ACWY déjà reçu, pas de dose. Méningocoque C seul, 1 dose ACWY recommandée. Moins de 15 ans, schéma 11-14 ans",
-      "sources": ["HAS, avis n°2025.0040 du 17/07/2025", "Calendrier des vaccinations 2026, version juillet 2026, chapitre 2.11"]
+      "sources": [
+        "HAS, avis n°2025.0040 du 17/07/2025",
+        "Calendrier des vaccinations 2026, version juillet 2026, chapitre 2.11"
+      ]
     },
     "menb": {
-      "status_on_site": "Recommandée en rattrapage de 15 à 24 ans révolus (choix de l'équipe, d'après l'avis HAS du 17/07/2025)",
+      "status_on_site": "Recommandée de 15 à 24 ans révolus (choix de l'équipe, d'après l'avis HAS du 17/07/2025)",
       "note_calendrier": "Le calendrier 2026 emploie la formule peut être proposée, la DGS (juin 2026) précise qu'elle n'est pas systématique",
       "schedule": "Bexsero 2 doses espacées d'au moins 1 mois (vaccin utilisé par l'équipe). Trumenba 2 doses à 6 mois ou 3 doses",
-      "sources": ["HAS, avis n°2025.0040 du 17/07/2025", "Calendrier des vaccinations 2026, version juillet 2026, chapitre 2.11"]
+      "sources": [
+        "HAS, avis n°2025.0040 du 17/07/2025",
+        "Calendrier des vaccinations 2026, version juillet 2026, chapitre 2.11"
+      ]
     },
-    "dtcap": { "rule": "Rappel dTcaP entre 11 et 13 ans", "sources": ["Calendrier des vaccinations 2026, chapitres 2.2 et 2.5"] },
-    "ror": { "rule": "2 doses au total pour les personnes nées depuis 1980, 2 doses à 1 mois si statut inconnu", "sources": ["Calendrier des vaccinations 2026, chapitre 2.18"] },
-    "hepb": { "rule": "Rattrapage jusqu'à 15 ans révolus, au-delà seulement en cas de risque", "sources": ["Calendrier des vaccinations 2026, chapitre 2.9"] }
-  }
+    "dtcap": {
+      "rule": "Rappel dTcaP entre 11 et 13 ans",
+      "sources": [
+        "Calendrier des vaccinations 2026, chapitres 2.2 et 2.5"
+      ]
+    },
+    "ror": {
+      "rule": "2 doses au total pour les personnes nées depuis 1980, la première à partir de 12 mois révolus (une dose faite avant 12 mois n'est pas protectrice et doit être refaite), 2 doses à 1 mois si statut inconnu",
+      "sources": [
+        "Calendrier des vaccinations 2026, chapitre 2.18"
+      ]
+    },
+    "hepb": {
+      "rule": "Rattrapage jusqu'à 15 ans révolus, au-delà seulement en cas de risque",
+      "sources": [
+        "Calendrier des vaccinations 2026, chapitre 2.9"
+      ]
+    }
+  },
+  "consent": "Classe de 2nde uniquement, autorisation écrite des deux parents indispensable, avis de l'élève recherché"
 }

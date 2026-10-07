@@ -6,7 +6,7 @@
     "parcours": "lycee"
   },
   "_aide": {
-    "fr": "Ajouter une entrée par passage dans sessions. Champs city, postal_code, lycee_name, date (AAAA-MM-JJ, à omettre si inconnue) et grade (seconde, premiere ou terminale). Exemple dans _exemple_session, non affiché sur le site."
+    "fr": "Ajouter une entrée par passage dans sessions. Champs city, postal_code, lycee_name, date (AAAA-MM-JJ, à omettre si inconnue) et grade (seconde). Exemple dans _exemple_session, non affiché sur le site."
   },
   "_exemple_session": {
     "city": "Ville",
@@ -16,9 +16,7 @@
     "grade": "seconde"
   },
   "grades": [
-    "seconde",
-    "premiere",
-    "terminale"
+    "seconde"
   ],
   "search_index": {
     "fields": [
