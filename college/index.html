@@ -2575,7 +2575,7 @@ results.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 
     if (hasDateForGrade) {
       const dateStr = new Date(s.date).toLocaleDateString(
-        lang === 'en' ? 'en-GB' : 'fr-FR',
+        (function(){ const loc = ({fr:'fr-FR',en:'en-GB',ar:'ar-u-ca-gregory-nu-latn',tr:'tr-TR',ps:'ps-AF-u-ca-gregory-nu-latn',ku:'ckb-IQ-u-ca-gregory-nu-latn',ro:'ro-RO',ka:'ka-GE',sq:'sq-AL',am:'am-ET',zh:'zh-CN',prs:'fa-AF-u-ca-gregory-nu-latn',es:'es-ES',pt:'pt-PT',ru:'ru-RU',uk:'uk-UA',mo:'ro-MD'})[lang] || 'fr-FR'; try { return Intl.DateTimeFormat.supportedLocalesOf([loc]).length ? loc : 'fr-FR'; } catch(e) { return 'fr-FR'; } })(),   // date dans la langue choisie (calendrier grégorien), sinon en français
         { weekday:'long', day:'numeric', month:'long', year:'numeric' }
       );
       div.style.cursor = 'pointer';
@@ -2702,7 +2702,6 @@ END:VCALENDAR`.trim();
   // forcer l'enregistrement d'un fichier dans les Téléchargements).
   const dataUri = 'data:text/calendar;charset=utf-8,' + encodeURIComponent(ics);
   window.location.href = dataUri;
-  URL.revokeObjectURL(url);
 }
 
 document.addEventListener('DOMContentLoaded', initScheduleSearch);
