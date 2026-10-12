@@ -277,6 +277,7 @@
     setTimeout(function () { location.href = url; }, 900);
   }
   window.ptGo = go;
+  window.ptLabel = function (k, l) { return L(k, l); };
 
   /* ---------- Arrivée sur la page ---------- */
   var enter = null;
