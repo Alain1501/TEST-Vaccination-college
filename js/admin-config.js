@@ -1,2 +1,2 @@
 /* Configuration de l'espace admin. Créée au premier lancement, la clé GitHub y est chiffrée par le mot de passe. */
-window.VS_ADMIN = {};
+window.VS_ADMIN = {"depot":"Alain1501/TEST-Vaccination-college","branche":"main","dossier":"","sel":"Mr0CLhi/I721Zf8omqNXcg==","iv":"RUZM2ORxuNX4FW5v","jeton":"1yJraAmo9LBBC7HlqM+ZTnrFIuuB3gftUzc/ny1MsgceJhJETCyI1CDcJYvDUjXLdU3QYuLic88jExaUpJ4N2BI46nztlOca5xVSX1j2I8LNMQHJk64YXXOyiPiWaHiTiKQjIPix7I2Y2DVSHg=="};
