@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Page introuvable – Campagne de vaccination en milieu scolaire</title>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:#f5f7fb;color:#111827;font-family:-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+main{min-height:100vh;display:grid;place-items:center;padding:24px 16px}
+.carte{width:100%;max-width:560px;background:#fff;border:1px solid #e5e7eb;border-radius:28px 28px 28px 8px;padding:34px 28px;text-align:center;box-shadow:0 20px 50px -30px rgba(18,54,94,.45)}
+.logo{width:180px;max-width:60%;height:auto;margin:0 auto 18px;display:block}
+.code{font-size:15px;font-weight:800;letter-spacing:.08em;color:#6b7280;margin:0 0 6px}
+h1{font-size:clamp(24px,5vw,32px);margin:0 0 10px;color:#12365e}
+p{margin:0 0 24px;color:#4b5563;line-height:1.55;font-size:16px}
+.liens{display:flex;flex-direction:column;gap:10px}
+.liens a{display:block;padding:13px 18px;border-radius:999px;font-weight:800;text-decoration:none;font-size:15px}
+.acc{background:#12365e;color:#fff}
+.col{background:#e8f5ec;color:#166534}
+.lyc{background:#efecfb;color:#5b21b6}
+.liens a:hover{filter:brightness(.96)}
+.liens b{font-weight:800}
+</style>
+</head>
+<body>
+<main>
+  <div class="carte">
+    <img class="logo" src="/img/EMV.png" alt="Équipe Mobile de Vaccination">
+    <div class="code">404</div>
+    <h1 id="t">Page introuvable</h1>
+    <p id="x">La page demandée n’existe pas ou a été déplacée.</p>
+    <div class="liens">
+      <a class="acc" id="h" href="/">Accueil</a>
+      <a class="col" id="c" href="/college/index.html">Vaccination <b>au collège</b></a>
+      <a class="lyc" id="y" href="/lycee/index.html">Vaccination <b>au lycée</b></a>
+    </div>
+  </div>
+</main>
+<script>
+/* Même langue que sur le reste du site (mémorisée par le navigateur) */
+(function(){
+  var D={"fr": {"t": "Page introuvable", "x": "La page demandée n’existe pas ou a été déplacée.", "h": "Accueil", "c": "Vaccination <b>au collège</b>", "y": "Vaccination <b>au lycée</b>"}, "en": {"t": "Page not found", "x": "The page you are looking for does not exist or has been moved.", "h": "Home", "c": "<b>Middle school</b> vaccination", "y": "<b>High school</b> vaccination"}, "ar": {"t": "الصفحة غير موجودة", "x": "الصفحة المطلوبة غير موجودة أو تم نقلها.", "h": "الرئيسية", "c": "التلقيح <b>في الإعدادية</b>", "y": "التلقيح <b>في الثانوية</b>"}, "tr": {"t": "Sayfa bulunamadı", "x": "Aradığınız sayfa mevcut değil veya taşınmış.", "h": "Ana sayfa", "c": "<b>Ortaokulda</b> aşılama", "y": "<b>Lisede</b> aşılama"}, "ps": {"t": "پاڼه ونه موندل شوه", "x": "غوښتل شوې پاڼه شتون نه لري یا بل ځای ته وړل شوې ده.", "h": "کور پاڼه", "c": "<b>په منځني ښوونځي کې</b> واکسین", "y": "<b>په لیسه کې</b> واکسین"}, "ku": {"t": "پەڕەکە نەدۆزرایەوە", "x": "ئەو پەڕەیەی داواکراوە بوونی نییە یان گوازراوەتەوە.", "h": "سەرەکی", "c": "ڤاکسین <b>لە قوتابخانەی ناوەندی</b>", "y": "ڤاکسین <b>لە ئامادەیی</b>"}, "ro": {"t": "Pagina nu a fost găsită", "x": "Pagina căutată nu există sau a fost mutată.", "h": "Acasă", "c": "Vaccinare <b>la colegiu</b>", "y": "Vaccinare <b>la liceu</b>"}, "ka": {"t": "გვერდი ვერ მოიძებნა", "x": "მოთხოვნილი გვერდი არ არსებობს ან გადატანილია.", "h": "მთავარი", "c": "ვაქცინაცია <b>კოლეჯში</b>", "y": "ვაქცინაცია <b>ლიცეუმში</b>"}, "sq": {"t": "Faqja nuk u gjet", "x": "Faqja e kërkuar nuk ekziston ose është zhvendosur.", "h": "Kreu", "c": "Vaksinimi <b>në kolegj</b>", "y": "Vaksinimi <b>në shkollën e mesme</b>"}, "am": {"t": "ገጹ አልተገኘም", "x": "የተጠየቀው ገጽ የለም ወይም ተዛውሯል።", "h": "መነሻ", "c": "<b>በኮሌጅ</b> ክትባት", "y": "<b>በሁለተኛ ደረጃ ትምህርት ቤት</b> ክትባት"}, "zh": {"t": "找不到页面", "x": "您要找的页面不存在或已被移动。", "h": "首页", "c": "<b>初中</b>疫苗接种", "y": "<b>高中</b>疫苗接种"}, "prs": {"t": "صفحه پیدا نشد", "x": "صفحهٔ درخواست‌شده وجود ندارد یا جابه‌جا شده است.", "h": "صفحه اصلی", "c": "واکسیناسیون <b>در مکتب متوسطه</b>", "y": "واکسیناسیون <b>در لیسه</b>"}, "es": {"t": "Página no encontrada", "x": "La página solicitada no existe o ha sido trasladada.", "h": "Inicio", "c": "Vacunación <b>en el colegio</b>", "y": "Vacunación <b>en el instituto</b>"}, "pt": {"t": "Página não encontrada", "x": "A página pedida não existe ou foi movida.", "h": "Início", "c": "Vacinação <b>no colégio</b>", "y": "Vacinação <b>no liceu</b>"}, "ru": {"t": "Страница не найдена", "x": "Запрашиваемая страница не существует или была перемещена.", "h": "Главная", "c": "Вакцинация <b>в коллеже</b>", "y": "Вакцинация <b>в лицее</b>"}, "uk": {"t": "Сторінку не знайдено", "x": "Запитувана сторінка не існує або була переміщена.", "h": "Головна", "c": "Вакцинація <b>в колежі</b>", "y": "Вакцинація <b>в ліцеї</b>"}, "mo": {"t": "Pagina nu a fost găsită", "x": "Pagina căutată nu există sau a fost mutată.", "h": "Acasă", "c": "Vaccinare <b>la colegiu</b>", "y": "Vaccinare <b>la liceu</b>"}};
+  var l=null; try{ l=localStorage.getItem('vaccinationSud77Lang'); }catch(e){}
+  if(!l||!D[l]) return;
+  var d=D[l];
+  document.documentElement.lang=l;
+  document.getElementById('t').textContent=d.t; document.getElementById('x').textContent=d.x;
+  document.getElementById('h').textContent=d.h; document.getElementById('c').innerHTML=d.c; document.getElementById('y').innerHTML=d.y;
+  if(['ar','ps','ku','prs'].indexOf(l)>-1){ ['t','x','h','c','y'].forEach(function(i){document.getElementById(i).dir='rtl';}); }
+  ['h','c','y'].forEach(function(i){ var a=document.getElementById(i); if(l!=='fr') a.href=a.getAttribute('href')+'?lang='+l; });
+  document.title=d.t;
+})();
+</script>
+</body>
+</html>
