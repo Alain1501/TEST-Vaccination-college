@@ -131,7 +131,17 @@
       '<div class="fxLbFrame"><iframe src="https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1&iv_load_policy=3&playsinline=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>' +
       '<div class="fxLbTitle"></div></div>';
     lb.querySelector('iframe').title = title;
-    lb.querySelector('.fxLbTitle').textContent = title;
+    var tb = lb.querySelector('.fxLbTitle'), t1 = document.createElement('div');
+    t1.className = 'fxLbT1'; t1.textContent = title; tb.appendChild(t1);
+    /* Nom et fonction de la personne qui parle, repris sous la miniature */
+    var pr = card.querySelector('.videoPresenter'), ro = card.querySelector('.videoRole');
+    var qui = [pr && pr.textContent.trim(), ro && ro.textContent.trim()].filter(Boolean);
+    if (qui.length) {
+      var t2 = document.createElement('div'); t2.className = 'fxLbT2';
+      if (['ar', 'ps', 'ku', 'prs'].indexOf(curLang()) > -1) t2.dir = 'rtl';
+      qui.forEach(function (q, k) { if (k) t2.appendChild(document.createTextNode(', ')); var b = document.createElement('bdi'); b.textContent = q; t2.appendChild(b); });
+      tb.appendChild(t2);
+    }
     document.body.appendChild(lb);
     document.documentElement.classList.add('fxNoScroll');
     requestAnimationFrame(function () { lb.classList.add('on'); });

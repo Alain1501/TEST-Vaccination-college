@@ -137,7 +137,11 @@
 .fxLbFrame{position:relative;aspect-ratio:16/9}
 .fxLbBox.short .fxLbFrame{aspect-ratio:9/16}
 .fxLbFrame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-.fxLbTitle{background:var(--vc,#2563eb);color:#fff;font-weight:800;font-size:14px;padding:12px 56px 12px 18px}
+.fxLbTitle{background:var(--vc,#2563eb);color:#fff;font-weight:800;font-size:14px;padding:12px 18px;overflow-wrap:anywhere;line-height:1.3}
+/* La taille du texte suit la largeur de la vidéo affichée, le texte passe à la ligne sans sortir du cadre */
+.fxLbBox{container-type:inline-size}
+.fxLbT1{font-size:clamp(12px,2.6cqi,16px)}
+.fxLbT2{font-weight:600;opacity:.92;margin-top:3px;font-size:clamp(11px,2.1cqi,14px)}
 .fxLbClose{position:absolute;top:6px;right:8px;width:38px;height:38px;border-radius:50%;border:0;background:rgba(255,255,255,.2);color:#fff;cursor:pointer;
   display:grid;place-items:center;font-size:22px;line-height:1;transition:transform .35s cubic-bezier(.2,.9,.25,1.6),background .25s ease;z-index:2}
 .fxLbClose:hover{transform:rotate(90deg);background:rgba(255,255,255,.35)}
