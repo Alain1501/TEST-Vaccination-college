@@ -120,7 +120,7 @@
     document.querySelectorAll('#faqList .acc').forEach(function (acc) {
       var q = acc.querySelector('h3 button > span:not(.fxIco):not(.signe)');
       var a = acc.querySelector('.faqAns');
-      list.push({ type: 'faq', el: acc, fid: acc.getAttribute('data-fid') || '', title: clean(q && q.textContent), body: clean(a && a.textContent) });
+      list.push({ type: 'faq', el: acc, title: clean(q && q.textContent), body: clean(a && a.textContent) });
     });
     document.querySelectorAll('#stepsContainer .stepItem').forEach(function (st) {
       var n = st.querySelector('.stepNumber'), ti = st.querySelector('.stepTitle'), te = st.querySelector('.stepText');
@@ -426,7 +426,6 @@
       setTimeout(function () {
         var list = collect().filter(function (r) { return r.type === type; }), hit = null;
         if (type === 'letter') hit = list.filter(function (r) { return String(r.n) === ref; })[0];
-        if (type === 'faq' && ref.indexOf('id:') === 0) hit = list.filter(function (r) { return r.fid === ref.slice(3); })[0];
         if (!hit) { var nr = norm(ref).s; hit = list.filter(function (r) { return norm(r.title).s === nr; })[0] ||
           list.filter(function (r) { var nt = norm(r.title).s; return nt && (nt.indexOf(nr) !== -1 || nr.indexOf(nt) !== -1); })[0]; }
         if (hit) go(hit);
